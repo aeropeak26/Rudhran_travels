@@ -8,8 +8,6 @@ import AboutSection from '@/components/AboutSection';
 import PopularDestinations from '@/components/PopularDestinations';
 import TourBanners from '@/components/TourBanners';
 import FleetSection from '@/components/FleetSection';
-import FareCalculator from '@/components/FareCalculator';
-import OfferBanners from '@/components/OfferBanners';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import CtaBanner from '@/components/CtaBanner';
 import Testimonials from '@/components/Testimonials';
@@ -36,14 +34,6 @@ export default function Home() {
     setSelectedItem({
       name: `${searchData.carModel} (${searchData.location})`,
       perDayRate: 2200,
-    });
-    setIsModalOpen(true);
-  };
-
-  const handleBookEstimatedFare = (estimate: any) => {
-    setSelectedItem({
-      name: `${estimate.carType} Outstation (${estimate.distanceKm} KMs, ${estimate.days} Days)`,
-      perDayRate: estimate.totalFare,
     });
     setIsModalOpen(true);
   };
@@ -85,28 +75,18 @@ export default function Home() {
         {/* 6. Why Travel With Us? (Alternating Black & Blue Cards) */}
         <WhyChooseUs />
 
-        {/* 7. Live Outstation Fare Calculator */}
-        <FareCalculator
-          onBookEstimatedFare={handleBookEstimatedFare}
-        />
-
-        {/* 8. Promotional Deals & Special Offers */}
-        <OfferBanners
-          onOpenBookingModal={() => handleOpenBookingModal()}
-        />
-
-        {/* 9. Call-To-Action Banner ("Are You Ready to Planning a Trip?") */}
+        {/* 7. Call-To-Action Banner ("Are You Ready to Planning a Trip?") */}
         <CtaBanner
           onOpenBookingModal={() => handleOpenBookingModal()}
         />
 
-        {/* 10. Client Testimonials & Reviews */}
+        {/* 8. Client Testimonials & Reviews */}
         <Testimonials />
 
-        {/* 11. Ride Experiences / Real Journeys Gallery Grid */}
+        {/* 9. Ride Experiences / Real Journeys Gallery Grid */}
         <TravelBlog />
 
-        {/* 12. FAQ Accordion */}
+        {/* 10. FAQ Accordion */}
         <FaqSection />
 
       </main>
