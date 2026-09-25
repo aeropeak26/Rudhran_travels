@@ -79,91 +79,91 @@ export default function FleetSection({ onBookCar }: FleetSectionProps) {
         </div>
 
         {/* Detailed Innova Feature Box */}
-        <div className="max-w-5xl mx-auto relative mt-16">
-          <div className="bg-white border border-slate-100 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-visible flex flex-col lg:flex-row">
+        <div className="max-w-6xl mx-auto relative mt-12">
+          <div className="bg-white border border-slate-100 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-visible flex flex-col lg:flex-row items-stretch">
             
             {/* Left Details (White) */}
-            <div className="lg:w-[65%] p-8 sm:p-10 space-y-8">
+            <div className="lg:w-[68%] p-6 sm:p-8 space-y-6">
               
               <div className="flex flex-wrap justify-between items-start gap-4">
                 <div>
-                  <h3 className="text-3xl sm:text-[32px] font-bold text-slate-900 tracking-tight">Toyota Innova Crysta</h3>
-                  <p className="text-[15px] text-slate-500 leading-relaxed font-normal mt-2 max-w-lg">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Toyota Innova Crysta</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed font-normal mt-1 max-w-lg">
                     South India's most trusted executive long-distance cruiser, known for legendary ride comfort and safety.
                   </p>
                 </div>
 
-                <div className="bg-[#fff9ec] border border-[#fde047] px-3 py-1.5 rounded-full text-xs font-semibold text-[#ca8a04] flex items-center space-x-1.5 shadow-sm">
-                  <Star className="w-3.5 h-3.5 fill-[#ca8a04] text-[#ca8a04]" />
+                <div className="bg-[#fff9ec] border border-[#fde047] px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#ca8a04] flex items-center space-x-1 shadow-sm mt-1">
+                  <Star className="w-3 h-3 fill-[#ca8a04] text-[#ca8a04]" />
                   <span>4.9 (420+ trips)</span>
                 </div>
               </div>
 
               {/* Badges */}
-              <div className="flex flex-wrap gap-3 text-[13px] font-medium text-slate-700">
-                <span className="bg-[#f8fafc] px-3.5 py-2 rounded-xl border border-slate-200 flex items-center space-x-2"><span className="text-blue-500 text-sm">👤</span><span>7 Seats</span></span>
-                <span className="bg-[#f8fafc] px-3.5 py-2 rounded-xl border border-slate-200 flex items-center space-x-2"><span className="text-blue-500 text-sm">❄</span><span>Dual AC</span></span>
-                <span className="bg-[#f8fafc] px-3.5 py-2 rounded-xl border border-slate-200 flex items-center space-x-2"><span className="text-blue-500 text-sm">🚘</span><span>Chauffeur Included</span></span>
-                <span className="bg-[#f8fafc] px-3.5 py-2 rounded-xl border border-slate-200 flex items-center space-x-2"><span className="text-blue-500 text-sm">🧳</span><span>4 Large Bags</span></span>
-                <span className="bg-[#eff6ff] text-blue-600 px-3.5 py-2 rounded-xl border border-blue-100 flex items-center space-x-2"><span className="text-blue-500 text-sm">⚡</span><span>FASTag Active</span></span>
+              <div className="flex flex-wrap gap-2 text-xs font-medium text-slate-700">
+                <span className="bg-[#f8fafc] px-3 py-1.5 rounded-lg border border-slate-200 flex items-center space-x-1.5"><span className="text-blue-500 text-sm">👤</span><span>7 Seats</span></span>
+                <span className="bg-[#f8fafc] px-3 py-1.5 rounded-lg border border-slate-200 flex items-center space-x-1.5"><span className="text-blue-500 text-sm">❄</span><span>Dual AC</span></span>
+                <span className="bg-[#f8fafc] px-3 py-1.5 rounded-lg border border-slate-200 flex items-center space-x-1.5"><span className="text-blue-500 text-sm">🚘</span><span>Chauffeur Included</span></span>
+                <span className="bg-[#f8fafc] px-3 py-1.5 rounded-lg border border-slate-200 flex items-center space-x-1.5"><span className="text-blue-500 text-sm">🧳</span><span>4 Large Bags</span></span>
+                <span className="bg-[#eff6ff] text-blue-600 px-3 py-1.5 rounded-lg border border-blue-100 flex items-center space-x-1.5"><span className="text-blue-500 text-sm">⚡</span><span>FASTag Active</span></span>
               </div>
 
               {/* Fares Matrix */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 bg-[#f8fafc] rounded-[20px] border border-slate-100 text-left font-normal">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 sm:p-5 bg-[#f8fafc] rounded-2xl border border-slate-100 text-left font-normal">
                 <div className="space-y-1">
-                  <div className="text-[12px] text-slate-500 font-medium">Outstation Rate</div>
-                  <div className="text-2xl font-bold text-blue-600">₹18<span className="text-sm text-slate-500 font-medium"> /km</span></div>
+                  <div className="text-[11px] text-slate-500 font-medium">Outstation Rate</div>
+                  <div className="text-xl font-bold text-blue-600">₹18<span className="text-xs text-slate-500 font-medium"> /km</span></div>
                 </div>
                 <div className="space-y-1">
-                  <div className="text-[12px] text-slate-500 font-medium">Local 8h/80km</div>
-                  <div className="text-2xl font-bold text-slate-900">₹3,800</div>
+                  <div className="text-[11px] text-slate-500 font-medium">Local 8h/80km</div>
+                  <div className="text-xl font-bold text-slate-900">₹3,800</div>
                 </div>
                 <div className="space-y-1">
-                  <div className="text-[12px] text-slate-500 font-medium">Min. Outstation</div>
-                  <div className="text-2xl font-bold text-slate-900">300 km<span className="text-sm text-slate-500 font-medium"> /day</span></div>
+                  <div className="text-[11px] text-slate-500 font-medium">Min. Outstation</div>
+                  <div className="text-xl font-bold text-slate-900">300 km<span className="text-xs text-slate-500 font-medium"> /day</span></div>
                 </div>
                 <div className="space-y-1">
-                  <div className="text-[12px] text-slate-500 font-medium">Driver Batta</div>
-                  <div className="text-xl font-bold text-blue-600 mt-1">Included</div>
+                  <div className="text-[11px] text-slate-500 font-medium">Driver Batta</div>
+                  <div className="text-lg font-bold text-blue-600 mt-1">Included</div>
                 </div>
               </div>
 
               {/* Red Note Box */}
-              <div className="bg-[#fef2f2] border border-[#fecaca] p-4 rounded-xl text-[13px] text-slate-600 flex items-center space-x-2.5 font-medium">
-                <AlertTriangle className="w-4 h-4 text-red-500 flex-shrink-0" />
+              <div className="bg-[#fef2f2] border border-[#fecaca] p-3 rounded-xl text-xs text-slate-600 flex items-center space-x-2 font-medium">
+                <AlertTriangle className="w-3.5 h-3.5 text-red-500 flex-shrink-0" />
                 <span>Toll, Parking, and Hill Station charges are extra as applicable.</span>
               </div>
 
             </div>
 
             {/* Right Action Box (Blue) - Slightly overlapping and popping out */}
-            <div className="lg:w-[35%] bg-blue-600 text-white p-8 sm:p-10 flex flex-col justify-center space-y-8 rounded-[32px] shadow-[0_20px_40px_rgba(37,99,235,0.25)] relative lg:-mr-4 lg:-my-4 z-10">
+            <div className="lg:w-[32%] bg-blue-600 text-white p-6 sm:p-8 flex flex-col justify-center space-y-6 rounded-[28px] shadow-[0_20px_40px_rgba(37,99,235,0.25)] relative lg:-mr-4 lg:-my-4 z-10">
               
-              <div className="space-y-5">
+              <div className="space-y-4">
                 <div>
-                  <div className="text-[11px] font-semibold text-blue-200 tracking-wider mb-1">DRIVER ALLOWANCE</div>
-                  <div className="text-4xl font-bold text-white tracking-tight">Rs. 500</div>
-                  <div className="text-[13px] font-medium text-blue-200 mt-1">Per Day (Driver Batta)</div>
+                  <div className="text-[10px] font-semibold text-blue-200 tracking-wider mb-1">DRIVER ALLOWANCE</div>
+                  <div className="text-3xl font-bold text-white tracking-tight">Rs. 500</div>
+                  <div className="text-xs font-medium text-blue-200 mt-0.5">Per Day (Driver Batta)</div>
                 </div>
 
                 <div className="w-full h-px bg-blue-500/50" />
 
                 <div>
-                  <div className="text-[11px] font-semibold text-blue-200 tracking-wider mb-1">RENT / DAY</div>
-                  <div className="text-4xl font-bold text-white tracking-tight">Rs. 2200</div>
+                  <div className="text-[10px] font-semibold text-blue-200 tracking-wider mb-1">RENT / DAY</div>
+                  <div className="text-3xl font-bold text-white tracking-tight">Rs. 2200</div>
                 </div>
               </div>
 
               <div className="space-y-3 pt-2">
                 <button
                   onClick={() => onBookCar({ name: 'Toyota Innova Crysta', perDayRate: 2200 })}
-                  className="w-full py-4 px-6 rounded-2xl bg-[#0b1b42] hover:bg-slate-900 text-white font-medium text-[15px] flex items-center justify-center space-x-2 shadow-lg transition-transform hover:scale-105"
+                  className="w-full py-3.5 px-6 rounded-xl bg-[#0b1b42] hover:bg-slate-900 text-white font-medium text-sm flex items-center justify-center space-x-2 shadow-lg transition-transform hover:scale-105"
                 >
                   <span>Book This Vehicle</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
 
-                <div className="text-[11px] text-center text-blue-200 font-medium">
+                <div className="text-[10px] text-center text-blue-200 font-medium">
                   Instant WhatsApp confirmation
                 </div>
               </div>
