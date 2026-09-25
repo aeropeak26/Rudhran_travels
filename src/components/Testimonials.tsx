@@ -78,7 +78,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Dark Navy Card — taller with generous padding */}
-        <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white px-8 sm:px-12 lg:px-16 py-14 sm:py-16 lg:py-20 overflow-hidden shadow-2xl min-h-[400px] sm:min-h-[440px]">
+        <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white px-8 sm:px-12 lg:px-16 py-16 sm:py-20 lg:py-28 overflow-hidden shadow-2xl min-h-[480px] sm:min-h-[520px] lg:min-h-[600px] flex items-center">
           
           {/* Faint "Happy Customers" Watermark — centered horizontally on top half */}
           <div className="absolute top-12 left-1/2 -translate-x-[30%] pointer-events-none select-none z-0">
@@ -90,28 +90,30 @@ export default function Testimonials() {
           {/* Subtle gradient glow behind cards area */}
           <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-blue-500/[0.03] to-transparent pointer-events-none z-0" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10 w-full">
             
             {/* ──── Left Content Column ──── */}
-            <div className="lg:col-span-4 space-y-5">
+            <div className="lg:col-span-4 flex flex-col justify-center">
               
-              {/* Orange Label */}
-              <div className="text-[11px] font-normal tracking-[0.2em] text-orange-500 uppercase">
-                TESTIMONIAL
+              <div className="space-y-5">
+                {/* Orange Label */}
+                <div className="text-[11px] font-normal tracking-[0.2em] text-orange-500 uppercase">
+                  TESTIMONIAL
+                </div>
+
+                {/* Big Heading */}
+                <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-normal text-white leading-[1.15] tracking-tight">
+                  Client<br />Testimonials
+                </h2>
+
+                {/* Subtitle */}
+                <p className="text-slate-300 text-[13px] sm:text-sm font-normal max-w-[260px] leading-relaxed">
+                  Real experiences from travelers who chose us for their journeys.
+                </p>
               </div>
 
-              {/* Big Heading */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-normal text-white leading-[1.15] tracking-tight">
-                Client<br />Testimonials
-              </h2>
-
-              {/* Subtitle */}
-              <p className="text-slate-300 text-[13px] sm:text-sm font-normal max-w-[260px] leading-relaxed">
-                Real experiences from travelers who chose us for their journeys.
-              </p>
-
-              {/* Navigation Arrows — light grey/blue with dark arrows per screenshot */}
-              <div className="flex items-center space-x-3 pt-8">
+              {/* Navigation Arrows — aligned center-right relative to text block, pushed down */}
+              <div className="flex items-center space-x-3 pt-16 sm:pt-24 justify-center max-w-[260px]">
                 <button
                   onClick={handlePrev}
                   className="w-11 h-11 rounded-full bg-[#9ba3b5] hover:bg-[#858da0] text-[#0b1b42] flex items-center justify-center transition-all duration-200 shadow-lg active:scale-90"
