@@ -13,6 +13,7 @@ import OfferBanners from '@/components/OfferBanners';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import CtaBanner from '@/components/CtaBanner';
 import Testimonials from '@/components/Testimonials';
+import TravelBlog from '@/components/TravelBlog';
 import FaqSection from '@/components/FaqSection';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
@@ -71,7 +72,7 @@ export default function Home() {
           onSelectDestination={(dest) => handleOpenBookingModal(dest)}
         />
 
-        {/* 4. How It Works (3-Step Rental Process) */}
+        {/* 4. How It Works (3-Car Visual Process) */}
         <HowItWorks />
 
         {/* 5. Interactive Vehicle Fleet Directory */}
@@ -89,7 +90,7 @@ export default function Home() {
           onOpenBookingModal={() => handleOpenBookingModal()}
         />
 
-        {/* 8. Why Choose Us Feature Grid */}
+        {/* 8. Why Choose Us (Alternating Black & Blue 6-Card Grid) */}
         <WhyChooseUs />
 
         {/* 9. Call-To-Action Banner */}
@@ -100,7 +101,10 @@ export default function Home() {
         {/* 10. Customer Testimonials & Reviews */}
         <Testimonials />
 
-        {/* 11. FAQ Accordion */}
+        {/* 11. Travel Guides & News (4 Cards Grid) */}
+        <TravelBlog />
+
+        {/* 12. FAQ Accordion */}
         <FaqSection />
 
       </main>

@@ -1,93 +1,93 @@
 'use client';
 
 import React from 'react';
-import { Car, MapPin, Smile, ArrowRight, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
+import { Car, Calendar, Smile, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 export default function HowItWorks() {
   const steps = [
     {
-      number: '01',
-      title: 'Choose Your Car',
-      description: 'Select from our wide fleet of Hatchbacks, Sedans, SUVs, or Luxury cars based on your passenger count and budget.',
-      icon: Car,
-      color: 'from-blue-600 to-blue-400'
+      number: '1',
+      title: 'Choose Vehicle',
+      description: 'Select Hatchback, Sedan, SUV, or Luxury car.',
+      image: '/images/hero_car.png',
+      badge: 'Step 1'
     },
     {
-      number: '02',
+      number: '2',
       title: 'Pick Location & Date',
-      description: 'Set your pickup city, destination, travel dates, and whether you prefer chauffeur driven or self drive options.',
-      icon: MapPin,
-      color: 'from-amber-500 to-orange-500'
+      description: 'Set your pickup city, trip dates & return schedule.',
+      image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80',
+      badge: 'Step 2'
     },
     {
-      number: '03',
-      title: 'Enjoy Your Journey',
-      description: 'Receive instant WhatsApp driver details, doorstep vehicle arrival, and experience a safe, smooth, hassle-free ride.',
-      icon: Smile,
-      color: 'from-emerald-500 to-teal-500'
+      number: '3',
+      title: 'Book & Enjoy Drive',
+      description: 'Instant driver details & doorstep car arrival.',
+      image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80',
+      badge: 'Step 3'
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-20 bg-slate-900 text-white relative border-y border-slate-800">
-      
+    <section id="how-it-works" className="py-20 bg-gradient-to-b from-blue-900/30 via-slate-900 to-slate-950 text-white relative border-y border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest">
-            <ShieldCheck className="w-4 h-4" />
-            <span>SIMPLE PROCESS</span>
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-600/20 border border-blue-500/30 text-blue-300 text-xs font-bold uppercase tracking-widest">
+            <ShieldCheck className="w-4 h-4 text-amber-400" />
+            <span>HOW IT WORKS</span>
           </div>
-          
+
           <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
             Rent A Car In 3 Easy Steps
           </h2>
-          
-          <p className="text-slate-400 text-sm sm:text-base">
-            Booking your outstation trip or local ride takes less than 2 minutes with transparent pricing and zero hidden fees.
+
+          <p className="text-slate-300 text-sm sm:text-base">
+            Simple 3-step booking process with instant driver assignment and zero advance payment options.
           </p>
         </div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        {/* 3 Cars Visual Flow Row matching reference screenshot */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative">
           
-          {/* Connector Line (Desktop) */}
-          <div className="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-0.5 border-t-2 border-dashed border-slate-700 -translate-y-12 z-0" />
-
-          {steps.map((step, idx) => {
-            const Icon = step.icon;
-            return (
-              <div
-                key={idx}
-                className="relative z-10 bg-slate-950/80 border border-slate-800 rounded-3xl p-8 text-center space-y-5 hover:border-blue-500/50 hover:shadow-xl transition-all duration-300 group"
-              >
+          {steps.map((step, idx) => (
+            <React.Fragment key={idx}>
+              <div className="bg-slate-950/90 border border-slate-800 rounded-3xl p-6 text-center space-y-4 shadow-2xl relative group hover:border-blue-500/60 transition-all duration-300">
                 
-                {/* Step Icon Badge */}
-                <div className="relative inline-block">
-                  <div className={`w-20 h-20 rounded-3xl bg-gradient-to-tr ${step.color} p-0.5 shadow-xl mx-auto group-hover:scale-110 transition-transform duration-300`}>
-                    <div className="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center">
-                      <Icon className="w-9 h-9 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Step Number Badge */}
-                  <span className="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-black text-xs px-2.5 py-1 rounded-xl shadow">
-                    {step.number}
-                  </span>
+                {/* Step Badge */}
+                <div className="inline-block px-3 py-1 rounded-full bg-blue-600/30 border border-blue-500/40 text-blue-300 text-xs font-extrabold mb-1">
+                  {step.badge}
                 </div>
 
-                <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                {/* Car Render Image */}
+                <div className="relative h-36 w-full overflow-hidden rounded-2xl bg-slate-900/60 p-2 flex items-center justify-center">
+                  <Image
+                    src={step.image}
+                    alt={step.title}
+                    fill
+                    className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+
+                {/* Title & Description */}
+                <h3 className="text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
                   {step.title}
                 </h3>
 
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                <p className="text-slate-400 text-xs leading-relaxed">
                   {step.description}
                 </p>
 
+                <div className="pt-2 flex items-center justify-center space-x-1 text-[11px] font-semibold text-emerald-400">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Instant Verification</span>
+                </div>
+
               </div>
-            );
-          })}
+            </React.Fragment>
+          ))}
 
         </div>
 
