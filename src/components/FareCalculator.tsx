@@ -27,7 +27,7 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
   const kmFare = billableKm * selectedRate.perKm;
   const driverFare = includeDriverAllowance ? selectedRate.driverPerDay * days : 0;
   const subtotal = kmFare + driverFare;
-  const estimatedGst = Math.round(subtotal * 0.05); // 5% GST
+  const estimatedGst = Math.round(subtotal * 0.05);
   const totalFare = subtotal + estimatedGst;
 
   const handleBookEstimate = () => {
@@ -44,34 +44,34 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
   };
 
   return (
-    <section id="fare-calculator" className="py-20 bg-slate-50 text-slate-900 relative border-b border-slate-200">
+    <section id="fare-calculator" className="py-20 bg-slate-50 text-slate-900 relative border-b border-slate-200 poppins-regular">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-xs font-extrabold uppercase tracking-widest">
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-xs font-normal uppercase tracking-widest">
             <Calculator className="w-4 h-4 text-orange-500" />
             <span>TRANSPARENT PRICING</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">
+          <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900">
             Instant Outstation Fare Calculator
           </h2>
 
-          <p className="text-slate-600 text-sm sm:text-base">
+          <p className="text-slate-600 text-sm sm:text-base font-normal">
             Calculate exact per-KM outstation fares, driver allowances, and taxes before booking.
           </p>
         </div>
 
         {/* Calculator Box */}
-        <div className="max-w-4xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div className="max-w-4xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center font-normal">
           
           {/* Controls Form (Left) */}
           <div className="md:col-span-7 space-y-6">
             
             {/* Select Car Class */}
             <div>
-              <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-normal text-slate-700 uppercase tracking-wider mb-2">
                 1. Select Vehicle Category
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -80,7 +80,7 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
                     key={type}
                     type="button"
                     onClick={() => setCarType(type)}
-                    className={`py-3 px-2 rounded-xl text-xs font-black transition-all border ${
+                    className={`py-3 px-2 rounded-xl text-xs font-normal transition-all border ${
                       carType === type
                         ? 'bg-blue-600 border-blue-600 text-white shadow-md'
                         : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
@@ -96,10 +96,10 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
             {/* Distance Slider */}
             <div>
               <div className="flex justify-between items-center mb-2">
-                <label className="text-xs font-extrabold text-slate-700 uppercase tracking-wider">
+                <label className="text-xs font-normal text-slate-700 uppercase tracking-wider">
                   2. Estimated Round-Trip Distance (KMs)
                 </label>
-                <span className="text-sm font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-200">
+                <span className="text-sm font-normal text-blue-600 bg-blue-50 px-3 py-1 rounded-lg border border-blue-200">
                   {distanceKm} KM
                 </span>
               </div>
@@ -112,7 +112,7 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
                 onChange={(e) => setDistanceKm(Number(e.target.value))}
                 className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
               />
-              <div className="flex justify-between text-[10px] text-slate-500 font-semibold mt-1">
+              <div className="flex justify-between text-[10px] text-slate-500 font-normal mt-1">
                 <span>100 KM</span>
                 <span>500 KM</span>
                 <span>1000 KM</span>
@@ -122,7 +122,7 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
 
             {/* Days Selection */}
             <div>
-              <label className="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-normal text-slate-700 uppercase tracking-wider mb-2">
                 3. Trip Duration (Days)
               </label>
               <div className="flex items-center space-x-3">
@@ -131,7 +131,7 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
                     key={d}
                     type="button"
                     onClick={() => setDays(d)}
-                    className={`w-10 h-10 rounded-xl font-black text-xs transition-all border ${
+                    className={`w-10 h-10 rounded-xl font-normal text-xs transition-all border ${
                       days === d
                         ? 'bg-amber-500 border-amber-500 text-slate-950 shadow'
                         : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
@@ -145,7 +145,7 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
 
             {/* Driver Allowance */}
             <div className="pt-2">
-              <label className="flex items-center space-x-3 cursor-pointer text-xs font-bold text-slate-800 bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <label className="flex items-center space-x-3 cursor-pointer text-xs font-normal text-slate-800 bg-slate-50 p-3 rounded-xl border border-slate-200">
                 <input
                   type="checkbox"
                   checked={includeDriverAllowance}
@@ -159,33 +159,33 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
           </div>
 
           {/* Fare Summary Box (Right) */}
-          <div className="md:col-span-5 bg-blue-950 text-white p-6 rounded-3xl space-y-4 shadow-xl">
+          <div className="md:col-span-5 bg-[#032880] text-white p-6 rounded-3xl space-y-4 shadow-xl font-normal">
             
             <div className="flex justify-between items-center border-b border-blue-900 pb-3">
-              <span className="text-xs font-bold text-blue-200">ESTIMATED FARE</span>
-              <span className="text-[10px] bg-blue-800 text-blue-100 px-2 py-0.5 rounded font-extrabold">
+              <span className="text-xs font-normal text-blue-200">ESTIMATED FARE</span>
+              <span className="text-[10px] bg-blue-800 text-blue-100 px-2 py-0.5 rounded font-normal">
                 {carType} Class
               </span>
             </div>
 
-            <div className="space-y-2 text-xs">
+            <div className="space-y-2 text-xs font-normal">
               <div className="flex justify-between text-blue-100">
                 <span>Distance Rate ({billableKm} KM @ ₹{selectedRate.perKm}/km):</span>
-                <span className="font-bold text-white">₹{kmFare.toLocaleString('en-IN')}</span>
+                <span className="font-normal text-white">₹{kmFare.toLocaleString('en-IN')}</span>
               </div>
 
               <div className="flex justify-between text-blue-100">
                 <span>Driver Allowance ({days} Days):</span>
-                <span className="font-bold text-white">₹{driverFare.toLocaleString('en-IN')}</span>
+                <span className="font-normal text-white">₹{driverFare.toLocaleString('en-IN')}</span>
               </div>
 
               <div className="flex justify-between text-blue-100">
                 <span>Estimated GST (5%):</span>
-                <span className="font-bold text-white">₹{estimatedGst.toLocaleString('en-IN')}</span>
+                <span className="font-normal text-white">₹{estimatedGst.toLocaleString('en-IN')}</span>
               </div>
 
               {billableKm > distanceKm && (
-                <div className="flex items-center space-x-1 text-[10px] text-amber-400 pt-1 font-medium">
+                <div className="flex items-center space-x-1 text-[10px] text-amber-400 pt-1 font-normal">
                   <Info className="w-3 h-3 flex-shrink-0" />
                   <span>Min {selectedRate.minKmPerDay} KM/day limit applied ({minRequiredKm} KM)</span>
                 </div>
@@ -195,22 +195,22 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
             {/* Total */}
             <div className="pt-4 border-t border-blue-900 flex justify-between items-end">
               <div>
-                <div className="text-[10px] text-blue-200 uppercase font-extrabold">ESTIMATED TOTAL</div>
-                <div className="text-2xl font-black text-amber-400">
+                <div className="text-[10px] text-blue-200 uppercase font-normal">ESTIMATED TOTAL</div>
+                <div className="text-2xl font-normal text-amber-400">
                   ₹{totalFare.toLocaleString('en-IN')}
                 </div>
               </div>
 
               <button
                 onClick={handleBookEstimate}
-                className="px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-black text-xs flex items-center space-x-1.5 shadow-lg transition-all hover:scale-105"
+                className="px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-normal text-xs flex items-center space-x-1.5 shadow-lg transition-all hover:scale-105"
               >
                 <span>Book This Fare</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="text-[10px] text-blue-300 text-center pt-2">
+            <div className="text-[10px] text-blue-300 text-center pt-2 font-normal">
               *Tolls & state permit taxes extra as per actuals.
             </div>
 

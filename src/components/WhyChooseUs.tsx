@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
 
 export default function WhyChooseUs() {
   const cards = [
@@ -57,21 +56,21 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-20 bg-white text-slate-900 relative border-b border-slate-200 poppins">
+    <section className="py-20 bg-white text-slate-900 relative border-b border-slate-200 poppins-regular">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-2 mb-16">
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">
+          <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900">
             Why Travel With Us?
           </h2>
 
-          <p className="text-blue-600 text-sm font-bold max-w-2xl mx-auto">
+          <p className="text-blue-600 text-sm font-normal max-w-2xl mx-auto">
             Trusted service, comfortable vehicles, experienced drivers, and customer-first support.
           </p>
         </div>
 
-        {/* 6 Cards Grid with top photo section & alternating Black / Blue cards matching screenshot */}
+        {/* 6 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cards.map((card) => {
             const isBlue = card.theme === 'blue';
@@ -97,8 +96,8 @@ export default function WhyChooseUs() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 pt-2 space-y-3">
-                  <h3 className="text-xl font-bold leading-snug">
+                <div className="p-6 pt-2 space-y-3 font-normal">
+                  <h3 className="text-xl font-normal leading-snug">
                     {card.title}
                   </h3>
 
@@ -111,7 +110,7 @@ export default function WhyChooseUs() {
                   <div className="pt-2">
                     <a
                       href="#"
-                      className={`text-xs font-bold flex items-center space-x-1 hover:underline ${
+                      className={`text-xs font-normal flex items-center space-x-1 hover:underline ${
                         isBlue ? 'text-amber-300' : 'text-amber-400'
                       }`}
                     >

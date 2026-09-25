@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, PhoneCall, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 
 interface HeaderProps {
   onOpenBookingModal: (carOrDestination?: any) => void;
@@ -32,15 +32,15 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
   ];
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 poppins ${
-      isScrolled ? 'bg-[#0a192e]/95 backdrop-blur-md shadow-xl py-3 border-b border-blue-900' : 'bg-[#0b1b36] py-4 border-b border-blue-950'
+    <header className={`sticky top-0 z-50 transition-all duration-300 poppins-regular ${
+      isScrolled ? 'bg-[#032880]/95 backdrop-blur-md shadow-xl py-3 border-b border-blue-900/50' : 'bg-[#032880] py-4 border-b border-blue-900/40'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
         {/* Brand Logo: RUDHRAN CAR TRAVELS */}
         <a href="#" className="flex items-center space-x-2 group">
-          <div className="text-2xl font-black tracking-wider text-white">
-            RUDHRAN <span className="text-xs font-bold px-2 py-0.5 bg-orange-600 text-white rounded tracking-normal uppercase">CAR TRAVELS</span>
+          <div className="text-2xl font-normal tracking-wider text-white">
+            RUDHRAN <span className="text-xs font-normal px-2 py-0.5 bg-orange-600 text-white rounded tracking-normal uppercase">CAR TRAVELS</span>
           </div>
         </a>
 
@@ -50,7 +50,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
             <a
               key={link.name}
               href={link.href}
-              className="text-xs font-semibold text-slate-200 hover:text-orange-400 transition-colors uppercase tracking-wider"
+              className="text-xs font-normal text-slate-200 hover:text-orange-400 transition-colors uppercase tracking-wider"
             >
               {link.name}
             </a>
@@ -61,14 +61,14 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
         <div className="hidden lg:flex items-center space-x-3">
           <button
             onClick={() => onOpenBookingModal()}
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-orange-500/25 transition-all hover:scale-105 active:scale-95"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-normal text-xs uppercase tracking-wider shadow-lg shadow-orange-500/25 transition-all hover:scale-105 active:scale-95"
           >
             RESERVE NOW
           </button>
 
           <button 
             onClick={() => onOpenBookingModal()}
-            className="px-5 py-2.5 rounded-full bg-white hover:bg-slate-100 text-blue-950 font-extrabold text-xs uppercase tracking-wider shadow transition-all hover:scale-105"
+            className="px-5 py-2.5 rounded-full bg-white hover:bg-slate-100 text-blue-950 font-normal text-xs uppercase tracking-wider shadow transition-all hover:scale-105"
           >
             ENQUIRY NOW
           </button>
@@ -78,7 +78,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
         <div className="lg:hidden flex items-center space-x-2">
           <button
             onClick={() => onOpenBookingModal()}
-            className="px-3.5 py-1.5 rounded-full bg-orange-500 text-white font-black text-xs uppercase shadow"
+            className="px-3.5 py-1.5 rounded-full bg-orange-500 text-white font-normal text-xs uppercase shadow"
           >
             Reserve
           </button>
@@ -95,14 +95,14 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0a192e] border-b border-blue-900 px-4 pt-3 pb-6 space-y-3">
+        <div className="lg:hidden bg-[#032880] border-b border-blue-900 px-4 pt-3 pb-6 space-y-3">
           <div className="grid grid-cols-1 gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2.5 text-sm font-bold text-slate-200 hover:bg-blue-900 rounded-xl transition-colors"
+                className="px-4 py-2.5 text-sm font-normal text-slate-200 hover:bg-blue-900 rounded-xl transition-colors"
               >
                 {link.name}
               </a>
@@ -115,7 +115,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
                 setMobileMenuOpen(false);
                 onOpenBookingModal();
               }}
-              className="w-full flex items-center justify-center space-x-2 py-3 rounded-full bg-orange-500 text-white font-extrabold text-xs uppercase shadow"
+              className="w-full flex items-center justify-center space-x-2 py-3 rounded-full bg-orange-500 text-white font-normal text-xs uppercase shadow"
             >
               <span>RESERVE NOW</span>
               <ChevronRight className="w-4 h-4" />

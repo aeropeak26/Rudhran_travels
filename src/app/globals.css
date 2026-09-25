@@ -14,38 +14,29 @@
   }
 
   body {
-    background-color: #f8fafc;
+    background-color: #ffffff;
     color: #0f172a;
     font-family: var(--font-poppins), 'Poppins', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
     overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, span, button, input, select, a {
+    font-weight: 400 !important;
   }
 }
 
-.poppins {
+.poppins-regular {
   font-family: var(--font-poppins), 'Poppins', sans-serif;
+  font-weight: 400 !important;
 }
 
-/* Custom Utilities matching exact screenshot */
-.rudhran-blue-bg {
-  background: linear-gradient(135deg, #0a1931 0%, #153462 60%, #0d1b2a 100%);
-}
-
-.rudhran-card-shadow {
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
-}
-
-.glass-banner {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.glass-banner-dark {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Custom Utilities */
+.hero-custom-bg {
+  background-image: url('/images/Home/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Custom scrollbar */
