@@ -137,33 +137,33 @@ export default function FleetSection({ onBookCar }: FleetSectionProps) {
             </div>
 
             {/* Right Action Box (Blue) - Slightly overlapping and popping out */}
-            <div className="lg:w-[36%] bg-blue-600 text-white p-8 sm:p-10 flex flex-col justify-center space-y-8 rounded-[32px] shadow-[0_20px_40px_rgba(37,99,235,0.25)] relative lg:-mr-6 lg:-my-6 z-10">
+            <div className="lg:w-[30%] bg-blue-600 text-white p-6 sm:p-8 flex flex-col justify-center space-y-6 rounded-[32px] shadow-[0_20px_40px_rgba(37,99,235,0.25)] relative lg:-mr-6 lg:-my-6 z-10">
               
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div>
-                  <div className="text-xs font-semibold text-blue-100 tracking-[0.1em] mb-1">DRIVER ALLOWANCE</div>
-                  <div className="text-[44px] font-bold text-white tracking-tight leading-none mt-2">Rs. 500</div>
-                  <div className="text-[15px] font-normal text-blue-100 mt-2">Per Day (Driver Batta)</div>
+                  <div className="text-[10px] sm:text-[11px] font-semibold text-blue-100 tracking-[0.1em] mb-1 uppercase">Driver Allowance</div>
+                  <div className="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-none mt-1">Rs. 500</div>
+                  <div className="text-[11px] sm:text-xs font-normal text-blue-100 mt-1.5">Per Day (Driver Batta)</div>
                 </div>
 
                 <div className="w-full h-px bg-blue-500/50" />
 
                 <div>
-                  <div className="text-xs font-semibold text-blue-100 tracking-[0.1em] mb-1">RENT / DAY</div>
-                  <div className="text-[52px] font-bold text-white tracking-tight leading-none mt-2">Rs. 2200</div>
+                  <div className="text-[10px] sm:text-[11px] font-semibold text-blue-100 tracking-[0.1em] mb-1 uppercase">Rent / Day</div>
+                  <div className="text-4xl sm:text-[42px] font-bold text-white tracking-tight leading-none mt-1">Rs. 2200</div>
                 </div>
               </div>
 
-              <div className="space-y-4 pt-4">
+              <div className="space-y-3 pt-2">
                 <button
                   onClick={() => onBookCar({ name: 'Toyota Innova Crysta', perDayRate: 2200 })}
-                  className="w-full py-4 sm:py-4.5 px-6 rounded-2xl bg-[#0b162c] hover:bg-slate-900 text-white font-semibold text-base flex items-center justify-center space-x-3 shadow-xl transition-transform hover:scale-105"
+                  className="w-full py-3.5 sm:py-4 px-6 rounded-2xl bg-[#0b162c] hover:bg-slate-900 text-white font-medium text-sm sm:text-[15px] flex items-center justify-center space-x-2 shadow-xl transition-transform hover:scale-105"
                 >
                   <span>Book This Vehicle</span>
-                  <ArrowRight className="w-5 h-5 text-blue-200" />
+                  <ArrowRight className="w-4 h-4 text-blue-200" />
                 </button>
 
-                <div className="text-xs sm:text-[13px] text-center text-blue-100/90 font-normal">
+                <div className="text-[10px] sm:text-[11px] text-center text-blue-100/90 font-normal">
                   Instant WhatsApp confirmation
                 </div>
               </div>
