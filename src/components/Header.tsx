@@ -35,7 +35,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-xl border-b border-slate-800 py-3' : 'bg-slate-950 py-4 border-b border-slate-900'
+      isScrolled ? 'bg-blue-950/95 backdrop-blur-md shadow-xl border-b border-blue-900 py-3' : 'bg-blue-900 py-4 border-b border-blue-800'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
@@ -45,11 +45,11 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
             <Car className="w-6 h-6 text-white" />
           </div>
           <div>
-            <div className="text-xl font-black tracking-tight text-white flex items-center">
-              AERO<span className="text-amber-500">DRIVE</span>
-              <span className="ml-1 px-1.5 py-0.5 text-[10px] font-bold bg-blue-600/30 text-blue-400 border border-blue-500/40 rounded">CAB</span>
+            <div className="text-2xl font-black tracking-tight text-white flex items-center">
+              AERO<span className="text-amber-400">DRIVE</span>
+              <span className="ml-1.5 px-2 py-0.5 text-[10px] font-extrabold bg-blue-600/40 text-blue-200 border border-blue-400/40 rounded-md">CABS</span>
             </div>
-            <p className="text-[10px] text-slate-400 tracking-wide font-medium">PREMIUM CAR & OUTSTATION RENTALS</p>
+            <p className="text-[10px] text-blue-200 tracking-wider font-semibold">PREMIUM OUTSTATION & RENTAL CAB</p>
           </div>
         </a>
 
@@ -59,72 +59,73 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
             <a
               key={link.name}
               href={link.href}
-              className="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-all"
+              className="px-3.5 py-2 text-sm font-bold text-blue-100 hover:text-white hover:bg-blue-800/60 rounded-xl transition-all"
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* Desktop CTAs */}
+        {/* Desktop Action Buttons */}
         <div className="hidden lg:flex items-center space-x-4">
           <button 
             onClick={() => onOpenBookingModal()}
-            className="flex items-center space-x-2 text-xs font-semibold px-4 py-2.5 rounded-lg border border-slate-700 text-slate-200 hover:bg-slate-800 hover:text-white transition-colors"
+            className="flex items-center space-x-2 text-xs font-bold px-4 py-2.5 rounded-xl border border-blue-700 text-blue-100 hover:bg-blue-800 hover:text-white transition-colors"
           >
-            <User className="w-4 h-4 text-blue-400" />
+            <User className="w-4 h-4 text-amber-400" />
             <span>Login / Register</span>
           </button>
 
           <button
             onClick={() => onOpenBookingModal()}
-            className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-sm shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 transition-all hover:scale-105 active:scale-95"
+            className="flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white font-black text-sm shadow-lg shadow-orange-500/30 hover:scale-105 active:scale-95 transition-all"
           >
             <span>Book A Ride</span>
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Mobile Hamburger Toggle */}
+        {/* Mobile Toggle */}
         <div className="lg:hidden flex items-center space-x-3">
           <button
             onClick={() => onOpenBookingModal()}
-            className="px-3 py-1.5 rounded-lg bg-amber-500 text-white font-bold text-xs shadow"
+            className="px-3.5 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-black text-xs shadow"
           >
             Book
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-slate-800 text-slate-200 hover:text-white"
+            className="p-2 rounded-lg bg-blue-800 text-white hover:bg-blue-700"
             aria-label="Toggle Navigation"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
+
       </div>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-900 border-b border-slate-800 px-4 pt-3 pb-6 space-y-3 animate-fadeIn">
+        <div className="lg:hidden bg-blue-950 border-b border-blue-800 px-4 pt-3 pb-6 space-y-3">
           <div className="grid grid-cols-1 gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2.5 text-base font-medium text-slate-200 hover:bg-slate-800 rounded-lg transition-colors"
+                className="px-4 py-2.5 text-base font-bold text-blue-100 hover:bg-blue-900 rounded-xl transition-colors"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          <div className="pt-3 border-t border-slate-800 space-y-2">
+          <div className="pt-3 border-t border-blue-900 space-y-2">
             <a
               href="tel:+919876543210"
               className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl bg-blue-600 text-white font-bold text-sm shadow"
             >
-              <PhoneCall className="w-4 h-4" />
+              <PhoneCall className="w-4 h-4 text-amber-300" />
               <span>Call Helpline: +91 98765 43210</span>
             </a>
             
@@ -133,7 +134,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
                 setMobileMenuOpen(false);
                 onOpenBookingModal();
               }}
-              className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold text-sm shadow"
+              className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-black text-sm shadow"
             >
               <span>Instant Online Booking</span>
               <ChevronRight className="w-4 h-4" />

@@ -2,7 +2,7 @@
 
 @layer base {
   :root {
-    --background: #f8fafc;
+    --background: #ffffff;
     --foreground: #0f172a;
     --primary: #1d4ed8;
     --primary-hover: #1e40af;
@@ -15,38 +15,35 @@
   }
 
   body {
-    background-color: var(--background);
-    color: var(--foreground);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     overflow-x: hidden;
   }
 }
 
-/* Custom Utilities for Glassmorphism & Glows */
-.glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+/* Custom Utilities for Light Theme Glassmorphism & Shadow Effects */
+.light-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
 }
 
-.glass-dark {
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.hero-blue-gradient {
+  background: linear-gradient(135deg, #0b1e48 0%, #1e3a8a 50%, #0a1128 100%);
 }
 
-.hero-gradient {
-  background: radial-gradient(circle at 50% 20%, #1e3a8a 0%, #0f172a 70%, #070a13 100%);
+.subtle-blue-bg {
+  background-color: #f0f6ff;
 }
 
-.blue-glow {
-  box-shadow: 0 0 50px -10px rgba(37, 99, 235, 0.4);
+.blue-glow-light {
+  box-shadow: 0 15px 40px -10px rgba(37, 99, 235, 0.25);
 }
 
-.orange-glow {
-  box-shadow: 0 0 30px -5px rgba(249, 115, 22, 0.4);
+.orange-badge {
+  background-color: #ff6b00;
+  color: #ffffff;
 }
 
 /* Custom scrollbar */
@@ -54,12 +51,12 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3b82f6;
+  background: #2563eb;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2563eb;
+  background: #1d4ed8;
 }
