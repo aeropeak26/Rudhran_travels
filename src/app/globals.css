@@ -2,12 +2,11 @@
 
 @layer base {
   :root {
+    --font-poppins: 'Poppins', sans-serif;
     --background: #ffffff;
     --foreground: #0f172a;
-    --primary: #1d4ed8;
-    --primary-hover: #1e40af;
-    --accent: #f97316;
-    --accent-hover: #ea580c;
+    --primary: #2563eb;
+    --accent: #ff6b00;
   }
 
   html {
@@ -17,33 +16,36 @@
   body {
     background-color: #f8fafc;
     color: #0f172a;
-    font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--font-poppins), 'Poppins', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 }
 
-/* Custom Utilities for Light Theme Glassmorphism & Shadow Effects */
-.light-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
+.poppins {
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
 }
 
-.hero-blue-gradient {
-  background: linear-gradient(135deg, #0b1e48 0%, #1e3a8a 50%, #0a1128 100%);
+/* Custom Utilities matching exact screenshot */
+.rudhran-blue-bg {
+  background: linear-gradient(135deg, #0a1931 0%, #153462 60%, #0d1b2a 100%);
 }
 
-.subtle-blue-bg {
-  background-color: #f0f6ff;
+.rudhran-card-shadow {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
 }
 
-.blue-glow-light {
-  box-shadow: 0 15px 40px -10px rgba(37, 99, 235, 0.25);
+.glass-banner {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.orange-badge {
-  background-color: #ff6b00;
-  color: #ffffff;
+.glass-banner-dark {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Custom scrollbar */

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Car, Menu, X, PhoneCall, ChevronRight, User } from 'lucide-react';
+import { Menu, X, PhoneCall, ChevronRight } from 'lucide-react';
 
 interface HeaderProps {
   onOpenBookingModal: (carOrDestination?: any) => void;
@@ -25,77 +25,66 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
   const navLinks = [
     { name: 'Home', href: '#' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Tour Packages', href: '#destinations' },
-    { name: 'Car Fleet', href: '#fleet' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Fare Estimator', href: '#fare-calculator' },
-    { name: 'FAQs', href: '#faqs' },
+    { name: 'Tariff', href: '#fleet' },
+    { name: 'Service', href: '#about' },
+    { name: 'Gallery', href: '#destinations' },
+    { name: 'Contact Us', href: '#contact' },
   ];
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-blue-950/95 backdrop-blur-md shadow-xl border-b border-blue-900 py-3' : 'bg-blue-900 py-4 border-b border-blue-800'
+    <header className={`sticky top-0 z-50 transition-all duration-300 poppins ${
+      isScrolled ? 'bg-[#0a192e]/95 backdrop-blur-md shadow-xl py-3 border-b border-blue-900' : 'bg-[#0b1b36] py-4 border-b border-blue-950'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* Brand Logo */}
-        <a href="#" className="flex items-center space-x-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-blue-500 to-amber-500 flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform">
-            <Car className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <div className="text-2xl font-black tracking-tight text-white flex items-center">
-              AERO<span className="text-amber-400">DRIVE</span>
-              <span className="ml-1.5 px-2 py-0.5 text-[10px] font-extrabold bg-blue-600/40 text-blue-200 border border-blue-400/40 rounded-md">CABS</span>
-            </div>
-            <p className="text-[10px] text-blue-200 tracking-wider font-semibold">PREMIUM OUTSTATION & RENTAL CAB</p>
+        {/* Brand Logo: RUDHRAN CAR TRAVELS */}
+        <a href="#" className="flex items-center space-x-2 group">
+          <div className="text-2xl font-black tracking-wider text-white">
+            RUDHRAN <span className="text-xs font-bold px-2 py-0.5 bg-orange-600 text-white rounded tracking-normal uppercase">CAR TRAVELS</span>
           </div>
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center space-x-1">
+        <nav className="hidden lg:flex items-center space-x-6">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="px-3.5 py-2 text-sm font-bold text-blue-100 hover:text-white hover:bg-blue-800/60 rounded-xl transition-all"
+              className="text-xs font-semibold text-slate-200 hover:text-orange-400 transition-colors uppercase tracking-wider"
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* Desktop Action Buttons */}
-        <div className="hidden lg:flex items-center space-x-4">
-          <button 
-            onClick={() => onOpenBookingModal()}
-            className="flex items-center space-x-2 text-xs font-bold px-4 py-2.5 rounded-xl border border-blue-700 text-blue-100 hover:bg-blue-800 hover:text-white transition-colors"
-          >
-            <User className="w-4 h-4 text-amber-400" />
-            <span>Login / Register</span>
-          </button>
-
+        {/* Action Buttons: RESERVE NOW & ENQUIRY NOW */}
+        <div className="hidden lg:flex items-center space-x-3">
           <button
             onClick={() => onOpenBookingModal()}
-            className="flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white font-black text-sm shadow-lg shadow-orange-500/30 hover:scale-105 active:scale-95 transition-all"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-orange-500/25 transition-all hover:scale-105 active:scale-95"
           >
-            <span>Book A Ride</span>
-            <ChevronRight className="w-4 h-4" />
+            RESERVE NOW
+          </button>
+
+          <button 
+            onClick={() => onOpenBookingModal()}
+            className="px-5 py-2.5 rounded-full bg-white hover:bg-slate-100 text-blue-950 font-extrabold text-xs uppercase tracking-wider shadow transition-all hover:scale-105"
+          >
+            ENQUIRY NOW
           </button>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="lg:hidden flex items-center space-x-3">
+        {/* Mobile Hamburger Toggle */}
+        <div className="lg:hidden flex items-center space-x-2">
           <button
             onClick={() => onOpenBookingModal()}
-            className="px-3.5 py-1.5 rounded-lg bg-amber-500 text-slate-950 font-black text-xs shadow"
+            className="px-3.5 py-1.5 rounded-full bg-orange-500 text-white font-black text-xs uppercase shadow"
           >
-            Book
+            Reserve
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-blue-800 text-white hover:bg-blue-700"
+            className="p-2 rounded-lg bg-blue-900 text-white hover:bg-blue-800"
             aria-label="Toggle Navigation"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -104,16 +93,16 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-blue-950 border-b border-blue-800 px-4 pt-3 pb-6 space-y-3">
+        <div className="lg:hidden bg-[#0a192e] border-b border-blue-900 px-4 pt-3 pb-6 space-y-3">
           <div className="grid grid-cols-1 gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2.5 text-base font-bold text-blue-100 hover:bg-blue-900 rounded-xl transition-colors"
+                className="px-4 py-2.5 text-sm font-bold text-slate-200 hover:bg-blue-900 rounded-xl transition-colors"
               >
                 {link.name}
               </a>
@@ -121,22 +110,14 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
           </div>
 
           <div className="pt-3 border-t border-blue-900 space-y-2">
-            <a
-              href="tel:+919876543210"
-              className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl bg-blue-600 text-white font-bold text-sm shadow"
-            >
-              <PhoneCall className="w-4 h-4 text-amber-300" />
-              <span>Call Helpline: +91 98765 43210</span>
-            </a>
-            
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenBookingModal();
               }}
-              className="w-full flex items-center justify-center space-x-2 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-black text-sm shadow"
+              className="w-full flex items-center justify-center space-x-2 py-3 rounded-full bg-orange-500 text-white font-extrabold text-xs uppercase shadow"
             >
-              <span>Instant Online Booking</span>
+              <span>RESERVE NOW</span>
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>

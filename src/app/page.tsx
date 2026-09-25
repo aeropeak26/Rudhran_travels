@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import PopularDestinations from '@/components/PopularDestinations';
-import HowItWorks from '@/components/HowItWorks';
+import TourBanners from '@/components/TourBanners';
 import FleetSection from '@/components/FleetSection';
 import FareCalculator from '@/components/FareCalculator';
 import OfferBanners from '@/components/OfferBanners';
@@ -34,8 +34,8 @@ export default function Home() {
 
   const handleSearchCars = (searchData: any) => {
     setSelectedItem({
-      name: `${searchData.pickupLocation} to ${searchData.dropLocation} (${searchData.activeTab.toUpperCase()})`,
-      perDayRate: 2499,
+      name: `${searchData.carModel} (${searchData.location})`,
+      perDayRate: 2200,
     });
     setIsModalOpen(true);
   };
@@ -49,7 +49,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col poppins selection:bg-orange-500 selection:text-white">
       
       {/* Top Announcement & Header */}
       <TopBar />
@@ -58,7 +58,7 @@ export default function Home() {
       {/* Main Content Sections */}
       <main className="flex-grow">
         
-        {/* 1. Hero Section with Tabbed Booking Search Bar */}
+        {/* 1. Hero Section with Floating Search Bar */}
         <HeroSection
           onSearchCars={handleSearchCars}
           onOpenBookingModal={() => handleOpenBookingModal()}
@@ -72,36 +72,38 @@ export default function Home() {
           onSelectDestination={(dest) => handleOpenBookingModal(dest)}
         />
 
-        {/* 4. How It Works (3-Car Visual Process) */}
-        <HowItWorks />
-
-        {/* 5. Interactive Vehicle Fleet Directory */}
+        {/* 4. Rental Tariff / Featured Vehicles (3-Car Showcase & Innova Tariff) */}
         <FleetSection
           onBookCar={(car) => handleOpenBookingModal(car)}
         />
 
-        {/* 6. Live Outstation Fare Calculator */}
+        {/* 5. Frosted Glass Tour Package Banners Grid */}
+        <TourBanners
+          onOpenBookingModal={(item) => handleOpenBookingModal(item)}
+        />
+
+        {/* 6. Why Travel With Us? (Alternating Black & Blue Cards) */}
+        <WhyChooseUs />
+
+        {/* 7. Live Outstation Fare Calculator */}
         <FareCalculator
           onBookEstimatedFare={handleBookEstimatedFare}
         />
 
-        {/* 7. Promotional Deals & Special Offers */}
+        {/* 8. Promotional Deals & Special Offers */}
         <OfferBanners
           onOpenBookingModal={() => handleOpenBookingModal()}
         />
 
-        {/* 8. Why Choose Us (Alternating Black & Blue 6-Card Grid) */}
-        <WhyChooseUs />
-
-        {/* 9. Call-To-Action Banner */}
+        {/* 9. Call-To-Action Banner ("Are You Ready to Planning a Trip?") */}
         <CtaBanner
           onOpenBookingModal={() => handleOpenBookingModal()}
         />
 
-        {/* 10. Customer Testimonials & Reviews */}
+        {/* 10. Client Testimonials & Reviews */}
         <Testimonials />
 
-        {/* 11. Travel Guides & News (4 Cards Grid) */}
+        {/* 11. Ride Experiences / Real Journeys Gallery Grid */}
         <TravelBlog />
 
         {/* 12. FAQ Accordion */}

@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
-  title: "AeroDrive Cabs | Premium Car Rental & Outstation Taxi Services",
-  description: "Book outstation cabs, local hourly car rentals, and airport taxis across Tamil Nadu and South India with verified drivers, sanitized vehicles, and zero hidden charges.",
-  keywords: ["outstation cab booking", "car rental chennai", "rameshwaram taxi package", "ooty tour car", "sedan suv rental south india", "aerodrive cabs"],
+  title: "Rudhran Car Travels | Premium Outstation Taxi & Tour Packages Madurai",
+  description: "Explore South India with Rudhran Car Travels. Reliable outstation cabs, tour packages for Madurai, Rameshwaram, Kodaikanal, and Ooty with transparent pricing.",
+  keywords: ["rudhran car travels", "madurai cab rental", "madurai to rameshwaram taxi", "madurai to kodaikanal car package", "outstation taxi madurai"],
   openGraph: {
-    title: "AeroDrive Cabs - Rent Your Perfect Car Drive Your Dreams",
-    description: "Experience luxury, comfort, and reliability with our top-tier rental fleet and outstation tour packages.",
+    title: "Rudhran Car Travels - Drive Your Dreams",
+    description: "Premium car rental, outstation journeys, and curated tour packages across South India.",
     type: "website",
   },
 };
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} scroll-smooth`}>
+    <html lang="en" className={`${poppins.variable} scroll-smooth`}>
       <body className="font-sans bg-slate-50 text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
         {children}
       </body>

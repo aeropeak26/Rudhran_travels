@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { PhoneCall, Calendar, ArrowRight, ShieldCheck } from 'lucide-react';
+import { PhoneCall, MessageCircle, ArrowRight } from 'lucide-react';
 
 interface CtaBannerProps {
   onOpenBookingModal: () => void;
@@ -9,47 +9,98 @@ interface CtaBannerProps {
 
 export default function CtaBanner({ onOpenBookingModal }: CtaBannerProps) {
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-white relative overflow-hidden border-t border-slate-800">
+    <div className="poppins">
       
-      {/* Glow Effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-blue-600/20 blur-[140px] rounded-full pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
+      {/* 1. Futuristic Skyline CTA Section matching screenshot */}
+      <section className="py-20 bg-gradient-to-r from-[#0b192e] via-[#112647] to-[#0b192e] text-white relative overflow-hidden border-t border-blue-900">
         
-        <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-600/20 border border-blue-500/40 text-blue-300 text-xs font-bold uppercase tracking-widest shadow-lg">
-          <ShieldCheck className="w-4 h-4 text-amber-400" />
-          <span>ARE YOU READY TO EXPLORE?</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
+          
+          <div className="text-[10px] font-black text-amber-400 uppercase tracking-widest">
+            YOUR PERSONAL FLEET AWAITS
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white max-w-3xl mx-auto leading-tight">
+            Are You Ready to Planning a Trip?
+          </h2>
+
+          <p className="text-blue-200 text-xs sm:text-sm max-w-xl mx-auto font-normal">
+            Tell us your destination and we'll help you choose the right vehicle. Pickup Location, Destination, Travel Date, Passengers, Vehicle Preference..
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <button
+              onClick={onOpenBookingModal}
+              className="px-7 py-3.5 rounded-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs uppercase tracking-wider shadow-xl shadow-amber-500/30 transition-all hover:scale-105"
+            >
+              BOOK JOURNEY NOW
+            </button>
+
+            <button
+              onClick={onOpenBookingModal}
+              className="px-7 py-3.5 rounded-full bg-transparent border border-white hover:bg-white hover:text-slate-950 text-white font-extrabold text-xs uppercase tracking-wider transition-all"
+            >
+              CONTACT US
+            </button>
+          </div>
+
         </div>
+      </section>
 
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
-          Book Your Outstation Car Drive <br />
-          With <span className="bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 bg-clip-text text-transparent">Complete Peace Of Mind</span>
-        </h2>
+      {/* 2. Ready to Plan Your Journey Banner (Dark Blue) matching screenshot */}
+      <section className="py-16 bg-[#091526] text-white relative border-t border-blue-950">
+        <div className="max-w-5xl mx-auto px-4 text-center space-y-5">
+          
+          <div className="text-xs font-bold text-blue-400 uppercase tracking-widest">
+            BEGIN YOUR JOURNEY
+          </div>
 
-        <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-normal">
-          Instant booking confirmation, verified commercial drivers, 24x7 GPS safety monitoring, and zero hidden charges.
-        </p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white">
+            Ready to Plan Your Journey?
+          </h2>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-          <button
-            onClick={onOpenBookingModal}
-            className="px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold text-base shadow-2xl shadow-orange-500/30 flex items-center space-x-2 transition-all hover:scale-105 active:scale-95"
-          >
-            <Calendar className="w-5 h-5" />
-            <span>BOOK ONLINE NOW</span>
-            <ArrowRight className="w-5 h-5" />
-          </button>
+          <p className="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto font-normal leading-relaxed">
+            Tell us about your upcoming travel plans or group requirements. Our travel experts are available 24/7 to provide instant quotes and personalized assistance.
+          </p>
 
-          <a
-            href="tel:+919876543210"
-            className="px-8 py-4 rounded-2xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-slate-200 font-bold text-base flex items-center space-x-3 transition-all hover:text-amber-400"
-          >
-            <PhoneCall className="w-5 h-5 text-amber-400" />
-            <span>HELPLINE: +91 98765 43210</span>
-          </a>
+          {/* 4 Action Buttons Row */}
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
+            <button
+              onClick={onOpenBookingModal}
+              className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow"
+            >
+              Explore Vehicles
+            </button>
+
+            <button
+              onClick={onOpenBookingModal}
+              className="px-6 py-3 rounded-xl bg-white text-slate-900 font-bold text-xs shadow hover:bg-slate-100"
+            >
+              Contact Us
+            </button>
+
+            <a
+              href="https://wa.me/919840012345"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center space-x-1.5 shadow"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>WhatsApp Us</span>
+            </a>
+
+            <a
+              href="tel:+919840012345"
+              className="px-4 py-3 text-xs font-bold text-blue-300 hover:text-white flex items-center space-x-1"
+            >
+              <PhoneCall className="w-4 h-4 text-amber-400" />
+              <span>Call: +91 98400 12345</span>
+            </a>
+          </div>
+
         </div>
+      </section>
 
-      </div>
-    </section>
+    </div>
   );
 }
