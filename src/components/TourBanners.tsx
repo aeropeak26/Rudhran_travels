@@ -40,24 +40,24 @@ export default function TourBanners({ onOpenBookingModal }: TourBannersProps) {
               <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/20 to-transparent" />
 
               {/* High Contrast Frosted Glass Overlay Box at Bottom */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-xl border border-white/90 p-4 sm:p-5 rounded-2xl text-slate-900 shadow-2xl space-y-2.5">
-                <div className="text-[11px] font-normal tracking-widest text-orange-600 uppercase flex items-center space-x-1">
+              <div className="absolute bottom-4 left-4 right-4 bg-white/20 backdrop-blur-md border border-white/40 p-4 sm:p-5 rounded-[20px] text-slate-900 space-y-2.5">
+                <div className="text-[11px] font-medium tracking-widest text-orange-600 uppercase flex items-center space-x-1">
                   <MapPin className="w-3.5 h-3.5 text-orange-600" />
                   <span>MADURAI</span>
                 </div>
 
                 <div className="flex justify-between items-baseline">
-                  <h3 className="text-lg sm:text-xl font-normal text-slate-900">Madurai Sightseeing</h3>
-                  <div className="text-sm sm:text-base font-normal text-slate-900">
-                    <span className="line-through text-slate-500 text-xs mr-1.5">₹950</span>
+                  <h3 className="text-lg sm:text-xl font-medium text-slate-900">Madurai Sightseeing</h3>
+                  <div className="text-sm sm:text-base font-medium text-slate-900">
+                    <span className="line-through text-slate-600 text-xs mr-1.5">₹950</span>
                     ₹750
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-1.5 text-[11px] font-normal">
-                  <span className="bg-slate-100/90 border border-slate-200/90 px-3 py-1 rounded-full text-slate-700">1 Day</span>
-                  <span className="bg-slate-100/90 border border-slate-200/90 px-3 py-1 rounded-full text-slate-700">AC Vehicle</span>
-                  <span className="bg-slate-100/90 border border-slate-200/90 px-3 py-1 rounded-full text-slate-700">Guided Tour</span>
+                <div className="flex flex-wrap gap-2 text-[11px] font-medium">
+                  <span className="border border-slate-700/60 px-3 py-1 rounded-full text-slate-800 bg-transparent">1 Day</span>
+                  <span className="border border-slate-700/60 px-3 py-1 rounded-full text-slate-800 bg-transparent">AC Vehicle</span>
+                  <span className="border border-slate-700/60 px-3 py-1 rounded-full text-slate-800 bg-transparent">Guided Tour</span>
                 </div>
 
                 <div className="flex items-center space-x-3 pt-1 justify-end">
@@ -91,22 +91,22 @@ export default function TourBanners({ onOpenBookingModal }: TourBannersProps) {
               <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/20 to-transparent" />
 
               {/* High Contrast Frosted Glass Overlay Box at Bottom */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-xl border border-white/90 p-4 sm:p-5 rounded-2xl text-slate-900 shadow-2xl space-y-2.5">
-                <div className="text-[11px] font-normal tracking-widest text-orange-600 uppercase flex items-center space-x-1">
+              <div className="absolute bottom-4 left-4 right-4 bg-white/20 backdrop-blur-md border border-white/40 p-4 sm:p-5 rounded-[20px] text-slate-900 space-y-2.5">
+                <div className="text-[11px] font-medium tracking-widest text-orange-600 uppercase flex items-center space-x-1">
                   <MapPin className="w-3.5 h-3.5 text-orange-600" />
                   <span>COASTAL</span>
                 </div>
 
                 <div className="flex justify-between items-baseline">
-                  <h3 className="text-lg sm:text-xl font-normal text-slate-900">Madurai to Rameshwaram</h3>
-                  <div className="text-sm sm:text-base font-normal text-slate-900">
+                  <h3 className="text-lg sm:text-xl font-medium text-slate-900">Madurai to Rameshwaram</h3>
+                  <div className="text-sm sm:text-base font-medium text-slate-900">
                     ₹1400
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-1.5 text-[11px] font-normal">
-                  <span className="bg-slate-100/90 border border-slate-200/90 px-3 py-1 rounded-full text-slate-700">1 Day</span>
-                  <span className="bg-slate-100/90 border border-slate-200/90 px-3 py-1 rounded-full text-slate-700">AC Vehicle</span>
+                <div className="flex flex-wrap gap-2 text-[11px] font-medium">
+                  <span className="border border-slate-700/60 px-3 py-1 rounded-full text-slate-800 bg-transparent">1 Day</span>
+                  <span className="border border-slate-700/60 px-3 py-1 rounded-full text-slate-800 bg-transparent">AC Vehicle</span>
                 </div>
 
                 <div className="flex items-center space-x-3 pt-1 justify-end">
@@ -146,28 +146,28 @@ export default function TourBanners({ onOpenBookingModal }: TourBannersProps) {
             </div>
 
             {/* High Contrast Bottom Frosted Glass Box */}
-            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-xl border border-white/90 p-5 rounded-2xl text-slate-900 shadow-2xl space-y-3 z-10">
-              <div className="text-[11px] font-normal tracking-widest text-orange-600 uppercase flex items-center space-x-1">
-                <MapPin className="w-3.5 h-3.5 text-orange-600" />
+            <div className="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-[24px] text-white space-y-3 z-10">
+              <div className="text-[11px] font-medium tracking-widest text-[#e0b741] uppercase flex items-center space-x-1">
+                <MapPin className="w-3.5 h-3.5 text-[#e0b741]" />
                 <span>KODAIKANAL</span>
               </div>
 
-              <h3 className="text-lg sm:text-xl font-normal text-slate-900">Madurai to Kodaikanal</h3>
+              <h3 className="text-lg sm:text-xl font-medium text-white">Madurai to Kodaikanal</h3>
               
-              <div className="flex items-center space-x-1 text-xs text-amber-500 font-normal">
+              <div className="flex items-center space-x-1 text-xs text-amber-400 font-normal">
                 <span>⭐⭐⭐⭐⭐</span>
-                <span className="text-[11px] text-slate-600 font-normal">(Top Rating)</span>
+                <span className="text-[11px] text-white/80 font-normal">(Top Rating)</span>
               </div>
 
-              <div className="flex flex-wrap gap-1.5 text-[11px] font-normal">
-                <span className="bg-slate-100/90 border border-slate-200/90 px-3 py-1 rounded-full text-slate-700">1 Day</span>
-                <span className="bg-slate-100/90 border border-slate-200/90 px-3 py-1 rounded-full text-slate-700">Hill Station</span>
+              <div className="flex flex-wrap gap-2 text-[11px] font-medium">
+                <span className="border border-white/50 px-3 py-1 rounded-full text-white/90 bg-transparent">1 Day</span>
+                <span className="border border-white/50 px-3 py-1 rounded-full text-white/90 bg-transparent">Hill Station</span>
               </div>
 
               <div className="pt-2 space-y-2">
-                <div className="flex justify-between items-center text-xs text-slate-700">
-                  <span className="font-normal text-slate-600">Starting at</span>
-                  <span className="font-normal text-slate-900 text-sm sm:text-base">₹1300</span>
+                <div className="flex justify-between items-center text-xs text-white/90">
+                  <span className="font-normal">Starting at</span>
+                  <span className="font-medium text-white text-sm sm:text-base">₹1300</span>
                 </div>
 
                 <button
