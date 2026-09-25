@@ -54,27 +54,29 @@ export default function TourBanners({ onOpenBookingModal }: TourBannersProps) {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 text-[11px] font-medium">
-                  <span className="border border-slate-700/60 px-3 py-1 rounded-full text-slate-800 bg-transparent">1 Day</span>
-                  <span className="border border-slate-700/60 px-3 py-1 rounded-full text-slate-800 bg-transparent">AC Vehicle</span>
-                  <span className="border border-slate-700/60 px-3 py-1 rounded-full text-slate-800 bg-transparent">Guided Tour</span>
-                </div>
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
+                  <div className="flex flex-wrap gap-2 text-[11px] font-medium">
+                    <span className="border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-800 bg-transparent">1 Day</span>
+                    <span className="border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-800 bg-transparent">AC Vehicle</span>
+                    <span className="border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-800 bg-transparent">Guided Tour</span>
+                  </div>
 
-                <div className="flex items-center space-x-3 pt-1 justify-end">
-                  <button
-                    onClick={() => onOpenBookingModal({ title: 'Madurai Sightseeing', startingPrice: 750 })}
-                    className="px-4 py-2 rounded-full bg-slate-950 hover:bg-slate-900 text-white font-normal text-xs flex items-center space-x-1 shadow transition-colors"
-                  >
-                    <span>Details</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  <div className="flex items-center space-x-3">
+                    <button
+                      onClick={() => onOpenBookingModal({ title: 'Madurai Sightseeing', startingPrice: 750 })}
+                      className="px-4 py-2 rounded-full bg-slate-950 hover:bg-slate-900 text-white font-normal text-xs flex items-center space-x-1 shadow transition-colors"
+                    >
+                      <span>Details</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
 
-                  <button
-                    onClick={() => onOpenBookingModal({ title: 'Madurai Sightseeing', startingPrice: 750 })}
-                    className="px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-normal text-xs shadow-md shadow-orange-500/30 transition-colors"
-                  >
-                    Book Now
-                  </button>
+                    <button
+                      onClick={() => onOpenBookingModal({ title: 'Madurai Sightseeing', startingPrice: 750 })}
+                      className="px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-normal text-xs shadow-md shadow-orange-500/30 transition-colors"
+                    >
+                      Book Now
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -104,25 +106,27 @@ export default function TourBanners({ onOpenBookingModal }: TourBannersProps) {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 text-[11px] font-medium">
-                  <span className="border border-slate-700/60 px-3 py-1 rounded-full text-slate-800 bg-transparent">1 Day</span>
-                  <span className="border border-slate-700/60 px-3 py-1 rounded-full text-slate-800 bg-transparent">AC Vehicle</span>
-                </div>
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
+                  <div className="flex flex-wrap gap-2 text-[11px] font-medium">
+                    <span className="border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-800 bg-transparent">1 Day</span>
+                    <span className="border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-800 bg-transparent">AC Vehicle</span>
+                  </div>
 
-                <div className="flex items-center space-x-3 pt-1 justify-end">
-                  <button
-                    onClick={() => onOpenBookingModal({ title: 'Madurai to Rameshwaram', startingPrice: 1400 })}
-                    className="p-2.5 rounded-full bg-slate-950 hover:bg-slate-900 text-white flex items-center justify-center shadow transition-colors"
-                  >
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                  <div className="flex items-center space-x-3">
+                    <button
+                      onClick={() => onOpenBookingModal({ title: 'Madurai to Rameshwaram', startingPrice: 1400 })}
+                      className="p-2.5 rounded-full bg-slate-950 hover:bg-slate-900 text-white flex items-center justify-center shadow transition-colors"
+                    >
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
 
-                  <button
-                    onClick={() => onOpenBookingModal({ title: 'Madurai to Rameshwaram', startingPrice: 1400 })}
-                    className="px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-normal text-xs shadow-md shadow-orange-500/30 transition-colors"
-                  >
-                    Book Now
-                  </button>
+                    <button
+                      onClick={() => onOpenBookingModal({ title: 'Madurai to Rameshwaram', startingPrice: 1400 })}
+                      className="px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-normal text-xs shadow-md shadow-orange-500/30 transition-colors"
+                    >
+                      Book Now
+                    </button>
+                  </div>
                 </div>
               </div>
 
