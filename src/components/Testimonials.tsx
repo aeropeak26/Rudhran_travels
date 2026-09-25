@@ -78,17 +78,17 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Dark Navy Card — taller with generous padding */}
-        <div className="relative rounded-[28px] sm:rounded-[36px] bg-gradient-to-br from-[#071d49] via-[#0a2456] to-[#061840] text-white px-8 sm:px-12 lg:px-16 py-14 sm:py-16 lg:py-20 overflow-hidden shadow-2xl min-h-[400px] sm:min-h-[440px]">
+        <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white px-8 sm:px-12 lg:px-16 py-14 sm:py-16 lg:py-20 overflow-hidden shadow-2xl min-h-[400px] sm:min-h-[440px]">
           
-          {/* Faint "Happy Customers" Watermark — centered behind the heading area */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-            <span className="text-[60px] sm:text-[80px] lg:text-[100px] font-normal text-white/[0.04] tracking-tight whitespace-nowrap translate-x-[10%]">
+          {/* Faint "Happy Customers" Watermark — centered horizontally on top half */}
+          <div className="absolute top-12 left-1/2 -translate-x-[30%] pointer-events-none select-none z-0">
+            <span className="text-[80px] sm:text-[100px] lg:text-[130px] font-semibold text-white/[0.04] tracking-tight whitespace-nowrap">
               Happy Customers
             </span>
           </div>
 
           {/* Subtle gradient glow behind cards area */}
-          <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-blue-500/[0.06] to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-blue-500/[0.03] to-transparent pointer-events-none z-0" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             
@@ -106,15 +106,15 @@ export default function Testimonials() {
               </h2>
 
               {/* Subtitle */}
-              <p className="text-slate-300/80 text-[13px] sm:text-sm font-normal max-w-[260px] leading-relaxed">
+              <p className="text-slate-300 text-[13px] sm:text-sm font-normal max-w-[260px] leading-relaxed">
                 Real experiences from travelers who chose us for their journeys.
               </p>
 
-              {/* Navigation Arrows — dark + orange per screenshot */}
+              {/* Navigation Arrows — light grey/blue with dark arrows per screenshot */}
               <div className="flex items-center space-x-3 pt-8">
                 <button
                   onClick={handlePrev}
-                  className="w-11 h-11 rounded-full bg-slate-700/60 hover:bg-slate-600 text-white flex items-center justify-center transition-all duration-200 shadow-lg active:scale-90"
+                  className="w-11 h-11 rounded-full bg-[#9ba3b5] hover:bg-[#858da0] text-[#0b1b42] flex items-center justify-center transition-all duration-200 shadow-lg active:scale-90"
                   aria-label="Previous Testimonial"
                 >
                   <ArrowLeft className="w-4 h-4" />
@@ -122,7 +122,7 @@ export default function Testimonials() {
 
                 <button
                   onClick={handleNext}
-                  className="w-11 h-11 rounded-full bg-orange-500 hover:bg-orange-600 text-white flex items-center justify-center transition-all duration-200 shadow-lg shadow-orange-500/30 active:scale-90"
+                  className="w-11 h-11 rounded-full bg-[#9ba3b5] hover:bg-[#858da0] text-[#0b1b42] flex items-center justify-center transition-all duration-200 shadow-lg active:scale-90"
                   aria-label="Next Testimonial"
                 >
                   <ArrowRight className="w-4 h-4" />
@@ -152,7 +152,7 @@ export default function Testimonials() {
                       </div>
 
                       {/* Quote Text */}
-                      <p className="text-slate-700 text-[13px] sm:text-sm font-normal leading-relaxed">
+                      <p className="text-slate-700 text-[13px] sm:text-sm font-serif leading-relaxed">
                         {item.comment}
                       </p>
                     </div>
