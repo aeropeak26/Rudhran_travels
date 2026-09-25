@@ -11,7 +11,7 @@ export default function WhyChooseUs() {
       title: 'Car Rental',
       description: 'Enjoy reliable vehicle rentals for both local travel and long-distance journeys.',
       linkText: 'Explore Local →',
-      image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80',
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ export default function WhyChooseUs() {
       title: 'Safe & Reliable',
       description: 'Your safety and comfort are our priority.',
       linkText: 'Explore Local →',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80',
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ export default function WhyChooseUs() {
       title: 'Secure Transactions',
       description: 'Safe, transparent, and hassle-free buying experience.',
       linkText: 'View Packages →',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
     },
     {
       id: 4,
@@ -35,7 +35,7 @@ export default function WhyChooseUs() {
       title: 'Best Driver Services',
       description: 'Travel with skilled drivers committed to your safety and comfort.',
       linkText: 'Explore Local →',
-      image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80',
     },
     {
       id: 5,
@@ -43,7 +43,7 @@ export default function WhyChooseUs() {
       title: 'Tour Packages',
       description: 'Plan journey your way with flexible travel options tailored to your needs.',
       linkText: 'Explore Local →',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80',
     },
     {
       id: 6,
@@ -51,7 +51,7 @@ export default function WhyChooseUs() {
       title: 'Group Transportation',
       description: 'Choose spacious vehicles perfect for families, groups and comfortable tours.',
       linkText: 'Explore Local →',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
     },
   ];
 
@@ -59,7 +59,7 @@ export default function WhyChooseUs() {
     <section className="py-20 bg-white text-slate-900 relative border-b border-slate-200 poppins-regular">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
+        {/* Section Header matching screenshot 3 */}
         <div className="text-center max-w-3xl mx-auto space-y-2 mb-16">
           <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900">
             Why Travel With Us?
@@ -70,39 +70,39 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        {/* 6 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 6 Cards Grid with photo top half & overlapping text box matching screenshot 3 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {cards.map((card) => {
             const isBlue = card.theme === 'blue';
 
             return (
               <div
                 key={card.id}
-                className={`rounded-3xl overflow-hidden shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between border ${
-                  isBlue
-                    ? 'bg-blue-600 text-white border-blue-500'
-                    : 'bg-[#121212] text-white border-slate-800'
-                }`}
+                className="relative rounded-[28px] overflow-hidden bg-slate-900 shadow-xl border border-slate-200 group flex flex-col justify-end min-h-[360px]"
               >
-                {/* Image Top Half */}
-                <div className="relative h-44 w-full bg-slate-900 overflow-hidden">
+                {/* Photo Top Half */}
+                <div className="absolute inset-0 h-full w-full bg-slate-900 overflow-hidden">
                   <Image
                     src={card.image}
                     alt={card.title}
                     fill
-                    className="object-cover opacity-80"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-40" />
                 </div>
 
-                {/* Content */}
-                <div className="p-6 pt-2 space-y-3 font-normal">
-                  <h3 className="text-xl font-normal leading-snug">
+                {/* Overlapping Bottom Box matching screenshot 3 */}
+                <div className={`relative z-10 p-6 m-3 rounded-2xl shadow-2xl space-y-3 ${
+                  isBlue
+                    ? 'bg-[#1d5bd8] text-white'
+                    : 'bg-[#181818] text-white'
+                }`}>
+                  <h3 className="text-lg font-normal leading-snug text-white">
                     {card.title}
                   </h3>
 
                   <p className={`text-xs leading-relaxed font-normal ${
-                    isBlue ? 'text-blue-100' : 'text-slate-400'
+                    isBlue ? 'text-blue-100' : 'text-slate-300'
                   }`}>
                     {card.description}
                   </p>
@@ -111,7 +111,7 @@ export default function WhyChooseUs() {
                     <a
                       href="#"
                       className={`text-xs font-normal flex items-center space-x-1 hover:underline ${
-                        isBlue ? 'text-amber-300' : 'text-amber-400'
+                        isBlue ? 'text-white' : 'text-[#d89b1d]'
                       }`}
                     >
                       <span>{card.linkText}</span>

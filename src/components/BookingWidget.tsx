@@ -26,7 +26,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto poppins-regular">
+    <div className="relative w-full max-w-6xl mx-auto poppins-regular">
       
       {/* Floating Green WhatsApp Button on top right */}
       <a
@@ -39,7 +39,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
         <MessageCircle className="w-6 h-6 fill-current" />
       </a>
 
-      {/* Main Container Card */}
+      {/* Main Container Card (Wider Width) */}
       <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
         
         {/* Top Navigation Tabs */}
@@ -47,7 +47,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
           <button
             type="button"
             onClick={() => setActiveTab('search')}
-            className={`px-6 py-4 flex items-center space-x-2 transition-all font-normal ${
+            className={`px-8 py-4 flex items-center space-x-2 transition-all font-normal ${
               activeTab === 'search'
                 ? 'bg-blue-600 text-white shadow'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -60,7 +60,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
           <button
             type="button"
             onClick={() => setActiveTab('tour')}
-            className={`px-6 py-4 flex items-center space-x-2 transition-all font-normal ${
+            className={`px-8 py-4 flex items-center space-x-2 transition-all font-normal ${
               activeTab === 'tour'
                 ? 'bg-blue-600 text-white shadow'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -73,7 +73,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
           <button
             type="button"
             onClick={() => setActiveTab('rental')}
-            className={`px-6 py-4 flex items-center space-x-2 transition-all font-normal ${
+            className={`px-8 py-4 flex items-center space-x-2 transition-all font-normal ${
               activeTab === 'rental'
                 ? 'bg-blue-600 text-white shadow'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
@@ -85,18 +85,18 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
         </div>
 
         {/* Dropdown Filters Grid */}
-        <form onSubmit={handleSubmit} className="p-5 sm:p-6 bg-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+        <form onSubmit={handleSubmit} className="p-6 sm:p-7 bg-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
           
           {/* CAR MODEL */}
           <div>
-            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1 tracking-wider">
+            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1.5 tracking-wider">
               CAR MODEL
             </label>
             <div className="relative">
               <select
                 value={carModel}
                 onChange={(e) => setCarModel(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-3.5 py-3 appearance-none focus:outline-none focus:border-blue-600"
+                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-blue-600"
               >
                 <option value="All Makes">All Makes</option>
                 <option value="Toyota Innova Crysta">Toyota Innova Crysta</option>
@@ -110,14 +110,14 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
 
           {/* SEATS */}
           <div>
-            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1 tracking-wider">
+            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1.5 tracking-wider">
               SEATS
             </label>
             <div className="relative">
               <select
                 value={seats}
                 onChange={(e) => setSeats(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-3.5 py-3 appearance-none focus:outline-none focus:border-blue-600"
+                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-blue-600"
               >
                 <option value="No of seats">No of seats</option>
                 <option value="4+1 Seats">4+1 Seats</option>
@@ -131,14 +131,14 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
 
           {/* PRICE RANGE */}
           <div>
-            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1 tracking-wider">
+            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1.5 tracking-wider">
               PRICE RANGE
             </label>
             <div className="relative">
               <select
                 value={priceRange}
                 onChange={(e) => setPriceRange(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-3.5 py-3 appearance-none focus:outline-none focus:border-blue-600"
+                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-blue-600"
               >
                 <option value="No Min">No Min</option>
                 <option value="Under ₹1500">Under ₹1500</option>
@@ -152,14 +152,14 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
 
           {/* LOCATION */}
           <div>
-            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1 tracking-wider">
+            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1.5 tracking-wider">
               LOCATION
             </label>
             <div className="relative">
               <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-3.5 py-3 appearance-none focus:outline-none focus:border-blue-600"
+                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-blue-600"
               >
                 <option value="All Locations">All Locations</option>
                 <option value="Madurai">Madurai</option>
@@ -176,7 +176,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
           <div>
             <button
               type="submit"
-              className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-normal text-xs tracking-wider shadow-lg shadow-blue-600/30 transition-all hover:scale-105"
+              className="w-full py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-normal text-xs tracking-wider shadow-lg shadow-blue-600/30 transition-all hover:scale-105"
             >
               Search Cars
             </button>
