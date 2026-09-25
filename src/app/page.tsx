@@ -12,7 +12,6 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import CtaBanner from '@/components/CtaBanner';
 import Testimonials from '@/components/Testimonials';
 import TravelBlog from '@/components/TravelBlog';
-import FaqSection from '@/components/FaqSection';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 
@@ -85,9 +84,6 @@ export default function Home() {
 
         {/* 9. Ride Experiences / Real Journeys Gallery Grid */}
         <TravelBlog />
-
-        {/* 10. FAQ Accordion */}
-        <FaqSection />
 
       </main>
 

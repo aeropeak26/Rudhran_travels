@@ -91,14 +91,18 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-16 sm:py-24 lg:py-32 bg-[#0b1b42] text-white relative poppins-regular overflow-hidden min-h-[500px] lg:min-h-[600px] flex items-center border-t border-slate-800">
-      
-      {/* Faint "Happy Customers" Watermark — centered horizontally on top half */}
-      <div className="absolute top-12 left-1/2 -translate-x-[30%] pointer-events-none select-none z-0">
-        <span className="text-[80px] sm:text-[100px] lg:text-[140px] font-semibold text-white/[0.04] tracking-tight whitespace-nowrap">
-          Happy Customers
-        </span>
-      </div>
+    <section className="py-16 sm:py-24 bg-white text-slate-900 relative poppins-regular overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main Dark Navy Card — taller with generous padding */}
+        <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white px-8 sm:px-12 lg:px-16 py-16 sm:py-20 lg:py-28 overflow-hidden shadow-2xl min-h-[500px] lg:min-h-[600px] flex items-center">
+          
+          {/* Faint "Happy Customers" Watermark — centered horizontally on top half */}
+          <div className="absolute top-12 left-1/2 -translate-x-[30%] pointer-events-none select-none z-0">
+            <span className="text-[80px] sm:text-[100px] lg:text-[140px] font-semibold text-white/[0.04] tracking-tight whitespace-nowrap">
+              Happy Customers
+            </span>
+          </div>
 
       {/* Subtle gradient glow behind cards area */}
       <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-blue-500/[0.03] to-transparent pointer-events-none z-0" />
@@ -205,6 +209,8 @@ export default function Testimonials() {
           </div>
 
         </div>
+      </div>
+      </div>
       </div>
     </section>
   );
