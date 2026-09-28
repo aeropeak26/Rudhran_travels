@@ -81,66 +81,68 @@ export default function WhyChooseUs() {
             </ul>
           </div>
 
-          {/* Right White Cards Grid */}
-          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Right Content Column */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
             
-            {/* Card 1 */}
-            <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
-              <h4 className="text-[#0f172a] text-xl font-bold mb-3">Best Driver Services</h4>
-              <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
-                Travel with skilled drivers committed to your safety and comfort.
-              </p>
-              <div className="mt-auto">
-                <div className="inline-flex items-center gap-2 text-[10px] font-bold text-slate-700">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></span>
-                  Best
+            {/* Right White Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-grow">
+              
+              {/* Card 1 */}
+              <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
+                <h4 className="text-[#0f172a] text-xl font-bold mb-3">Best Driver Services</h4>
+                <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
+                  Travel with skilled drivers committed to your safety and comfort.
+                </p>
+                <div className="mt-auto">
+                  <div className="inline-flex items-center gap-2 text-[10px] font-bold text-slate-700">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></span>
+                    Best
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Card 2 */}
-            <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between">
-              <div>
-                <h4 className="text-[#0f172a] text-xl font-bold mb-3">Well-Maintained Fleet</h4>
-                <p className="text-slate-500 text-[11px] font-medium leading-relaxed mb-6">
-                  Pristine interiors, high-performance AC units, daily sanitization, and clean upholstery in every vehicle category.
+              {/* Card 2 */}
+              <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between">
+                <div>
+                  <h4 className="text-[#0f172a] text-xl font-bold mb-3">Well-Maintained Fleet</h4>
+                  <p className="text-slate-500 text-[11px] font-medium leading-relaxed mb-6">
+                    Pristine interiors, high-performance AC units, daily sanitization, and clean upholstery in every vehicle category.
+                  </p>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-[#0f172a] mb-1">120+ <span className="text-xl">Cities Served</span></div>
+                  <p className="text-blue-500 text-[10px] font-medium">Connecting key metros, coastal belts, and tourist hubs.</p>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
+                <h4 className="text-[#0f172a] text-xl font-bold mb-3">Tour Packages</h4>
+                <p className="text-slate-500 text-xs font-medium leading-relaxed">
+                  Plan journey your way with flexible travel options tailored to your needs.
                 </p>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-[#0f172a] mb-1">120+ <span className="text-xl">Cities Served</span></div>
-                <p className="text-blue-500 text-[10px] font-medium">Connecting key metros, coastal belts, and tourist hubs.</p>
+
+              {/* Card 4 */}
+              <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
+                <h4 className="text-[#0f172a] text-xl font-bold mb-3">24/7 Travel Desk</h4>
+                <p className="text-slate-500 text-xs font-medium leading-relaxed">
+                  Direct human assistance on phone and WhatsApp for flight delays, route changes, or emergency assistance.
+                </p>
               </div>
+              
             </div>
 
-            {/* Card 3 */}
-            <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
-              <h4 className="text-[#0f172a] text-xl font-bold mb-3">Tour Packages</h4>
-              <p className="text-slate-500 text-xs font-medium leading-relaxed">
-                Plan journey your way with flexible travel options tailored to your needs.
-              </p>
+            {/* Pill Badges Row (Centered under the right 4 cards) */}
+            <div className="flex flex-wrap justify-center gap-3 pt-2">
+              {['Daily Car Rental', 'Well-Maintained Cars', 'Economy Cars', 'Transparent Pricing'].map((pill, i) => (
+                <div key={i} className="bg-white border border-slate-200 rounded-full px-5 py-2.5 text-[11px] font-bold text-slate-600 flex items-center gap-2 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-[#f59e0b]"></span>
+                  {pill}
+                </div>
+              ))}
             </div>
 
-            {/* Card 4 */}
-            <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
-              <h4 className="text-[#0f172a] text-xl font-bold mb-3">24/7 Travel Desk</h4>
-              <p className="text-slate-500 text-xs font-medium leading-relaxed">
-                Direct human assistance on phone and WhatsApp for flight delays, route changes, or emergency assistance.
-              </p>
-            </div>
-            
-          </div>
-
-          {/* Empty spacer for the left column to push pills to the right on desktop */}
-          <div className="hidden lg:block lg:col-span-1"></div>
-
-          {/* Pill Badges Row (Centered under the right 2 columns) */}
-          <div className="lg:col-span-2 flex flex-wrap justify-center gap-3 pt-2">
-            {['Daily Car Rental', 'Well-Maintained Cars', 'Economy Cars', 'Transparent Pricing'].map((pill, i) => (
-              <div key={i} className="bg-white border border-slate-200 rounded-full px-5 py-2.5 text-[11px] font-bold text-slate-600 flex items-center gap-2 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-[#f59e0b]"></span>
-                {pill}
-              </div>
-            ))}
           </div>
 
         </div>
