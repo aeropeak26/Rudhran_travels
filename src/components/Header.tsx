@@ -37,7 +37,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 poppins-regular ${
-      isScrolled ? 'bg-white shadow-md py-3' : 'bg-white shadow-sm py-4 border-b border-slate-100'
+      isScrolled ? 'bg-white shadow-md py-1.5' : 'bg-white shadow-sm py-2 border-b border-slate-100'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
