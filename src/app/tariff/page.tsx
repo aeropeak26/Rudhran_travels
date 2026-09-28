@@ -3,10 +3,9 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { vehiclesData } from '@/data/vehicles';
 import { 
   CheckCircle2, ChevronRight, User, Shield, Thermometer, Briefcase, 
-  MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Info, AlertCircle, Sparkles, Star, Snowflake, Cloud
+  MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Info, AlertCircle, Sparkles, Star, Snowflake, Cloud, MessageCircle
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
@@ -202,58 +201,79 @@ export default function TariffPage() {
                   </div>
 
                   {/* Card Titles */}
-                  <div className="flex justify-between items-end mb-4">
-                    <h3 className="text-xl font-bold text-[#0f172a]">{override.title}</h3>
-                    <p className="text-[9px] font-semibold text-slate-500 uppercase">{override.subtitle}</p>
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <span className="text-[8px] font-bold text-slate-400 uppercase tracking-wider block mb-1">TRANSPARENT RATES</span>
+                      <h3 className="text-[17px] font-bold text-[#0f172a] leading-tight">{override.title}</h3>
+                    </div>
+                    <div className="bg-blue-50 text-blue-600 px-2 py-1 rounded-full text-[8px] font-bold shrink-0">
+                      Driver Batta Included
+                    </div>
                   </div>
 
-                  {/* Features */}
-                  <div className="flex flex-wrap items-center gap-2 mb-6">
-                    {v.features.slice(0,3).map((f, i) => (
-                      <div key={i} className="flex items-center gap-1.5 bg-[#f4f7fb] rounded-full py-1.5 px-3 text-center">
-                        <f.icon className="w-3 h-3 text-slate-500" />
-                        <span className="text-[9px] font-bold text-slate-600">{f.text}</span>
+                  {/* Price Section */}
+                  <div className="flex justify-between items-start mb-4 pb-4 border-b border-slate-100">
+                    <div>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-[28px] font-extrabold text-blue-600 tracking-tight leading-none">₹{v.price}</span>
+                        <span className="text-[10px] font-bold text-slate-600">/ KM (Outstation Base)</span>
                       </div>
-                    ))}
-                  </div>
-
-                  {/* Base Fare block */}
-                  <div className="bg-[#f4f7fb] rounded-[1rem] p-4 flex items-center justify-between mb-5">
-                    <span className="text-[11px] font-medium text-slate-600">Outstation Base Rate</span>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-[2rem] font-extrabold text-blue-600 leading-none">₹{v.price}</span>
-                      <span className="text-[10px] font-semibold text-[#0f172a]">/ km</span>
+                      <span className="text-[9px] text-slate-400 mt-1.5 block leading-relaxed">Calculated garage-to-garage transparent meter</span>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <span className="block text-[9px] text-slate-400 font-medium">City Package</span>
+                      <span className="block text-[15px] font-bold text-[#0f172a] mt-0.5">₹{v.localPackage}</span>
+                      <span className="block text-[8px] text-slate-400 mt-0.5">8 Hrs / 80 KMs</span>
                     </div>
                   </div>
 
-                  {/* Detailed Pricing Grid */}
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-6 mb-8 text-[11px] flex-grow">
-                    <div>
-                      <span className="block text-slate-500 font-medium mb-1">Full Day (8h/80km)</span>
-                      <span className="block font-bold text-[#0f172a]">₹{v.localPackage}</span>
+                  {/* Detailed List */}
+                  <div className="space-y-2.5 mb-6">
+                    <div className="flex items-center justify-between text-[10px]">
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <div className="w-1 h-1 rounded-full bg-blue-600 shrink-0"></div> Outstation Min. Daily Run
+                      </div>
+                      <span className="font-bold text-[#0f172a] text-right">{v.minRun} km / calendar day</span>
                     </div>
-                    <div>
-                      <span className="block text-slate-500 font-medium mb-1">Min. Outstation</span>
-                      <span className="block font-bold text-[#0f172a]">{v.minRun} km / day</span>
+                    <div className="flex items-center justify-between text-[10px]">
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <div className="w-1 h-1 rounded-full bg-blue-600 shrink-0"></div> Driver Allowance (Day Trip)
+                      </div>
+                      <span className="font-bold text-emerald-600 text-right">₹{v.driverAllowance} / day (Included in O/S)</span>
                     </div>
-                    <div>
-                      <span className="block text-slate-500 font-medium mb-1">Extra KM</span>
-                      <span className="block font-bold text-[#0f172a]">₹{v.price} / km</span>
+                    <div className="flex items-center justify-between text-[10px]">
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <div className="w-1 h-1 rounded-full bg-blue-600 shrink-0"></div> Night Halt Batta (After 10:00 PM)
+                      </div>
+                      <span className="font-bold text-[#0f172a] text-right">₹300 / night</span>
                     </div>
-                    <div>
-                      <span className="block text-slate-500 font-medium mb-1">Driver Allowance</span>
-                      <span className="block font-bold text-[#0f172a]">₹{v.driverAllowance} / day</span>
+                    <div className="flex items-center justify-between text-[10px]">
+                      <div className="flex items-center gap-1.5 text-slate-500">
+                        <div className="w-1 h-1 rounded-full bg-blue-600 shrink-0"></div> Toll, State Tax & Parking
+                      </div>
+                      <span className="font-bold text-blue-600 text-right">At Actuals via FASTag</span>
                     </div>
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="mt-auto flex items-center gap-3">
-                    <button onClick={() => setIsModalOpen(true)} className="flex-grow py-3.5 bg-[#0052cc] hover:bg-blue-700 text-white rounded-xl text-[12px] font-bold transition-colors flex items-center justify-center gap-2 shadow-sm">
-                      <FileText className="w-3.5 h-3.5" /> Enquire Now
+                  <div className="mt-auto space-y-2">
+                    <button onClick={() => setIsModalOpen(true)} className="w-full py-3 bg-[#f97316] hover:bg-orange-600 text-white rounded-[10px] text-[12px] font-bold transition-colors flex items-center justify-center gap-2 shadow-sm">
+                      Book This Vehicle Now <ChevronRight className="w-4 h-4" />
                     </button>
-                    <a href="tel:+919840012345" className="w-[52px] h-[52px] flex items-center justify-center bg-[#f4f7fb] hover:bg-blue-50 text-blue-600 rounded-xl transition-colors shrink-0">
-                      <Phone className="w-4 h-4" />
-                    </a>
+                    <div className="flex items-center gap-2">
+                      <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="flex-1 py-2.5 bg-white border border-blue-100 hover:bg-blue-50 rounded-[10px] text-[10px] font-bold text-blue-600 transition-colors flex items-center justify-center gap-1.5 shadow-sm shadow-blue-900/5">
+                        <MessageCircle className="w-3.5 h-3.5 text-emerald-500" /> WhatsApp Quote
+                      </a>
+                      <button onClick={() => setIsModalOpen(true)} className="flex-1 py-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-100 rounded-[10px] text-[10px] font-bold text-slate-700 transition-colors flex items-center justify-center gap-1.5">
+                        <span>🧮</span> Fare Calculator
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Bottom Note */}
+                  <div className="mt-5 flex items-center justify-between text-[9px] text-slate-400 font-medium px-1">
+                    <div className="flex items-center gap-1"><ShieldCheck className="w-3 h-3" /> Zero Hidden Fees</div>
+                    <div className="flex items-center gap-1"><Clock className="w-3 h-3" /> 24/7 Dispatch Desk</div>
                   </div>
                 </div>
               </div>
