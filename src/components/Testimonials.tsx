@@ -158,7 +158,7 @@ export default function Testimonials() {
               </div>
 
               {/* ──── Right Animated Cards Carousel ──── */}
-              <div className="lg:col-span-10 overflow-hidden">
+              <div className="lg:col-span-8 overflow-hidden">
                 <div
                   className={`flex gap-6 ${isTransitioning ? "transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]" : ""}`}
                   style={{
