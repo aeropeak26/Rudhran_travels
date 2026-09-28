@@ -91,13 +91,13 @@ export default function TourPackagesPage() {
         <section id="packages" className="pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
           
           {/* Filter Bar */}
-          <div className="bg-white rounded-2xl p-2.5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col md:flex-row justify-between items-center mb-12 overflow-x-auto gap-4 border border-slate-100">
-            <div className="flex items-center gap-1 min-w-max px-2">
+          <div className="bg-white rounded-2xl p-2.5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col md:flex-row justify-between items-center mb-12 gap-4 border border-slate-100">
+            <div className="flex items-center gap-1 w-full overflow-x-auto px-2 pb-2 md:pb-0 scrollbar-hide">
               {filters.map(f => (
                 <button 
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`px-5 py-2.5 rounded-xl text-[12px] font-bold transition-all whitespace-nowrap ${
+                  className={`px-5 py-2.5 rounded-xl text-[12px] font-bold transition-all whitespace-nowrap shrink-0 ${
                     filter === f 
                     ? 'bg-[#0f172a] text-white shadow-md' 
                     : 'text-slate-500 hover:text-[#0f172a]'
@@ -108,7 +108,7 @@ export default function TourPackagesPage() {
               ))}
             </div>
             
-            <div className="flex items-center gap-1.5 px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-slate-100 text-[11px] font-bold text-[#0f172a] whitespace-nowrap shrink-0 mr-1">
+            <div className="flex items-center gap-1.5 px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-slate-100 text-[11px] font-bold text-[#0f172a] whitespace-nowrap shrink-0 w-full md:w-auto justify-center md:justify-start">
               <span className="flex items-center gap-1.5 text-slate-500 font-medium"><div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> Showing</span> {filteredPackages.length} Handpicked Packages
             </div>
           </div>
