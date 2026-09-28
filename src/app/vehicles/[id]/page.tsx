@@ -318,7 +318,7 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 6. Custom Itinerary CTA */}
-        <section className="bg-[#0A1529] text-white py-16 relative overflow-hidden -mb-24 rounded-t-[2rem]">
+        <section className="bg-[#0A1529] text-white py-16 relative overflow-hidden -mb-24">
           {/* Background Glowing Spheres */}
           <div className="absolute top-1/2 -translate-y-1/2 -left-10 w-64 h-64 bg-blue-600/30 rounded-full blur-[80px] pointer-events-none z-0"></div>
           <div className="absolute top-1/2 -translate-y-1/2 -right-10 w-72 h-72 bg-emerald-500/20 rounded-full blur-[90px] pointer-events-none z-0"></div>
