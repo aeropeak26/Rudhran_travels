@@ -24,10 +24,10 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Tariff', href: '#fleet' },
+    { name: 'Home', href: '/' },
+    { name: 'Tariff', href: '/tariff' },
     { name: 'Service', href: '#about' },
-    { name: 'Gallery', href: '#destinations' },
+    { name: 'Vehicles', href: '/vehicles' },
     { name: 'Contact Us', href: '#contact' },
   ];
 

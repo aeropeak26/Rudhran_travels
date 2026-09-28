@@ -74,7 +74,7 @@ export default function VehiclesPage() {
                 Comfortable, reliable vehicles for every type of journey. Executive sedans, spacious touring MUVs, and luxury group coaches maintained to showroom standards.
               </p>
               
-              <div className="w-full bg-white px-8 py-6 rounded-2xl shadow-sm border border-slate-100 flex flex-wrap items-center justify-between gap-6">
+              <div className="w-full bg-white px-8 py-6 rounded-[1.5rem] shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 grid grid-cols-2 lg:grid-cols-4 gap-6">
                 
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
@@ -121,7 +121,7 @@ export default function VehiclesPage() {
         </section>
 
         {/* 2. Filter Bar */}
-        <section className="bg-white border-y border-slate-200 py-6 sticky top-0 z-30 shadow-[0_4px_20px_rgb(0,0,0,0.02)]">
+        <section className="bg-white border-y border-slate-200 py-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative z-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-5 gap-4">
               <div className="flex items-center gap-3">
