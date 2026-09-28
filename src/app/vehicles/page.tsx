@@ -8,6 +8,9 @@ import {
   Car, Shield, Droplets, RefreshCcw, Navigation, Clock, Thermometer, Briefcase, PlaySquare, Home
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import BookingModal from '@/components/BookingModal';
 import { vehiclesData } from '@/data/vehicles';
 
 export default function VehiclesPage() {
