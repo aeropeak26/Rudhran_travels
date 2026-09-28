@@ -116,7 +116,7 @@ export default function TourPackagesPage() {
           {/* Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPackages.map((pkg, idx) => (
-              <div key={pkg.id} className={`relative rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group border border-white/10 ${pkg.featured ? 'md:col-span-2 h-[380px]' : 'col-span-1 h-[420px]'}`}>
+              <div key={pkg.id} className={`relative rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group border border-white/10 h-[420px] ${pkg.featured ? 'md:col-span-2' : 'col-span-1'}`}>
                 
                 {/* Optional Orange Top Tab */}
                 {pkg.badge && !pkg.featured && pkg.badge.includes('HERITAGE') && (
