@@ -88,7 +88,7 @@ export default function TourPackagesPage() {
         </section>
 
         {/* 2. Packages Grid */}
-        <section id="packages" className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+        <section id="packages" className="pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
           
           {/* Filter Bar */}
           <div className="bg-white rounded-2xl p-2.5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col md:flex-row justify-between items-center mb-12 overflow-x-auto gap-4 border border-slate-100">
