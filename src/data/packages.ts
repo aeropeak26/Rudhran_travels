@@ -7,7 +7,7 @@ export const packagesData = [
     price: '12,999',
     category: 'Kerala',
     badge: 'POPULAR DESTINATION',
-    img: '/images/kerala.jpg',
+    img: '/images/dest1.png',
     desc: 'Experience the pristine beauty of Kerala\'s rolling tea gardens, wildlife sanctuaries, and serene backwater houseboats with our premium, all-inclusive tour.',
     featured: true,
     hero: {
@@ -42,7 +42,7 @@ export const packagesData = [
         },
         stay: 'Tall Trees / Windermere Cottage',
         distance: '130 km',
-        img: '/images/munnar-tea.jpg'
+        img: '/images/dest1.png'
       },
       {
         dayLabel: 'DAY 03 • CARDAMOM BELT',
@@ -57,7 +57,7 @@ export const packagesData = [
         },
         stay: 'Spice Village Eco-Lodge',
         distance: '90 km',
-        img: '/images/periyar.jpg',
+        img: '/images/dest2.png',
         reverse: true
       },
       {
@@ -73,7 +73,7 @@ export const packagesData = [
         },
         stay: 'Private Day Houseboat',
         distance: '140 km',
-        img: '/images/houseboat.jpg'
+        img: '/images/dest1.png'
       }
     ],
     vehicles: [
@@ -124,7 +124,7 @@ export const packagesData = [
     price: '8,999',
     category: 'Tamil Nadu',
     badge: 'HILL STATION',
-    img: '/images/ooty.jpg',
+    img: '/images/dest2.png',
     desc: 'Breathe in the fresh mountain air of the Nilgiris. Visit botanical gardens, tea estates, and ride the historic mountain railway.',
     featured: false,
   },
@@ -136,7 +136,7 @@ export const packagesData = [
     price: '9,500',
     category: 'Karnataka',
     badge: 'NATURE & WILDLIFE',
-    img: '/images/coorg.jpg',
+    img: '/images/dest1.png',
     desc: 'Discover the Scotland of India. Immerse yourself in lush coffee plantations, majestic waterfalls, and historic forts in a relaxing 4-day retreat.',
     featured: false,
   },
@@ -148,7 +148,7 @@ export const packagesData = [
     price: '10,500',
     category: 'Tamil Nadu',
     badge: 'HILL STATION',
-    img: '/images/kodaikanal.jpg',
+    img: '/images/dest2.png',
     desc: 'Explore the Princess of Hill Stations. Row across the star-shaped lake, walk through pine forests, and visit iconic southern temples.',
     featured: false,
   },
@@ -160,7 +160,7 @@ export const packagesData = [
     price: '11,000',
     category: 'South India Circuit',
     badge: 'HISTORICAL & HERITAGE',
-    img: '/images/mahabalipuram.jpg',
+    img: '/images/dest1.png',
     desc: 'Travel through time along the Coromandel Coast. Witness ancient Pallava architecture, French colonial quarters, and pristine beaches.',
     featured: false,
   },
@@ -172,7 +172,7 @@ export const packagesData = [
     price: '4,500',
     category: 'Family Trips',
     badge: 'SPIRITUAL',
-    img: '/images/tirupati.jpg',
+    img: '/images/dest2.png',
     desc: 'A seamless, hassle-free spiritual journey to the sacred hills of Tirumala. Includes verified driver, toll, and state permits.',
     featured: false,
   },
@@ -184,7 +184,7 @@ export const packagesData = [
     price: '7,500',
     category: 'Kerala',
     badge: 'NATURE & WILDLIFE',
-    img: '/images/kerala.jpg',
+    img: '/images/dest1.png',
     desc: 'Escape to the pristine forests of Wayanad. Trek to hidden waterfalls, explore ancient caves, and relax in luxury jungle resorts.',
     featured: false,
   },
@@ -196,7 +196,7 @@ export const packagesData = [
     price: '5,000',
     category: 'Tamil Nadu',
     badge: 'BEACH HOLIDAY',
-    img: '/images/mahabalipuram.jpg',
+    img: '/images/dest1.png',
     desc: 'Experience the perfect blend of French colonial charm and spiritual tranquility. Cycle through White Town and relax at serene beaches.',
     featured: false,
   },
@@ -208,7 +208,7 @@ export const packagesData = [
     price: '4,200',
     category: 'Karnataka',
     badge: 'HISTORICAL & HERITAGE',
-    img: '/images/mysore.jpg',
+    img: '/images/dest1.png',
     desc: 'Immerse yourself in the royal legacy of the Wodeyars. Visit the grand Mysore Palace and stroll through lush illuminated gardens.',
     featured: false,
   }

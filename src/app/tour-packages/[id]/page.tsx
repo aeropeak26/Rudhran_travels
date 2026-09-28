@@ -321,7 +321,7 @@ export default function TourPackageDetails() {
           <div className="absolute inset-0 z-0">
              <div className="absolute inset-0 bg-[#0c1524]/60 mix-blend-multiply z-10"></div>
              {/* We can use pkg.img as a blurred dark background for texture if no specific transport image is available */}
-             <Image src="/images/kerala.jpg" alt="Background" fill className="object-cover opacity-10 grayscale" />
+             <Image src="/images/dest1.png" alt="Background" fill className="object-cover opacity-10 grayscale" />
           </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
