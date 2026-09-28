@@ -294,9 +294,21 @@ export default function VehicleDetailsPage() {
                   </div>
                   <div className="p-6 pt-2 flex flex-col flex-grow">
                     <h3 className="font-bold text-[#0f172a] text-[18px] mb-2">{alt.name}</h3>
-                    <p className="text-[11px] text-slate-500 mb-6 leading-relaxed flex-grow">{alt.desc}</p>
-                    <Link href={`/vehicles/${alt.id}`} className="w-full py-3.5 bg-slate-50 hover:bg-slate-100 text-[#0f172a] rounded-xl text-[11px] font-bold transition-colors flex items-center justify-center">
-                      View {alt.name.split(' ')[1]} Details
+                    <p className="text-[11px] text-slate-500 mb-6 leading-relaxed flex-grow">
+                      {alt.highlights.join(' • ')}
+                    </p>
+                    
+                    {/* Features row */}
+                    <div className="flex items-center justify-between border-t border-slate-100 pt-5 mb-5">
+                      {alt.features.slice(0, 3).map((feat, idx) => (
+                        <div key={idx} className="flex items-center gap-1.5 text-[10px] font-medium text-slate-500">
+                          <feat.icon className="w-3.5 h-3.5 text-blue-400" /> {feat.text}
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <Link href={`/vehicles/${alt.id}`} className="w-full py-3.5 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center">
+                      View Fleet Details
                     </Link>
                   </div>
                 </div>
