@@ -5,15 +5,195 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { 
   CheckCircle2, Filter, RotateCcw, ChevronDown, User, Check, Zap, MapPin, Search, Mail, Phone,
-  Car, Shield, Droplets, RefreshCcw, Navigation, Clock, Thermometer, Briefcase, PlaySquare
+  Car, Shield, Droplets, RefreshCcw, Navigation, Clock, Thermometer, Briefcase, PlaySquare, Home
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 
+const vehiclesData = [
+  {
+    id: 1,
+    name: 'Toyota Innova Crysta',
+    category: 'PREMIUM MUV',
+    rating: 4.9,
+    desc: 'Spacious captain seats, generous boot space, and robust performance engineered for family hill...',
+    price: 18,
+    localPackage: '3,000',
+    minRun: '250',
+    img: '/images/dest1.png',
+    tagIcon: null,
+    tagText: 'Most Popular',
+    tagColor: 'amber',
+    tagBadge: 'Tamil Nadu & Kerala Certified',
+    features: [
+      { icon: User, text: '6 + 1 Seats' },
+      { icon: Thermometer, text: 'Dual AC Vents' },
+      { icon: Briefcase, text: '4 Large Bags' },
+      { icon: Zap, text: 'Carrier Inc.' }
+    ],
+    vClass: 'SUV / MUV',
+    seats: '6 - 7 Seats',
+    ac: true,
+    quickTags: ['Hill Station Ready', 'Corporate Executive', 'Airport Transfers']
+  },
+  {
+    id: 2,
+    name: 'Swift Dzire Sedan',
+    category: 'COMPACT EXECUTIVE SEDAN',
+    rating: 4.8,
+    desc: 'Agile, smooth, and exceptionally economical for city transfers, corporate commutes, and couple...',
+    price: 13,
+    localPackage: '2,200',
+    minRun: '250',
+    img: '/images/dest2.png',
+    tagIcon: CheckCircle2,
+    tagText: 'Best Value',
+    tagColor: 'emerald',
+    tagBadge: '',
+    features: [
+      { icon: User, text: '4 Passengers' },
+      { icon: Thermometer, text: 'Chilled AC' },
+      { icon: Briefcase, text: '2 Trolley Bags' },
+      { icon: Zap, text: 'High Mileage' }
+    ],
+    vClass: 'Sedan',
+    seats: '4 Seats',
+    ac: true,
+    quickTags: ['Corporate Executive', 'Airport Transfers']
+  },
+  {
+    id: 3,
+    name: 'Mahindra XUV700 AX7',
+    category: 'FULL-SIZE SUV',
+    rating: 4.9,
+    desc: 'Dynamic high-ground-clearance luxury SUV providing commanding comfort and plush ride...',
+    price: 22,
+    localPackage: '4,300',
+    minRun: '300',
+    img: '/images/hero_car.png',
+    tagIcon: CheckCircle2,
+    tagText: 'Premium SUV',
+    tagColor: 'cyan',
+    tagBadge: '',
+    features: [
+      { icon: User, text: '6 / 7 Seats' },
+      { icon: Thermometer, text: 'Dual Climate' },
+      { icon: Shield, text: 'ADAS Safety' },
+      { icon: Zap, text: 'Plush Leather' }
+    ],
+    vClass: 'SUV / MUV',
+    seats: '6 - 7 Seats',
+    ac: true,
+    quickTags: ['Hill Station Ready']
+  },
+  {
+    id: 4,
+    name: 'Toyota Innova Hycross',
+    category: 'HYBRID LUXURY MUV',
+    rating: 5.0,
+    desc: 'Next-generation hybrid luxury featuring Ottoman captain chairs and whisper-quiet cruising for...',
+    price: 24,
+    localPackage: '4,800',
+    minRun: '250',
+    img: '/images/dest1.png',
+    tagIcon: Zap,
+    tagText: 'Ultra Luxury',
+    tagColor: 'blue',
+    tagBadge: '',
+    features: [
+      { icon: User, text: 'Ottoman Seats' },
+      { icon: Zap, text: 'Silent Cabin' },
+      { icon: Thermometer, text: 'Multi Zone AC' },
+      { icon: Briefcase, text: '4 Huge Bags' }
+    ],
+    vClass: 'SUV / MUV',
+    seats: '6 - 7 Seats',
+    ac: true,
+    quickTags: ['Corporate Executive', 'Airport Transfers']
+  },
+  {
+    id: 5,
+    name: 'Force Urbania VIP Van',
+    category: 'HIGH-ROOF LUXURY MINIVAN',
+    rating: 4.9,
+    desc: 'World-class European styling with individual aircraft-style AC vents, ample headroom, and...',
+    price: 28,
+    localPackage: '6,200',
+    minRun: '250',
+    img: '/images/dest2.png',
+    tagIcon: Briefcase,
+    tagText: 'Executive Group',
+    tagColor: 'blue',
+    tagBadge: '',
+    features: [
+      { icon: User, text: '12 - 17 Seats' },
+      { icon: Zap, text: 'Reclining Buckets' },
+      { icon: Thermometer, text: 'Individual AC' },
+      { icon: Briefcase, text: 'USB & Type-C' }
+    ],
+    vClass: 'Luxury Coach',
+    seats: '12+ Seats',
+    ac: true,
+    quickTags: ['Corporate Executive', 'Pilgrimage Group']
+  },
+  {
+    id: 6,
+    name: 'Tempo Traveller 12 - 18',
+    category: 'GROUP TOURING VEHICLE',
+    rating: 4.8,
+    desc: 'Comfortable pushback seating and dedicated luggage carrier ideal for extended temple circuits...',
+    price: 26,
+    localPackage: '5,500',
+    minRun: '300',
+    img: '/images/hero_car.png',
+    tagIcon: MapPin,
+    tagText: 'Family & Pilgrimage',
+    tagColor: 'slate',
+    tagBadge: '',
+    features: [
+      { icon: User, text: '12 Pushback' },
+      { icon: Thermometer, text: 'Dual AC Unit' },
+      { icon: Briefcase, text: 'Carrier + Boot' },
+      { icon: PlaySquare, text: 'Audio System' }
+    ],
+    vClass: 'Luxury Coach',
+    seats: '12+ Seats',
+    ac: true,
+    quickTags: ['Pilgrimage Group', 'Hill Station Ready']
+  }
+];
+
 export default function VehiclesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [vClassFilter, setVClassFilter] = useState('All Vehicle Classes');
+  const [seatsFilter, setSeatsFilter] = useState('Any Capacity');
+  const [acFilter, setAcFilter] = useState('AC Only');
+  const [sortBy, setSortBy] = useState('Highest Recommended');
+  const [quickFilter, setQuickFilter] = useState('All Vehicles');
+
+  const filteredVehicles = vehiclesData.filter(v => {
+    if (vClassFilter !== 'All Vehicle Classes' && v.vClass !== vClassFilter) return false;
+    if (seatsFilter !== 'Any Capacity' && v.seats !== seatsFilter) return false;
+    if (acFilter === 'AC Only' && !v.ac) return false;
+    if (acFilter === 'Non-AC' && v.ac) return false;
+    if (quickFilter !== 'All Vehicles' && !v.quickTags.includes(quickFilter)) return false;
+    return true;
+  }).sort((a, b) => {
+    if (sortBy === 'Highest Recommended') return b.rating - a.rating;
+    if (sortBy === 'Price: Low to High') return a.price - b.price;
+    if (sortBy === 'Price: High to Low') return b.price - a.price;
+    return 0;
+  });
+
+  const resetFilters = () => {
+    setVClassFilter('All Vehicle Classes');
+    setSeatsFilter('Any Capacity');
+    setAcFilter('AC Only');
+    setSortBy('Highest Recommended');
+    setQuickFilter('All Vehicles');
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col poppins selection:bg-blue-600 selection:text-white">
@@ -25,63 +205,65 @@ export default function VehiclesPage() {
         {/* 1. Hero Section */}
         <section className="relative w-full pt-16 pb-20 bg-gradient-to-b from-[#eef2fb] to-slate-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="flex flex-col items-start max-w-3xl">
-              <div className="flex items-center space-x-2 text-[10px] md:text-xs font-semibold tracking-widest text-slate-500 uppercase mb-8">
-                <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
+            <div className="flex flex-col items-start max-w-4xl">
+              <div className="flex items-center space-x-2 text-[10px] md:text-xs font-semibold tracking-widest text-slate-500 mb-8">
+                <Link href="/" className="hover:text-blue-600 transition-colors flex items-center gap-1"><Home className="w-3 h-3"/> Home</Link>
                 <span className="opacity-50">/</span>
-                <span className="text-[#0a192f]">Vehicles</span>
+                <Link href="/about" className="hover:text-blue-600 transition-colors">About</Link>
+                <span className="opacity-50">/</span>
+                <span className="text-[#0a192f]">Our Fleet</span>
               </div>
 
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wider rounded-md mb-6">
-                <Car className="w-3 h-3" />
-                OUR FLEET
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100/80 text-blue-700 text-[10px] font-bold uppercase tracking-wider rounded-full mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div> OUR FLEET
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0a192f] mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight text-[#0a192f] mb-6">
                 Our Fleet
               </h1>
               
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-10 max-w-2xl">
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-10 max-w-2xl">
                 Comfortable, reliable vehicles for every type of journey. Executive sedans, spacious touring MUVs, and luxury group coaches maintained to showroom standards.
               </p>
               
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center gap-3 bg-white px-5 py-3 rounded-2xl shadow-sm border border-slate-100">
-                  <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                    <Droplets className="w-4 h-4 text-blue-600" />
+              <div className="w-full bg-white px-8 py-6 rounded-2xl shadow-sm border border-slate-100 flex flex-wrap items-center justify-between gap-6">
+                
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                    <Droplets className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold text-[#0a192f]">100% Sanitized</p>
-                    <p className="text-[10px] text-slate-500">Cleaned prior trip</p>
+                    <p className="text-xs font-bold text-[#0a192f]">100% Sanitized</p>
+                    <p className="text-[10px] text-slate-500">Cleaned pre-trip</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-3 bg-white px-5 py-3 rounded-2xl shadow-sm border border-slate-100">
-                  <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                    <Shield className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold text-[#0a192f]">Verified Chauffeurs</p>
+                    <p className="text-xs font-bold text-[#0a192f]">Verified Chauffeurs</p>
                     <p className="text-[10px] text-slate-500">Uniformed & trained</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 bg-white px-5 py-3 rounded-2xl shadow-sm border border-slate-100">
-                  <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                    <Shield className="w-4 h-4 text-blue-600" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                    <Zap className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold text-[#0a192f]">Transparent Pricing</p>
+                    <p className="text-xs font-bold text-[#0a192f]">Transparent Per-KM</p>
                     <p className="text-[10px] text-slate-500">No hidden surges</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 bg-white px-5 py-3 rounded-2xl shadow-sm border border-slate-100">
-                  <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                    <Phone className="w-4 h-4 text-blue-600" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold text-[#0a192f]">24/7 Roadside Care</p>
+                    <p className="text-xs font-bold text-[#0a192f]">24/7 Roadside Care</p>
                     <p className="text-[10px] text-slate-500">Instant backup team</p>
                   </div>
                 </div>
@@ -97,9 +279,9 @@ export default function VehiclesPage() {
               <div className="flex items-center gap-3">
                 <Filter className="w-5 h-5 text-blue-600" />
                 <h2 className="text-lg font-bold text-[#0a192f]">Filter Fleet</h2>
-                <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded-full">16 vehicles available</span>
+                <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded-full">{filteredVehicles.length} vehicles available</span>
               </div>
-              <button className="text-blue-600 hover:text-blue-700 text-xs font-bold flex items-center gap-1.5 transition-colors">
+              <button onClick={resetFilters} className="text-blue-600 hover:text-blue-700 text-xs font-bold flex items-center gap-1.5 transition-colors">
                 <RotateCcw className="w-3.5 h-3.5" /> Reset Filters
               </button>
             </div>
@@ -108,7 +290,11 @@ export default function VehiclesPage() {
               <div className="flex-1 min-w-[200px]">
                 <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">VEHICLE CLASS</label>
                 <div className="relative">
-                  <select className="w-full appearance-none bg-slate-50 border border-slate-200 text-sm text-[#0a192f] font-medium rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 cursor-pointer">
+                  <select 
+                    value={vClassFilter}
+                    onChange={(e) => setVClassFilter(e.target.value)}
+                    className="w-full appearance-none bg-slate-50 border border-slate-200 text-sm text-[#0a192f] font-medium rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 cursor-pointer"
+                  >
                     <option>All Vehicle Classes</option>
                     <option>Sedan</option>
                     <option>SUV / MUV</option>
@@ -121,7 +307,11 @@ export default function VehiclesPage() {
               <div className="flex-1 min-w-[200px]">
                 <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">SEATING CAPACITY</label>
                 <div className="relative">
-                  <select className="w-full appearance-none bg-slate-50 border border-slate-200 text-sm text-[#0a192f] font-medium rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 cursor-pointer">
+                  <select 
+                    value={seatsFilter}
+                    onChange={(e) => setSeatsFilter(e.target.value)}
+                    className="w-full appearance-none bg-slate-50 border border-slate-200 text-sm text-[#0a192f] font-medium rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 cursor-pointer"
+                  >
                     <option>Any Capacity</option>
                     <option>4 Seats</option>
                     <option>6 - 7 Seats</option>
@@ -134,11 +324,18 @@ export default function VehiclesPage() {
               <div className="flex-1 min-w-[200px]">
                 <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">CLIMATE CONTROL</label>
                 <div className="flex bg-slate-50 border border-slate-200 rounded-xl p-1">
-                  <button className="flex-1 flex items-center justify-center gap-2 bg-white text-blue-600 text-xs font-bold rounded-lg py-2 shadow-sm border border-slate-100">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                  <button 
+                    onClick={() => setAcFilter('AC Only')}
+                    className={`flex-1 flex items-center justify-center gap-2 text-xs font-bold rounded-lg py-2 transition-all ${acFilter === 'AC Only' ? 'bg-white text-blue-600 shadow-sm border border-slate-100' : 'text-slate-500 hover:text-[#0a192f]'}`}
+                  >
+                    {acFilter === 'AC Only' && <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>}
                     AC Only
                   </button>
-                  <button className="flex-1 flex items-center justify-center text-slate-500 text-xs font-medium rounded-lg py-2 hover:text-[#0a192f] transition-colors">
+                  <button 
+                    onClick={() => setAcFilter('Non-AC')}
+                    className={`flex-1 flex items-center justify-center gap-2 text-xs font-bold rounded-lg py-2 transition-all ${acFilter === 'Non-AC' ? 'bg-white text-blue-600 shadow-sm border border-slate-100' : 'text-slate-500 hover:text-[#0a192f]'}`}
+                  >
+                    {acFilter === 'Non-AC' && <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>}
                     Non-AC
                   </button>
                 </div>
@@ -147,7 +344,11 @@ export default function VehiclesPage() {
               <div className="flex-1 min-w-[200px]">
                 <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">SORT BY</label>
                 <div className="relative">
-                  <select className="w-full appearance-none bg-white border border-slate-200 text-sm text-[#0a192f] font-medium rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 cursor-pointer">
+                  <select 
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="w-full appearance-none bg-white border border-slate-200 text-sm text-[#0a192f] font-medium rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 cursor-pointer"
+                  >
                     <option>Highest Recommended</option>
                     <option>Price: Low to High</option>
                     <option>Price: High to Low</option>
@@ -159,378 +360,120 @@ export default function VehiclesPage() {
 
             <div className="flex flex-wrap items-center gap-3">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-2">QUICK SELECT:</span>
-              <button className="bg-[#0a192f] text-white text-[11px] font-bold px-4 py-1.5 rounded-full">All Vehicles</button>
-              <button className="bg-white border border-slate-200 text-slate-600 hover:border-slate-300 text-[11px] font-medium px-4 py-1.5 rounded-full transition-colors">Hill Station Ready</button>
-              <button className="bg-white border border-slate-200 text-slate-600 hover:border-slate-300 text-[11px] font-medium px-4 py-1.5 rounded-full transition-colors">Corporate Executive</button>
-              <button className="bg-white border border-slate-200 text-slate-600 hover:border-slate-300 text-[11px] font-medium px-4 py-1.5 rounded-full transition-colors">Pilgrimage Group</button>
-              <button className="bg-white border border-slate-200 text-slate-600 hover:border-slate-300 text-[11px] font-medium px-4 py-1.5 rounded-full transition-colors">Airport Transfers</button>
+              <button 
+                onClick={() => setQuickFilter('All Vehicles')}
+                className={`text-[11px] font-bold px-4 py-1.5 rounded-full transition-colors ${quickFilter === 'All Vehicles' ? 'bg-[#0a192f] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300'}`}
+              >
+                All Vehicles
+              </button>
+              <button 
+                onClick={() => setQuickFilter('Hill Station Ready')}
+                className={`text-[11px] font-bold px-4 py-1.5 rounded-full transition-colors ${quickFilter === 'Hill Station Ready' ? 'bg-[#0a192f] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300'}`}
+              >
+                Hill Station Ready
+              </button>
+              <button 
+                onClick={() => setQuickFilter('Corporate Executive')}
+                className={`text-[11px] font-bold px-4 py-1.5 rounded-full transition-colors ${quickFilter === 'Corporate Executive' ? 'bg-[#0a192f] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300'}`}
+              >
+                Corporate Executive
+              </button>
+              <button 
+                onClick={() => setQuickFilter('Pilgrimage Group')}
+                className={`text-[11px] font-bold px-4 py-1.5 rounded-full transition-colors ${quickFilter === 'Pilgrimage Group' ? 'bg-[#0a192f] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300'}`}
+              >
+                Pilgrimage Group
+              </button>
+              <button 
+                onClick={() => setQuickFilter('Airport Transfers')}
+                className={`text-[11px] font-bold px-4 py-1.5 rounded-full transition-colors ${quickFilter === 'Airport Transfers' ? 'bg-[#0a192f] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300'}`}
+              >
+                Airport Transfers
+              </button>
             </div>
           </div>
         </section>
 
         {/* 3. Vehicle Cards Grid */}
-        <section className="py-16 bg-slate-50">
+        <section className="py-16 bg-slate-50 min-h-[400px]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              
-              {/* Card 1: Innova Crysta */}
-              <div className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all flex flex-col">
-                <div className="relative h-[220px] bg-slate-100">
-                  <Image src="/images/dest1.png" alt="Toyota Innova Crysta" fill className="object-cover" />
-                  <div className="absolute top-4 left-4 bg-amber-400 text-amber-950 text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-950"></span> Most Popular
-                  </div>
-                  <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                    Tamil Nadu & Kerala Certified
-                  </div>
-                </div>
-                
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-0.5 rounded">PREMIUM MUV</span>
-                    <div className="flex items-center gap-1 text-xs font-bold text-slate-700">
-                      <span className="text-amber-500">★</span> 4.9
+            {filteredVehicles.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-20 text-center">
+                <Car className="w-16 h-16 text-slate-300 mb-4" />
+                <h3 className="text-xl font-bold text-[#0a192f] mb-2">No vehicles found</h3>
+                <p className="text-sm text-slate-500 mb-6">We couldn't find any vehicles matching your current filter criteria.</p>
+                <button onClick={resetFilters} className="text-blue-600 text-sm font-bold flex items-center gap-2 hover:text-blue-700">
+                  <RotateCcw className="w-4 h-4" /> Clear All Filters
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredVehicles.map(vehicle => (
+                  <div key={vehicle.id} className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all flex flex-col">
+                    <div className="relative h-[220px] bg-slate-100">
+                      <Image src={vehicle.img} alt={vehicle.name} fill className="object-cover" />
+                      
+                      {vehicle.tagText && (
+                        <div className={`absolute top-4 left-4 ${vehicle.tagColor === 'amber' ? 'bg-amber-400 text-amber-950' : vehicle.tagColor === 'emerald' ? 'bg-emerald-400 text-emerald-950' : vehicle.tagColor === 'cyan' ? 'bg-slate-900/80 backdrop-blur-md text-white' : vehicle.tagColor === 'slate' ? 'bg-slate-100 text-slate-700' : 'bg-blue-600 text-white'} text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5`}>
+                          {vehicle.tagIcon && (
+                            vehicle.tagColor === 'amber' ? <span className="w-1.5 h-1.5 rounded-full bg-amber-950"></span> : <vehicle.tagIcon className={`w-3 h-3 ${vehicle.tagColor === 'cyan' ? 'text-cyan-400' : ''}`} />
+                          )}
+                          {vehicle.tagText}
+                        </div>
+                      )}
+                      
+                      {vehicle.tagBadge && (
+                        <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                          {vehicle.tagBadge}
+                        </div>
+                      )}
                     </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0a192f] mb-3">Toyota Innova Crysta</h3>
-                  <p className="text-xs text-slate-500 mb-6 line-clamp-2">Spacious captain seats, generous boot space, and robust performance engineered for family hill...</p>
-                  
-                  <div className="grid grid-cols-2 gap-3 mb-8">
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <User className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">6 + 1 Seats</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Thermometer className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Dual AC Vents</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Briefcase className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">4 Large Bags</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Zap className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Carrier Inc.</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-auto border border-slate-100 rounded-2xl p-4 bg-slate-50/50">
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">OUTSTATION RATE</span>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-xl font-bold text-[#0a192f]">₹18</span>
-                        <span className="text-xs text-slate-500">/ km</span>
+                    
+                    <div className="p-6 flex-grow flex flex-col">
+                      <div className="flex justify-between items-start mb-2">
+                        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-0.5 rounded">{vehicle.category}</span>
+                        <div className="flex items-center gap-1 text-xs font-bold text-slate-700">
+                          <span className="text-amber-500">★</span> {vehicle.rating}
+                        </div>
+                      </div>
+                      <h3 className="text-xl font-bold text-[#0a192f] mb-3">{vehicle.name}</h3>
+                      <p className="text-xs text-slate-500 mb-6 line-clamp-2">{vehicle.desc}</p>
+                      
+                      <div className="grid grid-cols-2 gap-3 mb-8">
+                        {vehicle.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
+                            <feature.icon className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">{feature.text}</span>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      <div className="mt-auto border border-slate-100 rounded-2xl p-4 bg-slate-50/50">
+                        <div className="flex justify-between items-center mb-3">
+                          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">OUTSTATION RATE</span>
+                          <div className="flex items-baseline gap-1">
+                            <span className="text-xl font-bold text-[#0a192f]">₹{vehicle.price}</span>
+                            <span className="text-xs text-slate-500">/ km</span>
+                          </div>
+                        </div>
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="text-[10px] text-slate-500">Local (8hr / 80km) package:</span>
+                          <span className="text-[10px] font-bold text-[#0a192f]">₹{vehicle.localPackage}</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-[10px] text-slate-500">Minimum run:</span>
+                          <span className="text-[10px] font-bold text-[#0a192f]">{vehicle.minRun} km / day</span>
+                        </div>
+                      </div>
+                      
+                      <div className="grid grid-cols-2 gap-3 mt-4">
+                        <button className="py-3 bg-white border border-slate-200 hover:bg-slate-50 text-[#0a192f] text-xs font-bold rounded-xl transition-colors">View Details</button>
+                        <button onClick={() => setIsModalOpen(true)} className="py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1">Enquire Now &rarr;</button>
                       </div>
                     </div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-[10px] text-slate-500">Local (8hr / 80km) package:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">₹3,000</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-slate-500">Minimum run:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">250 km / day</span>
-                    </div>
                   </div>
-                  
-                  <div className="grid grid-cols-2 gap-3 mt-4">
-                    <button className="py-3 bg-white border border-slate-200 hover:bg-slate-50 text-[#0a192f] text-xs font-bold rounded-xl transition-colors">View Details</button>
-                    <button onClick={() => setIsModalOpen(true)} className="py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1">Enquire Now &rarr;</button>
-                  </div>
-                </div>
+                ))}
               </div>
-
-              {/* Card 2: Swift Dzire */}
-              <div className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all flex flex-col">
-                <div className="relative h-[220px] bg-slate-100">
-                  <Image src="/images/dest2.png" alt="Swift Dzire Sedan" fill className="object-cover" />
-                  <div className="absolute top-4 left-4 bg-emerald-400 text-emerald-950 text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3 h-3" /> Best Value
-                  </div>
-                </div>
-                
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-0.5 rounded">COMPACT EXECUTIVE SEDAN</span>
-                    <div className="flex items-center gap-1 text-xs font-bold text-slate-700">
-                      <span className="text-amber-500">★</span> 4.8
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0a192f] mb-3">Swift Dzire Sedan</h3>
-                  <p className="text-xs text-slate-500 mb-6 line-clamp-2">Agile, smooth, and exceptionally economical for city transfers, corporate commutes, and couple...</p>
-                  
-                  <div className="grid grid-cols-2 gap-3 mb-8">
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <User className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">4 Passengers</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Thermometer className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Chilled AC</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Briefcase className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">2 Trolley Bags</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Zap className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">High Mileage</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-auto border border-slate-100 rounded-2xl p-4 bg-slate-50/50">
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">OUTSTATION RATE</span>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-xl font-bold text-[#0a192f]">₹13</span>
-                        <span className="text-xs text-slate-500">/ km</span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-[10px] text-slate-500">Local (8hr / 80km) package:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">₹2,200</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-slate-500">Minimum run:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">250 km / day</span>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-3 mt-4">
-                    <button className="py-3 bg-white border border-slate-200 hover:bg-slate-50 text-[#0a192f] text-xs font-bold rounded-xl transition-colors">View Details</button>
-                    <button onClick={() => setIsModalOpen(true)} className="py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1">Enquire Now &rarr;</button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 3: XUV700 */}
-              <div className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all flex flex-col">
-                <div className="relative h-[220px] bg-slate-100">
-                  <Image src="/images/hero_car.png" alt="Mahindra XUV700 AX7" fill className="object-cover" />
-                  <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3 h-3 text-cyan-400" /> Premium SUV
-                  </div>
-                </div>
-                
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-0.5 rounded">FULL-SIZE SUV</span>
-                    <div className="flex items-center gap-1 text-xs font-bold text-slate-700">
-                      <span className="text-amber-500">★</span> 4.9
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0a192f] mb-3">Mahindra XUV700 AX7</h3>
-                  <p className="text-xs text-slate-500 mb-6 line-clamp-2">Dynamic high-ground-clearance luxury SUV providing commanding comfort and plush ride...</p>
-                  
-                  <div className="grid grid-cols-2 gap-3 mb-8">
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <User className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">6 / 7 Seats</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Thermometer className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Dual Climate</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Shield className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">ADAS Safety</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Zap className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Plush Leather</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-auto border border-slate-100 rounded-2xl p-4 bg-slate-50/50">
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">OUTSTATION RATE</span>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-xl font-bold text-[#0a192f]">₹22</span>
-                        <span className="text-xs text-slate-500">/ km</span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-[10px] text-slate-500">Local (8hr / 80km) package:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">₹4,300</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-slate-500">Minimum run:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">300 km / day</span>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-3 mt-4">
-                    <button className="py-3 bg-white border border-slate-200 hover:bg-slate-50 text-[#0a192f] text-xs font-bold rounded-xl transition-colors">View Details</button>
-                    <button onClick={() => setIsModalOpen(true)} className="py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1">Enquire Now &rarr;</button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 4: Innova Hycross */}
-              <div className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all flex flex-col">
-                <div className="relative h-[220px] bg-slate-100">
-                  <Image src="/images/dest1.png" alt="Toyota Innova Hycross" fill className="object-cover" />
-                  <div className="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-                    <Zap className="w-3 h-3" /> Ultra Luxury
-                  </div>
-                </div>
-                
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-0.5 rounded">HYBRID LUXURY MUV</span>
-                    <div className="flex items-center gap-1 text-xs font-bold text-slate-700">
-                      <span className="text-amber-500">★</span> 5.0
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0a192f] mb-3">Toyota Innova Hycross</h3>
-                  <p className="text-xs text-slate-500 mb-6 line-clamp-2">Next-generation hybrid luxury featuring Ottoman captain chairs and whisper-quiet cruising for...</p>
-                  
-                  <div className="grid grid-cols-2 gap-3 mb-8">
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <User className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Ottoman Seats</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Zap className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Silent Cabin</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Thermometer className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Multi Zone AC</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Briefcase className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">4 Huge Bags</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-auto border border-slate-100 rounded-2xl p-4 bg-slate-50/50">
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">OUTSTATION RATE</span>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-xl font-bold text-[#0a192f]">₹24</span>
-                        <span className="text-xs text-slate-500">/ km</span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-[10px] text-slate-500">Local (8hr / 80km) package:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">₹4,800</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-slate-500">Minimum run:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">250 km / day</span>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-3 mt-4">
-                    <button className="py-3 bg-white border border-slate-200 hover:bg-slate-50 text-[#0a192f] text-xs font-bold rounded-xl transition-colors">View Details</button>
-                    <button onClick={() => setIsModalOpen(true)} className="py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1">Enquire Now &rarr;</button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 5: Force Urbania */}
-              <div className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all flex flex-col">
-                <div className="relative h-[220px] bg-slate-100">
-                  <Image src="/images/dest2.png" alt="Force Urbania VIP Van" fill className="object-cover" />
-                  <div className="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-                    <Briefcase className="w-3 h-3" /> Executive Group
-                  </div>
-                </div>
-                
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-0.5 rounded">HIGH-ROOF LUXURY MINIVAN</span>
-                    <div className="flex items-center gap-1 text-xs font-bold text-slate-700">
-                      <span className="text-amber-500">★</span> 4.9
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0a192f] mb-3">Force Urbania VIP Van</h3>
-                  <p className="text-xs text-slate-500 mb-6 line-clamp-2">World-class European styling with individual aircraft-style AC vents, ample headroom, and...</p>
-                  
-                  <div className="grid grid-cols-2 gap-3 mb-8">
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <User className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">12 - 17 Seats</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Zap className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Reclining Buckets</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Thermometer className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Individual AC</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Briefcase className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">USB & Type-C</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-auto border border-slate-100 rounded-2xl p-4 bg-slate-50/50">
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">OUTSTATION RATE</span>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-xl font-bold text-[#0a192f]">₹28</span>
-                        <span className="text-xs text-slate-500">/ km</span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-[10px] text-slate-500">Local (8hr / 80km) package:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">₹6,200</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-slate-500">Minimum run:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">250 km / day</span>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-3 mt-4">
-                    <button className="py-3 bg-white border border-slate-200 hover:bg-slate-50 text-[#0a192f] text-xs font-bold rounded-xl transition-colors">View Details</button>
-                    <button onClick={() => setIsModalOpen(true)} className="py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1">Enquire Now &rarr;</button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 6: Tempo Traveller */}
-              <div className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all flex flex-col">
-                <div className="relative h-[220px] bg-slate-100">
-                  <Image src="/images/hero_car.png" alt="Tempo Traveller 12-18" fill className="object-cover" />
-                  <div className="absolute top-4 left-4 bg-slate-100 text-slate-700 text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
-                    <MapPin className="w-3 h-3" /> Family & Pilgrimage
-                  </div>
-                </div>
-                
-                <div className="p-6 flex-grow flex flex-col">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-0.5 rounded">GROUP TOURING VEHICLE</span>
-                    <div className="flex items-center gap-1 text-xs font-bold text-slate-700">
-                      <span className="text-amber-500">★</span> 4.8
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0a192f] mb-3">Tempo Traveller 12 - 18</h3>
-                  <p className="text-xs text-slate-500 mb-6 line-clamp-2">Comfortable pushback seating and dedicated luggage carrier ideal for extended temple circuits...</p>
-                  
-                  <div className="grid grid-cols-2 gap-3 mb-8">
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <User className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">12 Pushback</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Thermometer className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Dual AC Unit</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <Briefcase className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Carrier + Boot</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                      <PlaySquare className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">Audio System</span>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-auto border border-slate-100 rounded-2xl p-4 bg-slate-50/50">
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">OUTSTATION RATE</span>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-xl font-bold text-[#0a192f]">₹26</span>
-                        <span className="text-xs text-slate-500">/ km</span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-[10px] text-slate-500">Local (8hr / 80km) package:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">₹5,500</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-[10px] text-slate-500">Minimum run:</span>
-                      <span className="text-[10px] font-bold text-[#0a192f]">300 km / day</span>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-3 mt-4">
-                    <button className="py-3 bg-white border border-slate-200 hover:bg-slate-50 text-[#0a192f] text-xs font-bold rounded-xl transition-colors">View Details</button>
-                    <button onClick={() => setIsModalOpen(true)} className="py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1">Enquire Now &rarr;</button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+            )}
           </div>
         </section>
 
