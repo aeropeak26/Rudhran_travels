@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { vehiclesData } from '@/data/vehicles';
 import { 
   CheckCircle2, ChevronRight, User, Shield, Thermometer, Briefcase, 
   MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Info, AlertCircle, Sparkles, Star, Snowflake, Cloud, MessageCircle
