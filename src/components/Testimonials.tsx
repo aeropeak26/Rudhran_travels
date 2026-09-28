@@ -101,8 +101,8 @@ export default function Testimonials() {
   return (
     <section className="py-16 sm:py-24 bg-white text-slate-900 relative poppins-regular overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Dark Navy Card — taller with generous padding */}
-        <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white px-8 sm:px-12 lg:px-16 py-16 sm:py-20 lg:py-28 overflow-hidden shadow-2xl min-h-[400px] lg:min-h-[500px] flex items-center">
+        {/* Main Dark Navy Card — reduced padding and height to pull everything tighter */}
+        <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white pl-8 sm:pl-12 lg:pl-16 pr-0 py-12 sm:py-16 lg:py-20 overflow-hidden shadow-2xl flex items-center">
           {/* Faint "Happy Customers" Watermark */}
           <div className="absolute top-8 left-16 sm:left-32 pointer-events-none select-none z-0">
             <span className="text-[80px] sm:text-[120px] lg:text-[150px] font-bold text-white/[0.04] tracking-tight whitespace-nowrap">
@@ -113,10 +113,11 @@ export default function Testimonials() {
           {/* Subtle gradient glow behind cards area */}
           <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-blue-500/[0.03] to-transparent pointer-events-none z-0" />
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Removed inner max-w constraints so the right side can push all the way to the edge */}
+          <div className="w-full relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
               {/* ──── Left Content Column ──── */}
-              <div className="lg:col-span-4 flex flex-col justify-center">
+              <div className="lg:col-span-4 flex flex-col justify-center pr-8 lg:pr-0">
                 <div className="space-y-4">
                   {/* Orange Label */}
                   <div className="text-[10px] font-bold tracking-[0.2em] text-orange-500 uppercase">
@@ -137,7 +138,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Navigation Arrows */}
-                <div className="flex items-center space-x-4 pt-12 sm:pt-20 ml-12 sm:ml-20">
+                <div className="flex items-center space-x-4 pt-12 sm:pt-20 ml-4 sm:ml-12 lg:ml-20">
                   <button
                     onClick={handlePrev}
                     className="w-10 h-10 rounded-full bg-[#9ba3b5] hover:bg-[#858da0] text-[#0b1b42] flex items-center justify-center transition-all duration-200 shadow-lg active:scale-90"
@@ -157,7 +158,8 @@ export default function Testimonials() {
               </div>
 
               {/* ──── Right Animated Cards Carousel ──── */}
-              <div className="lg:col-span-8 overflow-hidden">
+              {/* Removed overflow-hidden so the cards can bleed out to the right edge of the navy container */}
+              <div className="lg:col-span-8">
                 <div
                   className={`flex gap-6 ${isTransitioning ? "transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]" : ""}`}
                   style={{
@@ -171,7 +173,8 @@ export default function Testimonials() {
                     return (
                       <div
                         key={`${item.id}-${idx}`}
-                        className="w-[300px] sm:w-[340px] flex-shrink-0 bg-[#faf8f4] text-slate-900 rounded-[20px] p-8 shadow-xl flex flex-col justify-between min-h-[400px] sm:min-h-[320px] transition-opacity duration-500"
+                        /* Reduced min-height to pull the bottom tighter */
+                        className="w-[300px] sm:w-[340px] flex-shrink-0 bg-[#faf8f4] text-slate-900 rounded-[20px] p-8 shadow-xl flex flex-col justify-between min-h-[300px] sm:min-h-[280px] transition-opacity duration-500"
                         style={{ opacity: isVisuallyActive ? 1 : 0.4 }}
                       >
                         {/* Top: Stars + Quote */}
@@ -194,12 +197,11 @@ export default function Testimonials() {
 
                         {/* Bottom: Avatar + Author */}
                         <div className="flex items-center space-x-4 pt-4">
-                          <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0">
-                            <Image
+                          <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-slate-200">
+                            <img
                               src={item.avatar}
                               alt={item.name}
-                              fill
-                              className="object-cover"
+                              className="w-full h-full object-cover"
                             />
                           </div>
 
