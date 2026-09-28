@@ -95,12 +95,16 @@ export default function TariffPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filter, setFilter] = useState('All Vehicles');
 
+  const vehicleOrder = ['2', '3', '4', '1', '6', '5'];
+
   const filteredVehicles = vehiclesData.filter(v => {
     if (filter === 'All Vehicles') return true;
     if (filter === 'Sedans') return v.vClass === 'Sedan';
     if (filter === 'SUVs & MPVs') return v.vClass === 'SUV / MUV';
     if (filter === 'Group Coaches') return v.vClass === 'Luxury Coach';
     return true;
+  }).sort((a, b) => {
+    return vehicleOrder.indexOf(a.id) - vehicleOrder.indexOf(b.id);
   });
 
   return (
@@ -202,7 +206,7 @@ export default function TariffPage() {
               <div key={v.id} className="relative mt-4">
                 {/* Most Popular Badge (Absolute positioned above card) */}
                 {override.mostPopular && (
-                  <div className="absolute -top-3 left-6 bg-orange-500 text-white text-[9px] font-bold uppercase px-4 py-1.5 rounded-t-lg z-10 flex items-center gap-1.5 shadow-sm">
+                  <div className="absolute -top-3 left-6 bg-orange-500 text-white text-[9px] font-bold uppercase px-4 py-1.5 rounded-t-lg z-30 flex items-center gap-1.5 shadow-sm">
                     <Star className="w-3 h-3 fill-white" /> MOST POPULAR OUTSTATION MPV
                   </div>
                 )}
