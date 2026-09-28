@@ -345,44 +345,48 @@ export default function AboutUs() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               
               {/* Local Transportation */}
-              <div className="bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
-                <MapPin className="w-6 h-6 text-blue-600 mb-6" />
-                <h3 className="text-lg font-bold text-[#0a192f] mb-3">Local Transportation</h3>
+              <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all flex flex-col">
+                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-8">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-[#0a192f] mb-4">Local Transportation</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">Hourly city rides, business commutes, shopping trips, and point-to-point transfers with courteous chauffeurs.</p>
               </div>
 
               {/* Outstation Trips */}
-              <div className="bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
-                <Zap className="w-6 h-6 text-blue-600 mb-6" />
-                <h3 className="text-lg font-bold text-[#0a192f] mb-3">Outstation Trips</h3>
+              <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all flex flex-col">
+                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-8">
+                  <Zap className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-[#0a192f] mb-4">Outstation Trips</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">Stress-free round trips and multi-day vacations across South India with seasoned highway and ghat-road drivers.</p>
               </div>
 
               {/* Airport VIP (Tall Dark Card) */}
-              <div className="lg:row-span-2 bg-[#0b1120] p-8 rounded-2xl border border-slate-800 relative overflow-hidden flex flex-col justify-between shadow-2xl">
+              <div className="lg:row-span-2 bg-[#0b1120] p-8 rounded-[2rem] border border-slate-800 relative overflow-hidden flex flex-col shadow-2xl">
                 {/* Glow Effect */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-600/20 rounded-full blur-[80px] pointer-events-none"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-600/20 rounded-full blur-[100px] pointer-events-none"></div>
                 
-                <div className="relative z-10">
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white/10 rounded border border-white/5">
+                <div className="relative z-10 flex-grow">
+                  <div className="flex justify-between items-start mb-8">
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white/5 rounded-md border border-white/5">
                       <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
                       <span className="text-[9px] font-bold text-cyan-400 uppercase tracking-widest">ARCHETYPE 04 • DARK LUXE VIP</span>
                     </div>
-                    <div className="px-2.5 py-1 bg-amber-500/10 rounded border border-amber-500/20">
+                    <div className="px-2.5 py-1 bg-amber-500/10 rounded-md border border-amber-500/20">
                       <span className="text-[9px] font-bold text-amber-500 uppercase tracking-widest">BLACK TIER</span>
                     </div>
                   </div>
 
-                  <div className="w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center mb-8 backdrop-blur-sm">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 backdrop-blur-sm">
                     <Plane className="w-6 h-6 text-cyan-400" />
                   </div>
 
                   <h3 className="text-2xl font-bold text-white mb-4">Airport VIP Meet & Greet</h3>
                   <p className="text-sm text-slate-400 leading-relaxed mb-8">Punctual terminal curbside receiving with custom iPad name boards, active flight telemetry sync, and luggage trolley handling.</p>
 
-                  <div className="bg-slate-900/50 border border-slate-700/50 rounded-xl p-5 mb-8 backdrop-blur-sm">
-                    <div className="flex justify-between items-center mb-2">
+                  <div className="bg-white/5 border border-white/10 rounded-xl p-5 mb-8 backdrop-blur-sm">
+                    <div className="flex justify-between items-center mb-3">
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
                         <span className="text-[11px] font-medium text-slate-300">Flight Tracking Engine</span>
@@ -393,32 +397,36 @@ export default function AboutUs() {
                   </div>
                 </div>
 
-                <button onClick={() => setIsModalOpen(true)} className="relative z-10 w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold uppercase tracking-widest transition-colors shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center justify-center gap-2">
+                <button onClick={() => setIsModalOpen(true)} className="relative z-10 w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold uppercase tracking-widest transition-colors shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center justify-center gap-2 mt-auto">
                   RESERVE AIRPORT CHAUFFEUR &rarr;
                 </button>
               </div>
 
               {/* Corporate Travel */}
-              <div className="bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
-                <Briefcase className="w-6 h-6 text-blue-600 mb-6" />
-                <h3 className="text-lg font-bold text-[#0a192f] mb-3">Corporate Travel</h3>
+              <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all flex flex-col">
+                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-8">
+                  <Briefcase className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-[#0a192f] mb-4">Corporate Travel</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">Executive mobility management, VIP delegation handling, GST compliant invoicing, and dedicated enterprise accounts.</p>
               </div>
 
               {/* Group & Event Travel */}
-              <div className="bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
-                <Users2 className="w-6 h-6 text-blue-600 mb-6" />
-                <h3 className="text-lg font-bold text-[#0a192f] mb-3">Group & Event Travel</h3>
+              <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all flex flex-col">
+                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-8">
+                  <Users2 className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-[#0a192f] mb-4">Group & Event Travel</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">Spacious 12-17 seater luxury Force Urbanias and Tempo Travellers for weddings, pilgrimages, and family reunions.</p>
               </div>
 
             </div>
 
             {/* Bottom Full-width Card */}
-            <div className="mt-6 bg-white border border-slate-100 rounded-2xl p-6 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="mt-6 bg-white border border-slate-100 rounded-[2rem] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 px-2">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-                  <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">
+                  <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">
                     <ArrowRightLeft className="w-6 h-6" />
                   </div>
                   <div>
