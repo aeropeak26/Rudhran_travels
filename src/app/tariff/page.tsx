@@ -206,8 +206,8 @@ export default function TariffPage() {
               <div key={v.id} className="relative mt-4">
                 {/* Most Popular Badge (Absolute positioned above card) */}
                 {override.mostPopular && (
-                  <div className="absolute -top-3 left-6 bg-orange-500 text-white text-[9px] font-bold uppercase px-4 py-1.5 rounded-t-lg z-30 flex items-center gap-1.5 shadow-sm">
-                    <Star className="w-3 h-3 fill-white" /> MOST POPULAR OUTSTATION MPV
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#ff6624] text-white text-[10px] font-bold uppercase px-5 py-1.5 rounded-full z-30 flex items-center gap-1.5 shadow-md whitespace-nowrap border-2 border-white">
+                    <Star className="w-3.5 h-3.5" /> <Star className="w-3.5 h-3.5 fill-white" /> MOST POPULAR OUTSTATION MPV
                   </div>
                 )}
 
@@ -217,7 +217,7 @@ export default function TariffPage() {
                   <div className="relative h-48 rounded-[1rem] overflow-hidden mb-5 bg-slate-100 group">
                     <Image src={v.img} alt={v.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     
-                    <div className="absolute top-3 left-3 bg-[#0f172a]/80 backdrop-blur shadow-sm text-white text-[9px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 uppercase">
+                    <div className={`absolute top-3 left-3 shadow-sm text-white text-[9px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 uppercase ${override.mostPopular ? 'bg-[#d2a336]' : 'bg-[#0f172a]/80 backdrop-blur'}`}>
                       {override.badge}
                     </div>
 
