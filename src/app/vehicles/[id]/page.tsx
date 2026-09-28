@@ -7,7 +7,7 @@ import { useParams, notFound } from 'next/navigation';
 import { vehiclesData } from '@/data/vehicles';
 import { 
   CheckCircle2, ChevronRight, User, Shield, Thermometer, Briefcase, 
-  MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Armchair, ChevronDown, ChevronRightSquare
+  MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Armchair, ChevronDown, ChevronRightSquare, MessageCircle, Snowflake
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
@@ -193,38 +193,40 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 3. Overview & Touring Experience */}
-        <section className="py-12">
+        <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mb-10">
-              <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2">UNCOMPROMISING RIDE QUALITY</span>
+            <div className="max-w-3xl mb-12">
+              <div className="inline-flex items-center gap-2 bg-[#ffedd5] text-orange-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div> ENGINEERING & RIDE QUALITY
+              </div>
               <h2 className="text-[2rem] font-bold text-[#0f172a] mb-4 tracking-tight">Vehicle Overview & Touring Experience</h2>
-              <p className="text-[15px] text-slate-600 leading-relaxed">
+              <p className="text-[14px] text-slate-500 leading-relaxed max-w-2xl">
                 The {vehicle.name} is South India's most celebrated highway cruiser for a reason. Built on an indestructible ladder-frame chassis with double-wishbone front suspension, it absorbs high-speed expressway undulations and uneven mountain tarmac with zero cabin yaw or passenger fatigue.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               {vehicle.overview.map((item, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-[1.5rem] shadow-sm hover:shadow-md transition-shadow flex flex-col">
-                  <div className={`w-10 h-10 rounded-xl mb-6 flex items-center justify-center ${idx === 0 ? 'bg-indigo-50 text-indigo-600' : idx === 1 ? 'bg-blue-50 text-blue-600' : 'bg-orange-50 text-orange-600'}`}>
-                    {idx === 0 ? <Zap className="w-5 h-5" /> : idx === 1 ? <User className="w-5 h-5" /> : <Shield className="w-5 h-5" />}
+                <div key={idx} className="bg-white p-8 rounded-[1.5rem] shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 flex flex-col">
+                  <div className="w-10 h-10 rounded-xl mb-6 flex items-center justify-center bg-slate-100 text-slate-700">
+                    {idx === 0 ? <MapPin className="w-5 h-5" /> : idx === 1 ? <Armchair className="w-5 h-5" /> : <Snowflake className="w-5 h-5" />}
                   </div>
                   <h3 className="text-[17px] font-bold text-[#0f172a] mb-3">{item.title}</h3>
-                  <p className="text-[13px] text-slate-500 leading-relaxed mb-6 flex-grow">{item.desc}</p>
-                  <div className="flex items-center gap-1.5 text-[9px] font-bold text-[#1e3a8a] bg-blue-50/70 px-3 py-2 rounded-lg w-fit">
-                    <CheckCircle2 className={`w-3.5 h-3.5 text-blue-500`} /> {item.tag}
+                  <p className="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow">{item.desc}</p>
+                  <div className="flex items-center gap-1.5 text-[9px] font-bold text-blue-600 bg-blue-50 px-3 py-2 rounded-md w-fit">
+                    <Check className="w-3.5 h-3.5" /> {item.tag}
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-col md:flex-row md:items-center gap-4 bg-white px-6 py-5 rounded-[1.5rem] shadow-sm w-full">
-              <div className="flex items-center gap-2 font-bold text-[#0f172a] text-[13px] shrink-0 md:pr-4">
-                <CheckCircle2 className="w-4 h-4 text-blue-600" /> Best Suited For:
+            <div className="flex flex-col md:flex-row md:items-center gap-4 bg-white border border-slate-100 px-6 py-4 rounded-[1rem] shadow-sm w-full">
+              <div className="flex items-center gap-2 font-bold text-[#0f172a] text-[12px] shrink-0 md:pr-4">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div> Best Suited For:
               </div>
               <div className="flex flex-wrap items-center gap-3">
                 {vehicle.bestSuitedFor.map((suit, idx) => (
-                  <span key={idx} className="text-[11px] font-medium text-slate-600 bg-[#f1f5f9] px-4 py-2 rounded-full">{suit}</span>
+                  <span key={idx} className="text-[10px] font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md">{suit}</span>
                 ))}
               </div>
             </div>
@@ -233,34 +235,31 @@ export default function VehicleDetailsPage() {
 
         {/* 4. Elite Chauffeurs Banner */}
         <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-[1.5rem] p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="bg-white rounded-[1.5rem] p-8 shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-20 h-20 rounded-full bg-slate-100 overflow-hidden border border-slate-200 shrink-0 relative">
-                <Image src="/images/dest1.png" alt="Chauffeur" fill className="object-cover" />
+              <div className="w-[72px] h-[72px] rounded-2xl bg-blue-50 flex items-center justify-center shrink-0">
+                <User className="w-8 h-8 text-blue-600" />
               </div>
               <div className="text-center md:text-left">
-                <span className="text-[9px] font-bold text-blue-600 uppercase tracking-widest block mb-1">RUDHRAN ASSURANCE PROTOCOL</span>
-                <h3 className="text-lg font-bold text-[#0f172a] mb-2">Elite Touring Chauffeurs Only</h3>
-                <p className="text-[11px] text-slate-500 max-w-2xl leading-relaxed">
+                <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
+                  <span className="text-[9px] font-bold text-blue-600 uppercase tracking-widest block">RUDHRAN ACCREDITED DRIVERS</span>
+                  <span className="bg-emerald-100 text-emerald-700 text-[8px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Verified Safe</span>
+                </div>
+                <h3 className="text-[22px] font-bold text-[#0f172a] mb-2">Elite Touring Chauffeurs Only</h3>
+                <p className="text-[12px] text-slate-500 max-w-xl leading-relaxed">
                   We never outsource your safety to unverified freelance drivers. Our {vehicle.name} pilots have an average of 12+ years touring experience, speak English and South Indian regional languages, and follow non-smoking cabin mandates.
                 </p>
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <div className="flex items-center gap-3 bg-[#f4f7fb] px-4 py-3 rounded-xl border border-transparent">
-                <Shield className="w-4 h-4 text-blue-600" />
-                <div className="text-left">
-                  <p className="text-[10px] font-bold text-[#0f172a]">100% Police Verified</p>
-                  <p className="text-[9px] text-slate-500 font-medium">Clean Record Check</p>
-                </div>
+            <div className="flex gap-4 shrink-0">
+              <div className="flex flex-col items-center justify-center bg-[#fafafa] border border-slate-100 w-28 h-24 rounded-2xl">
+                <span className="text-[18px] font-extrabold text-[#0f172a] mb-1">100%</span>
+                <span className="text-[8px] text-slate-500 font-medium">FASTag Enabled</span>
               </div>
-              <div className="flex items-center gap-3 bg-[#f4f7fb] px-4 py-3 rounded-xl border border-transparent">
-                <Thermometer className="w-4 h-4 text-blue-600" />
-                <div className="text-left">
-                  <p className="text-[10px] font-bold text-[#0f172a]">Breathalyzer Certified</p>
-                  <p className="text-[9px] text-slate-500 font-medium">Pre-Trip Screening</p>
-                </div>
+              <div className="flex flex-col items-center justify-center bg-[#fafafa] border border-slate-100 w-28 h-24 rounded-2xl">
+                <span className="text-[18px] font-extrabold text-[#0f172a] mb-1">Zero</span>
+                <span className="text-[8px] text-slate-500 font-medium text-center px-2">Rash Driving Record</span>
               </div>
             </div>
           </div>
@@ -269,41 +268,34 @@ export default function VehicleDetailsPage() {
         {/* 5. Alternative Vehicles */}
         <section className="pt-16 pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-end mb-8">
+            <div className="flex justify-between items-end mb-10">
               <div>
-                <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-1">EXPLORE SOUTH INDIA FLEET</span>
+                <div className="inline-flex items-center gap-2 bg-[#ffedd5] text-orange-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+                  <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div> POPULAR SOUTH INDIA FLEET
+                </div>
                 <h2 className="text-[2rem] font-bold text-[#0f172a] tracking-tight">Alternative Touring Vehicles</h2>
               </div>
-              <Link href="/vehicles" className="text-blue-600 text-[13px] font-bold hover:text-blue-700 flex items-center gap-1 mb-2">
-                View All 18 Vehicles &rarr;
+              <Link href="/vehicles" className="bg-[#f97316] hover:bg-orange-600 text-white text-[12px] font-bold py-2.5 px-5 rounded-xl transition-colors flex items-center gap-2 mb-2 shadow-sm">
+                View all vehicles <ChevronRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {alternatives.map(alt => (
-                <div key={alt.id} className="bg-white rounded-[1.5rem] overflow-hidden hover:shadow-xl transition-all shadow-sm flex flex-col border border-transparent p-4">
-                  <div className="relative h-[220px] bg-slate-100 overflow-hidden rounded-2xl mb-4">
+                <div key={alt.id} className="bg-white rounded-[1.5rem] overflow-hidden hover:shadow-xl transition-all shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 flex flex-col">
+                  <div className="relative h-[220px] bg-slate-100 overflow-hidden rounded-t-[1.5rem] mb-4">
                     <Image src={alt.img} alt={alt.name} fill className="object-cover transition-transform duration-500 hover:scale-105" />
-                    <div className="absolute top-3 left-3 bg-[#0f172a]/80 backdrop-blur text-white text-[9px] font-bold px-3 py-1.5 rounded-md">
+                    <div className="absolute top-3 left-3 bg-[#0f172a]/90 backdrop-blur text-white text-[9px] font-bold px-3 py-1.5 rounded-md">
                       {alt.category}
                     </div>
+                    <div className="absolute bottom-3 right-3 bg-white text-[#0f172a] text-[10px] font-bold px-3 py-1.5 rounded-md shadow-sm">
+                      ₹{alt.price} / km
+                    </div>
                   </div>
-                  <div className="px-2 pb-2 flex flex-col flex-grow">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-bold text-[#0f172a] text-[17px]">{alt.name}</h3>
-                      <div className="text-right flex items-baseline gap-0.5">
-                        <span className="text-[20px] font-extrabold text-blue-600">₹{alt.price}</span><span className="text-[10px] font-medium text-slate-500">/km</span>
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-slate-500 mb-5 leading-relaxed flex-grow">{alt.desc}</p>
-                    <div className="flex flex-wrap gap-x-4 gap-y-2 mb-6">
-                      {alt.features.slice(0, 3).map((feat, idx) => (
-                        <div key={idx} className="flex items-center gap-1.5 text-[10px] font-medium text-slate-600">
-                          <feat.icon className="w-3.5 h-3.5 text-slate-400"/> {feat.text}
-                        </div>
-                      ))}
-                    </div>
-                    <Link href={`/vehicles/${alt.id}`} className="w-full py-3.5 bg-[#eef2ff] hover:bg-blue-100 text-[#1e3a8a] rounded-xl text-[11px] font-bold transition-colors flex items-center justify-center">
+                  <div className="p-6 pt-2 flex flex-col flex-grow">
+                    <h3 className="font-bold text-[#0f172a] text-[18px] mb-2">{alt.name}</h3>
+                    <p className="text-[11px] text-slate-500 mb-6 leading-relaxed flex-grow">{alt.desc}</p>
+                    <Link href={`/vehicles/${alt.id}`} className="w-full py-3.5 bg-slate-50 hover:bg-slate-100 text-[#0f172a] rounded-xl text-[11px] font-bold transition-colors flex items-center justify-center">
                       View {alt.name.split(' ')[1]} Details
                     </Link>
                   </div>
@@ -314,21 +306,27 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 6. Custom Itinerary CTA */}
-        <section className="bg-[#0f172a] text-white py-16 relative overflow-hidden -mb-24">
+        <section className="bg-[#0A1529] text-white py-16 relative overflow-hidden -mb-24 rounded-t-[2rem]">
+          {/* Background Glowing Spheres */}
+          <div className="absolute top-1/2 -translate-y-1/2 -left-10 w-64 h-64 bg-blue-600/30 rounded-full blur-[80px] pointer-events-none z-0"></div>
+          <div className="absolute top-1/2 -translate-y-1/2 -right-10 w-72 h-72 bg-emerald-500/20 rounded-full blur-[90px] pointer-events-none z-0"></div>
+          
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl text-center md:text-left">
-              <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-3">DEDICATED CHENNAI TRAVEL DESK</span>
+              <div className="inline-flex items-center px-3 py-1.5 bg-white/5 border border-white/10 rounded-md mb-4">
+                <span className="text-[9px] font-bold text-blue-400 uppercase tracking-widest">DEDICATED CHAUFFEUR TOUR DESK</span>
+              </div>
               <h2 className="text-3xl md:text-[2.5rem] font-bold mb-4 tracking-tight leading-tight">Need a Custom Multi-Day Itinerary <br/>for {vehicle.name}?</h2>
-              <p className="text-[13px] text-slate-400 leading-relaxed max-w-xl">
-                Planning a custom Ooty-Coonoor tour, Madurai-Rameshwaram pilgrimage, or corporate pick-up sequence? Speak directly to our trip managers for fixed all-inclusive package pricing within 15 minutes.
+              <p className="text-[12px] text-slate-300 leading-relaxed max-w-xl">
+                Planning a custom Ooty, Kodaikanal, Madurai-Rameshwaram pilgrimage, or corporate pick-up sequence? Speak directly to our trip managers for fixed all-inclusive package pricing within 15 minutes.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 mt-4 md:mt-0">
-              <a href="tel:+919840012345" className="px-6 py-3.5 bg-[#0052cc] hover:bg-blue-700 text-white rounded-xl text-[13px] font-bold transition-colors flex items-center gap-2">
-                <Phone className="w-4 h-4" /> +91 98400 12345
-              </a>
-              <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 bg-white text-slate-800 hover:bg-slate-50 rounded-xl text-[13px] font-bold transition-colors flex items-center gap-2">
-                <FileText className="w-4 h-4 text-blue-600" /> Chat on WhatsApp
+              <button onClick={() => setIsModalOpen(true)} className="px-6 py-3.5 bg-[#f97316] hover:bg-orange-600 text-white rounded-[10px] text-[13px] font-bold transition-colors flex items-center gap-2 shadow-sm">
+                Get Quote <ChevronRight className="w-4 h-4" />
+              </button>
+              <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-[10px] text-[13px] font-bold transition-colors flex items-center gap-2 shadow-sm border border-blue-500">
+                <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
               </a>
             </div>
           </div>
