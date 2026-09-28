@@ -2,189 +2,169 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ArrowRight, MapPin } from 'lucide-react';
+import { ArrowUpRight, Star } from 'lucide-react';
 
 interface TourBannersProps {
   onOpenBookingModal: (item?: any) => void;
 }
 
 export default function TourBanners({ onOpenBookingModal }: TourBannersProps) {
+  const packages = [
+    {
+      badge: 'BESTSELLER',
+      badgeColor: 'bg-[#fbbf24] text-amber-900',
+      duration: '4D / 3N',
+      region: 'KERALA HIGHLANDS',
+      title: 'Munnar Tea Hills & Valleys',
+      desc: 'Wander through emerald tea gardens, cascading waterfalls, and cool mountain peaks.',
+      price: '₹13,500',
+      priceUnit: '/ person',
+      rating: '4.9 (420+ reviews)',
+      image: '/images/dest2.png'
+    },
+    {
+      badge: 'LUXURY STAY',
+      badgeColor: 'bg-white text-slate-800',
+      duration: '2D / 1N',
+      region: 'KERALA COAST',
+      title: 'Alleppey Houseboat Cruise',
+      desc: 'Drift along tranquil palm-fringed canals on a private traditional luxury houseboat.',
+      price: '₹15,200',
+      priceUnit: '/ couple',
+      rating: '5.0 (610+ reviews)',
+      image: 'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80',
+      actionColor: 'bg-[#fbbf24] text-amber-900'
+    },
+    {
+      badge: 'POPULAR',
+      badgeColor: 'bg-[#6366f1] text-white',
+      duration: '3D / 2N',
+      region: 'TAMIL NADU WESTERN GHATS',
+      title: 'Kodaikanal Pine & Mist',
+      desc: 'Breathe in fragrant pine woods, boating on the star-shaped lake and misty pillar rocks.',
+      price: '₹11,800',
+      priceUnit: '/ person',
+      rating: '4.8 (380+ reviews)',
+      image: '/images/dest1.png'
+    },
+    {
+      badge: 'HILL STATION',
+      badgeColor: 'bg-[#10b981] text-white',
+      duration: '3D / 2N',
+      region: 'QUEEN OF HILL STATIONS',
+      title: 'Ooty & Coonoor Nilgiris',
+      desc: 'Scenic Toy Train ride through Nilgiri mountains, botanical gardens, and sprawling tea estates.',
+      price: '₹12,200',
+      priceUnit: '/ person',
+      rating: '4.9 (510+ reviews)',
+      image: 'https://images.unsplash.com/photo-1589136777351-fdc9c9cb1565?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      badge: 'HERITAGE TOUR',
+      badgeColor: 'bg-[#fbbf24] text-amber-900',
+      duration: '3D / 2N',
+      region: 'KARNATAKA SPLENDOR',
+      title: 'Royal Mysore Palace',
+      desc: 'Witness the majestic golden illuminated royal palace, Indo-Saracenic grandeur, and Chamundi hills.',
+      price: '₹14,900',
+      priceUnit: '/ person',
+      rating: '4.9 (490+ reviews)',
+      image: 'https://images.unsplash.com/photo-1600011844415-dfdbb6349190?auto=format&fit=crop&w=800&q=80',
+      actionColor: 'bg-[#fbbf24] text-amber-900'
+    },
+    {
+      badge: 'SPIRITUAL CIRCUIT',
+      badgeColor: 'bg-[#ef4444] text-white',
+      duration: '3D / 2N',
+      region: 'ANCIENT TEMPLES & SEA',
+      title: 'Madurai & Rameshwaram',
+      desc: 'Historic towering temple gopurams, ancient spiritual rituals, and scenic Pamban sea bridge.',
+      price: '₹13,800',
+      priceUnit: '/ person',
+      rating: '4.9 (340+ reviews)',
+      image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f7415e?auto=format&fit=crop&w=800&q=80'
+    }
+  ];
+
   return (
-    <section className="py-16 bg-white text-slate-900 relative border-b border-slate-200 poppins-regular">
+    <section className="py-24 bg-white text-slate-900 poppins-regular border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center space-y-2 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900">
-            Tour Packages
+        {/* Header */}
+        <div className="mb-12">
+          <div className="inline-block bg-[#fffbeb] text-[#d97706] font-bold text-[10px] tracking-widest px-3 py-1.5 rounded-full mb-4 flex items-center gap-2 uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]"></span>
+            CURATED DESTINATIONS & HOLIDAYS
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] tracking-tight mb-2">
+            Explore Handcrafted Tour Packages
           </h2>
-          <p className="text-blue-600 text-sm font-normal">
+          <p className="text-slate-500 text-sm font-medium">
             Well-maintained vehicles for every journey.
           </p>
         </div>
 
-        {/* 2-Column Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          {/* Left Column: 2 Stacked Wide Banners (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
-            
-            {/* Banner 1: Madurai Sightseeing */}
-            <div className="relative h-64 sm:h-72 rounded-[32px] overflow-hidden border border-slate-200 shadow-xl group">
-              <Image
-                src="/images/dest1.png"
-                alt="Madurai Temple"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {packages.map((pkg, index) => (
+            <div 
+              key={index}
+              onClick={() => onOpenBookingModal(pkg)}
+              className="group relative h-[420px] rounded-[2rem] overflow-hidden cursor-pointer flex flex-col justify-between p-6 shadow-lg border border-slate-100/10"
+            >
+              {/* Background Image */}
+              <Image 
+                src={pkg.image} 
+                alt={pkg.title} 
+                fill 
+                className="object-cover transition-transform duration-700 group-hover:scale-110 z-0"
+                unoptimized
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/20 to-transparent" />
-
-              {/* High Contrast Frosted Glass Overlay Box at Bottom */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/20 backdrop-blur-md border border-white/40 p-4 sm:p-5 rounded-[20px] text-slate-900 space-y-2.5">
-                <div className="text-[11px] font-medium tracking-widest text-orange-600 uppercase flex items-center space-x-1">
-                  <MapPin className="w-3.5 h-3.5 text-orange-600" />
-                  <span>MADURAI</span>
-                </div>
-
-                <div className="flex justify-between items-baseline">
-                  <h3 className="text-lg sm:text-xl font-medium text-slate-900">Madurai Sightseeing</h3>
-                  <div className="text-sm sm:text-base font-medium text-slate-900">
-                    <span className="line-through text-slate-600 text-xs mr-1.5">₹950</span>
-                    ₹750
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-                  <div className="flex flex-wrap gap-2 text-[11px] font-medium">
-                    <span className="border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-800 bg-transparent">1 Day</span>
-                    <span className="border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-800 bg-transparent">AC Vehicle</span>
-                    <span className="border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-800 bg-transparent">Guided Tour</span>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <button
-                      onClick={() => onOpenBookingModal({ title: 'Madurai Sightseeing', startingPrice: 750 })}
-                      className="px-4 py-2 rounded-full bg-slate-950 hover:bg-slate-900 text-white font-normal text-xs flex items-center space-x-1 shadow transition-colors"
-                    >
-                      <span>Details</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-
-                    <button
-                      onClick={() => onOpenBookingModal({ title: 'Madurai Sightseeing', startingPrice: 750 })}
-                      className="px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-normal text-xs shadow-md shadow-orange-500/30 transition-colors"
-                    >
-                      Book Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Banner 2: Madurai to Rameshwaram */}
-            <div className="relative h-64 sm:h-72 rounded-[32px] overflow-hidden border border-slate-200 shadow-xl group">
-              <Image
-                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
-                alt="Coastal Rameshwaram"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/20 to-transparent" />
-
-              {/* High Contrast Frosted Glass Overlay Box at Bottom */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/20 backdrop-blur-md border border-white/40 p-4 sm:p-5 rounded-[20px] text-slate-900 space-y-2.5">
-                <div className="text-[11px] font-medium tracking-widest text-orange-600 uppercase flex items-center space-x-1">
-                  <MapPin className="w-3.5 h-3.5 text-orange-600" />
-                  <span>COASTAL</span>
-                </div>
-
-                <div className="flex justify-between items-baseline">
-                  <h3 className="text-lg sm:text-xl font-medium text-slate-900">Madurai to Rameshwaram</h3>
-                  <div className="text-sm sm:text-base font-medium text-slate-900">
-                    ₹1400
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-                  <div className="flex flex-wrap gap-2 text-[11px] font-medium">
-                    <span className="border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-800 bg-transparent">1 Day</span>
-                    <span className="border border-slate-700/60 px-3 py-1.5 rounded-full text-slate-800 bg-transparent">AC Vehicle</span>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <button
-                      onClick={() => onOpenBookingModal({ title: 'Madurai to Rameshwaram', startingPrice: 1400 })}
-                      className="p-2.5 rounded-full bg-slate-950 hover:bg-slate-900 text-white flex items-center justify-center shadow transition-colors"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-
-                    <button
-                      onClick={() => onOpenBookingModal({ title: 'Madurai to Rameshwaram', startingPrice: 1400 })}
-                      className="px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-normal text-xs shadow-md shadow-orange-500/30 transition-colors"
-                    >
-                      Book Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* Right Column: Tall Vertical Banner - Madurai to Kodaikanal (5 cols) */}
-          <div className="lg:col-span-5 relative min-h-[520px] rounded-[32px] overflow-hidden border border-slate-200 shadow-xl group">
-            <Image
-              src="/images/dest2.png"
-              alt="Kodaikanal Mountains"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-
-            {/* Special Offer Red Badge Top-Left */}
-            <div className="absolute top-4 left-4 bg-[#c82323] text-white text-[11px] font-normal px-3 py-1 rounded-full shadow-md z-10">
-              Special Offer
-            </div>
-
-            {/* High Contrast Bottom Frosted Glass Box */}
-            <div className="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-[24px] text-white space-y-3 z-10">
-              <div className="text-[11px] font-medium tracking-widest text-[#e0b741] uppercase flex items-center space-x-1">
-                <MapPin className="w-3.5 h-3.5 text-[#e0b741]" />
-                <span>KODAIKANAL</span>
-              </div>
-
-              <h3 className="text-lg sm:text-xl font-medium text-white">Madurai to Kodaikanal</h3>
               
-              <div className="flex items-center space-x-1 text-xs text-amber-400 font-normal">
-                <span>⭐⭐⭐⭐⭐</span>
-                <span className="text-[11px] text-white/80 font-normal">(Top Rating)</span>
-              </div>
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-[#0f172a]/95 z-10"></div>
 
-              <div className="flex flex-wrap gap-2 text-[11px] font-medium">
-                <span className="border border-white/50 px-3 py-1 rounded-full text-white/90 bg-transparent">1 Day</span>
-                <span className="border border-white/50 px-3 py-1 rounded-full text-white/90 bg-transparent">Hill Station</span>
-              </div>
-
-              <div className="pt-2 space-y-2">
-                <div className="flex justify-between items-center text-xs text-white/90">
-                  <span className="font-normal">Starting at</span>
-                  <span className="font-medium text-white text-sm sm:text-base">₹1300</span>
+              {/* Top Badges */}
+              <div className="relative z-20 flex justify-between items-start">
+                <div className="flex gap-2">
+                  <div className={`text-[10px] font-bold px-3 py-1.5 rounded-full ${pkg.badgeColor} uppercase tracking-wider shadow-md`}>
+                    {pkg.badge}
+                  </div>
+                  <div className="bg-black/30 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-md uppercase">
+                    {pkg.duration}
+                  </div>
                 </div>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 shadow-md ${pkg.actionColor || 'bg-white/20 backdrop-blur-md text-white'}`}>
+                  <ArrowUpRight className="w-4 h-4" />
+                </div>
+              </div>
 
-                <button
-                  onClick={() => onOpenBookingModal({ title: 'Madurai to Kodaikanal', startingPrice: 1300 })}
-                  className="w-full py-3 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-normal text-xs shadow-md shadow-orange-500/30 transition-colors"
-                >
-                  Book Experience
-                </button>
+              {/* Bottom Content */}
+              <div className="relative z-20 mt-auto pt-4">
+                <div className="text-[10px] font-bold text-[#fbbf24] tracking-widest uppercase mb-1">
+                  {pkg.region}
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
+                  {pkg.title}
+                </h3>
+                <p className="text-xs text-slate-300 font-medium leading-relaxed mb-5 max-w-sm">
+                  {pkg.desc}
+                </p>
+                
+                <div className="h-px w-full bg-white/10 mb-4"></div>
+                
+                <div className="flex justify-between items-center">
+                  <div className="text-white font-medium text-xs">
+                    From <span className="font-bold text-sm">{pkg.price}</span> <span className="text-slate-400 text-[10px]">{pkg.priceUnit}</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-[#10b981] text-[10px] font-bold">
+                    <Star className="w-3 h-3 fill-current" />
+                    {pkg.rating}
+                  </div>
+                </div>
               </div>
             </div>
-
-          </div>
-
+          ))}
         </div>
 
       </div>
