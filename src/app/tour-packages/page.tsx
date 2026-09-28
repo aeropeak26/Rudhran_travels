@@ -248,25 +248,34 @@ export default function TourPackagesPage() {
 
         {/* 4. CTA Block */}
         <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#0f172a] text-white rounded-[2rem] p-12 md:p-16 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 blur-3xl rounded-full translate-x-1/3 -translate-y-1/3"></div>
+          <div className="bg-[#0A111E] text-white rounded-[1.5rem] p-10 md:p-14 relative overflow-hidden shadow-xl border border-white/5">
             
-            <div className="max-w-2xl text-center md:text-left relative z-10">
-              <span className="text-[9px] font-bold text-blue-400 uppercase tracking-widest block mb-3">START PLANNING TODAY</span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight leading-tight">Your Next Adventure Starts Here</h2>
-              <p className="text-[14px] text-slate-400 leading-relaxed max-w-lg mb-0">
-                Let us map out a flawless travel experience. Share your desired dates and destinations, and we'll craft the perfect itinerary.
+            {/* Background Glowing Spheres (Right Side) */}
+            <div className="absolute top-1/2 -translate-y-1/2 right-20 w-80 h-80 bg-[#0052cc]/40 rounded-full blur-[100px] pointer-events-none z-0"></div>
+            <div className="absolute -bottom-10 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+            
+            <div className="max-w-xl relative z-10">
+              <span className="text-[8px] font-bold text-blue-500 uppercase tracking-widest block mb-3">SEAMLESS TRAVEL BOOKING</span>
+              <h2 className="text-3xl md:text-[2.2rem] font-bold mb-4 tracking-tight leading-tight">Your Next Adventure Starts Here</h2>
+              <p className="text-[12px] text-slate-300 leading-relaxed mb-8">
+                Choose your destination and let us take care of the journey.<br />
+                Custom hotel packages and vehicle hires crafted directly by our<br />
+                Chennai travel experts.
               </p>
+              
+              <div className="flex flex-wrap items-center gap-3">
+                <button onClick={() => setIsModalOpen(true)} className="px-6 py-3 bg-[#0066ff] hover:bg-blue-600 text-white rounded-[8px] text-[11px] font-bold transition-colors shadow-md">
+                  Plan My Trip
+                </button>
+                <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-[8px] text-[11px] font-bold transition-colors flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-emerald-500 flex items-center justify-center shadow-sm">
+                    <Phone className="w-1.5 h-1.5 text-white fill-white" />
+                  </div> 
+                  Contact via WhatsApp
+                </a>
+              </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 relative z-10">
-              <button onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto px-8 py-4 bg-[#0052cc] hover:bg-blue-700 text-white rounded-xl text-[13px] font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20">
-                <Map className="w-4 h-4" /> Plan My Trip
-              </button>
-              <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl text-[13px] font-bold transition-colors flex items-center justify-center gap-2">
-                <FileText className="w-4 h-4" /> Contact via WhatsApp
-              </a>
-            </div>
           </div>
         </section>
 
