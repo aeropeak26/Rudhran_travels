@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { vehiclesData } from '@/data/vehicles';
 import { 
   CheckCircle2, ChevronRight, User, Shield, Thermometer, Briefcase, 
-  MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Info, AlertCircle, Sparkles, Star, Snowflake
+  MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Info, AlertCircle, Sparkles, Star, Snowflake, Cloud
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
@@ -15,40 +15,28 @@ import BookingModal from '@/components/BookingModal';
 
 const additionalCharges = [
   {
-    icon: CheckCircle2,
-    title: 'Toll Charges',
-    desc: 'Scanned electronically in real-time via official NHAI FASTag. Itemized digital slips and pass notifications are verified directly with you at actual government rates.',
-    tag: 'AT ACTUALS (GOVT RATES)'
-  },
-  {
-    icon: MapPin,
-    title: 'Parking Charges',
-    desc: 'Physical parking fee receipts incurred at Chennai Airport (MAA), railway junctions, major pilgrimage shrines, UNESCO monument sites, and hotel valet points.',
-    tag: 'ACTUAL PRINTED SLIPS'
-  },
-  {
-    icon: Briefcase,
-    title: 'Driver Allowance',
-    desc: 'Daily chauffeur batta covering certified driver nourishment and overnight rest during outstation journeys. Fixed at ₹400 to ₹600 based on vehicle category.',
-    tag: '₹400 - ₹600 / CALENDAR DAY'
-  },
-  {
     icon: Info,
-    title: 'Interstate Permits',
-    desc: 'State road transport tax and official border entry permits when crossing into Kerala, Karnataka, Andhra Pradesh, or Puducherry with automated online tax receipts.',
-    tag: 'GOVT BORDER TAX INVOICED'
+    title: 'Toll Gate & FASTag',
+    desc: 'Billed directly as per actual NHAI digital FASTag statement receipts. No estimated toll lump sums or markups.',
+    tag: 'At Actuals via FASTag'
   },
   {
-    icon: Navigation,
-    title: 'Additional Kilometres',
-    desc: 'Travel exceeding the pre-booked daily minimum threshold (250 km or 300 km) billed at the standardized transparent per-kilometer rate indicated in your card.',
-    tag: 'CALCULATED PER VEHICLE RATE'
+    icon: ShieldCheck,
+    title: 'Interstate & Parking Tax',
+    desc: 'State border permits (Kerala, Karnataka, AP, Pondicherry) and temple parking slips paid directly at government checkpoints.',
+    tag: 'State Government Receipts'
   },
   {
     icon: Moon,
-    title: 'Night & Hill Station Cess',
-    desc: 'Modest night driving allowance applicable strictly between 10:00 PM and 6:00 AM, alongside municipal hill station green entry fees (Ooty/Kodaikanal/Yercaud).',
-    tag: '₹300 NIGHT / ACTUAL CESS'
+    title: 'Night Driving Charges',
+    desc: 'Applicable strictly when vehicle is in active driving transit between 10:00 PM and 6:00 AM for chauffeur alertness safety.',
+    tag: '₹300 per night journey'
+  },
+  {
+    icon: Cloud,
+    title: 'Hill Station Entry / Cess',
+    desc: 'Green cess & entry fees prescribed by local collectorate councils (e.g. Ooty, Kodaikanal, Munnar, Yercaud).',
+    tag: 'Per District Tariff'
   }
 ];
 
@@ -289,26 +277,30 @@ export default function TariffPage() {
         {/* 3. Additional Charges */}
         <section className="py-16 bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-[9px] font-bold text-blue-600 uppercase tracking-widest block mb-2">TRANSPARENT BILLING STANDARDS</span>
-              <h2 className="text-[2rem] font-bold text-[#0f172a] mb-4 tracking-tight">Additional Charges</h2>
-              <p className="text-[13px] text-slate-600 leading-relaxed">
+            <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center">
+              <div className="inline-flex items-center gap-2 bg-[#ffedd5] text-yellow-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div> TRANSPARENT BILLING STANDARDS
+              </div>
+              <h2 className="text-[2rem] font-bold text-[#0f172a] mb-4 tracking-tight">Additional Charges & Terms</h2>
+              <p className="text-[13px] text-slate-500 leading-relaxed max-w-2xl">
                 100% transparent out-of-pocket costs with zero hidden markups. You only pay for authentic travel expenses supported by official receipts.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {additionalCharges.map((charge, idx) => (
-                <div key={idx} className="bg-white rounded-[1.5rem] p-8 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-6">
+                <div key={idx} className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                  <div className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center mb-5">
                     <charge.icon className="w-4 h-4 text-blue-600" />
                   </div>
-                  <h3 className="text-[16px] font-bold text-[#0f172a] mb-3">{charge.title}</h3>
-                  <p className="text-[11px] text-slate-500 leading-relaxed mb-6 min-h-[72px]">
+                  <h3 className="text-[15px] font-bold text-[#0f172a] mb-3">{charge.title}</h3>
+                  <p className="text-[11px] text-slate-500 leading-relaxed mb-6 flex-grow">
                     {charge.desc}
                   </p>
-                  <div className="text-[9px] font-bold text-blue-600 uppercase tracking-wider">
-                    {charge.tag}
+                  <div className="pt-4 border-t border-slate-100 mt-auto">
+                    <span className="text-[10px] font-bold text-blue-600">
+                      {charge.tag}
+                    </span>
                   </div>
                 </div>
               ))}
