@@ -1,189 +1,167 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Search, Luggage, DollarSign, ChevronDown, MessageCircle } from 'lucide-react';
+import { MapPin, Navigation, Calendar, Car, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface BookingWidgetProps {
   onSearchCars: (searchData: any) => void;
 }
 
 export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
-  const [activeTab, setActiveTab] = useState<'search' | 'tour' | 'rental'>('search');
-  const [carModel, setCarModel] = useState('All Makes');
-  const [seats, setSeats] = useState('No of seats');
-  const [priceRange, setPriceRange] = useState('No Min');
-  const [location, setLocation] = useState('All Locations');
+  const [pickup, setPickup] = useState('');
+  const [destination, setDestination] = useState('');
+  const [date, setDate] = useState('');
+  const [vehicle, setVehicle] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSearchCars({
-      activeTab,
-      carModel,
-      seats,
-      priceRange,
-      location,
+      pickup,
+      destination,
+      date,
+      vehicle: vehicle || 'Innova Crysta Luxury',
     });
   };
 
   return (
     <div className="relative w-full max-w-6xl mx-auto poppins-regular">
       
-      {/* Floating Green WhatsApp Button on top right */}
-      <a
-        href="https://wa.me/919876543210"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute -top-6 right-4 sm:right-6 z-30 w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-xl shadow-emerald-500/40 hover:scale-110 transition-all"
-        title="WhatsApp Support"
-      >
-        <MessageCircle className="w-6 h-6 fill-current" />
-      </a>
-
-      {/* Main Container Card (Wider Width) */}
-      <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+      {/* Main Container Card */}
+      <div className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-100 overflow-hidden">
         
-        {/* Top Navigation Tabs */}
-        <div className="flex border-b border-slate-200 bg-white text-xs font-normal">
-          <button
-            type="button"
-            onClick={() => setActiveTab('search')}
-            className={`px-8 py-4 flex items-center space-x-2 transition-all font-normal ${
-              activeTab === 'search'
-                ? 'bg-blue-600 text-white shadow'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-            }`}
-          >
-            <Search className="w-4 h-4" />
-            <span className="font-normal">Search Cars ...</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveTab('tour')}
-            className={`px-8 py-4 flex items-center space-x-2 transition-all font-normal ${
-              activeTab === 'tour'
-                ? 'bg-blue-600 text-white shadow'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-            }`}
-          >
-            <Luggage className="w-4 h-4" />
-            <span className="font-normal">Tour package</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveTab('rental')}
-            className={`px-8 py-4 flex items-center space-x-2 transition-all font-normal ${
-              activeTab === 'rental'
-                ? 'bg-blue-600 text-white shadow'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-            }`}
-          >
-            <DollarSign className="w-4 h-4" />
-            <span className="font-normal">Rental car</span>
-          </button>
-        </div>
-
-        {/* Dropdown Filters Grid */}
-        <form onSubmit={handleSubmit} className="p-6 sm:p-7 bg-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+        <form onSubmit={handleSubmit} className="p-6 md:p-8">
           
-          {/* CAR MODEL */}
-          <div>
-            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1.5 tracking-wider">
-              CAR MODEL
-            </label>
-            <div className="relative">
-              <select
-                value={carModel}
-                onChange={(e) => setCarModel(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-blue-600"
-              >
-                <option value="All Makes">All Makes</option>
-                <option value="Toyota Innova Crysta">Toyota Innova Crysta</option>
-                <option value="Maruti Dzire">Maruti Dzire</option>
-                <option value="Hyundai i20">Hyundai i20</option>
-                <option value="Mahindra XUV700">Mahindra XUV700</option>
-              </select>
-              <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none" />
+          {/* Header Row */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div className="flex items-start gap-3">
+              <div className="w-2.5 h-8 bg-blue-600 rounded-full mt-1"></div>
+              <div>
+                <h2 className="text-2xl font-bold text-[#0f172a] tracking-tight">Plan Your Journey</h2>
+                <p className="text-[11px] text-slate-500 font-medium mt-1">
+                  Transparent per-kilometer rates • Zero hidden surcharges • Fast confirmation
+                </p>
+              </div>
+            </div>
+            <div className="bg-blue-50 border border-blue-100 px-4 py-2 rounded-full text-[10px] font-bold text-blue-600 uppercase flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+              Drivers Active In Madurai
             </div>
           </div>
 
-          {/* SEATS */}
-          <div>
-            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1.5 tracking-wider">
-              SEATS
-            </label>
-            <div className="relative">
-              <select
-                value={seats}
-                onChange={(e) => setSeats(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-blue-600"
-              >
-                <option value="No of seats">No of seats</option>
-                <option value="4+1 Seats">4+1 Seats</option>
-                <option value="5+1 Seats">5+1 Seats</option>
-                <option value="6+1 Seats">6+1 Seats</option>
-                <option value="7+1 Seats">7+1 Seats</option>
-              </select>
-              <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none" />
+          {/* Inputs Row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end mb-6">
+            
+            {/* PICKUP POINT */}
+            <div className="lg:col-span-1">
+              <label className="block text-[10px] font-bold text-slate-600 uppercase mb-2 tracking-wider">
+                PICKUP POINT
+              </label>
+              <div className="relative">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500">
+                  <Navigation className="w-4 h-4" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="e.g. Madurai Airport / Junction"
+                  value={pickup}
+                  onChange={(e) => setPickup(e.target.value)}
+                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 py-4 focus:ring-2 focus:ring-blue-600 focus:outline-none placeholder:text-slate-400"
+                  required
+                />
+              </div>
             </div>
+
+            {/* DESTINATION / TRIP */}
+            <div className="lg:col-span-1">
+              <label className="block text-[10px] font-bold text-slate-600 uppercase mb-2 tracking-wider">
+                DESTINATION / TRIP
+              </label>
+              <div className="relative">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-orange-500">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Kodaikanal / Rameshwaram"
+                  value={destination}
+                  onChange={(e) => setDestination(e.target.value)}
+                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 py-4 focus:ring-2 focus:ring-blue-600 focus:outline-none placeholder:text-slate-400"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* JOURNEY DATE */}
+            <div className="lg:col-span-1">
+              <label className="block text-[10px] font-bold text-slate-600 uppercase mb-2 tracking-wider">
+                JOURNEY DATE
+              </label>
+              <div className="relative">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                  <Calendar className="w-4 h-4" />
+                </div>
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 py-4 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* VEHICLE CLASS */}
+            <div className="lg:col-span-1">
+              <label className="block text-[10px] font-bold text-slate-600 uppercase mb-2 tracking-wider">
+                VEHICLE CLASS
+              </label>
+              <div className="relative">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500">
+                  <Car className="w-4 h-4" />
+                </div>
+                <select
+                  value={vehicle}
+                  onChange={(e) => setVehicle(e.target.value)}
+                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 py-4 focus:ring-2 focus:ring-blue-600 focus:outline-none appearance-none"
+                >
+                  <option value="">Innova Crysta Luxury</option>
+                  <option value="Sedan">Sedan (Etios/Dzire)</option>
+                  <option value="SUV">SUV (Innova)</option>
+                  <option value="Tempo">Tempo Traveller</option>
+                </select>
+              </div>
+            </div>
+
+            {/* GET QUOTE Button */}
+            <div className="lg:col-span-1">
+              <button
+                type="submit"
+                className="w-full py-4 px-6 rounded-xl bg-[#d97706] hover:bg-orange-600 text-white font-bold text-[11px] uppercase tracking-wider shadow-[0_0_20px_rgba(217,119,6,0.3)] flex items-center justify-center gap-2 transition-all hover:scale-[1.02]"
+              >
+                <span>GET QUOTE</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
           </div>
 
-          {/* PRICE RANGE */}
-          <div>
-            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1.5 tracking-wider">
-              PRICE RANGE
-            </label>
-            <div className="relative">
-              <select
-                value={priceRange}
-                onChange={(e) => setPriceRange(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-blue-600"
-              >
-                <option value="No Min">No Min</option>
-                <option value="Under ₹1500">Under ₹1500</option>
-                <option value="₹1500 - ₹3000">₹1500 - ₹3000</option>
-                <option value="₹3000 - ₹5000">₹3000 - ₹5000</option>
-                <option value="₹5000+">₹5000+</option>
-              </select>
-              <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none" />
+          {/* Bottom Features Row */}
+          <div className="bg-[#f8fafc] rounded-xl p-4 flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-12 mt-4">
+            <div className="flex items-center gap-2 text-[10px] font-bold text-[#0f172a] uppercase tracking-wider">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+              No hidden charges
             </div>
-          </div>
-
-          {/* LOCATION */}
-          <div>
-            <label className="block text-[10px] font-normal text-slate-500 uppercase mb-1.5 tracking-wider">
-              LOCATION
-            </label>
-            <div className="relative">
-              <select
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs font-normal rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-blue-600"
-              >
-                <option value="All Locations">All Locations</option>
-                <option value="Madurai">Madurai</option>
-                <option value="Kodaikanal">Kodaikanal</option>
-                <option value="Rameshwaram">Rameshwaram</option>
-                <option value="Ooty">Ooty</option>
-                <option value="Chennai">Chennai</option>
-              </select>
-              <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3 top-3.5 pointer-events-none" />
+            <div className="flex items-center gap-2 text-[10px] font-bold text-[#0f172a] uppercase tracking-wider">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+              24/7 travel desk
             </div>
-          </div>
-
-          {/* Blue Search Button */}
-          <div>
-            <button
-              type="submit"
-              className="w-full py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-normal text-xs tracking-wider shadow-lg shadow-blue-600/30 transition-all hover:scale-105"
-            >
-              Search Cars
-            </button>
+            <div className="flex items-center gap-2 text-[10px] font-bold text-[#0f172a] uppercase tracking-wider">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+              Immediate WhatsApp Quotation
+            </div>
           </div>
 
         </form>
-
       </div>
     </div>
   );
