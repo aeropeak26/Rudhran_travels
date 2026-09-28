@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { vehiclesData } from '@/data/vehicles';
 import { 
   CheckCircle2, ChevronRight, User, Shield, Thermometer, Briefcase, 
-  MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Info, AlertCircle, Sparkles, Star
+  MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Info, AlertCircle, Sparkles, Star, Snowflake
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
@@ -172,24 +172,24 @@ export default function TariffPage() {
           
           <div className="flex flex-col lg:flex-row justify-between items-end mb-10 gap-6">
             <div>
-              <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2 flex items-center gap-2">
-                <span className="w-4 h-px bg-blue-600 block"></span> FLEET TARIFF GUIDE
-              </span>
+              <div className="inline-flex items-center gap-2 bg-[#ffedd5] text-yellow-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div> FLEET TARIFF GUIDE
+              </div>
               <h2 className="text-[2rem] font-bold text-[#0f172a] tracking-tight">Vehicle Rental Rates</h2>
               <p className="text-[13px] text-slate-600 max-w-md mt-2 leading-relaxed">
                 Choose the vehicle that best fits your journey. Outstation rates include sanitized vehicle, certified chauffeur, and fuel expenses.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 bg-[#f8fafc] p-1.5 rounded-full shadow-sm border border-slate-200">
+            <div className="flex flex-wrap items-center gap-1 bg-[#e2e8f0]/60 p-1.5 rounded-full border border-slate-200">
               {['All Vehicles', 'Sedans', 'SUVs & MPVs', 'Group Coaches'].map(f => (
                 <button 
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`px-6 py-2 rounded-full text-[11px] font-bold transition-all ${
+                  className={`px-5 py-2 rounded-full text-[12px] font-medium transition-all ${
                     filter === f 
-                    ? 'bg-[#0f172a] text-white shadow-md' 
-                    : 'text-slate-600 hover:bg-slate-100 hover:text-[#0f172a]'
+                    ? 'bg-[#0f172a] text-white shadow-sm font-semibold' 
+                    : 'text-slate-600 hover:bg-white hover:text-[#0f172a]'
                   }`}
                 >
                   {f}
@@ -217,12 +217,12 @@ export default function TariffPage() {
                   <div className="relative h-48 rounded-[1rem] overflow-hidden mb-5 bg-slate-100 group">
                     <Image src={v.img} alt={v.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     
-                    <div className={`absolute top-3 left-3 shadow-sm text-white text-[9px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 uppercase ${override.mostPopular ? 'bg-[#107c58]' : 'bg-[#0f172a]/80 backdrop-blur'}`}>
+                    <div className={`absolute top-3 left-3 shadow-sm text-white text-[9px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 uppercase ${override.mostPopular ? 'bg-[#107c58]' : 'bg-[#1e293b]'}`}>
                       {override.badge}
                     </div>
 
-                    <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur shadow-sm text-blue-700 text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                      AC Included
+                    <div className="absolute bottom-3 right-3 bg-white shadow-sm text-[#0f172a] text-[9px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-slate-100">
+                      <Snowflake className="w-3 h-3 text-blue-500" /> AC Included
                     </div>
                   </div>
 
