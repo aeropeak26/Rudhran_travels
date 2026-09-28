@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { packagesData } from '@/data/packages';
 import { 
   Check, MapPin, Clock, Phone, FileText, Zap, ShieldCheck, Star, 
-  Map, Calendar, Plus, Car, User, Navigation, ArrowRight
+  Map, Calendar, Plus, Car, User, Navigation, ArrowRight, MessageCircle
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
