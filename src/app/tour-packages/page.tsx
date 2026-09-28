@@ -250,9 +250,9 @@ export default function TourPackagesPage() {
         <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#0A111E] text-white rounded-[1.5rem] p-10 md:p-14 relative overflow-hidden shadow-xl border border-white/5">
             
-            {/* Background Glowing Spheres (Right Side) */}
-            <div className="absolute top-1/2 -translate-y-1/2 right-20 w-80 h-80 bg-[#0052cc]/40 rounded-full blur-[100px] pointer-events-none z-0"></div>
-            <div className="absolute -bottom-10 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
+            {/* Background Glowing Spheres */}
+            <div className="absolute top-1/2 -translate-y-1/2 left-[45%] w-96 h-96 bg-blue-600/30 rounded-full blur-[100px] pointer-events-none z-0"></div>
+            <div className="absolute top-1/2 -translate-y-1/2 -right-10 w-96 h-96 bg-blue-600/40 rounded-full blur-[100px] pointer-events-none z-0"></div>
             
             <div className="max-w-xl relative z-10">
               <span className="text-[8px] font-bold text-blue-500 uppercase tracking-widest block mb-3">SEAMLESS TRAVEL BOOKING</span>
