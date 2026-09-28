@@ -120,91 +120,67 @@ export default function TourPackagesPage() {
           {/* Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPackages.map((pkg, idx) => (
-              <div key={pkg.id} className={`relative rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group border border-white/10 h-[420px] ${pkg.featured ? 'md:col-span-2' : 'col-span-1'}`}>
+              <div key={pkg.id} className="relative rounded-[1.5rem] bg-[#0A111E] overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col group h-[440px]">
                 
-                {/* Optional Orange Top Tab */}
-                {pkg.badge && !pkg.featured && pkg.badge.includes('HERITAGE') && (
-                  <div className="absolute top-0 left-6 bg-[#ffb703] text-[#0f172a] text-[8px] font-black uppercase px-3 py-1.5 rounded-b-lg z-20 shadow-sm">
-                    {pkg.badge}
-                  </div>
-                )}
-
                 {/* Background Image */}
                 <Image src={pkg.img} alt={pkg.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                 
-                {/* Gradients */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1324] via-[#0b1324]/60 to-[#0b1324]/10 z-0"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1324] via-[#0b1324]/90 to-transparent h-2/3 top-1/3 z-0"></div>
+                {/* Single Bottom Gradient (Removes complex z-indexes) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A111E] via-[#0A111E]/80 to-transparent"></div>
+
+                {/* Optional Ribbons (Top Left) */}
+                {pkg.featured && (
+                  <div className="absolute top-0 left-0 bg-[#0052cc] text-white text-[9px] font-bold uppercase px-4 py-1.5 rounded-br-xl shadow-md z-20 flex items-center gap-1.5">
+                    <Star className="w-3 h-3 fill-white" /> FEATURED JOURNEY
+                  </div>
+                )}
+                {!pkg.featured && pkg.badge && pkg.badge.includes('HERITAGE') && (
+                  <div className="absolute top-0 left-0 bg-[#ffb703] text-[#0f172a] text-[9px] font-bold uppercase px-4 py-1.5 rounded-br-xl shadow-md z-20">
+                    {pkg.badge}
+                  </div>
+                )}
 
                 {/* Content Overlay */}
                 <div className="relative z-10 flex flex-col h-full w-full p-6">
                   
                   {/* Top Badges */}
-                  <div className={`flex justify-between items-start w-full ${pkg.badge && !pkg.featured && pkg.badge.includes('HERITAGE') ? 'pt-6' : ''}`}>
-                     {pkg.featured ? (
-                       <div className="bg-[#0052cc] text-white text-[9px] font-bold uppercase px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md">
-                         <Star className="w-3 h-3 fill-white" /> FEATURED JOURNEY
-                       </div>
-                     ) : (
-                       <div className="bg-[#0f172a]/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-bold px-3 py-1.5 rounded-full flex items-center shadow-sm">
-                         {pkg.duration}
-                       </div>
-                     )}
+                  <div className={`flex justify-between items-start w-full ${pkg.featured || (pkg.badge && pkg.badge.includes('HERITAGE')) ? 'pt-5' : ''}`}>
+                     <div className="bg-[#0f172a]/60 backdrop-blur-md text-white text-[9px] font-bold px-3 py-1.5 rounded-full flex items-center shadow-sm">
+                       {pkg.duration}
+                     </div>
 
-                     {pkg.featured ? (
-                       <div className="bg-[#0f172a]/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
-                         <Clock className="w-3 h-3 text-slate-300" /> {pkg.duration}
-                       </div>
-                     ) : (
-                       <div className="bg-[#0f172a]/60 backdrop-blur-md border border-white/10 text-[#ffb703] text-[9px] font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">
-                          <Star className="w-3 h-3 fill-[#ffb703]" /> 4.9
-                       </div>
-                     )}
+                     <div className="bg-blue-100/90 text-blue-800 text-[8px] font-bold px-3 py-1.5 rounded-full shadow-sm uppercase tracking-wide">
+                        {pkg.badge && !pkg.badge.includes('HERITAGE') ? pkg.badge : 'CURATED TOUR'}
+                     </div>
                   </div>
 
                   <div className="flex-grow"></div>
 
                   {/* Bottom Content */}
                   <div className="w-full">
-                    <div className="flex items-center gap-1.5 text-blue-400 text-[8px] font-black uppercase tracking-widest mb-2">
-                      <MapPin className="w-3 h-3" /> {pkg.subtitle}
+                    <div className="text-blue-400 text-[8px] font-black uppercase tracking-widest mb-1.5">
+                      {pkg.subtitle.replace(/ \| /g, ' • ')}
                     </div>
-                    <h3 className="text-white text-2xl font-bold mb-2 tracking-tight">{pkg.title}</h3>
-                    <p className={`text-[11px] text-slate-300 leading-relaxed mb-5 ${pkg.featured ? 'max-w-md' : 'max-w-sm'}`}>
+                    <h3 className="text-white text-[22px] font-bold mb-2 tracking-tight">{pkg.title}</h3>
+                    <p className="text-[11px] text-slate-300 leading-relaxed mb-5 line-clamp-2">
                       {pkg.desc}
                     </p>
 
-                    <div className="w-full h-px bg-white/10 mb-5"></div>
+                    <div className="w-full h-px bg-slate-700/50 mb-5"></div>
 
-                    <div className="flex items-end justify-between">
+                    <div className="flex items-center justify-between">
                       <div>
                         <span className="text-[8px] font-bold text-slate-400 uppercase tracking-widest block mb-0.5">STARTING FROM</span>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-xl font-extrabold text-white">₹{pkg.price}</span>
-                          <span className="text-[9px] font-medium text-slate-400">/ person</span>
-                        </div>
+                        <div className="text-[18px] font-extrabold text-white">₹{pkg.price}</div>
                       </div>
                       
                       <div className="flex items-center gap-2">
-                        {pkg.featured ? (
-                          <>
-                            <button onClick={() => setIsModalOpen(true)} className="px-4 py-2 border border-white/20 hover:bg-white/10 text-white rounded-lg text-[10px] font-bold transition-colors shadow-sm">
-                              Quick Enquire
-                            </button>
-                            <button onClick={() => setIsModalOpen(true)} className="px-5 py-2 bg-[#0052cc] hover:bg-blue-700 text-white rounded-lg text-[10px] font-bold transition-colors shadow-md shadow-blue-600/20 flex items-center gap-1.5">
-                              Explore Package &rarr;
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            <button onClick={() => setIsModalOpen(true)} className="w-8 h-8 flex items-center justify-center border border-white/20 hover:bg-white/10 text-slate-300 rounded-lg transition-colors shadow-sm">
-                              <FileText className="w-3.5 h-3.5" />
-                            </button>
-                            <button onClick={() => setIsModalOpen(true)} className="px-4 py-2 bg-[#0052cc] hover:bg-blue-700 text-white rounded-lg text-[10px] font-bold transition-colors shadow-md shadow-blue-600/20">
-                              View Details
-                            </button>
-                          </>
-                        )}
+                        <button onClick={() => setIsModalOpen(true)} className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 text-slate-300 rounded-lg transition-colors shadow-sm">
+                          <MessageCircle className="w-3.5 h-3.5" />
+                        </button>
+                        <button onClick={() => setIsModalOpen(true)} className="px-5 py-2 bg-[#f97316] hover:bg-orange-600 text-white rounded-lg text-[10px] font-bold transition-colors shadow-sm">
+                          View Details
+                        </button>
                       </div>
                     </div>
                   </div>
