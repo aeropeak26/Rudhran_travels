@@ -20,8 +20,10 @@ export default function AdminSidebar() {
 
   return (
     <div className="flex h-full flex-col bg-white border-r border-slate-200 w-64 text-slate-800">
-      <div className="flex h-16 shrink-0 items-center px-6 border-b border-slate-200 bg-slate-50">
-        <span className="text-xl font-bold font-serif text-slate-900 tracking-wide">Admin <span className="text-orange-500">Panel</span></span>
+      <div className="flex h-16 shrink-0 items-center px-6 border-b border-slate-200 bg-slate-50 justify-center">
+        <Link href="/admin/dashboard" className="flex items-center">
+          <img src="/images/logo.png" alt="Rudhran Travels" className="h-10 w-auto" />
+        </Link>
       </div>
       <div className="flex flex-1 flex-col overflow-y-auto">
         <nav className="flex-1 space-y-1 px-3 py-6">
