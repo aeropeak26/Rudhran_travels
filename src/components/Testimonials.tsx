@@ -13,61 +13,35 @@ interface TestimonialItem {
   comment: string;
 }
 
-const TESTIMONIAL_LIST: TestimonialItem[] = [
-  {
-    id: "1",
-    name: "Marcus Vane",
-    role: "Sovereign Holdings Chief",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
-    comment:
-      '"Aurelia manages our global executive transport flawlessly. Their team understands scheduling and the deep necessity for silence and privacy on transition routes."',
-  },
-  {
-    id: "2",
-    name: "Elena Rostova",
-    role: "Luxury Lifestyle Director",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
-    comment:
-      '"The personalized Monaco coastal itinerary they curated for our family was exquisite. The chauffeur was highly knowledgeable, and our SUV was immaculate."',
-  },
-  {
-    id: "3",
-    name: "Karthik Subramanian",
-    role: "Corporate Travel Lead",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
-    comment:
-      '"Booked an Innova Crysta for a family trip to Rameshwaram & Madurai. The vehicle was spotless, and the driver was extremely polite and punctual throughout."',
-  },
-  {
-    id: "4",
-    name: "Priya Rajan",
-    role: "Software Architect",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
-    comment:
-      '"Best outstation rental experience! Transparent billing with zero hidden charges. Will definitely use AeroDrive for all our hill station getaways."',
-  },
-];
-
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await fetch('/api/testimonials?activeOnly=true');
+        const data = await res.json();
+        setTestimonials(data);
+      } catch (error) {
+        console.error('Failed to fetch testimonials:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTestimonials();
+  }, []);
+
   // Extend the list for seamless looping: [Last, 1, 2, 3, 4, First, Second]
   // We add 'Second' to ensure the right edge is covered during the jump.
-  const extendedList = [
-    TESTIMONIAL_LIST[TESTIMONIAL_LIST.length - 1],
-    ...TESTIMONIAL_LIST,
-    TESTIMONIAL_LIST[0],
-    TESTIMONIAL_LIST[1],
-  ];
+  const extendedList = testimonials.length > 0 ? [
+    testimonials[testimonials.length - 1],
+    ...testimonials,
+    testimonials[0],
+    testimonials.length > 1 ? testimonials[1] : testimonials[0],
+  ] : [];
 
   const handleNext = useCallback(() => {
     if (currentIndex >= extendedList.length - 2) return;
@@ -157,21 +131,30 @@ export default function Testimonials() {
               </div>
 
               {/* ──── Right Animated Cards Carousel ──── */}
-              <div className="lg:col-span-8 overflow-hidden">
-                <div
-                  className={`flex gap-6 ${isTransitioning ? "transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]" : ""}`}
-                  style={{
-                    transform: `translateX(-${currentIndex * (340 + 24)}px)`,
-                  }}
-                  onTransitionEnd={handleTransitionEnd}
-                >
-                  {extendedList.map((item, idx) => {
-                    const isVisuallyActive = idx >= currentIndex && idx < currentIndex + 2;
+              <div className="lg:col-span-8 overflow-hidden relative">
+                {loading ? (
+                  <div className="flex h-[320px] items-center justify-center text-slate-300 font-medium">
+                    Loading testimonials...
+                  </div>
+                ) : testimonials.length === 0 ? (
+                  <div className="flex h-[320px] items-center justify-center text-slate-300 font-medium italic">
+                    More stories from our travelers coming soon.
+                  </div>
+                ) : (
+                  <div
+                    className={`flex gap-6 ${isTransitioning ? "transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]" : ""}`}
+                    style={{
+                      transform: `translateX(-${currentIndex * (340 + 24)}px)`,
+                    }}
+                    onTransitionEnd={handleTransitionEnd}
+                  >
+                    {extendedList.map((item, idx) => {
+                      const isVisuallyActive = idx >= currentIndex && idx < currentIndex + 2;
 
-                    return (
-                      <div
-                        key={`${item.id}-${idx}`}
-                        className="w-[300px] sm:w-[340px] flex-shrink-0 bg-[#faf8f4] text-slate-900 rounded-[20px] p-8 shadow-xl flex flex-col justify-between min-h-[400px] sm:min-h-[320px] transition-opacity duration-500"
+                      return (
+                        <div
+                          key={`${item._id}-${idx}`}
+                          className="w-[300px] sm:w-[340px] flex-shrink-0 bg-[#faf8f4] text-slate-900 rounded-[20px] p-8 shadow-xl flex flex-col justify-between min-h-[400px] sm:min-h-[320px] transition-opacity duration-500"
                         style={{ opacity: isVisuallyActive ? 1 : 0.4 }}
                       >
                         {/* Top: Stars + Quote */}
@@ -187,16 +170,16 @@ export default function Testimonials() {
                           </div>
 
                           {/* Quote Text */}
-                          <p className="text-slate-600 text-[13px] sm:text-sm font-serif leading-relaxed">
-                            {item.comment}
+                          <p className="text-slate-600 text-[13px] sm:text-sm font-serif leading-relaxed line-clamp-4">
+                            "{item.content}"
                           </p>
                         </div>
 
                         {/* Bottom: Avatar + Author */}
                         <div className="flex items-center space-x-4 pt-4">
-                          <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0">
+                          <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-slate-200">
                             <Image
-                              src={item.avatar}
+                              src={item.image || '/images/default-avatar.png'}
                               alt={item.name}
                               fill
                               className="object-cover"
@@ -216,7 +199,8 @@ export default function Testimonials() {
                     );
                   })}
                 </div>
-              </div>
+              )}
+            </div>
             </div>
           </div>
         </div>
