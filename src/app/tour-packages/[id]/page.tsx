@@ -164,7 +164,7 @@ export default function TourPackageDetails() {
 
         {/* 3. Itinerary */}
         <section className="py-20 bg-slate-50">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2">CHRONICLE & ITINERARY</span>
               <h2 className="text-3xl font-bold text-[#0f172a] mb-4 tracking-tight">The Day-by-Day Expedition Journal</h2>
