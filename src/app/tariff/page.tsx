@@ -168,7 +168,7 @@ export default function TariffPage() {
         </section>
 
         {/* 2. Rates Grid */}
-        <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-20">
+        <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           
           <div className="flex flex-col lg:flex-row justify-between items-end mb-10 gap-6">
             <div>
