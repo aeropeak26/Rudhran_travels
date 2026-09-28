@@ -39,7 +39,7 @@ export default function Footer() {
             <ul className="space-y-2 font-medium text-slate-300">
               {[
                 { name: 'Home', href: '/' },
-                { name: 'Tour Packages', href: '/#packages' },
+                { name: 'Tour Packages', href: '/tour-packages' },
                 { name: 'Car Services', href: '/#services' },
                 { name: 'Rental Tariff', href: '/#tariff' },
                 { name: 'About Us', href: '/about' },
