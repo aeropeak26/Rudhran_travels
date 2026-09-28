@@ -178,9 +178,9 @@ export default function TourPackagesPage() {
                         <button onClick={() => setIsModalOpen(true)} className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 text-slate-300 rounded-lg transition-colors shadow-sm">
                           <MessageCircle className="w-3.5 h-3.5" />
                         </button>
-                        <button onClick={() => setIsModalOpen(true)} className="px-5 py-2 bg-[#f97316] hover:bg-orange-600 text-white rounded-lg text-[10px] font-bold transition-colors shadow-sm">
+                        <Link href={`/tour-packages/${pkg.id}`} className="px-5 py-2 bg-[#f97316] hover:bg-orange-600 text-white rounded-lg text-[10px] font-bold transition-colors shadow-sm">
                           View Details
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

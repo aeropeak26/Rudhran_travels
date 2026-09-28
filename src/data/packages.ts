@@ -9,7 +9,112 @@ export const packagesData = [
     badge: 'POPULAR DESTINATION',
     img: '/images/kerala.jpg',
     desc: 'Experience the pristine beauty of Kerala\'s rolling tea gardens, wildlife sanctuaries, and serene backwater houseboats with our premium, all-inclusive tour.',
-    featured: true, // Will span 2 columns
+    featured: true,
+    hero: {
+      badge: 'CURATED SOUTH INDIA GRAND TOURER',
+      title: 'Kerala Mist, Spices & Sacred Waters',
+      desc: 'An unhurried chauffeur expedition descending from the chilly Nilgiri mist of Munnar, through spice-draped Periyar hills, onto a private kettuvallam sunset cruise in Alleppey.',
+      pacing: '5.5h / day',
+      stayTier: 'Boutique Stays',
+      carriage: 'Innova Crysta',
+      escort: 'Hill Master',
+      pricingTitle: 'ALLEPPEY SUNSET CRUISE',
+      pricingType: 'ALL INCLUSIVE',
+      pricingAdvance: 'RESERVE WITH ₹2,000 ADVANCE',
+    },
+    waypoints: [
+      { id: '01', title: 'Cochin Arrival', desc: 'Airport escort & mountain ascent' },
+      { id: '02', title: 'Munnar Tea Hills', desc: 'Eravikulam & Lockhart Gap' },
+      { id: '03', title: 'Thekkady Forest', desc: 'Periyar wildlife & spice walk' },
+      { id: '04', title: 'Alleppey Backwaters', desc: 'Private kettuvallam dining & drop' },
+    ],
+    itinerary: [
+      {
+        dayLabel: 'DAY 01 & 02 • HIGH RANGES',
+        tag: 'HIGHLAND ASCENT',
+        tagDesc: '1,600m Elevation',
+        title: 'Valara Cascades & Munnar Tea Terraces',
+        desc: 'Scenic drive past Cheeyappara waterfalls to Windermere Estate. Morning private safari at Eravikulam for endangered Nilgiri Tahr, followed by an artisanal tea factory tasting session.',
+        note: {
+          title: 'Driver Selvan\'s Tip:',
+          content: 'We pull by the Neriamangalam river bend for warm cardamom tea and fresh hot banana crisps right from the plantation press.',
+          icon: 'lightbulb'
+        },
+        stay: 'Tall Trees / Windermere Cottage',
+        distance: '130 km',
+        img: '/images/munnar-tea.jpg'
+      },
+      {
+        dayLabel: 'DAY 03 • CARDAMOM BELT',
+        tag: 'RAINFOREST CORRIDOR',
+        tagDesc: 'Periyar Sanctuary',
+        title: 'Organic Spice Walk & Periyar Mist Cruise',
+        desc: 'Descend the Lockhart gap into Thekkady. Private guided walk through organic pepper and vanilla plantations, capped by a front-deck lake cruise to view wild elephant herds on misty banks.',
+        note: {
+          title: 'Sensory Note:',
+          content: 'Fresh green cardamom crushed directly from harvest reveals a sweet peppery citrus bouquet unknown in supermarket spices.',
+          icon: 'leaf'
+        },
+        stay: 'Spice Village Eco-Lodge',
+        distance: '90 km',
+        img: '/images/periyar.jpg',
+        reverse: true
+      },
+      {
+        dayLabel: 'DAY 04 • EMERALD LAGOONS',
+        tag: 'GRAND FINALE',
+        tagDesc: 'Vembanad Lake',
+        title: 'Private Houseboat Cruise & On-Board Feast',
+        desc: 'Glide across peaceful canals on an exclusive wooden kettuvallam. Relish authentic Karimeen Pollichathu and slow-cooked payasam prepared live by your on-board chef before direct highway transit to Cochin airport.',
+        note: {
+          title: 'Punctual Flight Guarantee:',
+          content: 'Monitored round-the-clock by Rudhran Chennai Command desk to guarantee seamless on-time airport drop.',
+          icon: 'shield'
+        },
+        stay: 'Private Day Houseboat',
+        distance: '140 km',
+        img: '/images/houseboat.jpg'
+      }
+    ],
+    vehicles: [
+      {
+        tier: 'Tier 01',
+        category: 'COUPLES & DUOS',
+        name: 'Executive Sedan',
+        subtitle: 'Toyota Etios / Maruti Dzire',
+        price: '12,999',
+        features: ['Ideal for 2 adults', '2 Large trolley luggage', 'Complimentary water & wet towels']
+      },
+      {
+        tier: 'MOST POPULAR FOR GHATS',
+        category: 'FAMILIES',
+        name: 'Innova Crysta',
+        subtitle: 'Executive 7-Seater Captain MPV',
+        price: '15,499',
+        features: ['Plush middle captain seats', '4-5 Suitcases boot capacity', 'Individual fast chargers & dual AC'],
+        recommended: true
+      },
+      {
+        tier: 'Tier 03',
+        category: 'EXTENDED GROUPS',
+        name: 'Force Urbania',
+        subtitle: '10-12 Seater Monocoque Coach',
+        price: '11,200',
+        features: ['Wide reclining aircraft-style chairs', 'Massive dedicated luggage hold', 'Onboard HD infotainment']
+      }
+    ],
+    inclusions: [
+      'Dedicated carriage for 4 full days with zero mileage cap',
+      'Senior driver bata, meals, and lodge allowances',
+      'All Kerala border taxes, interstate permits & FASTag tolls',
+      '3 nights premium boutique resorts & private houseboat'
+    ],
+    exclusions: [
+      'Air or train fare to Cochin (available on request)',
+      'Eravikulam & Periyar forest safari tickets',
+      'Personal laundry, alcoholic beverages, and minibar',
+      'Optional Kathakali or Kalaripayattu cultural passes'
+    ]
   },
   {
     id: '2',
