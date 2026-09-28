@@ -9,8 +9,8 @@ import {
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
-import WhyChooseUs from '@/components/WhyChooseUs';
-import CtaBanner from '@/components/CtaBanner';
+import AboutWhyChooseUs from '@/components/AboutWhyChooseUs';
+import AboutCtaBanner from '@/components/AboutCtaBanner';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 
@@ -493,10 +493,10 @@ export default function AboutUs() {
         </section>
 
         {/* 6. Why Customers Choose Us */}
-        <WhyChooseUs />
+        <AboutWhyChooseUs />
 
         {/* 7. CTA Banner */}
-        <CtaBanner onOpenBookingModal={() => setIsModalOpen(true)} />
+        <AboutCtaBanner />
 
       </main>
 
