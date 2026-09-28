@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { packagesData } from '@/data/packages';
 import { 
-  CheckCircle2, MapPin, Clock, Phone, FileText, Zap, ShieldCheck, Star, 
+  Check, MapPin, Clock, Phone, FileText, Zap, ShieldCheck, Star, 
   Map, Calendar, Plus, Car, User, Navigation, ArrowRight
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
@@ -49,34 +49,40 @@ export default function TourPackagesPage() {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-            <div className="flex items-center space-x-2 text-[11px] font-medium text-slate-400 mb-8">
+            <div className="flex flex-wrap items-center gap-3 text-[11px] font-medium text-slate-400 mb-8">
+              <div className="bg-[#0f52ba]/20 text-blue-400 px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-blue-500/20 uppercase tracking-wider text-[9px] font-bold">
+                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> OUR TOUR PACKAGES
+              </div>
+              <span className="text-slate-600">•</span>
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
-              <span>&gt;</span>
-              <span className="text-white font-bold">Tour Packages</span>
+              <span className="text-slate-600">/</span>
+              <span className="text-blue-300">Tour Packages</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white mb-6 leading-tight max-w-2xl">
-              Discover Places Worth Remembering
+            <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-white mb-6 leading-tight max-w-3xl">
+              Discover Places Worth <br className="hidden md:block" />Remembering
             </h1>
             
-            <p className="text-sm md:text-[15px] text-slate-300 leading-relaxed mb-10 max-w-2xl">
+            <p className="text-[14px] md:text-[15px] text-slate-300 leading-relaxed mb-10 max-w-2xl">
               Curated journeys, comfortable travel and unforgettable experiences across beautiful destinations in Tamil Nadu, Kerala, and Karnataka with our premium fleet.
             </p>
 
+            <div className="w-full max-w-2xl h-px bg-slate-700/50 mb-8"></div>
+
             <div className="flex flex-wrap items-center gap-4 mb-10">
-              <div className="flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white text-[11px] font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" /> Customized Plans
+              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors px-4 py-2.5 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
+                <Check className="w-4 h-4 text-emerald-400" /> Guaranteed Punctual Chauffeurs
               </div>
-              <div className="flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white text-[11px] font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" /> 100% Tailored Itineraries
+              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors px-4 py-2.5 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
+                <Check className="w-4 h-4 text-emerald-400" /> 100% Tailored Itineraries
               </div>
-              <div className="flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white text-[11px] font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" /> Fixed Hotel Costs
+              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors px-4 py-2.5 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
+                <Check className="w-4 h-4 text-emerald-400" /> Zero Hidden Costs
               </div>
             </div>
 
-            <Link href="#packages" className="inline-flex items-center gap-2 text-[11px] font-bold text-blue-400 hover:text-blue-300 uppercase tracking-widest transition-colors">
-              Scroll To Explore South India Trips &darr;
+            <Link href="#packages" className="inline-flex items-center gap-2 text-[10px] font-bold text-blue-400 hover:text-blue-300 uppercase tracking-widest transition-colors">
+              SCROLL TO EXPLORE CURATED CIRCUITS &darr;
             </Link>
           </div>
         </section>
@@ -85,16 +91,16 @@ export default function TourPackagesPage() {
         <section id="packages" className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
           
           {/* Filter Bar */}
-          <div className="bg-white rounded-full p-2 shadow-lg shadow-black/5 flex flex-col md:flex-row justify-between items-center mb-10 overflow-x-auto gap-4 border border-slate-100">
-            <div className="flex items-center gap-1 min-w-max">
+          <div className="bg-white rounded-2xl p-2.5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col md:flex-row justify-between items-center mb-12 overflow-x-auto gap-4 border border-slate-100">
+            <div className="flex items-center gap-1 min-w-max px-2">
               {filters.map(f => (
                 <button 
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`px-5 py-2.5 rounded-full text-[11px] font-bold transition-all whitespace-nowrap ${
+                  className={`px-5 py-2.5 rounded-xl text-[12px] font-bold transition-all whitespace-nowrap ${
                     filter === f 
                     ? 'bg-[#0f172a] text-white shadow-md' 
-                    : 'text-slate-600 hover:bg-slate-100 hover:text-[#0f172a]'
+                    : 'text-slate-500 hover:text-[#0f172a]'
                   }`}
                 >
                   {f}
@@ -102,9 +108,9 @@ export default function TourPackagesPage() {
               ))}
             </div>
             
-            <button onClick={() => setIsModalOpen(true)} className="flex items-center gap-1.5 px-5 py-2.5 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-full text-[11px] font-bold transition-colors whitespace-nowrap shrink-0">
-              <Plus className="w-3.5 h-3.5" /> Custom & Honeymoon Packages
-            </button>
+            <div className="flex items-center gap-1.5 px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-slate-100 text-[11px] font-bold text-[#0f172a] whitespace-nowrap shrink-0 mr-1">
+              <span className="flex items-center gap-1.5 text-slate-500 font-medium"><div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> Showing</span> {filteredPackages.length} Handpicked Packages
+            </div>
           </div>
 
           {/* Grid Layout */}
