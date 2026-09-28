@@ -127,17 +127,20 @@ export default function WhyChooseUs() {
                 Direct human assistance on phone and WhatsApp for flight delays, route changes, or emergency assistance.
               </p>
             </div>
+            
+          </div>
 
-            {/* Pill Badges Row */}
-            <div className="md:col-span-2 flex flex-wrap justify-center gap-3 pt-2">
-              {['Daily Car Rental', 'Well-Maintained Cars', 'Economy Cars', 'Transparent Pricing'].map((pill, i) => (
-                <div key={i} className="bg-white border border-slate-200 rounded-full px-4 py-2 text-[10px] font-bold text-slate-600 flex items-center gap-2 shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></span>
-                  {pill}
-                </div>
-              ))}
-            </div>
+          {/* Empty spacer for the left column to push pills to the right on desktop */}
+          <div className="hidden lg:block lg:col-span-1"></div>
 
+          {/* Pill Badges Row (Centered under the right 2 columns) */}
+          <div className="lg:col-span-2 flex flex-wrap justify-center gap-3 pt-2">
+            {['Daily Car Rental', 'Well-Maintained Cars', 'Economy Cars', 'Transparent Pricing'].map((pill, i) => (
+              <div key={i} className="bg-white border border-slate-200 rounded-full px-5 py-2.5 text-[11px] font-bold text-slate-600 flex items-center gap-2 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-[#f59e0b]"></span>
+                {pill}
+              </div>
+            ))}
           </div>
 
         </div>
