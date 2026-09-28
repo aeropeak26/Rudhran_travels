@@ -3,12 +3,13 @@
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function AdminLogin() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -80,17 +81,28 @@ export default function AdminLogin() {
               >
                 Password
               </label>
-              <div className="mt-1">
+              <div className="mt-1 relative">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   autoComplete="current-password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm text-black"
+                  className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 pr-10 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm text-black"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 focus:outline-none"
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5" aria-hidden="true" />
+                  ) : (
+                    <Eye className="h-5 w-5" aria-hidden="true" />
+                  )}
+                </button>
               </div>
             </div>
 
@@ -104,37 +116,6 @@ export default function AdminLogin() {
               </button>
             </div>
           </form>
-          
-          <div className="mt-6 text-center">
-            <button
-              type="button"
-              onClick={async () => {
-                try {
-                  const res = await fetch('/api/seed-admin', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                      email: 'madurairudhrantravels@gmail.com',
-                      password: 'Madurairudhran@1',
-                      name: 'Admin',
-                      secretKey: 'RUDHRAN_SECRET_SETUP_KEY_2026'
-                    })
-                  });
-                  const data = await res.json();
-                  if (res.ok) {
-                    alert('Admin account created! You can now log in with email: madurairudhrantravels@gmail.com');
-                  } else {
-                    alert('Error: ' + data.error);
-                  }
-                } catch (e: any) {
-                  alert('Error: ' + e.message);
-                }
-              }}
-              className="text-xs text-slate-500 hover:text-orange-500 underline"
-            >
-              First time setup? Click here to create admin account
-            </button>
-          </div>
         </div>
       </div>
     </div>
