@@ -169,7 +169,7 @@ export default function AboutUs() {
               {/* Card 1 */}
               <div 
                 className="p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#e2e8f0]/80 flex flex-col hover:-translate-y-1 transition-transform duration-300"
-                style={{ background: 'linear-gradient(180deg, #FFFFFF 56%, #cdd9fa 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #FFFFFF 56%, #cdd9fa 100%)' }}
               >
                 <div className="w-12 h-12 bg-[#eff6ff] rounded-2xl flex items-center justify-center text-[#2563eb] mb-8 shadow-sm">
                   <Calendar className="w-6 h-6" />
@@ -182,7 +182,7 @@ export default function AboutUs() {
               {/* Card 2 */}
               <div 
                 className="p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#e2e8f0]/80 flex flex-col hover:-translate-y-1 transition-transform duration-300"
-                style={{ background: 'linear-gradient(180deg, #FFFFFF 56%, #cdd9fa 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #FFFFFF 56%, #cdd9fa 100%)' }}
               >
                 <div className="w-12 h-12 bg-[#fffbeb] rounded-2xl flex items-center justify-center text-[#f59e0b] mb-8 shadow-sm">
                   <Smile className="w-6 h-6" />
@@ -195,7 +195,7 @@ export default function AboutUs() {
               {/* Card 3 */}
               <div 
                 className="p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#e2e8f0]/80 flex flex-col hover:-translate-y-1 transition-transform duration-300"
-                style={{ background: 'linear-gradient(180deg, #FFFFFF 56%, #cdd9fa 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #FFFFFF 56%, #cdd9fa 100%)' }}
               >
                 <div className="w-12 h-12 bg-[#ecfdf5] rounded-2xl flex items-center justify-center text-[#10b981] mb-8 shadow-sm">
                   <Map className="w-6 h-6" />
