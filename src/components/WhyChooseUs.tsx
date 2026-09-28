@@ -24,45 +24,59 @@ export default function WhyChooseUs() {
 
         {/* Bento Box Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
           {/* Left Large Orange Card */}
-          <div className="lg:col-span-1 bg-gradient-to-br from-[#fcd34d] to-[#f97316] rounded-[2rem] p-8 md:p-10 text-[#0f172a] shadow-xl relative overflow-hidden flex flex-col">
+          <div className="lg:col-span-1 bg-gradient-to-b from-[#fde68a] via-[#fba94c] to-[#ea580c] rounded-[2rem] p-8 md:p-10 text-[#0f172a] shadow-xl relative overflow-hidden flex flex-col">
+            
             {/* Background Circle Decoration */}
-            <div className="absolute top-8 right-8 w-16 h-16 border border-orange-500/30 rounded-full">
-              <div className="absolute -top-1 -left-1 w-2 h-2 bg-orange-500 rounded-full"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 pointer-events-none opacity-50">
+              {/* Outer Dashed Circle */}
+              <div className="absolute -top-4 -right-4 w-32 h-32 border border-dashed border-[#ea580c] rounded-full"></div>
+              {/* Inner Solid Circle */}
+              <div className="absolute top-4 right-4 w-16 h-16 border border-[#ea580c] rounded-full"></div>
+              {/* Small Dot and line */}
+              <div className="absolute top-6 right-16 w-2 h-2 bg-[#ea580c] rounded-full ring-2 ring-orange-200/50"></div>
+              <div className="absolute top-7 right-12 w-4 h-px bg-[#ea580c] -rotate-45"></div>
             </div>
 
             <div className="mb-6 flex items-start gap-4">
-              <div className="bg-white/40 p-3 rounded-xl shadow-sm backdrop-blur-sm shrink-0">
-                <Settings2 className="w-6 h-6 text-[#78350f]" />
+              <div className="bg-white p-3.5 rounded-2xl shadow-sm shrink-0">
+                <Settings2 className="w-6 h-6 text-[#d97706] rotate-90" />
               </div>
-              <h3 className="text-2xl font-bold leading-tight pt-1">
+              <h3 className="text-2xl font-bold leading-tight pt-1 relative z-10">
                 Flexible Travel & Tour <br /> Solutions
               </h3>
             </div>
 
-            <p className="text-sm font-medium text-[#451a03] mb-8 leading-relaxed">
+            <p className="text-[15px] font-medium text-[#334155] mb-8 leading-relaxed relative z-10">
               From short-term city transfers and temple circuits to multi-day hill station packages, we offer personalized options for every schedule.
             </p>
 
-            <div className="w-full h-px bg-black/10 mb-8"></div>
+            <div className="w-full h-px bg-black/80 mb-8 relative z-10"></div>
 
-            <ul className="space-y-4 text-xs font-bold text-[#451a03] flex-grow">
+            <ul className="space-y-5 text-[15px] font-medium text-[#334155] flex-grow relative z-10">
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 mt-1 shrink-0 shadow-sm"></span>
-                <span>Enjoy the comfort of flexible doorstep pickup & drop</span>
+                <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center mt-0.5 shrink-0">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
+                </div>
+                <span className="leading-snug">Enjoy the comfort of flexible doorstep pickup & drop</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 mt-1 shrink-0 shadow-sm"></span>
-                <span>Access a diverse fleet of economy, SUV, & executive sedans</span>
+                <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center mt-0.5 shrink-0">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
+                </div>
+                <span className="leading-snug">Access a diverse fleet of economy, SUV, & executive sedans</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 mt-1 shrink-0 shadow-sm"></span>
-                <span>Choose from daily, weekly, or custom monthly tour packages</span>
+                <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center mt-0.5 shrink-0">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
+                </div>
+                <span className="leading-snug">Choose from daily, weekly, or custom monthly tour packages</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 mt-1 shrink-0 shadow-sm"></span>
-                <span>Zero hidden fees with clear, all-inclusive kilometer billing</span>
+                <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center mt-0.5 shrink-0">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
+                </div>
+                <span className="leading-snug">Zero hidden fees with clear, all-inclusive kilometer billing</span>
               </li>
             </ul>
           </div>
