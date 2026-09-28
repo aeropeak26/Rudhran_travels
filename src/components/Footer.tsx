@@ -26,9 +26,13 @@ export default function Footer() {
           
           {/* Column 1: Brand Info */}
           <div className="space-y-5">
-            <div className="text-xl md:text-2xl font-serif text-[#0b1324] font-semibold tracking-wider">
-              RUDHRAN <span className="text-[10px] md:text-xs font-bold text-orange-500 tracking-normal uppercase font-sans">CAB TRAVELS</span>
-            </div>
+            <Link href="/" className="inline-block">
+              <img 
+                src="/images/logo.png" 
+                alt="Rudhran Travels Logo" 
+                className="h-14 md:h-16 w-auto object-contain"
+              />
+            </Link>
 
             <p className="text-slate-600 leading-relaxed pr-4">
               Premium car rental, outstation journeys, and curated tour packages across South India. Reliable vehicles, vetted professional drivers, and transparent pricing.

@@ -41,11 +41,13 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* Brand Logo: RUDHRAN CAB TRAVELS */}
+        {/* Brand Logo */}
         <Link href="/" className="flex items-center space-x-2 group">
-          <div className="text-2xl font-serif tracking-wide text-[#0b1324] flex items-baseline gap-2">
-            RUDHRAN <span className="text-[10px] font-bold text-orange-500 uppercase tracking-widest font-sans">CAB TRAVELS</span>
-          </div>
+          <img 
+            src="/images/logo.png" 
+            alt="Rudhran Travels Logo" 
+            className="h-10 md:h-12 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Nav Links */}
