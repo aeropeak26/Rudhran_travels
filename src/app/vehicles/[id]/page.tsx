@@ -61,8 +61,8 @@ export default function VehicleDetailsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             
             {/* Left Side: Gallery & Highlights */}
-            <div className="lg:col-span-7 flex flex-col gap-4">
-              <div className="relative h-[350px] md:h-[450px] rounded-[1.5rem] overflow-hidden shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 bg-slate-100">
+            <div className="lg:col-span-7 flex flex-col gap-4 h-full">
+              <div className="relative flex-grow min-h-[350px] rounded-[1.5rem] overflow-hidden shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 bg-slate-100">
                 <Image src={vehicle.gallery[activeImage]} alt={vehicle.name} fill className="object-cover" />
                 <div className="absolute top-5 left-5 flex gap-2">
                   <div className="bg-[#1e293b] text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
