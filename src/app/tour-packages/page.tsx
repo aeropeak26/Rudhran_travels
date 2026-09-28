@@ -248,28 +248,28 @@ export default function TourPackagesPage() {
 
         {/* 4. CTA Block */}
         <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#0A111E] text-white rounded-[1.5rem] p-10 md:p-14 relative overflow-hidden shadow-xl border border-white/5">
+          <div className="bg-[#0B1527] text-white rounded-[1.5rem] p-10 md:p-14 relative overflow-hidden shadow-2xl">
             
             {/* Background Glowing Spheres */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-[45%] w-96 h-96 bg-blue-600/30 rounded-full blur-[100px] pointer-events-none z-0"></div>
-            <div className="absolute top-1/2 -translate-y-1/2 -right-10 w-96 h-96 bg-blue-600/40 rounded-full blur-[100px] pointer-events-none z-0"></div>
+            <div className="absolute top-1/2 -translate-y-1/2 left-[55%] w-[400px] h-[400px] bg-[#0052cc]/40 rounded-full blur-[120px] pointer-events-none z-0"></div>
+            <div className="absolute top-1/2 -translate-y-1/2 -right-20 w-[450px] h-[450px] bg-[#0047b3]/50 rounded-full blur-[140px] pointer-events-none z-0"></div>
             
             <div className="max-w-xl relative z-10">
-              <span className="text-[8px] font-bold text-blue-500 uppercase tracking-widest block mb-3">SEAMLESS TRAVEL BOOKING</span>
-              <h2 className="text-3xl md:text-[2.2rem] font-bold mb-4 tracking-tight leading-tight">Your Next Adventure Starts Here</h2>
-              <p className="text-[12px] text-slate-300 leading-relaxed mb-8">
+              <span className="text-[9px] font-bold text-[#3b82f6] uppercase tracking-widest block mb-3">SEAMLESS TRAVEL BOOKING</span>
+              <h2 className="text-3xl md:text-[2.2rem] font-bold mb-5 tracking-tight leading-tight">Your Next Adventure Starts Here</h2>
+              <p className="text-[12px] text-slate-300/90 leading-relaxed mb-8">
                 Choose your destination and let us take care of the journey.<br />
                 Custom hotel packages and vehicle hires crafted directly by our<br />
                 Chennai travel experts.
               </p>
               
-              <div className="flex flex-wrap items-center gap-3">
-                <button onClick={() => setIsModalOpen(true)} className="px-6 py-3 bg-[#0066ff] hover:bg-blue-600 text-white rounded-[8px] text-[11px] font-bold transition-colors shadow-md">
+              <div className="flex flex-wrap items-center gap-4">
+                <button onClick={() => setIsModalOpen(true)} className="px-6 py-3 bg-[#0066ff] hover:bg-blue-600 text-white rounded-lg text-[12px] font-bold transition-colors shadow-lg shadow-blue-900/20">
                   Plan My Trip
                 </button>
-                <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-[8px] text-[11px] font-bold transition-colors flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-emerald-500 flex items-center justify-center shadow-sm">
-                    <Phone className="w-1.5 h-1.5 text-white fill-white" />
+                <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-[#1e293b] hover:bg-slate-700 text-white rounded-lg text-[12px] font-bold transition-colors flex items-center gap-2">
+                  <div className="w-3.5 h-3.5 rounded-full bg-emerald-500 flex items-center justify-center">
+                    <Phone className="w-2 h-2 text-white fill-white" />
                   </div> 
                   Contact via WhatsApp
                 </a>
