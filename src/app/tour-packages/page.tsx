@@ -177,7 +177,7 @@ export default function TourPackagesPage() {
                   {/* Bottom Content */}
                   <div className="w-full">
                     <div className="text-blue-400 text-[8px] font-black uppercase tracking-widest mb-1.5">
-                      {pkg.subtitle.replace(/ \| /g, ' • ')}
+                      {(pkg.subtitle || '').replace(/ \| /g, ' • ')}
                     </div>
                     <h3 className="text-white text-[22px] font-bold mb-2 tracking-tight">{pkg.title}</h3>
                     <p className="text-[11px] text-slate-300 leading-relaxed mb-5 line-clamp-2">

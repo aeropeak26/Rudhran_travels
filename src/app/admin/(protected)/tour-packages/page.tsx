@@ -110,7 +110,15 @@ export default function AdminTourPackages() {
   const handleOpenForm = (pkg?: any) => {
     if (pkg) {
       setEditingId(pkg._id);
-      setPkgData(JSON.parse(JSON.stringify(pkg))); // deep copy
+      // Safe merge to ensure nested objects like hero exist even if missing in DB
+      const safePkg = { ...getEmptyPackage(), ...JSON.parse(JSON.stringify(pkg)) };
+      safePkg.hero = { ...getEmptyPackage().hero, ...(pkg.hero || {}) };
+      safePkg.waypoints = pkg.waypoints || [];
+      safePkg.itinerary = pkg.itinerary || [];
+      safePkg.vehicles = pkg.vehicles || [];
+      safePkg.inclusions = pkg.inclusions || [''];
+      safePkg.exclusions = pkg.exclusions || [''];
+      setPkgData(safePkg);
     } else {
       setEditingId(null);
       setPkgData(getEmptyPackage());
@@ -503,13 +511,13 @@ export default function AdminTourPackages() {
                     
                     <div>
                       <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Features</label>
-                      {v.features.map((feat: string, fIdx: number) => (
+                      {(v.features || []).map((feat: string, fIdx: number) => (
                         <div key={`feat-${fIdx}`} className="flex gap-2 mb-2">
                           <input type="text" value={feat} onChange={e => { const n = [...pkgData.vehicles]; n[i].features[fIdx] = e.target.value; setPkgData({...pkgData, vehicles: n}); }} className="block w-full rounded border-gray-300 border p-2 text-black text-sm" />
                           <button type="button" onClick={() => { const n = [...pkgData.vehicles]; n[i].features = n[i].features.filter((_: any, idxx: number) => idxx !== fIdx); setPkgData({...pkgData, vehicles: n}); }} className="px-3 py-2 text-red-600 bg-red-50 rounded hover:bg-red-100"><Trash2 className="w-4 h-4"/></button>
                         </div>
                       ))}
-                      <button type="button" onClick={() => { const n = [...pkgData.vehicles]; n[i].features.push(''); setPkgData({...pkgData, vehicles: n}); }} className="text-xs text-blue-600 font-medium">+ Add Feature</button>
+                      <button type="button" onClick={() => { const n = [...pkgData.vehicles]; if(!n[i].features) n[i].features = []; n[i].features.push(''); setPkgData({...pkgData, vehicles: n}); }} className="text-xs text-blue-600 font-medium">+ Add Feature</button>
                     </div>
 
                     <div className="flex items-center mt-4">

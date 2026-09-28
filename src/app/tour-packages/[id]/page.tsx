@@ -235,7 +235,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
 
                     <div className="mt-auto flex items-center justify-between text-[10px] font-bold border-t border-slate-100 pt-4">
                       <div className="flex items-center gap-1.5 text-blue-600">
-                        {day.stay.includes('Houseboat') ? <MapPin className="w-3.5 h-3.5" /> : <MapPin className="w-3.5 h-3.5" />} Stay / Experience: <span className="text-slate-500">{day.stay}</span>
+                        {(day.stay || '').includes('Houseboat') ? <MapPin className="w-3.5 h-3.5" /> : <MapPin className="w-3.5 h-3.5" />} Stay / Experience: <span className="text-slate-500">{day.stay}</span>
                       </div>
                       <div className="text-[#0f172a]">
                         Distance: {day.distance}
@@ -286,7 +286,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                   </div>
 
                   <ul className="space-y-4 mb-8">
-                    {veh.features.map((feat: any, i: number) => (
+                    {(veh.features || []).map((feat: any, i: number) => (
                       <li key={i} className="flex items-start gap-3">
                         <Check className={`w-4 h-4 shrink-0 mt-0.5 ${veh.recommended ? 'text-[#f97316]' : 'text-blue-600'}`} />
                         <span className={`text-[12px] ${veh.recommended ? 'text-slate-300' : 'text-slate-600'}`}>{feat}</span>
