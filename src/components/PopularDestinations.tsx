@@ -2,158 +2,169 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Star, MapPin, Clock, Car, Compass, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Star } from 'lucide-react';
 
-interface DestinationsProps {
+interface PopularDestinationsProps {
   onSelectDestination: (dest: any) => void;
 }
 
-export default function PopularDestinations({ onSelectDestination }: DestinationsProps) {
-  const destinationCards = [
+export default function PopularDestinations({ onSelectDestination }: PopularDestinationsProps) {
+  const packages = [
     {
-      id: 'p-1',
-      title: 'Madurai Sightseeing',
-      location: 'Madurai',
-      image: '/images/dest1.png',
-      price: 750,
-      rating: '5.0',
-      duration: '1 Day',
-      vehicle: 'AC Vehicle',
-      guidance: 'Complete Guidance',
+      badge: 'BESTSELLER',
+      badgeColor: 'bg-[#fbbf24] text-amber-900',
+      duration: '4D / 3N',
+      region: 'KERALA HIGHLANDS',
+      title: 'Munnar Tea Hills & Valleys',
+      desc: 'Wander through emerald tea gardens, cascading waterfalls, and cool mountain peaks.',
+      price: '₹13,500',
+      priceUnit: '/ person',
+      rating: '4.9 (420+ reviews)',
+      image: '/images/dest2.png'
     },
     {
-      id: 'p-2',
-      title: 'Madurai to Kodaikanal',
-      location: 'Kodaikanal',
-      image: '/images/dest2.png',
-      price: 1300,
-      rating: '5.0',
-      duration: '1 Day',
-      vehicle: 'AC Vehicle',
-      guidance: 'Complete Guidance',
+      badge: 'LUXURY STAY',
+      badgeColor: 'bg-white text-slate-800',
+      duration: '2D / 1N',
+      region: 'KERALA COAST',
+      title: 'Alleppey Houseboat Cruise',
+      desc: 'Drift along tranquil palm-fringed canals on a private traditional luxury houseboat.',
+      price: '₹15,200',
+      priceUnit: '/ couple',
+      rating: '5.0 (610+ reviews)',
+      image: 'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80',
+      actionColor: 'bg-[#fbbf24] text-amber-900'
     },
     {
-      id: 'p-3',
-      title: 'Madurai to Rameshwaram',
-      location: 'Rameshwaram',
-      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
-      price: 1400,
-      rating: '5.0',
-      duration: '1 Day',
-      vehicle: 'AC Vehicle',
-      guidance: 'Complete Guidance',
+      badge: 'POPULAR',
+      badgeColor: 'bg-[#6366f1] text-white',
+      duration: '3D / 2N',
+      region: 'TAMIL NADU WESTERN GHATS',
+      title: 'Kodaikanal Pine & Mist',
+      desc: 'Breathe in fragrant pine woods, boating on the star-shaped lake and misty pillar rocks.',
+      price: '₹11,800',
+      priceUnit: '/ person',
+      rating: '4.8 (380+ reviews)',
+      image: '/images/dest1.png'
     },
+    {
+      badge: 'HILL STATION',
+      badgeColor: 'bg-[#10b981] text-white',
+      duration: '3D / 2N',
+      region: 'QUEEN OF HILL STATIONS',
+      title: 'Ooty & Coonoor Nilgiris',
+      desc: 'Scenic Toy Train ride through Nilgiri mountains, botanical gardens, and sprawling tea estates.',
+      price: '₹12,200',
+      priceUnit: '/ person',
+      rating: '4.9 (510+ reviews)',
+      image: 'https://images.unsplash.com/photo-1589136777351-fdc9c9cb1565?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      badge: 'HERITAGE TOUR',
+      badgeColor: 'bg-[#fbbf24] text-amber-900',
+      duration: '3D / 2N',
+      region: 'KARNATAKA SPLENDOR',
+      title: 'Royal Mysore Palace',
+      desc: 'Witness the majestic golden illuminated royal palace, Indo-Saracenic grandeur, and Chamundi hills.',
+      price: '₹14,900',
+      priceUnit: '/ person',
+      rating: '4.9 (490+ reviews)',
+      image: 'https://images.unsplash.com/photo-1600011844415-dfdbb6349190?auto=format&fit=crop&w=800&q=80',
+      actionColor: 'bg-[#fbbf24] text-amber-900'
+    },
+    {
+      badge: 'SPIRITUAL CIRCUIT',
+      badgeColor: 'bg-[#ef4444] text-white',
+      duration: '3D / 2N',
+      region: 'ANCIENT TEMPLES & SEA',
+      title: 'Madurai & Rameshwaram',
+      desc: 'Historic towering temple gopurams, ancient spiritual rituals, and scenic Pamban sea bridge.',
+      price: '₹13,800',
+      priceUnit: '/ person',
+      rating: '4.9 (340+ reviews)',
+      image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f7415e?auto=format&fit=crop&w=800&q=80'
+    }
   ];
 
   return (
-    <section id="destinations" className="py-20 bg-white text-slate-900 relative border-b border-slate-200 poppins-regular">
-      
+    <section className="py-24 bg-white text-slate-900 poppins-regular border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="space-y-2 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900">
-            Popular destinations
+        {/* Header */}
+        <div className="mb-12">
+          <div className="inline-block bg-[#fffbeb] text-[#d97706] font-bold text-[10px] tracking-widest px-3 py-1.5 rounded-full mb-4 flex items-center gap-2 uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]"></span>
+            CURATED DESTINATIONS & HOLIDAYS
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] tracking-tight mb-2">
+            Explore Handcrafted Tour Packages
           </h2>
-          <p className="text-blue-600 text-sm font-normal">
-            Explore More, Travel Better
+          <p className="text-slate-500 text-sm font-medium">
+            Well-maintained vehicles for every journey.
           </p>
         </div>
 
-        {/* 3 Columns Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {destinationCards.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {packages.map((pkg, index) => (
+            <div 
+              key={index}
+              onClick={() => onSelectDestination(pkg)}
+              className="group relative h-[420px] rounded-[2rem] overflow-hidden cursor-pointer flex flex-col justify-between p-6 shadow-lg border border-slate-100/10"
             >
-              <div>
-                {/* Image */}
-                <div className="relative h-60 w-full overflow-hidden bg-slate-900">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+              {/* Background Image */}
+              <Image 
+                src={pkg.image} 
+                alt={pkg.title} 
+                fill 
+                className="object-cover transition-transform duration-700 group-hover:scale-110 z-0"
+                unoptimized
+              />
+              
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-[#0f172a]/95 z-10"></div>
 
-                  {/* SPECIAL OFFER Badge */}
-                  <div className="absolute top-3 right-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[10px] font-normal uppercase px-3 py-1 rounded-md shadow">
-                    SPECIAL OFFER
+              {/* Top Badges */}
+              <div className="relative z-20 flex justify-between items-start">
+                <div className="flex gap-2">
+                  <div className={`text-[10px] font-bold px-3 py-1.5 rounded-full ${pkg.badgeColor} uppercase tracking-wider shadow-md`}>
+                    {pkg.badge}
                   </div>
-
-                  {/* Location Overlay Bottom Left */}
-                  <div className="absolute bottom-3 left-3 text-white text-sm font-normal flex items-center space-x-1 drop-shadow-md">
-                    <MapPin className="w-4 h-4 text-orange-400" />
-                    <span className="font-normal">{item.location}</span>
+                  <div className="bg-black/30 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-md uppercase">
+                    {pkg.duration}
                   </div>
                 </div>
-
-                {/* Content */}
-                <div className="p-5 space-y-3">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-lg font-normal text-slate-900 group-hover:text-blue-600 transition-colors">
-                      {item.title}
-                    </h3>
-                    <div className="text-xl font-normal text-orange-600">
-                      ₹{item.price}
-                    </div>
-                  </div>
-
-                  {/* Rating Stars */}
-                  <div className="flex items-center space-x-1 text-xs text-amber-500 font-normal">
-                    <span>⭐⭐⭐⭐⭐</span>
-                    <span className="text-[10px] text-slate-400 font-normal">(Top Rating)</span>
-                  </div>
-
-                  {/* Specs Row */}
-                  <div className="grid grid-cols-2 gap-2 text-[11px] font-normal text-slate-600 pt-2 border-t border-slate-100">
-                    <div className="flex items-center space-x-1.5">
-                      <Clock className="w-3.5 h-3.5 text-blue-600" />
-                      <span>{item.duration}</span>
-                    </div>
-                    <div className="flex items-center space-x-1.5">
-                      <Car className="w-3.5 h-3.5 text-blue-600" />
-                      <span>{item.vehicle}</span>
-                    </div>
-                    <div className="col-span-2 flex items-center space-x-1.5 pt-1">
-                      <Compass className="w-3.5 h-3.5 text-blue-600" />
-                      <span>{item.guidance}</span>
-                    </div>
-                  </div>
-
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 shadow-md ${pkg.actionColor || 'bg-white/20 backdrop-blur-md text-white'}`}>
+                  <ArrowUpRight className="w-4 h-4" />
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="p-5 pt-0 space-y-2">
-                <button
-                  onClick={() => onSelectDestination(item)}
-                  className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-normal text-xs uppercase tracking-wider shadow-lg shadow-blue-600/30 transition-all hover:scale-[1.02]"
-                >
-                  BOOK NOW
-                </button>
-
-                <button
-                  onClick={() => onSelectDestination(item)}
-                  className="w-full py-2.5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-normal text-xs flex items-center justify-center space-x-1 transition-all"
-                >
-                  <span className="font-normal">More Details</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+              {/* Bottom Content */}
+              <div className="relative z-20 mt-auto pt-4">
+                <div className="text-[10px] font-bold text-[#fbbf24] tracking-widest uppercase mb-1">
+                  {pkg.region}
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
+                  {pkg.title}
+                </h3>
+                <p className="text-xs text-slate-300 font-medium leading-relaxed mb-5 max-w-sm">
+                  {pkg.desc}
+                </p>
+                
+                <div className="h-px w-full bg-white/10 mb-4"></div>
+                
+                <div className="flex justify-between items-center">
+                  <div className="text-white font-medium text-xs">
+                    From <span className="font-bold text-sm">{pkg.price}</span> <span className="text-slate-400 text-[10px]">{pkg.priceUnit}</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-[#10b981] text-[10px] font-bold">
+                    <Star className="w-3 h-3 fill-current" />
+                    {pkg.rating}
+                  </div>
+                </div>
               </div>
-
             </div>
           ))}
-        </div>
-
-        {/* Center Blue Button */}
-        <div className="mt-12 text-center">
-          <button className="px-8 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-normal text-xs uppercase tracking-widest shadow-xl shadow-blue-600/30 flex items-center space-x-2 mx-auto transition-all hover:scale-105">
-            <span className="font-normal">SEE ALL CATEGORIES</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
         </div>
 
       </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Phone, MessageCircle } from 'lucide-react';
+import { LayoutGrid } from 'lucide-react';
 
 interface CtaBannerProps {
   onOpenBookingModal: () => void;
@@ -9,66 +9,75 @@ interface CtaBannerProps {
 
 export default function CtaBanner({ onOpenBookingModal }: CtaBannerProps) {
   return (
-    <section className="relative bg-[#07132b] text-white py-20 sm:py-28 overflow-hidden poppins-regular">
-      
-      {/* Background Subtle Gradient Layers */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
-      </div>
+    <section className="bg-[#0b162c] py-16 poppins-regular border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+          
+          {/* Left Content */}
+          <div className="lg:w-1/3">
+            <div className="text-[#f59e0b] text-[10px] font-bold tracking-widest uppercase mb-3">
+              CUSTOM VACATION
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+              Plan Your Trip
+            </h2>
+            <p className="text-slate-300 text-xs md:text-sm leading-relaxed max-w-sm">
+              Traveling with elders or toddlers? Need customized temple halt timings? Get a personalized route estimate.
+            </p>
+          </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-5">
-        
-        {/* Top Label */}
-        <div className="text-[11px] sm:text-[13px] font-semibold text-blue-400 uppercase tracking-[0.15em]">
-          BEGIN YOUR JOURNEY
+          {/* Right Form */}
+          <div className="lg:w-2/3 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+              
+              {/* Date Input */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">
+                  APPROX. TRAVEL DATE
+                </label>
+                <input
+                  type="date"
+                  className="w-full bg-[#1e293b] text-white border-none rounded-lg px-4 py-3 text-xs focus:ring-1 focus:ring-orange-500 focus:outline-none"
+                />
+              </div>
+
+              {/* Travelers Input */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">
+                  NO. OF TRAVELERS
+                </label>
+                <input
+                  type="text"
+                  placeholder="5 to 7 Persons"
+                  className="w-full bg-[#1e293b] text-white placeholder-slate-400 border-none rounded-lg px-4 py-3 text-xs focus:ring-1 focus:ring-orange-500 focus:outline-none"
+                />
+              </div>
+
+              {/* Destination Input */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">
+                  DESIRED DESTINATION
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Rameshwaram + Kanyakumari"
+                  className="w-full bg-[#1e293b] text-white placeholder-slate-400 border-none rounded-lg px-4 py-3 text-xs focus:ring-1 focus:ring-orange-500 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={onOpenBookingModal}
+                className="bg-[#f97316] hover:bg-orange-500 text-white font-bold text-[11px] uppercase tracking-wider px-6 py-3 rounded-lg flex items-center gap-2 transition-all hover:scale-[1.02] shadow-lg"
+              >
+                <span>GET QUOTE NOW</span>
+                <LayoutGrid className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
         </div>
-
-        {/* Main Heading */}
-        <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-white leading-tight">
-          Ready to Plan Your Journey?
-        </h2>
-
-        {/* Subtitle Paragraph */}
-        <p className="text-slate-300 text-[14px] sm:text-[15px] max-w-[650px] mx-auto font-normal leading-[1.6]">
-          Tell us about your upcoming travel plans or group requirements. Our travel experts are available 24/7 to provide instant quotes and personalized assistance.
-        </p>
-
-        {/* Action Buttons Row */}
-        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 pt-8">
-          <button
-            onClick={onOpenBookingModal}
-            className="px-6 py-3.5 rounded-[10px] bg-[#2271ff] hover:bg-[#1a5cdd] text-white font-semibold text-[14px] shadow-[0_8px_24px_rgba(34,113,255,0.4)] transition-all"
-          >
-            Explore Vehicles
-          </button>
-
-          <button
-            onClick={onOpenBookingModal}
-            className="px-6 py-3.5 rounded-[10px] bg-white hover:bg-slate-100 text-slate-900 font-semibold text-[14px] shadow-sm transition-all"
-          >
-            Contact Us
-          </button>
-
-          <a
-            href="https://wa.me/919840012345"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center space-x-2 px-5 py-3.5 rounded-[10px] bg-[#07261d] border border-[#0b3c2e] hover:bg-[#0a3528] text-white font-medium text-[14px] transition-all"
-          >
-            <MessageCircle className="w-[18px] h-[18px] text-[#1fc47c]" />
-            <span>WhatsApp Us</span>
-          </a>
-
-          <a
-            href="tel:+919840012345"
-            className="flex items-center space-x-2 px-3 py-3.5 text-slate-300 hover:text-white font-normal text-[14px] transition-all"
-          >
-            <Phone className="w-[18px] h-[18px] text-blue-400" />
-            <span>Call: +91 98400 12345</span>
-          </a>
-        </div>
-
       </div>
     </section>
   );

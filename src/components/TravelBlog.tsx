@@ -15,7 +15,7 @@ export default function TravelBlog() {
     {
       id: 'exp-2',
       title: 'Coastal Chauffeur',
-      sub: 'Area coastal touring',
+      sub: 'Amalfi coastal touring',
       image: '/images/dest1.png',
     },
     {
@@ -27,26 +27,27 @@ export default function TravelBlog() {
     {
       id: 'exp-4',
       title: 'Historic City Arrival',
-      sub: 'City transit & heritage',
+      sub: 'London City transit',
       image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80',
     },
   ];
 
   return (
-    <section className="py-20 bg-[#f0f5ff] text-slate-900 relative border-t border-blue-100 poppins">
+    <section className="py-24 bg-white text-slate-900 poppins-regular">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-2 mb-14">
-          <div className="text-xs font-black text-blue-950 uppercase tracking-widest">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="inline-flex items-center gap-2 bg-[#fef3c7] text-[#d97706] text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mx-auto">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]"></span>
             RIDE EXPERIENCES
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#0f172a]">
             Real Journeys. Real Experiences.
           </h2>
 
-          <p className="text-blue-600 text-sm font-bold">
+          <p className="text-slate-500 text-sm md:text-[15px] font-medium leading-relaxed max-w-xl mx-auto">
             Take a glimpse at the memorable journeys, comfortable rides, and travel experiences shared by our customers.
           </p>
         </div>
@@ -56,30 +57,30 @@ export default function TravelBlog() {
           {experiences.map((item) => (
             <div
               key={item.id}
-              className="relative h-80 rounded-3xl overflow-hidden border border-slate-200 shadow-xl group hover:shadow-2xl transition-all duration-300"
+              className="relative h-[380px] rounded-3xl overflow-hidden group hover:shadow-2xl transition-all duration-300"
             >
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                unoptimized
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
-
-              {/* Title & Sub Overlay */}
-              <div className="absolute bottom-5 left-5 right-5 text-white space-y-1">
-                <h3 className="text-lg font-black leading-snug">{item.title}</h3>
-                <p className="text-xs text-slate-300 font-medium">{item.sub}</p>
+              
+              {/* Dark Overlay Box for Text */}
+              <div className="absolute top-6 left-6 right-6 bg-[#0f172a]/60 backdrop-blur-md rounded-2xl p-4 text-white shadow-lg border border-white/10 transition-transform duration-300 group-hover:-translate-y-1">
+                <h3 className="text-[17px] font-bold leading-tight mb-1 font-serif">{item.title}</h3>
+                <p className="text-[11px] text-slate-300 font-medium">{item.sub}</p>
               </div>
 
             </div>
           ))}
         </div>
 
-        {/* Blue View Gallery Button */}
-        <div className="mt-12 text-center">
-          <button className="px-8 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs tracking-widest uppercase shadow-xl shadow-blue-600/30 flex items-center space-x-2 mx-auto transition-all hover:scale-105">
-            <span>VIEW GALLERY</span>
+        {/* Action Button */}
+        <div className="mt-16 text-center">
+          <button className="px-8 py-3.5 rounded-lg bg-[#f97316] hover:bg-orange-500 text-white font-bold text-[11px] tracking-wider uppercase shadow-lg shadow-orange-500/20 flex items-center space-x-2 mx-auto transition-all hover:scale-[1.02]">
+            <span>Explore All Destinations</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
