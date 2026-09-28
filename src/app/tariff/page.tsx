@@ -302,7 +302,7 @@ export default function TariffPage() {
             
             {/* Background Glowing Spheres */}
             <div className="absolute top-1/2 -translate-y-1/2 -left-10 w-64 h-64 bg-blue-600/30 rounded-full blur-[80px] pointer-events-none z-0"></div>
-            <div className="absolute top-1/2 -translate-y-1/2 -right-10 w-72 h-72 bg-blue-400/10 rounded-full blur-[90px] pointer-events-none z-0"></div>
+            <div className="absolute top-1/2 -translate-y-1/2 -right-10 w-72 h-72 bg-emerald-500/20 rounded-full blur-[90px] pointer-events-none z-0"></div>
 
             <div className="max-w-xl text-center md:text-left relative z-10">
               <span className="text-[9px] font-bold text-blue-500 uppercase tracking-widest block mb-3">INSTANT CUSTOM ITINERARY</span>
