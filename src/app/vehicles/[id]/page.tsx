@@ -7,7 +7,7 @@ import { useParams, notFound } from 'next/navigation';
 import { vehiclesData } from '@/data/vehicles';
 import { 
   CheckCircle2, ChevronRight, User, Shield, Thermometer, Briefcase, 
-  MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation
+  MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Armchair, ChevronDown, ChevronRightSquare
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
@@ -39,11 +39,11 @@ export default function VehicleDetailsPage() {
         {/* 1. Breadcrumb & Top Bar */}
         <section className="bg-[#f4f7fb]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div className="flex items-center space-x-2 text-[11px] font-semibold text-slate-600">
+            <div className="flex items-center space-x-2 text-[12px] font-medium text-slate-600">
               <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
-              <ChevronRight className="w-3 h-3 opacity-50" />
+              <span className="text-slate-400">&gt;</span>
               <Link href="/vehicles" className="hover:text-blue-600 transition-colors">Vehicles</Link>
-              <ChevronRight className="w-3 h-3 opacity-50" />
+              <span className="text-slate-400">&gt;</span>
               <span className="text-[#0a192f] font-bold">{vehicle.name}</span>
             </div>
             
@@ -95,17 +95,17 @@ export default function VehicleDetailsPage() {
               </div>
 
               {/* Highlights Row */}
-              <div className="flex flex-wrap items-center gap-4 mt-2 p-2 rounded-2xl">
+              <div className="flex flex-wrap items-center gap-4 mt-2 bg-[#f4f7fb] p-5 rounded-[1.5rem] border border-blue-50">
                 <div className="flex-1 min-w-[150px] flex items-center gap-3">
-                  <div className="w-6 h-6 rounded flex items-center justify-center text-blue-600 shrink-0"><CheckCircle2 className="w-4 h-4" /></div>
+                  <ShieldCheck className="w-5 h-5 text-blue-600 shrink-0" />
                   <span className="text-[11px] font-medium text-slate-600 leading-tight block">360° Sanitized before every departure</span>
                 </div>
                 <div className="flex-1 min-w-[150px] flex items-center gap-3">
-                  <div className="w-6 h-6 rounded flex items-center justify-center text-blue-600 shrink-0"><Zap className="w-4 h-4" /></div>
+                  <Zap className="w-5 h-5 text-blue-600 shrink-0" />
                   <span className="text-[11px] font-medium text-slate-600 leading-tight block">Speed Governor Capped (80 km/h)</span>
                 </div>
                 <div className="flex-1 min-w-[150px] flex items-center gap-3">
-                  <div className="w-6 h-6 rounded flex items-center justify-center text-blue-600 shrink-0"><User className="w-4 h-4" /></div>
+                  <User className="w-5 h-5 text-blue-600 shrink-0" />
                   <span className="text-[11px] font-medium text-slate-600 leading-tight block">Reclining Row 2&3</span>
                 </div>
               </div>
@@ -120,16 +120,16 @@ export default function VehicleDetailsPage() {
               {/* Features Grid */}
               <div className="grid grid-cols-4 gap-3 mb-8">
                 {vehicle.features.map((feat, idx) => (
-                  <div key={idx} className="flex flex-col items-center justify-center text-center py-4 px-2 rounded-xl bg-white shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100/50 hover:border-slate-200 transition-colors">
+                  <div key={idx} className="flex flex-col items-center justify-center text-center py-5 px-2 rounded-[1.5rem] bg-white shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100/50 hover:border-slate-200 transition-colors">
                     <feat.icon className="w-5 h-5 text-blue-600 mb-2" />
-                    <span className="text-[11px] font-bold text-[#0f172a] leading-tight mb-0.5">{feat.text}</span>
+                    <span className="text-[11px] font-bold text-[#0f172a] leading-tight mb-1">{feat.text}</span>
                     <span className="text-[9px] text-slate-500 font-medium">{feat.subtext}</span>
                   </div>
                 ))}
               </div>
 
               {/* Tariff Box */}
-              <div className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[1.5rem] p-7 border border-slate-100">
+              <div className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] p-7 border border-slate-100">
                 <div className="flex justify-between items-center mb-6">
                   <div>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">TRANSPARENT RATES</span>
@@ -138,7 +138,7 @@ export default function VehicleDetailsPage() {
                   <span className="text-[9px] font-bold text-blue-600 bg-blue-50 px-3 py-1.5 rounded-full">No Hidden Surcharges</span>
                 </div>
                 
-                <div className="flex items-center justify-between bg-[#f4f7fb] rounded-xl p-5 mb-6">
+                <div className="flex items-center justify-between bg-[#f4f7fb] rounded-2xl p-6 mb-6">
                   <div className="flex items-baseline gap-2">
                     <span className="text-[2.5rem] font-extrabold text-[#0f172a] tracking-tight">₹{vehicle.price}</span>
                     <span className="text-[11px] font-medium text-slate-500">/ KM (Outstation)</span>
@@ -153,37 +153,37 @@ export default function VehicleDetailsPage() {
                 <div className="space-y-4 mb-8">
                   <div className="flex justify-between items-center text-[11px]">
                     <div className="flex items-center gap-2 text-slate-500 font-medium"><MapPin className="w-3.5 h-3.5 text-blue-500"/> Outstation Minimum Daily Run</div>
-                    <span className="font-semibold text-[#0f172a]">{vehicle.minRun} km / calendar day</span>
+                    <span className="font-bold text-[#0f172a]">{vehicle.minRun} km / calendar day</span>
                   </div>
                   <div className="flex justify-between items-center text-[11px]">
-                    <div className="flex items-center gap-2 text-slate-500 font-medium"><User className="w-3.5 h-3.5 text-blue-500"/> Driver Allowance (Day Trip)</div>
-                    <span className="font-semibold text-[#0f172a]">₹{vehicle.driverAllowance} / day (Included in city)</span>
+                    <div className="flex items-center gap-2 text-slate-500 font-medium"><ShieldCheck className="w-3.5 h-3.5 text-blue-500"/> Driver Allowance (Day Trip)</div>
+                    <span className="font-bold text-[#0f172a]">₹{vehicle.driverAllowance} / day (Included in city)</span>
                   </div>
                   <div className="flex justify-between items-center text-[11px]">
-                    <div className="flex items-center gap-2 text-slate-500 font-medium"><Clock className="w-3.5 h-3.5 text-blue-500"/> Night Halt Batta (After 10:00 PM)</div>
-                    <span className="font-semibold text-[#0f172a]">₹{vehicle.nightBatta} / night</span>
+                    <div className="flex items-center gap-2 text-slate-500 font-medium"><Moon className="w-3.5 h-3.5 text-blue-500"/> Night Halt Batta (After 10:00 PM)</div>
+                    <span className="font-bold text-[#0f172a]">₹{vehicle.nightBatta} / night</span>
                   </div>
                   <div className="flex justify-between items-center text-[11px]">
                     <div className="flex items-center gap-2 text-slate-500 font-medium"><FileText className="w-3.5 h-3.5 text-blue-500"/> Toll, State Tax & Parking</div>
-                    <span className="font-semibold text-blue-600">At Actuals via FASTag</span>
+                    <span className="font-bold text-blue-600">At Actuals via FASTag</span>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <button onClick={() => setIsModalOpen(true)} className="w-full py-3.5 bg-[#0052cc] hover:bg-blue-700 text-white rounded-xl text-[13px] font-bold transition-colors flex items-center justify-center gap-2">
+                  <button onClick={() => setIsModalOpen(true)} className="w-full py-4 bg-[#0052cc] hover:bg-blue-700 text-white rounded-xl text-[14px] font-bold transition-colors flex items-center justify-center gap-2">
                     <Calendar className="w-4 h-4" /> Book This Vehicle Now
                   </button>
                   <div className="grid grid-cols-2 gap-3">
-                    <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="py-3 bg-blue-50 hover:bg-blue-100 text-[#1e3a8a] rounded-xl text-[11px] font-bold transition-colors flex items-center justify-center gap-1.5">
+                    <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="py-3 bg-blue-50 hover:bg-blue-100 text-[#1e3a8a] rounded-xl text-[12px] font-bold transition-colors flex items-center justify-center gap-1.5">
                       <FileText className="w-3.5 h-3.5" /> WhatsApp Quote
                     </a>
-                    <button onClick={() => setIsModalOpen(true)} className="py-3 bg-blue-50 hover:bg-blue-100 text-[#1e3a8a] rounded-xl text-[11px] font-bold transition-colors flex items-center justify-center gap-1.5">
+                    <button onClick={() => setIsModalOpen(true)} className="py-3 bg-blue-50 hover:bg-blue-100 text-[#1e3a8a] rounded-xl text-[12px] font-bold transition-colors flex items-center justify-center gap-1.5">
                       <FileText className="w-3.5 h-3.5" /> Estimate Fare
                     </button>
                   </div>
-                  <div className="flex items-center justify-between text-[9px] text-slate-400 font-medium px-1 pt-2">
-                    <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3 h-3 text-blue-400" /> Free Cancellation 24h Prior</span>
-                    <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3 h-3 text-blue-400" /> GST Invoice Available</span>
+                  <div className="flex items-center justify-between text-[10px] text-slate-400 font-medium px-2 pt-3">
+                    <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-blue-400" /> Free Cancellation 24h Prior</span>
+                    <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-blue-400" /> GST Invoice Available</span>
                   </div>
                 </div>
               </div>
@@ -207,7 +207,7 @@ export default function VehicleDetailsPage() {
               {vehicle.overview.map((item, idx) => (
                 <div key={idx} className="bg-white p-8 rounded-[1.5rem] shadow-sm hover:shadow-md transition-shadow flex flex-col">
                   <div className={`w-10 h-10 rounded-xl mb-6 flex items-center justify-center ${idx === 0 ? 'bg-indigo-50 text-indigo-600' : idx === 1 ? 'bg-blue-50 text-blue-600' : 'bg-orange-50 text-orange-600'}`}>
-                    {idx === 0 ? <Zap className="w-4 h-4" /> : idx === 1 ? <User className="w-4 h-4" /> : <Shield className="w-4 h-4" />}
+                    {idx === 0 ? <Zap className="w-5 h-5" /> : idx === 1 ? <User className="w-5 h-5" /> : <Shield className="w-5 h-5" />}
                   </div>
                   <h3 className="text-[17px] font-bold text-[#0f172a] mb-3">{item.title}</h3>
                   <p className="text-[13px] text-slate-500 leading-relaxed mb-6 flex-grow">{item.desc}</p>
