@@ -8,6 +8,7 @@ import AboutSection from '@/components/AboutSection';
 import PopularDestinations from '@/components/PopularDestinations';
 import TourBanners from '@/components/TourBanners';
 import FleetSection from '@/components/FleetSection';
+import InnovaTariff from '@/components/InnovaTariff';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import CtaBanner from '@/components/CtaBanner';
 import Testimonials from '@/components/Testimonials';
@@ -61,8 +62,13 @@ export default function Home() {
           onSelectDestination={(dest) => handleOpenBookingModal(dest)}
         />
 
-        {/* 4. Rental Tariff / Featured Vehicles (3-Car Showcase & Innova Tariff) */}
+        {/* 4. Rental Tariff / Featured Vehicles (3-Car Showcase) */}
         <FleetSection
+          onBookCar={(car) => handleOpenBookingModal(car)}
+        />
+
+        {/* 4.5. Toyota Innova Tariff Card */}
+        <InnovaTariff
           onBookCar={(car) => handleOpenBookingModal(car)}
         />
 
