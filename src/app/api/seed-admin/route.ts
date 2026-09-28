@@ -3,26 +3,18 @@ import connectToDatabase from '@/lib/db';
 import AdminUser from '@/models/AdminUser';
 import bcrypt from 'bcryptjs';
 
-export async function POST(req: Request) {
+export async function GET() {
   try {
-    const { email, password, name, secretKey } = await req.json();
-
-    // Protect this endpoint with a secret key passed in the request body
-    // You should use a strong secret key in production
-    if (secretKey !== 'RUDHRAN_SECRET_SETUP_KEY_2026') {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    if (!email || !password || !name) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
-    }
+    const email = 'madurairudhrantravels@gmail.com';
+    const password = 'Madurairudhran@1';
+    const name = 'Admin';
 
     await connectToDatabase();
 
     const existingUser = await AdminUser.findOne({ email: email.toLowerCase() });
     
     if (existingUser) {
-      return NextResponse.json({ error: 'Admin user already exists with this email' }, { status: 400 });
+      return NextResponse.json({ message: 'Admin user already exists! You can log in now.' }, { status: 200 });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -36,8 +28,8 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ 
-      message: 'Admin user created successfully', 
-      user: { id: newUser._id, email: newUser.email, name: newUser.name } 
+      message: 'SUCCESS! Admin user created successfully. You can now go to /admin/login and log in.', 
+      user: { email: newUser.email } 
     }, { status: 201 });
     
   } catch (error: any) {

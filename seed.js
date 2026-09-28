@@ -18,8 +18,8 @@ async function seed() {
     await mongoose.connect(MONGODB_URI);
     console.log('Connected to MongoDB');
 
-    const email = 'admin@rudhrantravels.com';
-    const password = 'admin';
+    const email = 'madurairudhrantravels@gmail.com';
+    const password = 'Madurairudhran@1';
     const name = 'Admin User';
 
     const existingUser = await AdminUser.findOne({ email });
@@ -32,7 +32,7 @@ async function seed() {
     const passwordHash = await bcrypt.hash(password, salt);
 
     await AdminUser.create({ email, passwordHash, name, role: 'admin' });
-    console.log('Admin user seeded successfully. Email: admin@rudhrantravels.com, Password: admin');
+    console.log(`Admin user seeded successfully. Email: ${email}`);
     
   } catch (err) {
     console.error('Error seeding DB:', err);
