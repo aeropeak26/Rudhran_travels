@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { 
   CheckCircle2, Clock, Car, Users, BadgeCheck, Shield, Smile, Award, 
-  MapPin, Route, Briefcase, Plane, Users2, Key, Phone, MessageCircle 
+  MapPin, Route, Briefcase, Plane, Users2, Key, Phone, MessageCircle, ArrowRightLeft, Zap
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
@@ -260,98 +260,109 @@ export default function AboutUs() {
         </section>
 
         {/* 5. Everything We Offer */}
-        <section className="py-24 bg-slate-50">
+        <section className="py-24 bg-[#f8f9fa]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="text-xs font-semibold text-blue-600 tracking-widest uppercase mb-3">PREMIUM SERVICES</div>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">Everything We Offer</h2>
-              <p className="text-slate-500 text-sm md:text-base mt-4 max-w-2xl mx-auto">Comprehensive transportation solutions tailored to meet your diverse travel requirements across the region.</p>
+            
+            {/* Header */}
+            <div className="text-center mb-16 space-y-4">
+              <div className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 text-[10px] font-bold tracking-wider uppercase rounded-full">
+                TAILORED MOBILITY
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0a192f]">Everything We Offer</h2>
+              <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto">Tailored mobility solutions crafted for individuals, families, and enterprise teams across South India.</p>
             </div>
             
+            {/* Bento Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               
-              {/* Light Card 1 */}
-              <div className="bg-white p-8 rounded-[2rem] border border-slate-200 hover:border-blue-200 hover:shadow-xl transition-all group">
-                <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">Local Transportation</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">Explore the city with ease. Our local cabs are available for full-day or half-day rentals, perfect for shopping, meetings, or sightseeing.</p>
+              {/* Local Transportation */}
+              <div className="bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
+                <MapPin className="w-6 h-6 text-blue-600 mb-6" />
+                <h3 className="text-lg font-bold text-[#0a192f] mb-3">Local Transportation</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">Hourly city rides, business commutes, shopping trips, and point-to-point transfers with courteous chauffeurs.</p>
               </div>
 
-              {/* Light Card 2 */}
-              <div className="bg-white p-8 rounded-[2rem] border border-slate-200 hover:border-blue-200 hover:shadow-xl transition-all group">
-                <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                  <Route className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">Outstation Trips</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">Comfortable rides for out-of-town journeys. Enjoy well-maintained vehicles and experienced drivers for safe highway travel.</p>
+              {/* Outstation Trips */}
+              <div className="bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
+                <Zap className="w-6 h-6 text-blue-600 mb-6" />
+                <h3 className="text-lg font-bold text-[#0a192f] mb-3">Outstation Trips</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">Stress-free round trips and multi-day vacations across South India with seasoned highway and ghat-road drivers.</p>
               </div>
 
-              {/* Dark Card 1 (Airport) */}
-              <div className="bg-[#07132b] p-8 rounded-[2rem] text-white relative overflow-hidden group shadow-xl">
-                <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
-                  <Image src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Airport" fill className="object-cover" />
-                </div>
+              {/* Airport VIP (Tall Dark Card) */}
+              <div className="lg:row-span-2 bg-[#0b1120] p-8 rounded-2xl border border-slate-800 relative overflow-hidden flex flex-col justify-between shadow-2xl">
+                {/* Glow Effect */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-600/20 rounded-full blur-[80px] pointer-events-none"></div>
+                
                 <div className="relative z-10">
-                  <div className="text-[10px] font-bold px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full uppercase tracking-wider inline-block mb-6 border border-blue-500/30">
-                    Popular Request
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 bg-white/10 rounded border border-white/5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
+                      <span className="text-[9px] font-bold text-cyan-400 uppercase tracking-widest">ARCHETYPE 04 • DARK LUXE VIP</span>
+                    </div>
+                    <div className="px-2.5 py-1 bg-amber-500/10 rounded border border-amber-500/20">
+                      <span className="text-[9px] font-bold text-amber-500 uppercase tracking-widest">BLACK TIER</span>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-semibold mb-3">Airport Pick-up & Drop</h3>
-                  <p className="text-sm text-slate-300 leading-relaxed mb-8">Punctual and reliable transfers to and from the airport. Never miss a flight with our prompt service and real-time tracking.</p>
-                  <button onClick={() => setIsModalOpen(true)} className="w-full py-3 bg-blue-600 hover:bg-blue-500 rounded-xl text-sm font-medium transition-colors">
-                    Book Airport Transfer
-                  </button>
-                </div>
-              </div>
 
-              {/* Dark Card 2 (Corporate) */}
-              <div className="bg-[#121a2f] p-8 rounded-[2rem] text-white relative overflow-hidden group shadow-xl lg:row-span-2 flex flex-col">
-                <div className="text-[10px] font-bold px-3 py-1 bg-amber-500/20 text-amber-300 rounded-full uppercase tracking-wider inline-block mb-6 border border-amber-500/30 self-start">
-                  Business Services
-                </div>
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6">
-                  <Briefcase className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-2xl font-semibold mb-3">Corporate Travel</h3>
-                <p className="text-sm text-slate-400 leading-relaxed mb-8 flex-grow">
-                  Tailored transportation solutions for businesses. We offer employee transit, executive pick-ups, and long-term vehicle leasing with dedicated account management.
-                </p>
-                <div className="bg-white/5 rounded-2xl p-4 border border-white/10 mb-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" /> <span className="text-xs">Monthly Billing</span>
+                  <div className="w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center mb-8 backdrop-blur-sm">
+                    <Plane className="w-6 h-6 text-cyan-400" />
                   </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" /> <span className="text-xs">Priority Support</span>
+
+                  <h3 className="text-2xl font-bold text-white mb-4">Airport VIP Meet & Greet</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed mb-8">Punctual terminal curbside receiving with custom iPad name boards, active flight telemetry sync, and luggage trolley handling.</p>
+
+                  <div className="bg-slate-900/50 border border-slate-700/50 rounded-xl p-5 mb-8 backdrop-blur-sm">
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
+                        <span className="text-[11px] font-medium text-slate-300">Flight Tracking Engine</span>
+                      </div>
+                      <span className="text-[11px] font-bold text-cyan-400">Auto-Buffer +60m</span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 leading-relaxed">Pickup auto-adjusts if your flight is delayed. Zero wait surcharges.</p>
                   </div>
                 </div>
-                <button className="w-full py-3 bg-white text-slate-900 hover:bg-slate-100 rounded-xl text-sm font-medium transition-colors">
-                  Contact for Corporate Deals
+
+                <button onClick={() => setIsModalOpen(true)} className="relative z-10 w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold uppercase tracking-widest transition-colors shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center justify-center gap-2">
+                  RESERVE AIRPORT CHAUFFEUR &rarr;
                 </button>
               </div>
 
-              {/* Light Card 3 */}
-              <div className="bg-white p-8 rounded-[2rem] border border-slate-200 hover:border-blue-200 hover:shadow-xl transition-all group">
-                <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
-                  <Key className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">Chauffeur Services</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">Hire professional drivers for your own car. Experienced, verified chauffeurs for daily commute, outstation trips, or special events.</p>
+              {/* Corporate Travel */}
+              <div className="bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
+                <Briefcase className="w-6 h-6 text-blue-600 mb-6" />
+                <h3 className="text-lg font-bold text-[#0a192f] mb-3">Corporate Travel</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">Executive mobility management, VIP delegation handling, GST compliant invoicing, and dedicated enterprise accounts.</p>
               </div>
 
-              {/* Light Card 4 */}
-              <div className="bg-white p-8 rounded-[2rem] border border-slate-200 hover:border-blue-200 hover:shadow-xl transition-all group lg:col-span-1">
-                <div className="flex items-center gap-4 mb-6 border-b border-slate-100 pb-6">
-                   <div className="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center group-hover:bg-orange-600 group-hover:text-white transition-colors">
-                    <Users2 className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900">Group & Event Travel</h3>
-                </div>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">Spacious TTs and buses for family functions, weddings, corporate outings, and educational tours.</p>
-                <Link href="/#fleet" className="text-sm font-medium text-blue-600 hover:text-blue-700 flex items-center gap-1">View Large Vehicles &rarr;</Link>
+              {/* Group & Event Travel */}
+              <div className="bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
+                <Users2 className="w-6 h-6 text-blue-600 mb-6" />
+                <h3 className="text-lg font-bold text-[#0a192f] mb-3">Group & Event Travel</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">Spacious 12-17 seater luxury Force Urbanias and Tempo Travellers for weddings, pilgrimages, and family reunions.</p>
               </div>
 
             </div>
+
+            {/* Bottom Full-width Card */}
+            <div className="mt-6 bg-white border border-slate-100 rounded-2xl p-6 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                  <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">
+                    <ArrowRightLeft className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-[#0a192f] mb-1">Chauffeur-Driven Vehicle Rental</h3>
+                    <p className="text-sm text-slate-500">Custom daily, weekly, or monthly rentals across executive sedans, Toyota Crystas, Hycross, and luxury SUVs.</p>
+                  </div>
+                </div>
+                <Link href="/#tariff" className="text-sm font-bold text-blue-600 hover:text-blue-700 whitespace-nowrap flex items-center gap-1 shrink-0">
+                  Check Vehicle Tariff &rarr;
+                </Link>
+              </div>
+            </div>
+
           </div>
         </section>
 
