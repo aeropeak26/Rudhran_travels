@@ -48,15 +48,15 @@ export default function TourPackagesPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-transparent"></div>
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-            <div className="flex flex-wrap items-center gap-3 text-[11px] font-medium text-slate-400 mb-8">
-              <div className="bg-[#0f52ba]/20 text-blue-400 px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-blue-500/20 uppercase tracking-wider text-[9px] font-bold">
-                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> OUR TOUR PACKAGES
-              </div>
-              <span className="text-slate-600">•</span>
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
-              <span className="text-slate-600">/</span>
-              <span className="text-blue-300">Tour Packages</span>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest mb-4">
+              <Link href="/" className="text-slate-400 hover:text-white transition-colors">Home</Link>
+              <span className="text-slate-500">/</span>
+              <span className="text-[#f97316]">Tour Packages</span>
+            </div>
+
+            <div className="bg-[#1e3a8a]/40 text-blue-100 px-4 py-1.5 rounded-full flex items-center gap-2 border border-[#1e3a8a] uppercase tracking-wider text-[10px] font-bold mb-8">
+              <div className="w-2 h-2 bg-[#f97316] rounded-full"></div> OUR TOUR PACKAGES
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-white mb-6 leading-tight max-w-3xl">
@@ -67,17 +67,21 @@ export default function TourPackagesPage() {
               Curated journeys, comfortable travel and unforgettable experiences across beautiful destinations in Tamil Nadu, Kerala, and Karnataka with our premium fleet.
             </p>
 
-            <div className="w-full max-w-2xl h-px bg-slate-700/50 mb-8"></div>
-
-            <div className="flex flex-wrap items-center gap-4 mb-10">
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors px-4 py-2.5 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
-                <Check className="w-4 h-4 text-emerald-400" /> Guaranteed Punctual Chauffeurs
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 px-5 py-3 rounded-lg text-slate-200 text-[11px] font-medium shadow-sm hover:bg-white/10 transition-colors">
+                <div className="w-4 h-4 rounded-full bg-[#f97316] flex items-center justify-center shrink-0">
+                  <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
+                </div> Guaranteed Punctual Chauffeurs
               </div>
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors px-4 py-2.5 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
-                <Check className="w-4 h-4 text-emerald-400" /> 100% Tailored Itineraries
+              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 px-5 py-3 rounded-lg text-slate-200 text-[11px] font-medium shadow-sm hover:bg-white/10 transition-colors">
+                <div className="w-4 h-4 rounded-full bg-[#f97316] flex items-center justify-center shrink-0">
+                  <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
+                </div> 100% Tailored Itineraries
               </div>
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors px-4 py-2.5 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
-                <Check className="w-4 h-4 text-emerald-400" /> Zero Hidden Costs
+              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 px-5 py-3 rounded-lg text-slate-200 text-[11px] font-medium shadow-sm hover:bg-white/10 transition-colors">
+                <div className="w-4 h-4 rounded-full bg-[#f97316] flex items-center justify-center shrink-0">
+                  <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
+                </div> Zero Hidden Costs
               </div>
             </div>
 
@@ -91,13 +95,13 @@ export default function TourPackagesPage() {
         <section id="packages" className="pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
           
           {/* Filter Bar */}
-          <div className="bg-white rounded-2xl p-2.5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex flex-col md:flex-row justify-between items-center mb-12 gap-4 border border-slate-100">
-            <div className="flex items-center gap-1 w-full overflow-x-auto px-2 pb-2 md:pb-0 scrollbar-hide">
+          <div className="bg-white rounded-full p-2 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex justify-between items-center mb-12 gap-4 border border-slate-100 max-w-6xl mx-auto overflow-hidden">
+            <div className="flex items-center gap-1 w-full overflow-x-auto px-2 scrollbar-hide">
               {filters.map(f => (
                 <button 
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`px-5 py-2.5 rounded-xl text-[12px] font-bold transition-all whitespace-nowrap shrink-0 ${
+                  className={`px-6 py-3 rounded-full text-[12px] font-bold transition-all whitespace-nowrap shrink-0 ${
                     filter === f 
                     ? 'bg-[#0f172a] text-white shadow-md' 
                     : 'text-slate-500 hover:text-[#0f172a]'
@@ -108,7 +112,7 @@ export default function TourPackagesPage() {
               ))}
             </div>
             
-            <div className="flex items-center gap-1.5 px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-slate-100 text-[11px] font-bold text-[#0f172a] whitespace-nowrap shrink-0 w-full md:w-auto justify-center md:justify-start">
+            <div className="flex items-center gap-1.5 px-5 py-3 bg-[#f8fafc] rounded-full border border-slate-100 text-[11px] font-bold text-[#0f172a] whitespace-nowrap shrink-0 mr-2">
               <span className="flex items-center gap-1.5 text-slate-500 font-medium"><div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> Showing</span> {filteredPackages.length} Handpicked Packages
             </div>
           </div>
