@@ -137,6 +137,17 @@ export default function AdminTourPackages() {
       }
       const payload = { ...pkgData, img: finalImg };
 
+      // Upload itinerary images
+      if (payload.itinerary && payload.itinerary.length > 0) {
+        for (let i = 0; i < payload.itinerary.length; i++) {
+          const day = payload.itinerary[i];
+          if (day._file) {
+            day.img = await uploadImage(day._file);
+            delete day._file;
+          }
+        }
+      }
+
       const url = editingId ? `/api/tour-packages/${editingId}` : `/api/tour-packages`;
       const method = editingId ? 'PUT' : 'POST';
 
@@ -423,7 +434,22 @@ export default function AdminTourPackages() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <input type="text" placeholder="Stay (e.g. Tall Trees)" value={day.stay} onChange={e => { const n = [...pkgData.itinerary]; n[i].stay = e.target.value; setPkgData({...pkgData, itinerary: n}); }} className="border p-2 rounded text-black" />
                       <input type="text" placeholder="Distance (e.g. 130 km)" value={day.distance} onChange={e => { const n = [...pkgData.itinerary]; n[i].distance = e.target.value; setPkgData({...pkgData, itinerary: n}); }} className="border p-2 rounded text-black" />
-                      <input type="text" placeholder="Image URL (e.g. /images/dest1.png)" value={day.img} onChange={e => { const n = [...pkgData.itinerary]; n[i].img = e.target.value; setPkgData({...pkgData, itinerary: n}); }} className="border p-2 rounded text-black" />
+                      <div className="flex items-center gap-3">
+                        <div className="h-10 w-14 bg-gray-100 rounded border border-gray-300 overflow-hidden shrink-0 flex items-center justify-center">
+                          {day._file ? (
+                            <img src={URL.createObjectURL(day._file)} className="h-full w-full object-cover" />
+                          ) : day.img ? (
+                            <img src={day.img} className="h-full w-full object-cover" />
+                          ) : <ImageIcon className="w-4 h-4 text-gray-400" />}
+                        </div>
+                        <input type="file" accept="image/*" onChange={e => {
+                          const n = [...pkgData.itinerary];
+                          if (e.target.files && e.target.files[0]) {
+                            n[i]._file = e.target.files[0];
+                          }
+                          setPkgData({...pkgData, itinerary: n});
+                        }} className="text-xs w-full text-slate-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:bg-blue-50 file:text-blue-700" />
+                      </div>
                     </div>
                   </div>
                 ))}
