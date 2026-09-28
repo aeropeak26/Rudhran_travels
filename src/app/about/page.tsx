@@ -148,7 +148,7 @@ export default function AboutUs() {
                 </ul>
                 
                 <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <Link href="/#fleet" className="px-6 py-3 bg-[#2a41d0] hover:bg-blue-700 text-white rounded-xl font-semibold text-sm transition-all shadow-md shadow-blue-900/20">
+                  <Link href="/vehicles" className="px-6 py-3 bg-[#2a41d0] hover:bg-blue-700 text-white rounded-xl font-semibold text-sm transition-all shadow-md shadow-blue-900/20">
                     Explore Our Fleet
                   </Link>
                   <Link href="/#packages" className="px-6 py-3 bg-white border border-slate-200 hover:border-slate-300 text-slate-700 rounded-xl font-semibold text-sm transition-all">
