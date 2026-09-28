@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
@@ -36,11 +37,18 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="text-xs font-black text-white uppercase tracking-wider">QUICK LINKS</h4>
             <ul className="space-y-2 font-medium text-slate-300">
-              {['Home', 'Tour Packages', 'Car Services', 'Rental Tariff', 'About Us', 'Contact Us'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="hover:text-blue-400 transition-colors">
-                    {link}
-                  </a>
+              {[
+                { name: 'Home', href: '/' },
+                { name: 'Tour Packages', href: '/#packages' },
+                { name: 'Car Services', href: '/#services' },
+                { name: 'Rental Tariff', href: '/#tariff' },
+                { name: 'About Us', href: '/about' },
+                { name: 'Contact Us', href: '/#contact' }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="hover:text-blue-400 transition-colors">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
