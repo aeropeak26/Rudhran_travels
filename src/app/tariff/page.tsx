@@ -308,47 +308,6 @@ export default function TariffPage() {
           </div>
         </section>
 
-        {/* 4. Important Guidelines */}
-        <section className="py-16 bg-[#f8fafc] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-[1.5rem] border-l-4 border-l-blue-600 p-8 md:p-10 shadow-sm flex flex-col md:flex-row gap-8 items-start relative overflow-hidden">
-            
-            <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-              <Info className="w-5 h-5" />
-            </div>
-            
-            <div className="flex-grow">
-              <h3 className="text-[17px] font-bold text-[#0f172a] mb-2">Important Pricing & Seasonal Guidelines</h3>
-              <p className="text-[12px] text-slate-600 mb-6 max-w-3xl leading-relaxed">
-                Rates may vary depending on destination, travel duration, season and specific trip requirements. Contact us for an exact quotation.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-                  <p className="text-[11px] text-slate-600 leading-relaxed"><span className="font-bold text-[#0f172a]">Peak Season Rates:</span> Moderate surcharges during Ooty summer festival, Tirupati Brahmotsavam, and Pongal.</p>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-                  <p className="text-[11px] text-slate-600 leading-relaxed"><span className="font-bold text-[#0f172a]">Round-Trip Rule:</span> Outstation km calculation begins and terminates at our Guindy / Central Chennai garage.</p>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-                  <p className="text-[11px] text-slate-600 leading-relaxed"><span className="font-bold text-[#0f172a]">Multi-Day Packages:</span> Avail bundled flat-discount itineraries for 5+ day temple and hill circuits.</p>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-                  <p className="text-[11px] text-slate-600 leading-relaxed"><span className="font-bold text-[#0f172a]">Air-Conditioning Policy:</span> AC operates uninterrupted on highways, but turned off on steep uphill hairpins for engine safety.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="shrink-0 pt-2">
-              <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 bg-[#0f172a] hover:bg-slate-800 text-white rounded-xl text-[12px] font-bold transition-colors flex items-center justify-center gap-2 shadow-md">
-                <FileText className="w-4 h-4" /> Clarify with Specialist
-              </a>
-            </div>
-          </div>
-        </section>
 
         {/* 5. Custom Itinerary CTA */}
         <section className="bg-[#f8fafc] pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
