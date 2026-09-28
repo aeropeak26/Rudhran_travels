@@ -94,5 +94,17 @@ export const packagesData = [
     img: '/images/mahabalipuram.jpg',
     desc: 'Experience the perfect blend of French colonial charm and spiritual tranquility. Cycle through White Town and relax at serene beaches.',
     featured: false,
+  },
+  {
+    id: '9',
+    title: 'Mysore Heritage',
+    subtitle: 'Mysore | Srirangapatna | Brindavan Gardens',
+    duration: '2 Days / 1 Night',
+    price: '4,200',
+    category: 'Karnataka',
+    badge: 'HISTORICAL & HERITAGE',
+    img: '/images/mysore.jpg',
+    desc: 'Immerse yourself in the royal legacy of the Wodeyars. Visit the grand Mysore Palace and stroll through lush illuminated gardens.',
+    featured: false,
   }
 ];
