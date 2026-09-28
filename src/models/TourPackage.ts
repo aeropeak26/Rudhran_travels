@@ -56,6 +56,9 @@ export interface ITourPackage extends Document {
     features: string[];
     recommended?: boolean;
   }[];
+
+  inclusions: string[];
+  exclusions: string[];
   
   createdAt: Date;
   updatedAt: Date;
@@ -123,7 +126,10 @@ const TourPackageSchema: Schema = new Schema(
         features: { type: [String], default: [] },
         recommended: { type: Boolean, default: false },
       }
-    ]
+    ],
+
+    inclusions: { type: [String], default: [] },
+    exclusions: { type: [String], default: [] },
   },
   { timestamps: true }
 );

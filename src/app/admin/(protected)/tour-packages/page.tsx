@@ -101,7 +101,9 @@ export default function AdminTourPackages() {
       hero: { badge: '', title: '', desc: '', pacing: '', stayTier: '', carriage: '', escort: '', pricingTitle: '', pricingType: '', pricingAdvance: '' },
       waypoints: [],
       itinerary: [],
-      vehicles: []
+      vehicles: [],
+      inclusions: [''],
+      exclusions: ['']
     };
   }
 
@@ -418,6 +420,104 @@ export default function AdminTourPackages() {
                   </div>
                 ))}
                 {pkgData.itinerary.length === 0 && <p className="text-sm text-gray-400">No itinerary days added.</p>}
+              </div>
+            </section>
+
+            {/* SECTION 4: INCLUSIONS & EXCLUSIONS */}
+            <section>
+              <h3 className="text-lg font-semibold text-blue-900 mb-4 border-b border-gray-100 pb-2">4. Inclusions & Exclusions</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                {/* Inclusions */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Inclusions</label>
+                  {(pkgData.inclusions || []).map((inc: string, i: number) => (
+                    <div key={`inc-${i}`} className="flex gap-2 mb-2">
+                      <input type="text" value={inc} onChange={e => {
+                        const newInc = [...(pkgData.inclusions || [])];
+                        newInc[i] = e.target.value;
+                        setPkgData({...pkgData, inclusions: newInc});
+                      }} className="block w-full rounded border-gray-300 border p-2 text-black text-sm" placeholder="e.g. Dedicated vehicle..." />
+                      <button type="button" onClick={() => setPkgData({...pkgData, inclusions: pkgData.inclusions.filter((_: any, idx: number) => idx !== i)})} className="px-3 py-2 text-red-600 bg-red-50 rounded hover:bg-red-100"><Trash2 className="w-4 h-4"/></button>
+                    </div>
+                  ))}
+                  <button type="button" onClick={() => setPkgData({...pkgData, inclusions: [...(pkgData.inclusions || []), '']})} className="text-sm text-emerald-600 font-medium mt-2">+ Add Inclusion</button>
+                </div>
+
+                {/* Exclusions */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Exclusions</label>
+                  {(pkgData.exclusions || []).map((exc: string, i: number) => (
+                    <div key={`exc-${i}`} className="flex gap-2 mb-2">
+                      <input type="text" value={exc} onChange={e => {
+                        const newExc = [...(pkgData.exclusions || [])];
+                        newExc[i] = e.target.value;
+                        setPkgData({...pkgData, exclusions: newExc});
+                      }} className="block w-full rounded border-gray-300 border p-2 text-black text-sm" placeholder="e.g. Entry tickets..." />
+                      <button type="button" onClick={() => setPkgData({...pkgData, exclusions: pkgData.exclusions.filter((_: any, idx: number) => idx !== i)})} className="px-3 py-2 text-red-600 bg-red-50 rounded hover:bg-red-100"><Trash2 className="w-4 h-4"/></button>
+                    </div>
+                  ))}
+                  <button type="button" onClick={() => setPkgData({...pkgData, exclusions: [...(pkgData.exclusions || []), '']})} className="text-sm text-red-600 font-medium mt-2">+ Add Exclusion</button>
+                </div>
+
+              </div>
+            </section>
+
+            {/* SECTION 5: WAYPOINTS */}
+            <section>
+              <h3 className="text-lg font-semibold text-blue-900 mb-4 border-b border-gray-100 pb-2 flex justify-between items-center">
+                5. Route Waypoints
+                <button type="button" onClick={() => setPkgData({...pkgData, waypoints: [...(pkgData.waypoints || []), { id: '', title: '', desc: '' }]})} className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded">+ Add Waypoint</button>
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {(pkgData.waypoints || []).map((wp: any, i: number) => (
+                  <div key={`wp-${i}`} className="bg-gray-50 p-4 rounded border border-gray-200 relative">
+                    <button type="button" onClick={() => setPkgData({...pkgData, waypoints: pkgData.waypoints.filter((_: any, idx: number) => idx !== i)})} className="absolute top-2 right-2 text-red-500 hover:text-red-700"><Trash2 className="w-4 h-4"/></button>
+                    <input type="text" placeholder="ID (e.g. 01)" value={wp.id} onChange={e => { const n = [...pkgData.waypoints]; n[i].id = e.target.value; setPkgData({...pkgData, waypoints: n}); }} className="w-full border p-2 rounded text-black text-sm mb-2" />
+                    <input type="text" placeholder="Title (e.g. Cochin Arrival)" value={wp.title} onChange={e => { const n = [...pkgData.waypoints]; n[i].title = e.target.value; setPkgData({...pkgData, waypoints: n}); }} className="w-full border p-2 rounded text-black text-sm mb-2" />
+                    <input type="text" placeholder="Short Desc..." value={wp.desc} onChange={e => { const n = [...pkgData.waypoints]; n[i].desc = e.target.value; setPkgData({...pkgData, waypoints: n}); }} className="w-full border p-2 rounded text-black text-sm" />
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* SECTION 6: VEHICLES */}
+            <section>
+              <h3 className="text-lg font-semibold text-blue-900 mb-4 border-b border-gray-100 pb-2 flex justify-between items-center">
+                6. Available Vehicles / Pricing
+                <button type="button" onClick={() => setPkgData({...pkgData, vehicles: [...(pkgData.vehicles || []), { tier: '', category: '', name: '', subtitle: '', price: '', features: [''], recommended: false }]})} className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded">+ Add Vehicle</button>
+              </h3>
+              <div className="space-y-6">
+                {(pkgData.vehicles || []).map((v: any, i: number) => (
+                  <div key={`veh-${i}`} className="bg-gray-50 p-6 rounded border border-gray-200 relative">
+                    <button type="button" onClick={() => setPkgData({...pkgData, vehicles: pkgData.vehicles.filter((_: any, idx: number) => idx !== i)})} className="absolute top-4 right-4 text-red-500 hover:text-red-700"><Trash2 className="w-4 h-4"/></button>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 pr-8">
+                      <input type="text" placeholder="Tier (e.g. Tier 01)" value={v.tier} onChange={e => { const n = [...pkgData.vehicles]; n[i].tier = e.target.value; setPkgData({...pkgData, vehicles: n}); }} className="border p-2 rounded text-black text-sm" />
+                      <input type="text" placeholder="Category (e.g. COUPLES)" value={v.category} onChange={e => { const n = [...pkgData.vehicles]; n[i].category = e.target.value; setPkgData({...pkgData, vehicles: n}); }} className="border p-2 rounded text-black text-sm" />
+                      <input type="text" placeholder="Name (e.g. Sedan)" value={v.name} onChange={e => { const n = [...pkgData.vehicles]; n[i].name = e.target.value; setPkgData({...pkgData, vehicles: n}); }} className="border p-2 rounded text-black text-sm" />
+                      <input type="text" placeholder="Price (e.g. 12,999)" value={v.price} onChange={e => { const n = [...pkgData.vehicles]; n[i].price = e.target.value; setPkgData({...pkgData, vehicles: n}); }} className="border p-2 rounded text-black text-sm" />
+                    </div>
+                    <div className="mb-4">
+                      <input type="text" placeholder="Subtitle (e.g. Toyota Etios)" value={v.subtitle} onChange={e => { const n = [...pkgData.vehicles]; n[i].subtitle = e.target.value; setPkgData({...pkgData, vehicles: n}); }} className="w-full border p-2 rounded text-black text-sm mb-2" />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Features</label>
+                      {v.features.map((feat: string, fIdx: number) => (
+                        <div key={`feat-${fIdx}`} className="flex gap-2 mb-2">
+                          <input type="text" value={feat} onChange={e => { const n = [...pkgData.vehicles]; n[i].features[fIdx] = e.target.value; setPkgData({...pkgData, vehicles: n}); }} className="block w-full rounded border-gray-300 border p-2 text-black text-sm" />
+                          <button type="button" onClick={() => { const n = [...pkgData.vehicles]; n[i].features = n[i].features.filter((_: any, idxx: number) => idxx !== fIdx); setPkgData({...pkgData, vehicles: n}); }} className="px-3 py-2 text-red-600 bg-red-50 rounded hover:bg-red-100"><Trash2 className="w-4 h-4"/></button>
+                        </div>
+                      ))}
+                      <button type="button" onClick={() => { const n = [...pkgData.vehicles]; n[i].features.push(''); setPkgData({...pkgData, vehicles: n}); }} className="text-xs text-blue-600 font-medium">+ Add Feature</button>
+                    </div>
+
+                    <div className="flex items-center mt-4">
+                      <input type="checkbox" checked={v.recommended} onChange={e => { const n = [...pkgData.vehicles]; n[i].recommended = e.target.checked; setPkgData({...pkgData, vehicles: n}); }} className="h-4 w-4 text-orange-600 rounded" />
+                      <label className="ml-2 block text-sm font-medium text-gray-900">Recommended (Highlight Box)</label>
+                    </div>
+                  </div>
+                ))}
               </div>
             </section>
 
