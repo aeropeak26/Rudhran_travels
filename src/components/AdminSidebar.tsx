@@ -10,7 +10,7 @@ const navigation = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
   { name: 'Testimonials', href: '/admin/testimonials', icon: MessageSquare },
   { name: 'Vehicles', href: '/admin/vehicles', icon: Car },
-  { name: 'Tour Packages', href: '/admin/tours', icon: Map },
+  { name: 'Tour Packages', href: '/admin/tour-packages', icon: Map },
   { name: 'Gallery', href: '/admin/gallery', icon: ImageIcon },
   { name: 'Pages', href: '/admin/pages', icon: FileText },
 ];
