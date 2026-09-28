@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { 
   CheckCircle2, Clock, Car, Users, BadgeCheck, Shield, Smile, Award, 
-  MapPin, Route, Briefcase, Plane, Users2, Key, Phone, MessageCircle, ArrowRightLeft, Zap, FileCheck
+  MapPin, Route, Briefcase, Plane, Users2, Key, Phone, MessageCircle, ArrowRightLeft, Zap, FileCheck, Calendar, Map, ArrowDown
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
@@ -71,115 +71,126 @@ export default function AboutUs() {
         </section>
 
         {/* 2. Your Trusted Travel Partner */}
-        <section className="py-20 bg-white">
+        <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              
               {/* Image Side */}
-              <div className="relative h-[450px] md:h-[550px] rounded-3xl overflow-hidden shadow-2xl">
-                <Image 
-                  src="/images/hero_car.png" 
-                  alt="Travel Partner" 
-                  fill 
-                  className="object-cover" 
-                />
-                <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur p-4 rounded-2xl shadow-xl flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                    <BadgeCheck className="w-6 h-6" />
+              <div className="relative">
+                <div className="relative h-[500px] md:h-[600px] rounded-[2rem] overflow-hidden">
+                  <Image 
+                    src="/images/hero_car.png" 
+                    alt="Travel Partner" 
+                    fill 
+                    className="object-cover" 
+                  />
+                </div>
+                {/* Floating Card */}
+                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-2xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center gap-4 w-[90%] max-w-[320px]">
+                  <div className="w-12 h-12 bg-blue-50 rounded-[14px] flex items-center justify-center text-blue-600 shrink-0">
+                    <Shield className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-slate-900">Certified Services</div>
-                    <div className="text-xs text-slate-500 font-medium">Government Approved Travel Partner</div>
+                    <div className="text-xs font-bold text-[#0a192f] mb-0.5">CERTIFIED AGENCY</div>
+                    <div className="text-[10px] text-slate-500 leading-tight">Government Registered & Fully Insured Fleet</div>
                   </div>
                 </div>
               </div>
               
               {/* Text Side */}
-              <div className="space-y-6">
-                <div className="text-xs font-semibold text-blue-600 tracking-widest uppercase">ABOUT US</div>
-                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">Your Trusted Travel Partner</h2>
+              <div className="space-y-6 lg:pl-8">
+                <div className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-bold tracking-wider uppercase rounded-full">
+                  WHO WE ARE
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0a192f]">Your Trusted Travel Partner</h2>
                 
-                <div className="space-y-4 text-slate-600 leading-relaxed text-sm md:text-base">
+                <div className="space-y-5 text-slate-600 leading-relaxed text-sm">
                   <p>
-                    For over a decade, Rudhran Travels has been a symbol of hospitality, trust, and quality in the travel industry. We are more than just a transportation provider; we are your dedicated travel partners. With an uncompromising focus on passenger safety, comfort, and reliability, we ensure that every journey you take with us is smooth, hassle-free, and memorable.
+                    Established with a passion for exceptional hospitality and seamless mobility, Rudhran Travels has evolved into South India's premier chauffeured transportation and curated tour specialist. We blend modern fleet management with personalized guest care, ensuring every mile feels safe, comfortable, and truly memorable.
                   </p>
                   <p>
-                    Whether it's a quick outstation trip, a detailed multi-city tour, or a seamless airport transfer, our well-maintained fleet of vehicles and experienced, courteous drivers are always ready to exceed your expectations.
+                    Whether you are coordinating multi-day hill station tours, interstate pilgrimage routes, fast-paced corporate airport transits, or comfortable family vacations, our team executes every detail with precision and genuine courtesy.
                   </p>
                 </div>
                 
-                <ul className="space-y-4 py-4">
+                <ul className="space-y-4 py-6">
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-blue-600 shrink-0" />
-                    <span className="text-sm md:text-base font-medium text-slate-700">Personalized travel solutions tailored to your individual needs.</span>
+                    <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
+                    </div>
+                    <span className="text-sm font-semibold text-[#0a192f]">Personalized itineraries customized to your schedule and pacing</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-blue-600 shrink-0" />
-                    <span className="text-sm md:text-base font-medium text-slate-700">A diverse fleet of vehicles ranging from comfortable sedans to spacious SUVs.</span>
+                    <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
+                    </div>
+                    <span className="text-sm font-semibold text-[#0a192f]">Meticulously inspected, spotless, late-model fleet of sedans, SUVs & tempo travellers</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-blue-600 shrink-0" />
-                    <span className="text-sm md:text-base font-medium text-slate-700">Verified and professional drivers committed to your safety.</span>
+                    <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
+                    </div>
+                    <span className="text-sm font-semibold text-[#0a192f]">Veteran chauffeurs with deep ghat-road and interstate route mastery</span>
                   </li>
                 </ul>
                 
                 <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <button 
-                    onClick={() => setIsModalOpen(true)} 
-                    className="px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium text-sm transition-all shadow-lg shadow-blue-600/30 hover:scale-105"
-                  >
-                    Book A Ride
-                  </button>
-                  <Link 
-                    href="/#packages" 
-                    className="px-8 py-3.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-full font-medium text-sm transition-all hover:border-slate-300"
-                  >
+                  <Link href="/#fleet" className="px-6 py-3 bg-[#2a41d0] hover:bg-blue-700 text-white rounded-xl font-semibold text-sm transition-all shadow-md shadow-blue-900/20">
+                    Explore Our Fleet
+                  </Link>
+                  <Link href="/#packages" className="px-6 py-3 bg-white border border-slate-200 hover:border-slate-300 text-slate-700 rounded-xl font-semibold text-sm transition-all">
                     View Tour Packages
                   </Link>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
 
         {/* 3. Stats Section */}
-        <section className="py-12 bg-slate-100">
+        <section className="py-20 bg-[#fafbfc]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
-              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col gap-3 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-2">
-                  <Clock className="w-6 h-6" />
+              {/* Card 1 */}
+              <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 flex flex-col hover:-translate-y-1 transition-transform duration-300">
+                <div className="w-10 h-10 bg-blue-50 rounded-[10px] flex items-center justify-center text-blue-600 mb-6">
+                  <Calendar className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl font-bold text-slate-900">10+</h3>
-                <p className="text-sm font-semibold text-slate-900">Years Experience</p>
-                <p className="text-xs text-slate-500 leading-relaxed">Over a decade of providing reliable transportation services across South India.</p>
+                <h3 className="text-3xl font-bold text-[#0a192f] mb-1">10+</h3>
+                <p className="text-xs font-bold text-[#0a192f] mb-3">Years Experience</p>
+                <p className="text-[11px] text-slate-500 leading-relaxed">A decade of punctuality and road excellence across Tamil Nadu, Kerala, Karnataka, and Andhra.</p>
               </div>
 
-              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col gap-3 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-2">
-                  <Smile className="w-6 h-6" />
+              {/* Card 2 */}
+              <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 flex flex-col hover:-translate-y-1 transition-transform duration-300">
+                <div className="w-10 h-10 bg-orange-50 rounded-[10px] flex items-center justify-center text-orange-500 mb-6">
+                  <Smile className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl font-bold text-slate-900">5,000+</h3>
-                <p className="text-sm font-semibold text-slate-900">Happy Customers</p>
-                <p className="text-xs text-slate-500 leading-relaxed">Consistently delivering smiles through exceptional travel experiences and service.</p>
+                <h3 className="text-3xl font-bold text-[#0a192f] mb-1">5,000+</h3>
+                <p className="text-xs font-bold text-[#0a192f] mb-3">Happy Customers</p>
+                <p className="text-[11px] text-slate-500 leading-relaxed">Over 98% 5-star ratings from families, solo explorers, and corporate executives.</p>
               </div>
 
-              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col gap-3 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-2">
-                  <Car className="w-6 h-6" />
+              {/* Card 3 */}
+              <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 flex flex-col hover:-translate-y-1 transition-transform duration-300">
+                <div className="w-10 h-10 bg-emerald-50 rounded-[10px] flex items-center justify-center text-emerald-500 mb-6">
+                  <Map className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl font-bold text-slate-900">100+</h3>
-                <p className="text-sm font-semibold text-slate-900">Total Vehicles</p>
-                <p className="text-xs text-slate-500 leading-relaxed">A wide range of well-maintained cars, from economy hatchbacks to premium SUVs.</p>
+                <h3 className="text-3xl font-bold text-[#0a192f] mb-1">100+</h3>
+                <p className="text-xs font-bold text-[#0a192f] mb-3">Tour Packages</p>
+                <p className="text-[11px] text-slate-500 leading-relaxed">Handcrafted journeys to hill stations, coastal gems, and historic temple circuits.</p>
               </div>
 
-              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col gap-3 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 mb-2">
-                  <Users className="w-6 h-6" />
+              {/* Card 4 */}
+              <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 flex flex-col hover:-translate-y-1 transition-transform duration-300">
+                <div className="w-10 h-10 bg-purple-50 rounded-[10px] flex items-center justify-center text-purple-500 mb-6">
+                  <ArrowDown className="w-5 h-5" />
                 </div>
-                <h3 className="text-3xl font-bold text-slate-900">50+</h3>
-                <p className="text-sm font-semibold text-slate-900">Expert Drivers</p>
-                <p className="text-xs text-slate-500 leading-relaxed">Highly trained, verified, and professional chauffeurs dedicated to your safety.</p>
+                <h3 className="text-3xl font-bold text-[#0a192f] mb-1">50+</h3>
+                <p className="text-xs font-bold text-[#0a192f] mb-3">Modern Vehicles</p>
+                <p className="text-[11px] text-slate-500 leading-relaxed">From premium sedans and Toyota Innova Crystas to luxury Force Urbania cruisers.</p>
               </div>
 
             </div>
