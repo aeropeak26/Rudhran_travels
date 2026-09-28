@@ -11,9 +11,9 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onSearchCars, onOpenBookingModal }: HeroSectionProps) {
   return (
-    <section className="relative bg-[url('/images/Home/bg.png')] bg-cover bg-center bg-no-repeat pt-10 pb-20 text-white overflow-hidden poppins-regular min-h-[520px]">
+    <section className="relative bg-[url('/images/Home/bg.png')] bg-cover bg-center bg-no-repeat pt-10 pb-4 text-white overflow-hidden poppins-regular min-h-[520px]">
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         
         {/* Top Hero Content */}
         <div className="mb-12 pt-10 md:pt-16 max-w-3xl text-left space-y-6">
@@ -71,7 +71,7 @@ export default function HeroSection({ onSearchCars, onOpenBookingModal }: HeroSe
         </div>
 
         {/* Floating Search Bar Box */}
-        <div id="booking-widget" className="relative z-20">
+        <div id="booking-widget" className="relative z-30 -mb-24 md:-mb-28 mt-8">
           <BookingWidget onSearchCars={onSearchCars} />
         </div>
 

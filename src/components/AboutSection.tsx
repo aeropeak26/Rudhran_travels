@@ -2,102 +2,83 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Car, ShieldCheck, Settings, PhoneCall } from 'lucide-react';
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-white text-slate-900 relative border-b border-slate-200 overflow-hidden poppins-regular">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section id="about" className="pt-32 pb-20 bg-white text-slate-900 relative border-b border-slate-100 overflow-hidden poppins-regular">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-12 items-center">
           
-          {/* Left Text */}
-          <div className="lg:col-span-6 space-y-6">
-            
-            <div className="text-xs font-normal text-blue-600 tracking-widest uppercase">
-              WELCOME TO YOUR JOURNEY, OUR COMMITMENT
+          {/* Left Image Section */}
+          <div className="w-full lg:w-1/2 relative">
+            <div className="relative w-full h-[350px] md:h-[450px] rounded-[2rem] overflow-hidden shadow-2xl border border-slate-100">
+              <Image
+                src="/images/dest1.png"
+                alt="Toyota Innova on Mountain Road"
+                fill
+                className="object-cover transition-transform duration-700 hover:scale-105"
+              />
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900 leading-tight">
-              Travel with Comfort. Explore with Confidence.
+            {/* Floating Experience Card */}
+            <div className="absolute -bottom-6 right-4 md:right-8 bg-[#0b162c] text-white p-5 rounded-2xl shadow-[0_20px_40px_rgba(11,22,44,0.3)] flex items-center gap-4 z-20 border border-white/10 max-w-[280px]">
+              <div className="bg-[#d97706] text-white text-xl font-bold rounded-xl w-12 h-12 flex items-center justify-center shrink-0">
+                10+
+              </div>
+              <div>
+                <h4 className="text-sm font-bold leading-tight">Years Experience</h4>
+                <p className="text-[10px] text-slate-300 mt-1 leading-snug">Serving Madurai & Tamil Nadu Travelers</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Text Section */}
+          <div className="w-full lg:w-1/2 space-y-6 mt-10 lg:mt-0">
+            
+            <div className="text-[10px] font-bold text-blue-600 tracking-widest uppercase flex items-center gap-2">
+              <span className="w-4 h-px bg-blue-600"></span>
+              ABOUT RUDHRAN CAB TRAVELS
+            </div>
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#0f172a] leading-[1.1]">
+              Your Journey, <br />
+              Our Responsibility
             </h2>
 
-            <div className="space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              <p>
-                At Rudhran Travels, we believe every journey should be comfortable, safe, and truly memorable. With years of experience in the travel industry, we provide reliable travel solutions designed around your needs.
-              </p>
-              <p>
-                From business trips and family vacations to group tours and leisure getaways, our well-maintained fleet and dedicated service ensure a smooth travel experience from start to finish.
-              </p>
-              <p>
-                With a commitment to quality, safety, and customer satisfaction, we go beyond transportation -- we make every journey an experience worth remembering.
-              </p>
-              <p className="font-normal text-slate-900">
-                Plan Your Journey with Rudhran Travels
-              </p>
+            <p className="text-[13px] sm:text-sm text-slate-600 leading-relaxed font-medium">
+              Headquartered in Madurai, Rudhran Cab Travels was founded with a mission to eliminate the stress of unreliable outstation rentals and overpriced tourist services. Rudhran Cab Travels is committed to providing safe, comfortable, and reliable travel experiences from Madurai. From local trips and outstation journeys to customized tour packages, we ensure every customer travels with confidence, convenience, and peace of mind.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-4 pt-4">
+              <div className="flex items-center gap-3">
+                <Car className="w-5 h-5 text-emerald-600" />
+                <span className="text-xs font-bold text-[#0f172a]">Professional Service</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <ShieldCheck className="w-5 h-5 text-emerald-600" />
+                <span className="text-xs font-bold text-[#0f172a]">Experienced Drivers</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Settings className="w-5 h-5 text-emerald-600" />
+                <span className="text-xs font-bold text-[#0f172a]">Well Maintained Vehicles</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <PhoneCall className="w-5 h-5 text-emerald-600" />
+                <span className="text-xs font-bold text-[#0f172a]">24/7 Support</span>
+              </div>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-6">
               <a
                 href="#contact"
-                className="inline-block px-7 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-normal text-xs tracking-wider uppercase shadow-lg shadow-blue-600/30 transition-all hover:scale-105"
+                className="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-[#0b162c] hover:bg-slate-900 text-white font-bold text-[11px] uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02]"
               >
-                CONTACT US
+                <span>Speak with Operations Team</span>
+                <ArrowRight className="w-4 h-4 text-blue-300" />
               </a>
             </div>
 
-          </div>
-
-          {/* Right Image Collage */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative w-full h-[450px]">
-              
-              {/* Top Mountain Background Card */}
-              <div className="absolute top-0 left-0 w-3/4 h-64 rounded-3xl overflow-hidden border border-slate-200 shadow-xl">
-                <Image
-                  src="/images/dest2.png"
-                  alt="Mountain Landscape"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl text-[10px] font-normal text-slate-800 flex items-center space-x-1.5 shadow">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                  <span>System Status: Online & Ready</span>
-                </div>
-              </div>
-
-              {/* Top Right Floating Best Ratings Badge */}
-              <div className="absolute top-8 right-0 bg-white border border-slate-200 p-3 rounded-2xl shadow-xl text-center z-20">
-                <div className="text-[10px] font-normal text-slate-500 mb-1">Best ratings</div>
-                <div className="text-base">⭐⭐⭐⭐⭐</div>
-              </div>
-
-              {/* Bottom Cockpit Image Card */}
-              <div className="absolute bottom-0 right-0 w-3/4 h-64 rounded-3xl overflow-hidden border border-slate-200 shadow-2xl z-10">
-                <Image
-                  src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80"
-                  alt="Car Cockpit Navigation"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Floating Badge: 200+ Travels */}
-              <div className="absolute bottom-16 left-12 bg-white border border-slate-200 p-4 rounded-2xl shadow-2xl z-30 min-w-[200px]">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-xl font-normal text-slate-900">200+ Travels</span>
-                  <ArrowUpRight className="w-5 h-5 text-emerald-500" />
-                </div>
-                <p className="text-[10px] text-slate-500 leading-tight mb-2 font-normal">
-                  Quality Vehicles, Seamless Bookings, and 5-Star Travel Experiences.
-                </p>
-                <div className="flex items-center -space-x-2">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
-                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
-                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
-                </div>
-              </div>
-
-            </div>
           </div>
 
         </div>
