@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { 
   CheckCircle2, Clock, Car, Users, BadgeCheck, Shield, Smile, Award, 
-  MapPin, Route, Briefcase, Plane, Users2, Key, Phone, MessageCircle, ArrowRightLeft, Zap, FileCheck, Calendar, Map, ArrowDown
+  MapPin, Route, Briefcase, Plane, Users2, Key, Phone, MessageCircle, ArrowRightLeft, Zap, FileCheck, Calendar, Map, ArrowDown, Check
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
@@ -24,7 +24,7 @@ export default function AboutUs() {
 
       <main className="flex-grow">
         {/* 1. Hero Banner */}
-        <section className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center overflow-hidden">
+        <section className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden">
           <Image 
             src="/images/dest2.png" 
             alt="Scenic road" 
@@ -34,37 +34,50 @@ export default function AboutUs() {
           />
           <div className="absolute inset-0 bg-slate-900/80"></div>
           
-          <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-            <div className="flex items-center justify-center space-x-3 text-xs md:text-sm font-medium tracking-widest text-blue-300 uppercase mb-6">
+          <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto mt-10">
+            <div className="flex items-center justify-center space-x-2 text-[10px] md:text-xs font-semibold tracking-widest text-slate-300 uppercase mb-8">
               <Link href="/" className="hover:text-white transition-colors">HOME</Link>
               <span className="opacity-50">/</span>
-              <span className="text-white">ABOUT US</span>
+              <span className="text-blue-400">ABOUT US</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-900/40 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm">
+              <div className="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.8)]"></div>
+              <span className="text-[10px] md:text-xs font-bold text-blue-200 uppercase tracking-widest">ABOUT RUDHRAN TRAVELS</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-[64px] font-bold tracking-tight mb-8 leading-tight">
               Your Journey, Our Commitment
             </h1>
             
-            <p className="text-lg md:text-xl text-slate-300 font-light mb-10 max-w-3xl mx-auto">
-              Reliable transit services designed for exceptional comfort, safety, and convenience across South India and beyond.
+            <p className="text-base md:text-lg text-slate-200 font-light mb-12 max-w-3xl mx-auto leading-relaxed">
+              Reliable travel services designed around your comfort, safety, and convenience across South India and beyond.
             </p>
             
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 text-sm font-medium">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" /> 
-                <span>10+ Years Experience</span>
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm font-medium border-t border-white/10 pt-10">
+              <div className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-[#10b981] flex items-center justify-center shrink-0">
+                  <Check className="w-3 h-3 text-white stroke-[4]" />
+                </div>
+                <span className="text-slate-100">100% Sanitized Fleet</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" /> 
-                <span>Well-Maintained Fleet</span>
+              <div className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-[#10b981] flex items-center justify-center shrink-0">
+                  <Check className="w-3 h-3 text-white stroke-[4]" />
+                </div>
+                <span className="text-slate-100">Verified Chauffeurs</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" /> 
-                <span>Transparent Pricing</span>
+              <div className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-[#10b981] flex items-center justify-center shrink-0">
+                  <Check className="w-3 h-3 text-white stroke-[4]" />
+                </div>
+                <span className="text-slate-100">Transparent Pricing</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" /> 
-                <span>24/7 Trip Support</span>
+              <div className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-[#10b981] flex items-center justify-center shrink-0">
+                  <Check className="w-3 h-3 text-white stroke-[4]" />
+                </div>
+                <span className="text-slate-100">24/7 Trip Support</span>
               </div>
             </div>
           </div>
@@ -149,47 +162,59 @@ export default function AboutUs() {
         </section>
 
         {/* 3. Stats Section */}
-        <section className="py-20 bg-[#fafbfc]">
+        <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
               {/* Card 1 */}
-              <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 flex flex-col hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-10 h-10 bg-blue-50 rounded-[10px] flex items-center justify-center text-blue-600 mb-6">
-                  <Calendar className="w-5 h-5" />
+              <div 
+                className="p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#e2e8f0]/80 flex flex-col hover:-translate-y-1 transition-transform duration-300"
+                style={{ background: 'linear-gradient(180deg, #FFFFFF 56%, #cdd9fa 100%)' }}
+              >
+                <div className="w-12 h-12 bg-[#eff6ff] rounded-2xl flex items-center justify-center text-[#2563eb] mb-8 shadow-sm">
+                  <Calendar className="w-6 h-6" />
                 </div>
-                <h3 className="text-3xl font-bold text-[#0a192f] mb-1">10+</h3>
-                <p className="text-xs font-bold text-[#0a192f] mb-3">Years Experience</p>
+                <h3 className="text-4xl font-bold text-[#0a192f] mb-1">10+</h3>
+                <p className="text-sm font-bold text-[#0a192f] mb-4">Years Experience</p>
                 <p className="text-[11px] text-slate-500 leading-relaxed">A decade of punctuality and road excellence across Tamil Nadu, Kerala, Karnataka, and Andhra.</p>
               </div>
 
               {/* Card 2 */}
-              <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 flex flex-col hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-10 h-10 bg-orange-50 rounded-[10px] flex items-center justify-center text-orange-500 mb-6">
-                  <Smile className="w-5 h-5" />
+              <div 
+                className="p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#e2e8f0]/80 flex flex-col hover:-translate-y-1 transition-transform duration-300"
+                style={{ background: 'linear-gradient(180deg, #FFFFFF 56%, #cdd9fa 100%)' }}
+              >
+                <div className="w-12 h-12 bg-[#fffbeb] rounded-2xl flex items-center justify-center text-[#f59e0b] mb-8 shadow-sm">
+                  <Smile className="w-6 h-6" />
                 </div>
-                <h3 className="text-3xl font-bold text-[#0a192f] mb-1">5,000+</h3>
-                <p className="text-xs font-bold text-[#0a192f] mb-3">Happy Customers</p>
+                <h3 className="text-4xl font-bold text-[#0a192f] mb-1">5,000+</h3>
+                <p className="text-sm font-bold text-[#0a192f] mb-4">Happy Customers</p>
                 <p className="text-[11px] text-slate-500 leading-relaxed">Over 98% 5-star ratings from families, solo explorers, and corporate executives.</p>
               </div>
 
               {/* Card 3 */}
-              <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 flex flex-col hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-10 h-10 bg-emerald-50 rounded-[10px] flex items-center justify-center text-emerald-500 mb-6">
-                  <Map className="w-5 h-5" />
+              <div 
+                className="p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#e2e8f0]/80 flex flex-col hover:-translate-y-1 transition-transform duration-300"
+                style={{ background: 'linear-gradient(180deg, #FFFFFF 56%, #cdd9fa 100%)' }}
+              >
+                <div className="w-12 h-12 bg-[#ecfdf5] rounded-2xl flex items-center justify-center text-[#10b981] mb-8 shadow-sm">
+                  <Map className="w-6 h-6" />
                 </div>
-                <h3 className="text-3xl font-bold text-[#0a192f] mb-1">100+</h3>
-                <p className="text-xs font-bold text-[#0a192f] mb-3">Tour Packages</p>
+                <h3 className="text-4xl font-bold text-[#0a192f] mb-1">100+</h3>
+                <p className="text-sm font-bold text-[#0a192f] mb-4">Tour Packages</p>
                 <p className="text-[11px] text-slate-500 leading-relaxed">Handcrafted journeys to hill stations, coastal gems, and historic temple circuits.</p>
               </div>
 
               {/* Card 4 */}
-              <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 flex flex-col hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-10 h-10 bg-purple-50 rounded-[10px] flex items-center justify-center text-purple-500 mb-6">
-                  <ArrowDown className="w-5 h-5" />
+              <div 
+                className="p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#e2e8f0]/80 flex flex-col hover:-translate-y-1 transition-transform duration-300"
+                style={{ background: 'linear-gradient(180deg, #FFFFFF 56%, #cdd9fa 100%)' }}
+              >
+                <div className="w-12 h-12 bg-[#f5f3ff] rounded-2xl flex items-center justify-center text-[#8b5cf6] mb-8 shadow-sm">
+                  <ArrowDown className="w-6 h-6" />
                 </div>
-                <h3 className="text-3xl font-bold text-[#0a192f] mb-1">50+</h3>
-                <p className="text-xs font-bold text-[#0a192f] mb-3">Modern Vehicles</p>
+                <h3 className="text-4xl font-bold text-[#0a192f] mb-1">50+</h3>
+                <p className="text-sm font-bold text-[#0a192f] mb-4">Modern Vehicles</p>
                 <p className="text-[11px] text-slate-500 leading-relaxed">From premium sedans and Toyota Innova Crystas to luxury Force Urbania cruisers.</p>
               </div>
 
