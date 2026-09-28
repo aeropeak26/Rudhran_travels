@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
+import WhyChooseUs from '@/components/WhyChooseUs';
 import CtaBanner from '@/components/CtaBanner';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
@@ -354,64 +355,8 @@ export default function AboutUs() {
           </div>
         </section>
 
-        {/* 6. Why Customers Choose Us (Static Layout matching image) */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-20">
-              <div className="text-xs font-semibold text-blue-600 tracking-widest uppercase mb-3">OUR CORE VALUES</div>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">Why Customers Choose Us</h2>
-              <p className="text-slate-500 text-sm md:text-base mt-4 max-w-2xl mx-auto">
-                Built on a foundation of trust, reliability, and excellence. Here is what makes us different.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              
-              {[
-                { 
-                  id: "01", 
-                  title: "Reliable Service", 
-                  desc: "Punctuality is our promise. Count on us for timely pickups and drops without any last-minute cancellations." 
-                },
-                { 
-                  id: "02", 
-                  title: "Transparent Pricing", 
-                  desc: "No hidden charges, no surge pricing. What you see is exactly what you pay for your complete journey." 
-                },
-                { 
-                  id: "03", 
-                  title: "Expert Chauffeurs", 
-                  desc: "Professional, courteous, and highly experienced drivers who know the routes and prioritize your safety." 
-                },
-                { 
-                  id: "04", 
-                  title: "Clean & Well-Maintained", 
-                  desc: "Every vehicle undergoes strict cleaning and mechanical checks before every single trip." 
-                },
-                { 
-                  id: "05", 
-                  title: "Flexible Travel Options", 
-                  desc: "Customizable planning to suit your schedule. From hourly rentals to multi-day packages, we accommodate your needs." 
-                },
-                { 
-                  id: "06", 
-                  title: "Dedicated Support", 
-                  desc: "24/7 customer assistance. Our support team is always ready to resolve queries and assist you during your trip." 
-                }
-              ].map((item, idx) => (
-                <div key={idx} className="bg-slate-50 border border-slate-100 rounded-[2rem] p-8 relative overflow-hidden group hover:border-blue-200 hover:shadow-lg transition-all duration-300">
-                  <div className="absolute top-4 right-6 text-6xl font-bold text-slate-200/50 group-hover:text-blue-100 transition-colors pointer-events-none">
-                    {item.id}
-                  </div>
-                  <div className="text-xs font-bold text-blue-600 tracking-widest uppercase mb-3 relative z-10">CORE STRENGTH</div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-4 relative z-10">{item.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed relative z-10">{item.desc}</p>
-                </div>
-              ))}
-
-            </div>
-          </div>
-        </section>
+        {/* 6. Why Customers Choose Us */}
+        <WhyChooseUs />
 
         {/* 7. CTA Banner */}
         <CtaBanner onOpenBookingModal={() => setIsModalOpen(true)} />
