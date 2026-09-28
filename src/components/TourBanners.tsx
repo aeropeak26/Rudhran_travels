@@ -87,7 +87,7 @@ export default function TourBanners({ onOpenBookingModal }: TourBannersProps) {
   ];
 
   return (
-    <section className="py-24 bg-white text-slate-900 poppins-regular border-b border-slate-100">
+    <section className="pb-24 pt-0 bg-slate-50 text-slate-900 poppins-regular">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -165,6 +165,14 @@ export default function TourBanners({ onOpenBookingModal }: TourBannersProps) {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Bottom CTA Button */}
+        <div className="mt-12 text-center">
+          <button className="px-8 py-3.5 rounded-full bg-[#f97316] hover:bg-orange-500 text-white font-bold text-sm shadow-md shadow-orange-500/20 flex items-center space-x-2 mx-auto transition-all hover:scale-[1.02]">
+            <span>Explore All Destinations</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
         </div>
 
       </div>

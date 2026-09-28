@@ -1,96 +1,150 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { Users, Wind, UserCheck, Briefcase, Tag, AlertTriangle, ArrowRight } from 'lucide-react';
 
 interface FleetSectionProps {
   onBookCar: (car: any) => void;
 }
 
 export default function FleetSection({ onBookCar }: FleetSectionProps) {
-  const [selectedCarIndex, setSelectedCarIndex] = useState<number>(1);
-
-  const cars = [
-    { name: 'Sedan', icon: 'M4 14l2-6h12l2 6m-16 0h16v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4z', image: '/images/hero_car.png' },
-    { name: 'SUV', icon: 'M4 12l2-6h12l2 6m-16 0h16v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6zm3-4h10', image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80' },
-    { name: 'Innova', icon: 'M3 13l2-6h14l2 6m-18 0h18v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5zm3-4h12', image: '/images/hero_car.png' },
-    { name: 'Innova Crysta', icon: 'M3 13l2-6h14l2 6m-18 0h18v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5zm3-4h12', image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80' },
-    { name: 'Tempo Traveller', icon: 'M3 8h18M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8M3 8l2-4h14l2 4', image: '/images/hero_car.png' },
-    { name: 'Chevrolet', icon: 'M4 14l2-6h12l2 6m-16 0h16v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4z', image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80' },
-  ];
-
   return (
-    <section id="fleet" className="py-24 bg-[#0a192f] text-white relative poppins-regular overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="fleet" className="py-24 bg-slate-50 relative poppins-regular z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 flex items-center justify-center gap-3">
-            <span className="text-[#d97706]">✦</span> 
-            Rental Tariff / Featured Vehicles 
-            <span className="text-[#d97706]">✦</span>
-          </h2>
-          <p className="text-slate-300 text-sm font-medium">
-            Well-maintained vehicles for every journey.
-          </p>
-        </div>
-
-        {/* Tab Selector */}
-        <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-20 relative z-10">
-          {cars.map((car, index) => (
-            <button
-              key={index}
-              onClick={() => setSelectedCarIndex(index)}
-              className={`flex flex-col items-center gap-4 transition-all duration-300 ${selectedCarIndex === index ? 'opacity-100' : 'opacity-50 hover:opacity-80'}`}
-            >
-              <div className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-colors ${selectedCarIndex === index ? 'border-white bg-white/10' : 'border-transparent'}`}>
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d={car.icon} />
-                </svg>
-              </div>
-              <span className={`text-[10px] uppercase font-bold tracking-widest ${selectedCarIndex === index ? 'text-white' : 'text-slate-400'}`}>
-                {car.name}
-              </span>
-            </button>
-          ))}
-        </div>
-
-        {/* Large Carousel Showcase */}
-        <div className="relative h-[250px] md:h-[400px] max-w-5xl mx-auto flex items-center justify-center">
+        {/* Main Card Container */}
+        <div className="bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.06)] overflow-hidden flex flex-col lg:flex-row border border-slate-100">
           
-          {/* Left Arrow */}
-          <button
-            onClick={() => setSelectedCarIndex((prev) => (prev > 0 ? prev - 1 : cars.length - 1))}
-            className="absolute left-0 z-20 w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#0a192f] hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          {/* Left Content Area */}
+          <div className="p-8 lg:p-10 flex-grow flex flex-col justify-between">
+            
+            <div>
+              {/* Header Row */}
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h2 className="text-3xl font-bold text-[#0f172a] tracking-tight mb-2">
+                    Toyota Innova Crysta
+                  </h2>
+                  <p className="text-slate-400 text-sm font-medium leading-relaxed max-w-lg">
+                    South India's most trusted executive long-distance cruiser, known for legendary ride comfort and safety.
+                  </p>
+                </div>
+                
+                {/* Rating Badge */}
+                <div className="hidden sm:flex items-center gap-1.5 bg-[#fef3c7] text-[#d97706] px-3 py-1.5 rounded-md shadow-sm border border-amber-100/50">
+                  <span className="text-xs">★</span>
+                  <span className="text-[10px] font-bold tracking-wide">4.9 (420+ trips)</span>
+                </div>
+              </div>
 
-          {/* Car Image */}
-          <div className="relative w-[90%] h-full z-10">
-            <Image
-              key={selectedCarIndex}
-              src={cars[selectedCarIndex].image}
-              alt={cars[selectedCarIndex].name}
-              fill
-              className="object-contain animate-fadeIn drop-shadow-2xl mix-blend-screen"
-              unoptimized
-            />
+              {/* Feature Pills */}
+              <div className="flex flex-wrap gap-2.5 mt-6 mb-10">
+                <div className="flex items-center gap-1.5 bg-blue-50/70 text-blue-600 px-3 py-1.5 rounded-md text-[10px] font-bold border border-blue-100 shadow-sm">
+                  <Users className="w-3.5 h-3.5" />
+                  <span>7 Seats</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-blue-50/70 text-blue-600 px-3 py-1.5 rounded-md text-[10px] font-bold border border-blue-100 shadow-sm">
+                  <Wind className="w-3.5 h-3.5" />
+                  <span>Dual AC</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-blue-50/70 text-blue-600 px-3 py-1.5 rounded-md text-[10px] font-bold border border-blue-100 shadow-sm">
+                  <UserCheck className="w-3.5 h-3.5" />
+                  <span>Chauffeur Included</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-blue-50/70 text-blue-600 px-3 py-1.5 rounded-md text-[10px] font-bold border border-blue-100 shadow-sm">
+                  <Briefcase className="w-3.5 h-3.5" />
+                  <span>4 Large Bags</span>
+                </div>
+                <div className="flex items-center gap-1.5 bg-blue-50/70 text-blue-600 px-3 py-1.5 rounded-md text-[10px] font-bold border border-blue-100 shadow-sm">
+                  <Tag className="w-3.5 h-3.5" />
+                  <span>FASTag Active</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              {/* Pricing Grid Container */}
+              <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100/80 flex flex-wrap gap-y-6 md:gap-y-0 justify-between items-center mb-6">
+                
+                <div className="w-1/2 md:w-auto">
+                  <div className="text-[10px] text-slate-400 font-bold tracking-wider mb-1">Outstation Rate</div>
+                  <div className="flex items-baseline gap-1 text-blue-600">
+                    <span className="text-2xl font-bold tracking-tight">₹18</span>
+                    <span className="text-[10px] font-bold text-slate-400">/km</span>
+                  </div>
+                </div>
+
+                <div className="w-1/2 md:w-auto md:border-l border-slate-200 md:pl-6">
+                  <div className="text-[10px] text-slate-400 font-bold tracking-wider mb-1">Local 8hr/80km</div>
+                  <div className="text-2xl font-bold text-[#0f172a] tracking-tight">
+                    ₹3,800
+                  </div>
+                </div>
+
+                <div className="w-1/2 md:w-auto md:border-l border-slate-200 md:pl-6">
+                  <div className="text-[10px] text-slate-400 font-bold tracking-wider mb-1">Min. Outstation</div>
+                  <div className="flex items-baseline gap-1 text-[#0f172a]">
+                    <span className="text-xl font-bold tracking-tight">300 km</span>
+                    <span className="text-[10px] font-bold text-slate-400">/day</span>
+                  </div>
+                </div>
+
+                <div className="w-1/2 md:w-auto md:border-l border-slate-200 md:pl-6">
+                  <div className="text-[10px] text-slate-400 font-bold tracking-wider mb-1">Driver Batta</div>
+                  <div className="text-lg font-bold text-blue-600">
+                    Included
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Warning Notice */}
+              <div className="flex items-center gap-2.5 bg-red-50/50 border border-red-100/50 px-4 py-2.5 rounded-xl text-red-600">
+                <AlertTriangle className="w-3.5 h-3.5" />
+                <span className="text-[10px] font-bold tracking-wide">Toll, Parking, and Hill Station charges are extra as applicable.</span>
+              </div>
+            </div>
+
           </div>
 
-          {/* Right Arrow */}
-          <button
-            onClick={() => setSelectedCarIndex((prev) => (prev < cars.length - 1 ? prev + 1 : 0))}
-            className="absolute right-0 z-20 w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#0a192f] hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]"
-          >
-            <ArrowRight className="w-5 h-5" />
-          </button>
-          
+          {/* Right Blue Panel */}
+          <div className="bg-gradient-to-br from-[#1e40af] to-[#172554] lg:w-[320px] flex-shrink-0 p-8 lg:p-10 flex flex-col justify-center relative overflow-hidden">
+            {/* Background subtle elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+            
+            <div className="relative z-10 space-y-8">
+              
+              {/* Driver Allowance */}
+              <div>
+                <div className="text-blue-200/80 text-[9px] font-bold uppercase tracking-widest mb-1.5">DRIVER ALLOWANCE</div>
+                <div className="text-white text-3xl font-bold tracking-tight mb-1">Rs. 500</div>
+                <div className="text-blue-300/80 text-[10px] font-medium tracking-wide">Per Day (Driver Batta)</div>
+              </div>
+              
+              <div className="h-px w-full bg-white/10"></div>
+
+              {/* Rent Per Day */}
+              <div>
+                <div className="text-blue-200/80 text-[9px] font-bold uppercase tracking-widest mb-1.5">RENT / DAY</div>
+                <div className="text-white text-4xl font-bold tracking-tight mb-6">Rs. 2200</div>
+                
+                <button 
+                  onClick={() => onBookCar({ title: 'Toyota Innova Crysta', startingPrice: 2200 })}
+                  className="w-full bg-[#f97316] hover:bg-orange-500 text-white font-bold text-[11px] tracking-wider uppercase py-3.5 rounded-lg flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20 transition-all hover:scale-[1.02]"
+                >
+                  <span>Book This Vehicle</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+                <div className="text-center text-blue-300/70 text-[9px] mt-4 font-medium tracking-wide">
+                  Instant WhatsApp confirmation
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
-        {/* Overlay subtle glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-blue-500/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
       </div>
     </section>
   );
