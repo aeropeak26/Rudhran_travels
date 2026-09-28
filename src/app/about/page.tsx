@@ -208,7 +208,7 @@ export default function AboutUs() {
               {/* Card 4 */}
               <div 
                 className="p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#e2e8f0]/80 flex flex-col hover:-translate-y-1 transition-transform duration-300"
-                style={{ background: 'linear-gradient(180deg, #FFFFFF 56%, #cdd9fa 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #FFFFFF 56%, #cdd9fa 100%)' }}
               >
                 <div className="w-12 h-12 bg-[#f5f3ff] rounded-2xl flex items-center justify-center text-[#8b5cf6] mb-8 shadow-sm">
                   <ArrowDown className="w-6 h-6" />
