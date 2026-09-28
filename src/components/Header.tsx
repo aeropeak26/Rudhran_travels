@@ -55,7 +55,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-[13px] font-medium transition-colors ${isActive ? 'text-blue-600' : 'text-slate-600 hover:text-orange-500'}`}
+                className={`text-[13px] font-medium transition-colors ${isActive ? 'text-orange-500' : 'text-slate-600 hover:text-orange-500'}`}
               >
                 {link.name}
               </Link>

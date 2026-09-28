@@ -103,30 +103,17 @@ export default function TariffPage() {
       <main className="flex-grow">
         
         {/* 1. Hero Section */}
-        <section className="relative pt-24 pb-32 overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src="/images/hero_car.png" 
-              alt="South India Touring Fleet" 
-              fill 
-              className="object-cover object-center"
-              priority
-            />
-            <div className="absolute inset-0 bg-[#0f172a]/85 backdrop-blur-sm"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-[#0f172a]/50"></div>
-          </div>
-
+        <section className="relative pt-24 pb-32 overflow-hidden bg-[#0A162C]">
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
             
-            <div className="flex items-center space-x-2 text-[11px] font-medium text-slate-400 mb-8">
+            <div className="flex items-center space-x-2 text-[10px] font-bold text-slate-400 mb-8 uppercase tracking-widest">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
-              <span>&gt;</span>
-              <span className="text-white font-bold">Rental Tariff</span>
+              <span className="text-slate-500">/</span>
+              <span className="text-orange-500">Rental Tariff</span>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[9px] font-bold uppercase tracking-widest rounded-full mb-6">
-              <Shield className="w-3.5 h-3.5" /> SOUTH INDIA'S LEADING FLEET RENTALS
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#182a47] text-blue-200 text-[9px] font-bold uppercase tracking-widest rounded-full mb-8">
+              <div className="w-2 h-2 rounded-full bg-orange-500"></div> TRANSPARENT & HONEST PRICING
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white mb-6 leading-tight max-w-4xl">
@@ -134,21 +121,21 @@ export default function TariffPage() {
             </h1>
             
             <p className="text-sm md:text-base text-slate-300 leading-relaxed mb-12 max-w-2xl">
-              Transparent and fixed pricing for a safe and effortless journey across South India. No hidden charges. No nasty surprises. 24/7 dedicated travel support.
+              Transparent and flexible vehicle rental pricing for every journey across South India. No surprises, no hidden levies—just pure travel precision.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3">
-              <div className="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 transition-colors border border-white/10 backdrop-blur-md px-4 py-2.5 rounded-full text-white text-[11px] font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" /> State Permit Included
+              <div className="flex items-center gap-2 bg-[#1c2a44] hover:bg-[#233554] transition-colors px-5 py-3 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
+                <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" /> Zero Hidden Costs
               </div>
-              <div className="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 transition-colors border border-white/10 backdrop-blur-md px-4 py-2.5 rounded-full text-white text-[11px] font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" /> Zero Hidden Extras
+              <div className="flex items-center gap-2 bg-[#1c2a44] hover:bg-[#233554] transition-colors px-5 py-3 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
+                <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" /> Upfront Driver Batta
               </div>
-              <div className="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 transition-colors border border-white/10 backdrop-blur-md px-4 py-2.5 rounded-full text-white text-[11px] font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" /> Trained English Drivers
+              <div className="flex items-center gap-2 bg-[#1c2a44] hover:bg-[#233554] transition-colors px-5 py-3 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
+                <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" /> Digital FASTag Slips
               </div>
-              <div className="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 transition-colors border border-white/10 backdrop-blur-md px-4 py-2.5 rounded-full text-white text-[11px] font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" /> 24/7 Roadside Assist
+              <div className="flex items-center gap-2 bg-[#1c2a44] hover:bg-[#233554] transition-colors px-5 py-3 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
+                <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" /> GST Invoicing Ready
               </div>
             </div>
 
