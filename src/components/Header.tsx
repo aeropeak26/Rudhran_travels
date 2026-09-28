@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight, Moon } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface HeaderProps {
   onOpenBookingModal: (carOrDestination?: any) => void;
@@ -10,10 +12,11 @@ interface HeaderProps {
 export default function Header({ onOpenBookingModal }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      if (window.scrollY > 10) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -25,66 +28,73 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Tariff', href: '/tariff' },
-    { name: 'Service', href: '#about' },
-    { name: 'Vehicles', href: '/vehicles' },
-    { name: 'Contact Us', href: '#contact' },
+    { name: 'Tour Packages', href: '/tour-packages' },
+    { name: 'Car Services', href: '/vehicles' },
+    { name: 'About Us', href: '#about' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 poppins-regular ${
-      isScrolled ? 'bg-[#032880]/95 backdrop-blur-md shadow-xl py-3 border-b border-blue-900/50' : 'bg-[#032880] py-4 border-b border-blue-900/40'
+      isScrolled ? 'bg-white shadow-md py-3' : 'bg-white shadow-sm py-4 border-b border-slate-100'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* Brand Logo: RUDHRAN CAR TRAVELS */}
-        <a href="#" className="flex items-center space-x-2 group">
-          <div className="text-2xl font-normal tracking-wider text-white">
-            RUDHRAN <span className="text-xs font-normal px-2 py-0.5 bg-orange-600 text-white rounded tracking-normal uppercase">CAR TRAVELS</span>
+        {/* Brand Logo: RUDHRAN CAB TRAVELS */}
+        <Link href="/" className="flex items-center space-x-2 group">
+          <div className="text-2xl font-serif tracking-wide text-[#0b1324] flex items-baseline gap-2">
+            RUDHRAN <span className="text-[10px] font-bold text-orange-500 uppercase tracking-widest font-sans">CAB TRAVELS</span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center space-x-6">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-xs font-normal text-slate-200 hover:text-orange-400 transition-colors uppercase tracking-wider"
-            >
-              {link.name}
-            </a>
-          ))}
+        <nav className="hidden lg:flex items-center space-x-8">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`text-[13px] font-medium transition-colors ${isActive ? 'text-blue-600' : 'text-slate-600 hover:text-orange-500'}`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Action Buttons: RESERVE NOW & ENQUIRY NOW */}
+        {/* Action Buttons: Book Now & ENQUIRY NOW & Dark Mode */}
         <div className="hidden lg:flex items-center space-x-3">
           <button
             onClick={() => onOpenBookingModal()}
-            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-normal text-xs uppercase tracking-wider shadow-lg shadow-orange-500/25 transition-all hover:scale-105 active:scale-95"
+            className="px-5 py-2 rounded-lg bg-[#d97706] hover:bg-orange-600 text-white font-medium text-[13px] transition-colors"
           >
-            RESERVE NOW
+            Book Now
           </button>
 
           <button 
             onClick={() => onOpenBookingModal()}
-            className="px-5 py-2.5 rounded-full bg-white hover:bg-slate-100 text-blue-950 font-normal text-xs uppercase tracking-wider shadow transition-all hover:scale-105"
+            className="px-5 py-2 rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200 font-bold text-[11px] uppercase tracking-wide transition-colors"
           >
             ENQUIRY NOW
+          </button>
+
+          <button className="p-2 rounded-full bg-black text-white hover:bg-gray-800 transition-colors flex items-center justify-center ml-2">
+            <Moon className="w-4 h-4" />
           </button>
         </div>
 
         {/* Mobile Hamburger Toggle */}
-        <div className="lg:hidden flex items-center space-x-2">
+        <div className="lg:hidden flex items-center space-x-3">
           <button
             onClick={() => onOpenBookingModal()}
-            className="px-3.5 py-1.5 rounded-full bg-orange-500 text-white font-normal text-xs uppercase shadow"
+            className="px-4 py-1.5 rounded-lg bg-[#d97706] text-white font-medium text-xs shadow"
           >
-            Reserve
+            Book Now
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-blue-900 text-white hover:bg-blue-800"
+            className="p-1.5 rounded-md bg-slate-100 text-slate-800 hover:bg-slate-200"
             aria-label="Toggle Navigation"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -95,30 +105,38 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#032880] border-b border-blue-900 px-4 pt-3 pb-6 space-y-3">
+        <div className="lg:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-6 space-y-3 absolute w-full shadow-lg">
           <div className="grid grid-cols-1 gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2.5 text-sm font-normal text-slate-200 hover:bg-blue-900 rounded-xl transition-colors"
+                className="px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600 rounded-lg transition-colors border-b border-slate-50 last:border-0"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
-          <div className="pt-3 border-t border-blue-900 space-y-2">
+          <div className="pt-3 flex gap-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenBookingModal();
               }}
-              className="w-full flex items-center justify-center space-x-2 py-3 rounded-full bg-orange-500 text-white font-normal text-xs uppercase shadow"
+              className="flex-1 flex items-center justify-center space-x-2 py-2.5 rounded-lg bg-[#d97706] text-white font-medium text-sm"
             >
-              <span>RESERVE NOW</span>
-              <ChevronRight className="w-4 h-4" />
+              <span>Book Now</span>
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenBookingModal();
+              }}
+              className="flex-1 flex items-center justify-center space-x-2 py-2.5 rounded-lg bg-blue-100 text-blue-700 font-bold text-xs uppercase"
+            >
+              <span>Enquiry Now</span>
             </button>
           </div>
         </div>
