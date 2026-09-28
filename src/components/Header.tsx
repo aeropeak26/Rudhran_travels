@@ -46,7 +46,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
           <img 
             src="/images/logo.png" 
             alt="Rudhran Travels Logo" 
-            className="h-16 md:h-20 w-auto object-contain"
+            className="h-12 md:h-16 w-auto object-contain"
           />
         </Link>
 
