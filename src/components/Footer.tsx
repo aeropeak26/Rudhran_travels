@@ -30,7 +30,7 @@ export default function Footer() {
               <img 
                 src="/images/logo.png" 
                 alt="Rudhran Travels Logo" 
-                className="h-16 md:h-20 w-auto object-contain"
+                className="h-14 md:h-16 w-auto object-contain"
               />
             </Link>
 
