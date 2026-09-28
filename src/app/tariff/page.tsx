@@ -311,26 +311,31 @@ export default function TariffPage() {
 
         {/* 5. Custom Itinerary CTA */}
         <section className="bg-[#f8fafc] pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#111827] text-white rounded-[2rem] p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="max-w-2xl text-center md:text-left relative z-10">
-              <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-3">INSTANT CUSTOM ITINERARY</span>
-              <h2 className="text-3xl md:text-[2.5rem] font-bold mb-4 tracking-tight leading-tight">Need a Custom Travel Quote?</h2>
-              <p className="text-[13px] text-slate-400 leading-relaxed max-w-xl mb-8">
+          <div className="bg-[#0B172A] text-white rounded-[1.5rem] p-10 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
+            
+            {/* Background Glowing Spheres */}
+            <div className="absolute top-1/2 -translate-y-1/2 -left-10 w-64 h-64 bg-blue-600/30 rounded-full blur-[80px] pointer-events-none z-0"></div>
+            <div className="absolute top-1/2 -translate-y-1/2 -right-10 w-72 h-72 bg-blue-400/10 rounded-full blur-[90px] pointer-events-none z-0"></div>
+
+            <div className="max-w-xl text-center md:text-left relative z-10">
+              <span className="text-[9px] font-bold text-blue-500 uppercase tracking-widest block mb-3">INSTANT CUSTOM ITINERARY</span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight leading-tight">Need a Custom Travel Quote?</h2>
+              <p className="text-[13px] text-slate-300 leading-relaxed mb-8">
                 Tell us about your journey and we'll help you choose the right vehicle with an exact, guaranteed price breakdown in less than 15 minutes.
               </p>
               
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 text-[10px] font-medium text-slate-300">
-                <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-blue-400" /> Instant Confirmation</span>
-                <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-blue-400" /> Verified Chauffeurs</span>
-                <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-blue-400" /> 4.9★ Rated Agency</span>
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-5 text-[10px] font-medium text-slate-300">
+                <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-orange-500" /> Instant Confirmation</span>
+                <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-orange-500" /> Verified Chauffeurs</span>
+                <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-orange-500" /> 4.9★ Rated Agency</span>
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 mt-4 md:mt-0 relative z-10">
-              <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-7 py-4 bg-[#0052cc] hover:bg-blue-700 text-white rounded-xl text-[13px] font-bold transition-colors flex items-center gap-2 shadow-lg shadow-blue-600/20">
-                <Zap className="w-4 h-4" /> Get a Free Quote
+            <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 mt-6 md:mt-0 relative z-10">
+              <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 bg-[#E87B1E] hover:bg-orange-600 text-white rounded-xl text-[12px] font-bold transition-colors flex items-center gap-2 shadow-lg shadow-orange-900/20">
+                <Navigation className="w-4 h-4 rotate-90" /> Get a Free Quote
               </a>
-              <a href="tel:+919840012345" className="px-7 py-4 bg-white/10 hover:bg-white/20 text-white border border-transparent rounded-xl text-[13px] font-bold transition-colors flex items-center gap-2">
+              <a href="tel:+919840012345" className="px-6 py-3.5 bg-[#1d3b3a] hover:bg-[#234c4a] text-emerald-400 rounded-xl text-[12px] font-bold transition-colors flex items-center gap-2">
                 <Phone className="w-4 h-4" /> +91 98400 12345
               </a>
             </div>
