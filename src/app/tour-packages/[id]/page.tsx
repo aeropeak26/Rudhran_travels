@@ -316,91 +316,95 @@ export default function TourPackageDetails() {
         </section>
 
         {/* 6. Booking Form */}
-        <section className="bg-[#0f172a] py-20 relative overflow-hidden">
+        <section className="bg-[#111c30] py-20 relative overflow-hidden">
           {/* Background Maps/Graphics */}
-          <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #3b82f6 2px, transparent 2px)', backgroundSize: '40px 40px' }}></div>
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-900/20 to-transparent pointer-events-none z-0"></div>
+          <div className="absolute inset-0 z-0">
+             <div className="absolute inset-0 bg-[#0c1524]/60 mix-blend-multiply z-10"></div>
+             {/* We can use pkg.img as a blurred dark background for texture if no specific transport image is available */}
+             <Image src="/images/kerala.jpg" alt="Background" fill className="object-cover opacity-10 grayscale" />
+          </div>
 
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <div className="flex flex-col lg:flex-row gap-16 items-center">
               {/* Left Content */}
-              <div className="w-full lg:w-5/12">
+              <div className="w-full lg:w-5/12 pr-0 lg:pr-8">
                 <span className="text-[10px] font-bold text-[#f97316] uppercase tracking-widest block mb-4">FAST-TRACK DISPATCH</span>
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">Reserve Your {pkg.category} Grand Tourer</h2>
-                <p className="text-[13px] text-slate-400 leading-relaxed mb-10">
+                <p className="text-[13px] text-slate-300/80 leading-relaxed mb-10">
                   Receive your tailored PDF dossier and driver credentials via WhatsApp within 15 minutes. ₹2,000 refundable advance locks in your reservation.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="https://wa.me/919840012345" className="px-6 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-[12px] font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
-                    <Phone className="w-4 h-4" /> WHATSAPP DESK (+91 98400 12345)
+                  <a href="https://wa.me/919840012345" className="px-6 py-3.5 bg-[#10b981] hover:bg-emerald-500 text-white rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
+                    <Phone className="w-4 h-4 fill-white" /> WHATSAPP DESK (+91 98400 12345)
                   </a>
-                  <a href="tel:+919840012345" className="px-6 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl text-[12px] font-bold transition-colors flex items-center justify-center gap-2">
-                    <Phone className="w-4 h-4" /> CALL HOTLINE
+                  <a href="tel:+919840012345" className="px-6 py-3.5 bg-[#1e293b]/50 hover:bg-[#1e293b] text-[#f97316] border border-white/5 rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center gap-2">
+                    <Phone className="w-4 h-4 text-[#f97316] fill-[#f97316]" /> CALL HOTLINE
                   </a>
                 </div>
               </div>
 
               {/* Right Booking Form */}
               <div className="w-full lg:w-7/12">
-                <div className="bg-[#1e293b]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl relative">
+                <div className="bg-[#152033] border border-white/5 rounded-2xl p-8 md:p-10 shadow-2xl relative">
+                  
                   {/* Status Indicator */}
-                  <div className="absolute -top-3 left-8 bg-[#064e3b] border border-emerald-500/30 text-emerald-400 text-[9px] font-bold px-3 py-1.5 rounded-full flex items-center gap-2 shadow-lg">
-                    <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div> Live Desk: 2 Ahead • 4m Response
+                  <div className="bg-[#064e3b]/40 border border-[#064e3b] text-emerald-400 text-[10px] font-medium px-3 py-1.5 rounded-full inline-flex items-center gap-2 mb-8">
+                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div> Live Desk: 2 Ahead • 4m Response
                   </div>
 
-                  <form className="mt-4 space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <form className="space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="space-y-2">
-                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Guest Name</label>
-                        <input type="text" placeholder="e.g. Ramesh Sundaram" className="w-full bg-[#0f172a] border border-white/10 rounded-xl px-4 py-3 text-white text-[13px] placeholder:text-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" />
+                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">GUEST NAME</label>
+                        <input type="text" placeholder="e.g. Ramesh Sundaram" className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-all" />
                       </div>
                       <div className="space-y-2">
                          <div className="flex justify-between items-center">
-                           <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">WhatsApp Number</label>
-                           <span className="text-[8px] font-bold text-emerald-500 uppercase">Verified Dispatch</span>
+                           <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">WHATSAPP NUMBER</label>
+                           <span className="text-[8px] font-bold text-emerald-500 uppercase tracking-wider">VERIFIED DISPATCH</span>
                          </div>
-                        <input type="tel" placeholder="+91 98400 00000" className="w-full bg-[#0f172a] border border-white/10 rounded-xl px-4 py-3 text-white text-[13px] placeholder:text-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" />
+                        <input type="tel" placeholder="+91 98400 00000" className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-all" />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
                       <div className="space-y-2">
-                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Departure Date</label>
-                        <input type="date" className="w-full bg-[#0f172a] border border-white/10 rounded-xl px-4 py-3 text-white text-[13px] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all [color-scheme:dark]" />
+                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">DEPARTURE DATE</label>
+                        <input type="date" className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] focus:outline-none focus:border-blue-500 transition-all [color-scheme:dark]" />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Guests Manifest</label>
-                        <select className="w-full bg-[#0f172a] border border-white/10 rounded-xl px-4 py-3 text-white text-[13px] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all appearance-none">
-                          <option>2 Adults (Couple)</option>
-                          <option>4 Adults (Family)</option>
-                          <option>6 Adults (Group)</option>
+                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">GUESTS MANIFEST</label>
+                        <select className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] focus:outline-none focus:border-blue-500 transition-all appearance-none">
+                          <option className="bg-[#152033]">4 Adults (Family)</option>
+                          <option className="bg-[#152033]">2 Adults (Couple)</option>
+                          <option className="bg-[#152033]">6 Adults (Group)</option>
                         </select>
                       </div>
                       <div className="space-y-2">
-                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Carriage Selection</label>
-                        <select className="w-full bg-[#0f172a] border border-white/10 rounded-xl px-4 py-3 text-white text-[13px] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all appearance-none">
-                          <option>Executive Sedan</option>
-                          <option>Toyota Innova Crysta</option>
-                          <option>Force Urbania</option>
+                        <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">CARRIAGE SELECTION</label>
+                        <select className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] focus:outline-none focus:border-blue-500 transition-all appearance-none">
+                          <option className="bg-[#152033]">Toyota Innova Crysta</option>
+                          <option className="bg-[#152033]">Executive Sedan</option>
+                          <option className="bg-[#152033]">Force Urbania</option>
                         </select>
                       </div>
                     </div>
 
-                    <div className="bg-[#0f172a] border border-blue-500/20 rounded-xl p-4 flex items-center justify-between mt-6">
+                    <div className="bg-[#121c2c] border border-[#1e3a8a]/30 rounded-lg p-4 flex flex-col md:flex-row items-start md:items-center justify-between mt-8 gap-4">
                        <div className="flex items-center gap-3">
-                         <div className="w-8 h-8 rounded-full bg-blue-900/50 flex items-center justify-center">
-                           <span className="text-blue-400 font-bold text-[12px]">₹</span>
+                         <div className="w-6 h-6 rounded-full bg-[#1e3a8a]/50 flex items-center justify-center shrink-0">
+                           <span className="text-[#3b82f6] font-bold text-[10px]">₹</span>
                          </div>
-                         <div className="text-[11px] text-slate-300">Lock Rate: <strong className="text-white font-bold">₹2,000 Refundable Advance</strong></div>
+                         <div className="text-[11px] text-slate-400 font-medium">Lock Rate: <strong className="text-white font-bold tracking-wide">₹2,000 Refundable Advance</strong></div>
                        </div>
-                       <div className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Zero Surge Surcharge</div>
+                       <div className="text-[10px] text-emerald-400 font-medium uppercase tracking-wider">Zero Surge Surcharge</div>
                     </div>
 
-                    <div className="flex gap-4 pt-2">
-                      <button type="button" className="flex-1 py-4 bg-[#3b82f6] hover:bg-blue-500 text-white rounded-xl text-[12px] font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20">
+                    <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                      <button type="button" className="flex-1 py-4 bg-gradient-to-r from-[#2563eb] to-[#3b82f6] hover:from-[#1d4ed8] hover:to-[#2563eb] text-white rounded-lg text-[12px] font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.4)]">
                         <ArrowRight className="w-4 h-4" /> REQUEST BOOKING
                       </button>
-                      <button type="button" className="px-6 py-4 bg-[#0f172a] hover:bg-slate-800 text-slate-300 border border-white/5 rounded-xl text-[11px] font-bold transition-all">
+                      <button type="button" className="px-8 py-4 bg-[#1e293b]/60 hover:bg-[#1e293b] text-slate-300 border border-white/5 rounded-lg text-[11px] font-medium transition-all">
                         Call now for enquiry
                       </button>
                     </div>
