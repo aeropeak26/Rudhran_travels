@@ -103,9 +103,9 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Dark Navy Card — taller with generous padding */}
         <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white px-8 sm:px-12 lg:px-16 py-16 sm:py-20 lg:py-28 overflow-hidden shadow-2xl min-h-[400px] lg:min-h-[500px] flex items-center">
-          {/* Faint "Happy Customers" Watermark — centered horizontally on top half */}
-          <div className="absolute top-8 left-1/2 -translate-x-[20%] pointer-events-none select-none z-0">
-            <span className="text-[80px] sm:text-[100px] lg:text-[140px] font-semibold text-white/[0.04] tracking-tight whitespace-nowrap">
+          {/* Faint "Happy Customers" Watermark */}
+          <div className="absolute top-8 left-16 sm:left-32 pointer-events-none select-none z-0">
+            <span className="text-[80px] sm:text-[120px] lg:text-[150px] font-bold text-white/[0.04] tracking-tight whitespace-nowrap">
               Happy Customers
             </span>
           </div>
@@ -117,31 +117,30 @@ export default function Testimonials() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               {/* ──── Left Content Column ──── */}
               <div className="lg:col-span-4 flex flex-col justify-center">
-                <div className="space-y-5">
+                <div className="space-y-4">
                   {/* Orange Label */}
-                  <div className="text-[11px] font-normal tracking-[0.2em] text-orange-500 uppercase">
+                  <div className="text-[10px] font-bold tracking-[0.2em] text-orange-500 uppercase">
                     TESTIMONIAL
                   </div>
 
                   {/* Big Heading */}
-                  <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-normal text-white leading-[1.15] tracking-tight">
+                  <h2 className="text-4xl sm:text-5xl lg:text-[44px] font-bold text-white leading-tight tracking-tight">
                     Client
                     <br />
                     Testimonials
                   </h2>
 
                   {/* Subtitle */}
-                  <p className="text-slate-300 text-[13px] sm:text-sm font-normal max-w-[280px] leading-relaxed">
-                    Real experiences from travelers who chose us for their
-                    journeys.
+                  <p className="text-slate-300 text-[13px] sm:text-sm font-medium max-w-[280px] leading-relaxed pt-2">
+                    Real experiences from travelers who chose us for their journeys.
                   </p>
                 </div>
 
-                {/* Navigation Arrows — aligned center-right relative to text block, pushed down */}
-                <div className="flex items-center space-x-3 pt-12 sm:pt-20 justify-end max-w-[280px]">
+                {/* Navigation Arrows */}
+                <div className="flex items-center space-x-4 pt-12 sm:pt-20 ml-12 sm:ml-20">
                   <button
                     onClick={handlePrev}
-                    className="w-11 h-11 rounded-full bg-[#9ba3b5] hover:bg-[#858da0] text-[#0b1b42] flex items-center justify-center transition-all duration-200 shadow-lg active:scale-90"
+                    className="w-10 h-10 rounded-full bg-[#9ba3b5] hover:bg-[#858da0] text-[#0b1b42] flex items-center justify-center transition-all duration-200 shadow-lg active:scale-90"
                     aria-label="Previous Testimonial"
                   >
                     <ArrowLeft className="w-4 h-4" />
@@ -149,7 +148,7 @@ export default function Testimonials() {
 
                   <button
                     onClick={handleNext}
-                    className="w-11 h-11 rounded-full bg-[#9ba3b5] hover:bg-[#858da0] text-[#0b1b42] flex items-center justify-center transition-all duration-200 shadow-lg active:scale-90"
+                    className="w-10 h-10 rounded-full bg-[#9ba3b5] hover:bg-[#858da0] text-[#0b1b42] flex items-center justify-center transition-all duration-200 shadow-lg active:scale-90"
                     aria-label="Next Testimonial"
                   >
                     <ArrowRight className="w-4 h-4" />
@@ -167,37 +166,35 @@ export default function Testimonials() {
                   onTransitionEnd={handleTransitionEnd}
                 >
                   {extendedList.map((item, idx) => {
-                    // To determine opacity, we figure out which index is visually active
-                    const isVisuallyActive =
-                      idx >= currentIndex && idx < currentIndex + 2;
+                    const isVisuallyActive = idx >= currentIndex && idx < currentIndex + 2;
 
                     return (
                       <div
                         key={`${item.id}-${idx}`}
-                        className="w-[300px] sm:w-[340px] flex-shrink-0 bg-[#faf8f4] text-slate-900 rounded-[20px] p-7 sm:p-8 shadow-xl flex flex-col justify-between min-h-[400px] sm:min-h-[320px] border border-amber-100/40 transition-opacity duration-500"
+                        className="w-[300px] sm:w-[340px] flex-shrink-0 bg-[#faf8f4] text-slate-900 rounded-[20px] p-8 shadow-xl flex flex-col justify-between min-h-[400px] sm:min-h-[320px] transition-opacity duration-500"
                         style={{ opacity: isVisuallyActive ? 1 : 0.4 }}
                       >
                         {/* Top: Stars + Quote */}
-                        <div className="space-y-4 flex-1">
-                          {/* Gold Rating Stars */}
-                          <div className="flex items-center space-x-0.5">
+                        <div className="space-y-5 flex-1">
+                          {/* Gold Rating Stars (Outlined) */}
+                          <div className="flex items-center space-x-1">
                             {[...Array(item.rating)].map((_, i) => (
                               <Star
                                 key={i}
-                                className="w-4 h-4 fill-amber-500 text-amber-500"
+                                className="w-4 h-4 fill-transparent text-amber-500 stroke-2"
                               />
                             ))}
                           </div>
 
                           {/* Quote Text */}
-                          <p className="text-slate-700 text-[13px] sm:text-sm font-serif leading-relaxed">
+                          <p className="text-slate-600 text-[13px] sm:text-sm font-serif leading-relaxed">
                             {item.comment}
                           </p>
                         </div>
 
                         {/* Bottom: Avatar + Author */}
-                        <div className="flex items-center space-x-3 pt-5 mt-4 border-t border-slate-200/50">
-                          <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-slate-200 flex-shrink-0">
+                        <div className="flex items-center space-x-4 pt-4">
+                          <div className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0">
                             <Image
                               src={item.avatar}
                               alt={item.name}
@@ -207,10 +204,10 @@ export default function Testimonials() {
                           </div>
 
                           <div>
-                            <div className="text-[13px] font-normal text-slate-900 leading-snug">
+                            <div className="text-[13px] font-bold text-slate-900 leading-snug">
                               {item.name}
                             </div>
-                            <div className="text-[11px] font-normal text-slate-400">
+                            <div className="text-[11px] font-medium text-slate-500">
                               {item.role}
                             </div>
                           </div>
