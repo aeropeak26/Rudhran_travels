@@ -14,12 +14,14 @@ export default function GalleryPage() {
   const filterTabs = ['All', 'Fleet & Cabin', 'Chauffeur Service', 'Hill Stations & Ghats', 'Heritage Circuits', 'Guest Experiences'];
 
   const images = [
-    { title: 'Misty Mountain Expedition', desc: 'Tea estates of Ooty & Kodaikanal. Premium Innova touring with local driver.', badge: 'OOTY TO KODAIKANAL', img: '/images/dest1.png' },
-    { title: 'Heritage Hotel Welcome', desc: 'VIP arrivals and red-carpet chauffeur services across luxury properties.', badge: 'VIP HOTEL VALET', img: '/images/dest2.png' },
-    { title: 'Precision Driving', desc: 'Expert handling through the 36 hairpin bends of Ooty and Valparai.', badge: 'GHAT ROADS', img: '/images/dest1.png' },
-    { title: '3-Generation Smiles', desc: 'Spacious family touring accommodating all ages safely.', badge: 'FAMILY TOURING', img: '/images/dest2.png' },
-    { title: 'Pamban Sea Bridge Crossing', desc: 'Coastal tours connecting Rameswaram and floating across the ocean.', badge: 'COASTAL HIGHWAYS', img: '/images/dest1.png' },
-    { title: 'Captain Seat Comfort', desc: 'Plush interior executive leather seats. Available on Innova Crysta & Hycross.', badge: 'FLEET CABIN OVERVIEW', img: '/images/dest2.png' }
+    { title: 'Misty Mountain Expedition', desc: 'Pristine Innova Crysta & Force Urbania luxury fleet navigating misty hill ghats.', badge: 'CONVOY • MUNNAR HILLS', img: '/images/dest1.png' },
+    { title: 'Heritage Hotel Welcome', desc: 'Uniformed chauffeur door-side service at luxury heritage', badge: '5-STAR HOSPITALITY', img: '/images/dest2.png' },
+    { title: 'Precision Driving', desc: 'GPS-tracked executive cockpits', badge: 'COCKPIT GPS', img: '/images/dest1.png' },
+    { title: '3-Generation Smiles', desc: 'Comfortable stops across tea estates', badge: 'FAMILY HOLIDAY', img: '/images/dest2.png' },
+    { title: 'Pamban Sea Bridge Crossing', desc: 'Ocean breeze drive connecting mainland to holy Rameshwaram.', badge: 'COASTAL LANDMARK', img: '/images/dest1.png' },
+    { title: 'Captain Seat Comfort', desc: 'Plush recliners, wood finishes, and dual AC chill on every journey.', badge: 'FIRST CLASS LUXURY', img: '/images/dest2.png' },
+    { title: '3-Generation Smiles', desc: 'Comfortable stops across tea estates', badge: 'FAMILY HOLIDAY', img: '/images/dest2.png' },
+    { title: 'Pamban Sea Bridge Crossing', desc: 'Ocean breeze drive connecting mainland to holy Rameshwaram.', badge: 'COASTAL LANDMARK', img: '/images/dest1.png' }
   ];
 
   return (
@@ -101,19 +103,19 @@ export default function GalleryPage() {
         {/* 3. Photo Grid */}
         <section className="bg-[#f8fafc] pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
               {images.map((item, i) => (
-                <div key={i} className={`group relative rounded-[2rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 h-[340px] border border-black/5 ${i === 0 ? 'md:col-span-2' : ''}`}>
+                <div key={i} className={`group relative rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 h-[260px] md:h-[300px] border border-black/5 ${i === 0 ? 'md:col-span-2' : ''}`}>
                    <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                   <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#0f172a]/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+                   <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#0f172a]/30 to-transparent opacity-90 transition-opacity duration-300"></div>
                    
-                   <div className="absolute top-5 left-5 bg-white/90 backdrop-blur-md text-[#0f172a] text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-sm">
+                   <div className="absolute top-4 left-4 lg:top-6 lg:left-6 bg-white/95 backdrop-blur-md text-[#0f172a] text-[8px] lg:text-[9px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-sm">
                      {item.badge}
                    </div>
                    
-                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                     <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{item.title}</h3>
-                     <p className="text-[12px] text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300 leading-relaxed">
+                   <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 transition-transform duration-300">
+                     <h3 className="text-lg lg:text-xl font-bold text-white mb-1.5">{item.title}</h3>
+                     <p className="text-[11px] lg:text-[12px] text-slate-200 leading-relaxed max-w-[90%]">
                        {item.desc}
                      </p>
                    </div>
