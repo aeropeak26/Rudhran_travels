@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { 
   CheckCircle2, Clock, Car, Users, BadgeCheck, Shield, Smile, Award, 
-  MapPin, Route, Briefcase, Plane, Users2, Key, Phone, MessageCircle, ArrowRightLeft, Zap
+  MapPin, Route, Briefcase, Plane, Users2, Key, Phone, MessageCircle, ArrowRightLeft, Zap, FileCheck
 } from 'lucide-react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
@@ -187,71 +187,104 @@ export default function AboutUs() {
         </section>
 
         {/* 4. Making Every Journey Better */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-[#fafbfc]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="text-xs font-semibold text-blue-600 tracking-widest uppercase mb-3">OUR MISSION</div>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">Making Every Journey Better</h2>
-              <p className="text-slate-500 text-sm md:text-base mt-4 max-w-2xl mx-auto">At Rudhran Travels, our core philosophy revolves around exceeding customer expectations at every turn.</p>
+            
+            <div className="text-center mb-16 space-y-4">
+              <div className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 text-[10px] font-bold tracking-wider uppercase rounded-full">
+                OUR PURPOSE
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0a192f]">Making Every Journey Better</h2>
+              <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto">A customer-centric approach rooted in hospitality, reliability, and unquestionable safety standards.</p>
             </div>
             
-            <div className="bg-[#07132b] rounded-[2.5rem] p-10 md:p-20 text-center text-white mb-20 relative overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-              <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+            <div className="bg-[#0b1b3d] rounded-[2rem] p-10 md:p-16 text-center text-white mb-12 relative overflow-hidden shadow-2xl">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-2xl bg-blue-500/10 blur-[100px] pointer-events-none"></div>
               
-              <div className="text-xs font-semibold text-blue-400 tracking-widest uppercase mb-8 relative z-10">OUR COMMITMENT</div>
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed max-w-4xl mx-auto relative z-10 italic">
-                "Our mission is to provide safe, comfortable, reliable, and affordable travel experiences while delivering exceptional customer service, transparent pricing, and unforgettable memories for every traveler."
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded-full border border-white/5 mb-8 relative z-10">
+                <Clock className="w-3.5 h-3.5 text-blue-300" />
+                <span className="text-[10px] font-bold text-blue-200 uppercase tracking-widest">OUR CORE MISSION</span>
+              </div>
+              
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed max-w-4xl mx-auto relative z-10 italic text-slate-100 font-serif">
+                “Our mission is to provide safe, comfortable, reliable, and affordable travel experiences while delivering exceptional customer service, transparent billing, and unforgettable memories for every traveler.”
               </h3>
-              <p className="text-slate-400 mt-8 text-sm font-medium tracking-wide relative z-10">— The Rudhran Travels Team</p>
+              
+              <div className="mt-12 flex items-center justify-center gap-4 relative z-10">
+                <div className="w-12 h-[1px] bg-blue-500/50"></div>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">THE RUDHRAN STANDARD</span>
+                <div className="w-12 h-[1px] bg-blue-500/50"></div>
+              </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               
-              <div className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
-                <div className="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-600/30">
-                  <Shield className="w-7 h-7" />
+              <div className="p-8 rounded-2xl bg-white border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <div className="w-12 h-12 bg-[#2a41d0] text-white rounded-[14px] flex items-center justify-center mb-6 shadow-md shadow-blue-900/20">
+                    <Shield className="w-6 h-6" />
+                  </div>
+                  
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-lg font-bold text-[#0a192f]">Safety First</h4>
+                    <span className="text-[10px] font-bold px-2.5 py-1 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-100">Zero Tolerance</span>
+                  </div>
+                  
+                  <p className="text-sm text-slate-500 leading-relaxed mb-8">
+                    Rigorous 54-point vehicle inspections before every trip, speed-governed driving, round-the-clock emergency dispatch, and verified captains.
+                  </p>
                 </div>
-                <h4 className="text-xl font-semibold text-slate-900 mb-4 flex items-center justify-between">
-                  Safety First 
-                  <span className="text-[10px] font-bold px-2.5 py-1 bg-emerald-100 text-emerald-700 rounded-full uppercase tracking-wider">Priority</span>
-                </h4>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Rigorous vehicle maintenance protocols and comprehensive background checks for all drivers to ensure your complete peace of mind on every journey.
-                </p>
-                <div className="mt-6">
-                  <Link href="/#safety" className="text-sm font-medium text-blue-600 hover:text-blue-700 flex items-center gap-1">Learn More &rarr;</Link>
-                </div>
-              </div>
-
-              <div className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
-                <div className="w-14 h-14 bg-orange-500 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/30">
-                  <Smile className="w-7 h-7" />
-                </div>
-                <h4 className="text-xl font-semibold text-slate-900 mb-4 flex items-center justify-between">
-                  Guest Delight
-                  <span className="text-[10px] font-bold px-2.5 py-1 bg-orange-100 text-orange-700 rounded-full uppercase tracking-wider">Promise</span>
-                </h4>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Every customer is our guest. We strive to provide a warm, courteous, and highly responsive travel experience that makes you feel valued from booking to drop-off.
-                </p>
-                <div className="mt-6">
-                  <Link href="/#reviews" className="text-sm font-medium text-orange-600 hover:text-orange-700 flex items-center gap-1">Read Reviews &rarr;</Link>
+                
+                <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-blue-600">Verified Protocol</span>
+                  <span className="text-[11px] font-bold text-blue-600">24/7 Monitored</span>
                 </div>
               </div>
 
-              <div className="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
-                <div className="w-14 h-14 bg-slate-800 text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-slate-800/30">
-                  <Award className="w-7 h-7" />
+              <div className="p-8 rounded-2xl bg-white border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <div className="w-12 h-12 bg-[#eb6e00] text-white rounded-[14px] flex items-center justify-center mb-6 shadow-md shadow-orange-900/20">
+                    <Smile className="w-6 h-6" />
+                  </div>
+                  
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-lg font-bold text-[#0a192f]">Guest Delight</h4>
+                    <span className="text-[10px] font-bold px-2.5 py-1 bg-amber-50 text-amber-600 rounded-full border border-amber-100">Premium Care</span>
+                  </div>
+                  
+                  <p className="text-sm text-slate-500 leading-relaxed mb-8">
+                    Thoughtful courtesies from illuminated cars and high-speed multi-device charging ports to flexible pause-and-explore pitstop stops without rush.
+                  </p>
                 </div>
-                <h4 className="text-xl font-semibold text-slate-900 mb-4 flex items-center justify-between">
-                  Uncompromising Integrity
-                </h4>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Honest pricing with zero hidden fees. We believe in building trust through complete transparency and ethical business practices in all our services.
-                </p>
-                <div className="mt-6">
-                  <Link href="/#pricing" className="text-sm font-medium text-slate-700 hover:text-slate-900 flex items-center gap-1">View Pricing &rarr;</Link>
+                
+                <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-amber-600">Complimentary Water</span>
+                  <span className="text-[11px] font-bold text-amber-600">Fast Charging</span>
+                </div>
+              </div>
+
+              <div className="p-8 rounded-2xl bg-white border border-slate-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <div className="w-12 h-12 bg-[#0c182e] text-white rounded-[14px] flex items-center justify-center mb-6 shadow-md shadow-slate-900/20">
+                    <FileCheck className="w-6 h-6" />
+                  </div>
+                  
+                  <div className="flex items-start justify-between mb-4">
+                    <h4 className="text-lg font-bold text-[#0a192f] leading-tight">Uncompromising<br />Integrity</h4>
+                    <div className="flex flex-col items-center bg-[#f0f4f8] rounded-xl px-3 py-1">
+                      <span className="text-[9px] font-bold text-[#0a192f]">100%</span>
+                      <span className="text-[10px] font-bold text-[#0a192f]">Honest</span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-sm text-slate-500 leading-relaxed mb-8">
+                    Upfront per-kilometer billing, automated digital toll logs, transparent FASTag records, and absolutely zero surprise hidden surcharges.
+                  </p>
+                </div>
+                
+                <div className="pt-5 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-slate-700">Automated GST Invoice</span>
+                  <span className="text-[11px] font-bold text-slate-700">Exact Metre</span>
                 </div>
               </div>
 
