@@ -83,13 +83,13 @@ export default function Home() {
         {/* 7. Client Testimonials & Reviews */}
         <Testimonials />
 
-        {/* 8. Ride Experiences / Real Journeys Gallery Grid */}
-        <TravelBlog />
-
-        {/* 9. Call-To-Action Banner ("Are You Ready to Planning a Trip?") */}
+        {/* 8. Call-To-Action Banner ("Plan Your Trip") */}
         <CtaBanner
           onOpenBookingModal={() => handleOpenBookingModal()}
         />
+
+        {/* 9. Ride Experiences / Real Journeys Gallery Grid */}
+        <TravelBlog />
 
       </main>
 
