@@ -211,13 +211,13 @@ export default function TariffPage() {
                   </div>
                 )}
 
-                <div className={`bg-white rounded-[1.5rem] p-5 shadow-sm hover:shadow-xl transition-all border ${override.mostPopular ? 'border-orange-200' : 'border-slate-200'} flex flex-col h-full relative z-20`}>
+                <div className={`bg-white rounded-[1.5rem] p-5 shadow-sm hover:shadow-xl transition-all border ${override.mostPopular ? 'border-2 border-[#0052cc]' : 'border-slate-200'} flex flex-col h-full relative z-20`}>
                   
                   {/* Card Image */}
                   <div className="relative h-48 rounded-[1rem] overflow-hidden mb-5 bg-slate-100 group">
                     <Image src={v.img} alt={v.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     
-                    <div className={`absolute top-3 left-3 shadow-sm text-white text-[9px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 uppercase ${override.mostPopular ? 'bg-[#d2a336]' : 'bg-[#0f172a]/80 backdrop-blur'}`}>
+                    <div className={`absolute top-3 left-3 shadow-sm text-white text-[9px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 uppercase ${override.mostPopular ? 'bg-[#107c58]' : 'bg-[#0f172a]/80 backdrop-blur'}`}>
                       {override.badge}
                     </div>
 
