@@ -104,6 +104,37 @@ export default function AdminLogin() {
               </button>
             </div>
           </form>
+          
+          <div className="mt-6 text-center">
+            <button
+              type="button"
+              onClick={async () => {
+                try {
+                  const res = await fetch('/api/seed-admin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      email: 'admin@rudhrantravels.com',
+                      password: 'admin',
+                      name: 'Admin User',
+                      secretKey: 'RUDHRAN_SECRET_SETUP_KEY_2026'
+                    })
+                  });
+                  const data = await res.json();
+                  if (res.ok) {
+                    alert('Admin account created! You can now log in with email: admin@rudhrantravels.com and password: admin');
+                  } else {
+                    alert('Error: ' + data.error);
+                  }
+                } catch (e: any) {
+                  alert('Error: ' + e.message);
+                }
+              }}
+              className="text-xs text-slate-500 hover:text-orange-500 underline"
+            >
+              First time setup? Click here to create admin account
+            </button>
+          </div>
         </div>
       </div>
     </div>
