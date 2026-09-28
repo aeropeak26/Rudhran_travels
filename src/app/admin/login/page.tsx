@@ -114,15 +114,15 @@ export default function AdminLogin() {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                      email: 'admin@rudhrantravels.com',
-                      password: 'admin',
-                      name: 'Admin User',
+                      email: 'madurairudhrantravels@gmail.com',
+                      password: 'Madurairudhran@1',
+                      name: 'Admin',
                       secretKey: 'RUDHRAN_SECRET_SETUP_KEY_2026'
                     })
                   });
                   const data = await res.json();
                   if (res.ok) {
-                    alert('Admin account created! You can now log in with email: admin@rudhrantravels.com and password: admin');
+                    alert('Admin account created! You can now log in with email: madurairudhrantravels@gmail.com');
                   } else {
                     alert('Error: ' + data.error);
                   }
