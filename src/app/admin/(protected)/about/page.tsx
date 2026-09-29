@@ -6,7 +6,7 @@ import { Save, Plus, Trash2 } from 'lucide-react';
 export default function AdminAboutPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [activeTab, setActiveTab] = useState<'hero' | 'whoWeAre' | 'ourPurpose' | 'tailoredMobility' | 'whyChooseUs'>('hero');
+  const [activeTab, setActiveTab] = useState<'hero' | 'general' | 'whoWeAre' | 'ourPurpose' | 'tailoredMobility' | 'whyChooseUs'>('hero');
   
   const [data, setData] = useState({
     hero: { title: '', description: '', heroImage: '', points: ['', '', '', ''] },
@@ -146,6 +146,7 @@ export default function AdminAboutPage() {
       <div className="flex space-x-8 border-b border-gray-200 mb-6 overflow-x-auto">
         {[
           { id: 'hero', label: 'Hero' },
+          { id: 'general', label: 'General' },
           { id: 'whoWeAre', label: 'Who We Are' },
           { id: 'ourPurpose', label: 'Our Purpose' },
           { id: 'tailoredMobility', label: 'Tailored Mobility' },
@@ -189,6 +190,29 @@ export default function AdminAboutPage() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* GENERAL TAB */}
+        {activeTab === 'general' && (
+          <div className="space-y-6">
+            <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4">Stats Section</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {data.whoWeAre.stats.map((stat, idx) => (
+                <div key={idx} className="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-2">
+                  <select value={stat.icon} onChange={e => { const newStats = [...data.whoWeAre.stats]; newStats[idx].icon = e.target.value; setData({...data, whoWeAre: {...data.whoWeAre, stats: newStats}}); }} className="w-full border p-2 rounded text-black text-sm">
+                    <option value="Calendar">Calendar</option>
+                    <option value="Smile">Smile</option>
+                    <option value="Map">Map</option>
+                    <option value="ArrowDown">Arrow Down</option>
+                    <option value="Star">Star</option>
+                  </select>
+                  <input type="text" value={stat.number} onChange={e => { const newStats = [...data.whoWeAre.stats]; newStats[idx].number = e.target.value; setData({...data, whoWeAre: {...data.whoWeAre, stats: newStats}}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="10+" />
+                  <input type="text" value={stat.title} onChange={e => { const newStats = [...data.whoWeAre.stats]; newStats[idx].title = e.target.value; setData({...data, whoWeAre: {...data.whoWeAre, stats: newStats}}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="Years Experience" />
+                  <textarea rows={2} value={stat.desc} onChange={e => { const newStats = [...data.whoWeAre.stats]; newStats[idx].desc = e.target.value; setData({...data, whoWeAre: {...data.whoWeAre, stats: newStats}}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="Description" />
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -238,24 +262,6 @@ export default function AdminAboutPage() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mt-8 mb-4">Stats Section</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {data.whoWeAre.stats.map((stat, idx) => (
-                <div key={idx} className="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-2">
-                  <select value={stat.icon} onChange={e => { const newStats = [...data.whoWeAre.stats]; newStats[idx].icon = e.target.value; setData({...data, whoWeAre: {...data.whoWeAre, stats: newStats}}); }} className="w-full border p-2 rounded text-black text-sm">
-                    <option value="Calendar">Calendar</option>
-                    <option value="Smile">Smile</option>
-                    <option value="Map">Map</option>
-                    <option value="ArrowDown">Arrow Down</option>
-                    <option value="Star">Star</option>
-                  </select>
-                  <input type="text" value={stat.number} onChange={e => { const newStats = [...data.whoWeAre.stats]; newStats[idx].number = e.target.value; setData({...data, whoWeAre: {...data.whoWeAre, stats: newStats}}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="10+" />
-                  <input type="text" value={stat.title} onChange={e => { const newStats = [...data.whoWeAre.stats]; newStats[idx].title = e.target.value; setData({...data, whoWeAre: {...data.whoWeAre, stats: newStats}}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="Years Experience" />
-                  <textarea rows={2} value={stat.desc} onChange={e => { const newStats = [...data.whoWeAre.stats]; newStats[idx].desc = e.target.value; setData({...data, whoWeAre: {...data.whoWeAre, stats: newStats}}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="Description" />
-                </div>
-              ))}
             </div>
           </div>
         )}
