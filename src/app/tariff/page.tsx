@@ -82,6 +82,20 @@ const tariffCardOverrides: Record<string, any> = {
 export default function TariffPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filter, setFilter] = useState('All Vehicles');
+  const [pageContent, setPageContent] = useState<any>(null);
+
+  React.useEffect(() => {
+    fetch('/api/tariff-content')
+      .then(res => res.json())
+      .then(data => {
+        if (data && Object.keys(data).length > 0) {
+          setPageContent(data);
+        }
+      })
+      .catch(err => console.error('Error fetching tariff content:', err));
+  }, []);
+
+  const iconMap: Record<string, any> = { Info, ShieldCheck, Moon, Cloud, AlertCircle };
 
   const vehicleOrder = ['2', '3', '4', '1', '6', '5'];
 
@@ -104,6 +118,13 @@ export default function TariffPage() {
         
         {/* 1. Hero Section */}
         <section className="relative pt-24 pb-32 overflow-hidden bg-[#0A162C]">
+          {pageContent?.hero?.heroImage && (
+            <div className="absolute inset-0 z-0">
+              <Image src={pageContent.hero.heroImage} alt="Hero Background" fill className="object-cover opacity-30" priority />
+              <div className="absolute inset-0 bg-[#0A162C]/70 mix-blend-multiply"></div>
+            </div>
+          )}
+          
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
             
             <div className="flex items-center space-x-2 text-[10px] font-bold text-slate-400 mb-8 uppercase tracking-widest">
@@ -113,30 +134,22 @@ export default function TariffPage() {
             </div>
 
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#182a47] text-blue-200 text-[9px] font-bold uppercase tracking-widest rounded-full mb-8">
-              <div className="w-2 h-2 rounded-full bg-orange-500"></div> TRANSPARENT & HONEST PRICING
+              <div className="w-2 h-2 rounded-full bg-orange-500"></div> {pageContent?.hero?.badge || 'TRANSPARENT & HONEST PRICING'}
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white mb-6 leading-tight max-w-4xl">
-              Chauffeur-Driven Fleet <br/>Rental Tariff & Packages
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white mb-6 leading-tight max-w-4xl" dangerouslySetInnerHTML={{ __html: pageContent?.hero?.title || 'Chauffeur-Driven Fleet <br/>Rental Tariff & Packages' }}>
             </h1>
             
             <p className="text-sm md:text-base text-slate-300 leading-relaxed mb-12 max-w-2xl">
-              Transparent and flexible vehicle rental pricing for every journey across South India. No surprises, no hidden levies—just pure travel precision.
+              {pageContent?.hero?.description || 'Transparent and flexible vehicle rental pricing for every journey across South India. No surprises, no hidden levies—just pure travel precision.'}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3">
-              <div className="flex items-center gap-2 bg-[#1c2a44] hover:bg-[#233554] transition-colors px-5 py-3 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
-                <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" /> Zero Hidden Costs
-              </div>
-              <div className="flex items-center gap-2 bg-[#1c2a44] hover:bg-[#233554] transition-colors px-5 py-3 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
-                <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" /> Upfront Driver Batta
-              </div>
-              <div className="flex items-center gap-2 bg-[#1c2a44] hover:bg-[#233554] transition-colors px-5 py-3 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
-                <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" /> Digital FASTag Slips
-              </div>
-              <div className="flex items-center gap-2 bg-[#1c2a44] hover:bg-[#233554] transition-colors px-5 py-3 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
-                <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" /> GST Invoicing Ready
-              </div>
+              {(pageContent?.hero?.checkmarks || ['Zero Hidden Costs', 'Upfront Driver Batta', 'Digital FASTag Slips', 'GST Invoicing Ready']).map((point: string, idx: number) => (
+                <div key={idx} className="flex items-center gap-2 bg-[#1c2a44] hover:bg-[#233554] transition-colors px-5 py-3 rounded-xl text-slate-200 text-[11px] font-medium shadow-sm">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" /> {point}
+                </div>
+              ))}
             </div>
 
           </div>
@@ -148,11 +161,11 @@ export default function TariffPage() {
           <div className="flex flex-col lg:flex-row justify-between items-end mb-10 gap-6">
             <div>
               <div className="inline-flex items-center gap-2 bg-[#ffedd5] text-yellow-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div> FLEET TARIFF GUIDE
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div> {pageContent?.rentalRatesHeader?.badge || 'FLEET TARIFF GUIDE'}
               </div>
-              <h2 className="text-[2rem] font-bold text-[#0f172a] tracking-tight">Vehicle Rental Rates</h2>
+              <h2 className="text-[2rem] font-bold text-[#0f172a] tracking-tight">{pageContent?.rentalRatesHeader?.title || 'Vehicle Rental Rates'}</h2>
               <p className="text-[13px] text-slate-600 max-w-md mt-2 leading-relaxed">
-                Choose the vehicle that best fits your journey. Outstation rates include sanitized vehicle, certified chauffeur, and fuel expenses.
+                {pageContent?.rentalRatesHeader?.description || 'Choose the vehicle that best fits your journey. Outstation rates include sanitized vehicle, certified chauffeur, and fuel expenses.'}
               </p>
             </div>
 
@@ -287,31 +300,34 @@ export default function TariffPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center">
               <div className="inline-flex items-center gap-2 bg-[#ffedd5] text-yellow-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div> TRANSPARENT BILLING STANDARDS
+                <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div> {pageContent?.additionalCharges?.badge || 'TRANSPARENT BILLING STANDARDS'}
               </div>
-              <h2 className="text-[2rem] font-bold text-[#0f172a] mb-4 tracking-tight">Additional Charges & Terms</h2>
+              <h2 className="text-[2rem] font-bold text-[#0f172a] mb-4 tracking-tight">{pageContent?.additionalCharges?.title || 'Additional Charges & Terms'}</h2>
               <p className="text-[13px] text-slate-500 leading-relaxed max-w-2xl">
-                100% transparent out-of-pocket costs with zero hidden markups. You only pay for authentic travel expenses supported by official receipts.
+                {pageContent?.additionalCharges?.description || '100% transparent out-of-pocket costs with zero hidden markups. You only pay for authentic travel expenses supported by official receipts.'}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {additionalCharges.map((charge, idx) => (
-                <div key={idx} className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col">
-                  <div className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center mb-5">
-                    <charge.icon className="w-4 h-4 text-blue-600" />
+              {(pageContent?.additionalCharges?.cards || additionalCharges).map((charge: any, idx: number) => {
+                const IconComp = iconMap[charge.icon] || Info;
+                return (
+                  <div key={idx} className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                    <div className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center mb-5">
+                      <IconComp className="w-4 h-4 text-blue-600" />
+                    </div>
+                    <h3 className="text-[15px] font-bold text-[#0f172a] mb-3">{charge.title}</h3>
+                    <p className="text-[11px] text-slate-500 leading-relaxed mb-6 flex-grow">
+                      {charge.desc}
+                    </p>
+                    <div className="pt-4 border-t border-slate-100 mt-auto">
+                      <span className="text-[10px] font-bold text-blue-600">
+                        {charge.tag}
+                      </span>
+                    </div>
                   </div>
-                  <h3 className="text-[15px] font-bold text-[#0f172a] mb-3">{charge.title}</h3>
-                  <p className="text-[11px] text-slate-500 leading-relaxed mb-6 flex-grow">
-                    {charge.desc}
-                  </p>
-                  <div className="pt-4 border-t border-slate-100 mt-auto">
-                    <span className="text-[10px] font-bold text-blue-600">
-                      {charge.tag}
-                    </span>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
