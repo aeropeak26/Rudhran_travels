@@ -89,7 +89,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
     escort: 'Local Driver',
     pricingTitle: pkg.title,
     pricingType: 'BASE TARIFF',
-    pricingAdvance: 'ENQUIRE NOW',
+    pricingAdvance: pkg.hero?.pricingAdvance || 'RESERVE WITH ₹2,000 ADVANCE',
   };
 
   const waypoints = pkg.waypoints && pkg.waypoints.length > 0 ? pkg.waypoints : [
@@ -184,8 +184,8 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                   <p className="text-[10px] text-slate-400 leading-relaxed mb-6 border-b border-white/5 pb-6">
                     Includes dedicated vehicle, ghat chauffeur, private houseboat with feast, tolls, and boutique accommodations.
                   </p>
-                  <button className="w-full py-3.5 bg-[#f97316] hover:bg-orange-600 text-white rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-orange-900/20">
-                    <Check className="w-4 h-4" /> {heroData.pricingAdvance}
+                  <button onClick={() => setIsModalOpen(true)} className="w-full py-3.5 bg-[#f97316] hover:bg-orange-600 text-white rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-orange-900/20">
+                    <Check className="w-4 h-4" /> {heroData.pricingAdvance || 'RESERVE WITH ₹2,000 ADVANCE'}
                   </button>
                 </div>
               </div>

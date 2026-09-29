@@ -553,6 +553,19 @@ export default function AdminTourPackages() {
                 
                 <input type="text" placeholder="Pricing Box Title (e.g. ALLEPPEY CRUISE)" value={pkgData.hero.pricingTitle} onChange={e => setPkgData({...pkgData, hero: {...pkgData.hero, pricingTitle: e.target.value}})} className="border p-2 rounded text-black" />
                 <input type="text" placeholder="Pricing Type (e.g. ALL INCLUSIVE)" value={pkgData.hero.pricingType} onChange={e => setPkgData({...pkgData, hero: {...pkgData.hero, pricingType: e.target.value}})} className="border p-2 rounded text-black" />
+                <div className="md:col-span-2 bg-orange-50 p-3 rounded-lg border border-orange-200">
+                  <label className="block text-xs font-bold text-orange-800 uppercase tracking-wider mb-1">
+                    Reserve Button Text / Advance Text (e.g. RESERVE WITH ₹2,000 ADVANCE)
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="RESERVE WITH ₹2,000 ADVANCE" 
+                    value={pkgData.hero.pricingAdvance} 
+                    onChange={e => setPkgData({...pkgData, hero: {...pkgData.hero, pricingAdvance: e.target.value}})} 
+                    className="w-full border border-orange-300 p-2.5 rounded text-black font-semibold bg-white focus:outline-none focus:ring-2 focus:ring-orange-500" 
+                  />
+                  <p className="text-[11px] text-orange-700 mt-1">This text appears on the orange reserve button in the package detail pricing card.</p>
+                </div>
               </div>
             </section>
 
