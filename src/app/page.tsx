@@ -13,6 +13,7 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import CtaBanner from '@/components/CtaBanner';
 import Testimonials from '@/components/Testimonials';
 import TravelBlog from '@/components/TravelBlog';
+import BottomCTA from '@/components/BottomCTA';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 
@@ -105,6 +106,9 @@ export default function Home() {
 
         {/* 9. Ride Experiences / Real Journeys Gallery Grid */}
         <TravelBlog data={homeData?.rideExperiences} />
+
+        {/* 10. Final Call to Action */}
+        <BottomCTA onOpenBookingModal={() => handleOpenBookingModal()} />
 
       </main>
 
