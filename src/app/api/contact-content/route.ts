@@ -34,12 +34,18 @@ export async function PUT(req: Request) {
         const finalUrl = response.url;
         
         const placeMatch = finalUrl.match(/\/place\/([^\/]+)/);
-        if (placeMatch) {
-          data.mapEmbedUrl = `https://maps.google.com/maps?q=${placeMatch[1]}&output=embed`;
+        const qMatch = finalUrl.match(/[?&]q=([^&]+)/);
+        
+        let query = '';
+        if (placeMatch) query = placeMatch[1];
+        else if (qMatch) query = qMatch[1];
+
+        if (query) {
+          data.mapEmbedUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${query}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
         } else {
           const coordMatch = finalUrl.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
           if (coordMatch) {
-            data.mapEmbedUrl = `https://maps.google.com/maps?q=${coordMatch[1]},${coordMatch[2]}&output=embed`;
+            data.mapEmbedUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${coordMatch[1]},${coordMatch[2]}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
           }
         }
       } catch (e) {

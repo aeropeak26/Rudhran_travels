@@ -244,7 +244,7 @@ export default function ContactPage() {
                    if (match) mapUrl = match[1];
                  } else if (!mapUrl.includes('embed') && !mapUrl.includes('google.com/maps')) {
                    const addressQuery = encodeURIComponent(contactData?.location?.address || 'Rudhran Travels, Guindy, Chennai');
-                   mapUrl = `https://maps.google.com/maps?q=${addressQuery}&output=embed`;
+                   mapUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${addressQuery}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
                  }
                  return (
                    <iframe src={mapUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="grayscale opacity-50 mix-blend-multiply"></iframe>

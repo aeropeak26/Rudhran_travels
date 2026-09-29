@@ -138,7 +138,7 @@ export default function AdminContactPage() {
 
                  if (!mapUrl.includes('embed') && !mapUrl.includes('google.com/maps')) {
                    const addressQuery = encodeURIComponent(data.location?.address || 'Rudhran Travels, Guindy, Chennai');
-                   mapUrl = `https://maps.google.com/maps?q=${addressQuery}&output=embed`;
+                   mapUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${addressQuery}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
                  }
                  
                  return (
