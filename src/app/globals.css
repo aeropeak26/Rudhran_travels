@@ -17,12 +17,7 @@
     background-color: #ffffff;
     color: #0f172a;
     font-family: var(--font-poppins), 'Poppins', system-ui, -apple-system, sans-serif;
-    font-weight: 400;
     overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4, h5, h6, p, span, button, input, select, a {
-    font-weight: 400 !important;
   }
 
   @keyframes marquee {
@@ -39,7 +34,6 @@
 
 .poppins-regular {
   font-family: var(--font-poppins), 'Poppins', sans-serif;
-  font-weight: 400 !important;
 }
 
 /* Custom Utilities */
