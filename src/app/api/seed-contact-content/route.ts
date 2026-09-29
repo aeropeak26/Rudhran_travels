@@ -15,13 +15,13 @@ export async function GET() {
         phone2: '+91 98765 43210'
       },
       location: {
-        address: 'No. 42, GST Road, Guindy, Chennai, Tamil Nadu 600032'
+        address: '216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001'
       },
       email: {
         email1: 'booking@rudhrantravels.com',
         email2: 'support@rudhrantravels.com'
       },
-      mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x3a526733230a6c69%3A0xc9c1692ce5868e82!2sGuindy%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683100000000!5m2!1sen!2sin'
+      mapEmbedUrl: 'https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Madurai%20Rudhran%20Travels,%20216,%20E%20Veli%20St,%20Kamarajar%20Salai,%20Madurai%20Main,%20Madurai,%20Tamil%20Nadu%20625001&t=&z=14&ie=UTF8&iwloc=B&output=embed'
     };
 
     await ContactPageContent.create(initialContent);

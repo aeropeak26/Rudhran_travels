@@ -29,7 +29,7 @@ const GeneralSettingsSchema: Schema = new Schema(
     footer: {
       phone: { type: String, default: '+91 98400 12345' },
       email: { type: String, default: 'info@rudhrantravels.com' },
-      address: { type: String, default: '42, GST Road, Guindy, Chennai, Tamil Nadu 600032' },
+      address: { type: String, default: '216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001' },
     },
     social: {
       twitter: { type: String, default: '#' },

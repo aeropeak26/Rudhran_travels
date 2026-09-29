@@ -129,7 +129,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">OUR LOCATION</h4>
-                        <p className="text-[13px] font-medium text-slate-700 leading-relaxed whitespace-pre-wrap">{contactData?.location?.address || 'No. 42, GST Road, Guindy,\nChennai, Tamil Nadu 600032'}</p>
+                        <p className="text-[13px] font-medium text-slate-700 leading-relaxed whitespace-pre-wrap">{contactData?.location?.address || '216, E Veli St,\nKamarajar Salai, Madurai 625001'}</p>
                       </div>
                     </div>
                     <div className="bg-white border border-slate-100 rounded-2xl p-6 flex items-center gap-6 shadow-sm hover:shadow-md transition-shadow group">
@@ -227,8 +227,8 @@ export default function ContactPage() {
                    <Map className="w-4 h-4 text-blue-600" />
                    <span className="text-[9px] font-bold text-blue-600 uppercase tracking-widest">FLEET DEPLOYMENT & GRAND DISPATCH</span>
                  </div>
-                 <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4 tracking-tight leading-tight">Guindy Operations Hub & MAA Terminal Bays</h2>
-                 <p className="text-[13px] text-slate-500 max-w-xl leading-relaxed">Positioned strategically at Guindy, a mere straight-shot 15-minute deployment across Central Chennai (OMR) and Chennai Airport.</p>
+                 <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4 tracking-tight leading-tight">Madurai Operations Hub</h2>
+                 <p className="text-[13px] text-slate-500 max-w-xl leading-relaxed">Positioned strategically in Madurai for immediate deployment across the city and Madurai Airport.</p>
               </div>
               <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-[11px] font-bold px-5 py-3.5 rounded-xl transition-colors flex items-center gap-2 shadow-sm">
                  <MapPin className="w-4 h-4" /> Open in Google Maps
@@ -238,12 +238,12 @@ export default function ContactPage() {
             <div className="w-full h-[450px] rounded-[2rem] overflow-hidden relative shadow-lg border border-slate-100 mb-8 bg-[#f8fafc]">
                {/* Map overlay iframe */}
                {(() => {
-                 let mapUrl = contactData?.mapEmbedUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x3a526733230a6c69%3A0xc9c1692ce5868e82!2sGuindy%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683100000000!5m2!1sen!2sin";
+                 let mapUrl = contactData?.mapEmbedUrl || "https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Madurai%20Rudhran%20Travels,%20216,%20E%20Veli%20St,%20Kamarajar%20Salai,%20Madurai%20Main,%20Madurai,%20Tamil%20Nadu%20625001&t=&z=14&ie=UTF8&iwloc=B&output=embed";
                  if (mapUrl.includes('<iframe')) {
                    const match = mapUrl.match(/src="([^"]+)"/);
                    if (match) mapUrl = match[1];
                  } else if (!mapUrl.includes('embed') && !mapUrl.includes('google.com/maps')) {
-                   const addressQuery = encodeURIComponent(contactData?.location?.address || 'Rudhran Travels, Guindy, Chennai');
+                   const addressQuery = encodeURIComponent(contactData?.location?.address || 'Madurai Rudhran Travels, Madurai');
                    mapUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${addressQuery}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
                  }
                  return (
@@ -266,7 +266,7 @@ export default function ContactPage() {
                    <h4 className="text-[10px] font-bold text-[#0f172a] uppercase tracking-wider leading-tight">RUDHRAN TRAVELS HEAD OFFICE</h4>
                    <div className="bg-blue-50 p-1 rounded-full"><ArrowRight className="w-3 h-3 text-blue-600 -rotate-45" /></div>
                  </div>
-                 <p className="text-[10px] text-slate-500 mb-3 leading-relaxed">{contactData?.location?.address || 'No. 42, GST Road, Guindy, Chennai, Tamil Nadu 600032'}</p>
+                 <p className="text-[10px] text-slate-500 mb-3 leading-relaxed">{contactData?.location?.address || '216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001'}</p>
                  <div className="flex items-center gap-1.5 text-[10px] text-slate-800 font-bold mb-3">
                    4.9 <div className="flex gap-0.5"><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/></div> <span className="text-slate-400 font-normal">(500+ reviews)</span>
                  </div>

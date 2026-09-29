@@ -180,7 +180,7 @@ export default function GeneralSettingsPage() {
                 value={formData.footer.address}
                 onChange={(e) => handleChange('footer', 'address', e.target.value)}
                 className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
-                placeholder="e.g. 42, GST Road, Guindy, Chennai, Tamil Nadu 600032"
+                placeholder="e.g. 216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001"
               />
             </div>
           </div>

@@ -103,7 +103,7 @@ export default function AdminContactPage() {
               <h3 className="font-bold text-slate-700">Our Location</h3>
               <div>
                 <label className="block text-xs text-slate-500 mb-1">Physical Address</label>
-                <textarea rows={2} value={data.location.address} onChange={e => setData({...data, location: {...data.location, address: e.target.value}})} className="w-full border p-2 rounded text-black text-sm" placeholder="No. 42, GST Road, Guindy, Chennai, Tamil Nadu 600032" />
+                <textarea rows={2} value={data.location.address} onChange={e => setData({...data, location: {...data.location, address: e.target.value}})} className="w-full border p-2 rounded text-black text-sm" placeholder="216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001" />
               </div>
             </div>
             
@@ -137,7 +137,7 @@ export default function AdminContactPage() {
                  }
 
                  if (!mapUrl.includes('embed') && !mapUrl.includes('google.com/maps')) {
-                   const addressQuery = encodeURIComponent(data.location?.address || 'Rudhran Travels, Guindy, Chennai');
+                   const addressQuery = encodeURIComponent(data.location?.address || 'Madurai Rudhran Travels, Madurai');
                    mapUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${addressQuery}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
                  }
                  

@@ -10,7 +10,7 @@ export default function Footer() {
   const [footerInfo, setFooterInfo] = useState({
     phone: '+91 98400 12345',
     email: 'info@rudhrantravels.com',
-    address: '42, GST Road, Guindy, Chennai, Tamil Nadu 600032'
+    address: '216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001'
   });
   const [socialInfo, setSocialInfo] = useState({
     instagram: '#'
