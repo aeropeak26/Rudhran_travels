@@ -191,16 +191,6 @@ export default function GeneralSettingsPage() {
           <h2 className="text-lg font-semibold text-slate-800 mb-4 pb-2 border-b border-slate-100">Social Media Links</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">X (Twitter) URL</label>
-              <input
-                type="url"
-                value={formData.social.twitter}
-                onChange={(e) => handleChange('social', 'twitter', e.target.value)}
-                className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
-                placeholder="https://x.com/..."
-              />
-            </div>
-            <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Instagram URL</label>
               <input
                 type="url"
