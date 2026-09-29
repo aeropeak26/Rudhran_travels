@@ -109,7 +109,7 @@ export default function InnovaTariff({ data, onBookCar }: InnovaTariffProps) {
           </div>
 
           {/* Right Blue Panel */}
-          <div className="bg-gradient-to-br from-[#1e40af] to-[#172554] lg:w-[320px] flex-shrink-0 p-8 lg:p-10 flex flex-col justify-center relative rounded-b-[24px] lg:rounded-[24px] shadow-2xl lg:-my-8 lg:-ml-6 z-20 overflow-hidden lg:overflow-visible">
+          <div className="bg-gradient-to-br from-[#1e40af] to-[#172554] lg:w-[320px] flex-shrink-0 p-8 lg:p-10 flex flex-col justify-center relative rounded-b-[24px] lg:rounded-[24px] shadow-2xl lg:-my-2 lg:-ml-6 z-20 overflow-hidden lg:overflow-visible">
             {/* Background subtle elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
             
