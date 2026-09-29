@@ -29,6 +29,8 @@ export async function GET() {
           text: f.text,
           subtext: f.subtext || ''
         })),
+        topBadges: ['Ghat Road Certified', 'GPS Monitored'],
+        galleryLabels: ['Exterior', 'Captain Seats', 'Luggage (4+2)', 'Cockpit'],
         tagIcon: typeof v.tagIcon === 'string' ? v.tagIcon : (v.tagIcon as any)?.displayName || (v.tagIcon as any)?.name || 'CheckCircle2',
       })),
       standards: {

@@ -33,7 +33,9 @@ export interface IVehiclesPageContent extends Document {
     tagText: string;
     tagBadge: string;
     tagIcon: string;
+    topBadges: string[];
     gallery: string[];
+    galleryLabels: string[];
     features: {
       icon: string;
       text: string;
@@ -95,7 +97,9 @@ const VehiclesPageContentSchema: Schema = new Schema({
     tagText: { type: String, default: '' },
     tagBadge: { type: String, default: '' },
     tagIcon: { type: String, default: '' },
+    topBadges: [{ type: String }],
     gallery: [{ type: String }],
+    galleryLabels: [{ type: String }],
     features: [{
       icon: { type: String, default: '' },
       text: { type: String, default: '' },

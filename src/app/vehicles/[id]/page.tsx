@@ -93,12 +93,16 @@ export default function VehicleDetailsPage() {
               <div className="relative flex-grow min-h-[350px] rounded-[1.5rem] overflow-hidden shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 bg-slate-100">
                 <Image src={vehicle.gallery[activeImage]} alt={vehicle.name} fill className="object-cover" />
                 <div className="absolute top-5 left-5 flex gap-2">
-                  <div className="bg-[#1e293b] text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
-                    <MapPin className="w-3.5 h-3.5" /> Ghat Road Certified
-                  </div>
-                  <div className="bg-white text-[#1e3a8a] text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
-                    <Navigation className="w-3.5 h-3.5" /> GPS Monitored
-                  </div>
+                  {vehicle.topBadges?.[0] && (
+                    <div className="bg-[#1e293b] text-white text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+                      <MapPin className="w-3.5 h-3.5" /> {vehicle.topBadges[0]}
+                    </div>
+                  )}
+                  {vehicle.topBadges?.[1] && (
+                    <div className="bg-white text-[#1e3a8a] text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+                      <Navigation className="w-3.5 h-3.5" /> {vehicle.topBadges[1]}
+                    </div>
+                  )}
                 </div>
                 <div className="absolute bottom-5 right-5 bg-white text-slate-800 text-[10px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Verified Fleet Unit #CR-408
@@ -114,10 +118,11 @@ export default function VehicleDetailsPage() {
                     className={`relative h-20 md:h-24 rounded-[1rem] overflow-hidden border-2 transition-all ${activeImage === idx ? 'border-blue-600 shadow-md' : 'border-transparent hover:border-slate-300'}`}
                   >
                     <Image src={img} alt={`Gallery ${idx}`} fill className="object-cover" />
-                    {idx === 0 && <div className="absolute bottom-1.5 left-1.5 text-[9px] font-bold text-white bg-black/60 px-2 py-0.5 rounded-md">Exterior</div>}
-                    {idx === 1 && <div className="absolute bottom-1.5 left-1.5 text-[9px] font-bold text-white bg-black/60 px-2 py-0.5 rounded-md">Captain Seats</div>}
-                    {idx === 2 && <div className="absolute bottom-1.5 left-1.5 text-[9px] font-bold text-white bg-black/60 px-2 py-0.5 rounded-md">Luggage (4+2)</div>}
-                    {idx === 3 && <div className="absolute bottom-1.5 left-1.5 text-[9px] font-bold text-white bg-black/60 px-2 py-0.5 rounded-md">Cockpit</div>}
+                    {vehicle.galleryLabels?.[idx] && (
+                      <div className="absolute bottom-1.5 left-1.5 text-[9px] font-bold text-white bg-black/60 px-2 py-0.5 rounded-md">
+                        {vehicle.galleryLabels[idx]}
+                      </div>
+                    )}
                   </button>
                 ))}
               </div>
