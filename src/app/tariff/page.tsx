@@ -99,13 +99,30 @@ export default function TariffPage() {
 
   const vehicleOrder = ['2', '3', '4', '1', '6', '5'];
 
-  const filteredVehicles = vehiclesData.filter(v => {
+  const dynamicVehicles = pageContent?.vehicles || vehiclesData.map(v => {
+    const override = tariffCardOverrides[v.id] || { title: v.name, subtitle: v.category, badge: 'CITY & HIGHWAY', mostPopular: false };
+    return {
+      id: v.id,
+      category: v.vClass,
+      img: v.img,
+      badge: override.badge,
+      title: override.title,
+      mostPopular: override.mostPopular,
+      price: v.price.toString(),
+      localPackage: v.localPackage,
+      minRun: v.minRun,
+      driverAllowance: v.driverAllowance.toString(),
+      nightBatta: v.nightBatta.toString()
+    };
+  });
+
+  const filteredVehicles = dynamicVehicles.filter((v: any) => {
     if (filter === 'All Vehicles') return true;
-    if (filter === 'Sedans') return v.vClass === 'Sedan';
-    if (filter === 'SUVs & MPVs') return v.vClass === 'SUV / MUV';
-    if (filter === 'Group Coaches') return v.vClass === 'Luxury Coach';
+    if (filter === 'Sedans') return v.category === 'Sedan';
+    if (filter === 'SUVs & MPVs') return v.category === 'SUV / MUV';
+    if (filter === 'Group Coaches') return v.category === 'Luxury Coach';
     return true;
-  }).sort((a, b) => {
+  }).sort((a: any, b: any) => {
     return vehicleOrder.indexOf(a.id) - vehicleOrder.indexOf(b.id);
   });
 
@@ -187,26 +204,24 @@ export default function TariffPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredVehicles.map(v => {
-              const override = tariffCardOverrides[v.id] || { title: v.name, subtitle: v.category, badge: 'CITY & HIGHWAY', mostPopular: false };
-              
+            {filteredVehicles.map((v: any) => {
               return (
               <div key={v.id} className="relative mt-4">
                 {/* Most Popular Badge (Absolute positioned above card) */}
-                {override.mostPopular && (
+                {v.mostPopular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#ff6624] text-white text-[10px] font-bold uppercase px-5 py-1.5 rounded-full z-30 flex items-center gap-1.5 shadow-md whitespace-nowrap border-2 border-white">
                     <Star className="w-3.5 h-3.5" /> <Star className="w-3.5 h-3.5 fill-white" /> MOST POPULAR OUTSTATION MPV
                   </div>
                 )}
 
-                <div className={`bg-white rounded-[1.5rem] p-5 shadow-sm hover:shadow-xl transition-all border ${override.mostPopular ? 'border-2 border-[#0052cc]' : 'border-slate-200'} flex flex-col h-full relative z-20`}>
+                <div className={`bg-white rounded-[1.5rem] p-5 shadow-sm hover:shadow-xl transition-all border ${v.mostPopular ? 'border-2 border-[#0052cc]' : 'border-slate-200'} flex flex-col h-full relative z-20`}>
                   
                   {/* Card Image */}
                   <div className="relative h-48 rounded-[1rem] overflow-hidden mb-5 bg-slate-100 group">
-                    <Image src={v.img} alt={v.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={v.img} alt={v.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     
-                    <div className={`absolute top-3 left-3 shadow-sm text-white text-[9px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 uppercase ${override.mostPopular ? 'bg-[#107c58]' : 'bg-[#1e293b]'}`}>
-                      {override.badge}
+                    <div className={`absolute top-3 left-3 shadow-sm text-white text-[9px] font-bold px-3 py-1.5 rounded-md flex items-center gap-1.5 uppercase ${v.mostPopular ? 'bg-[#107c58]' : 'bg-[#1e293b]'}`}>
+                      {v.badge}
                     </div>
 
                     <div className="absolute bottom-3 right-3 bg-white shadow-sm text-[#0f172a] text-[9px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-slate-100">
@@ -218,7 +233,7 @@ export default function TariffPage() {
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <span className="text-[8px] font-bold text-slate-400 uppercase tracking-wider block mb-1">TRANSPARENT RATES</span>
-                      <h3 className="text-[17px] font-bold text-[#0f172a] leading-tight">{override.title}</h3>
+                      <h3 className="text-[17px] font-bold text-[#0f172a] leading-tight">{v.title}</h3>
                     </div>
                     <div className="bg-blue-50 text-blue-600 px-2 py-1 rounded-full text-[8px] font-bold shrink-0">
                       Driver Batta Included
@@ -259,7 +274,7 @@ export default function TariffPage() {
                       <div className="flex items-center gap-1.5 text-slate-500">
                         <div className="w-1 h-1 rounded-full bg-blue-600 shrink-0"></div> Night Halt Batta (After 10:00 PM)
                       </div>
-                      <span className="font-bold text-[#0f172a] text-right">₹300 / night</span>
+                      <span className="font-bold text-[#0f172a] text-right">₹{v.nightBatta} / night</span>
                     </div>
                     <div className="flex items-center justify-between text-[10px]">
                       <div className="flex items-center gap-1.5 text-slate-500">

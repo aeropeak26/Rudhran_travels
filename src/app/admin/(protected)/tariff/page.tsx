@@ -6,7 +6,7 @@ import { Save } from 'lucide-react';
 export default function AdminTariffPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [activeTab, setActiveTab] = useState<'hero' | 'rentalRatesHeader' | 'additionalCharges'>('hero');
+  const [activeTab, setActiveTab] = useState<'hero' | 'rentalRatesHeader' | 'vehicles' | 'additionalCharges'>('hero');
   
   const [data, setData] = useState({
     hero: { heroImage: '', badge: '', title: '', description: '', checkmarks: ['', '', '', ''] },
@@ -19,7 +19,8 @@ export default function AdminTariffPage() {
         { icon: '', title: '', desc: '', tag: '' },
         { icon: '', title: '', desc: '', tag: '' }
       ]
-    }
+    },
+    vehicles: [] as any[]
   });
 
   useEffect(() => {
@@ -35,7 +36,8 @@ export default function AdminTariffPage() {
         setData({
           hero: json.hero || data.hero,
           rentalRatesHeader: json.rentalRatesHeader || data.rentalRatesHeader,
-          additionalCharges: json.additionalCharges || data.additionalCharges
+          additionalCharges: json.additionalCharges || data.additionalCharges,
+          vehicles: json.vehicles || []
         });
       }
     } catch (e) {
@@ -83,6 +85,11 @@ export default function AdminTariffPage() {
       if (res.ok) {
         if (section === 'hero') {
           setData({ ...data, hero: { ...data.hero, heroImage: result.url } });
+        } else if (section.startsWith('vehicle-')) {
+          const idx = parseInt(section.split('-')[1]);
+          const newVehicles = [...data.vehicles];
+          newVehicles[idx] = { ...newVehicles[idx], img: result.url };
+          setData({ ...data, vehicles: newVehicles });
         }
       } else {
         alert('Upload failed: ' + result.error);
@@ -111,7 +118,8 @@ export default function AdminTariffPage() {
       <div className="flex space-x-8 border-b border-gray-200 mb-6 overflow-x-auto">
         {[
           { id: 'hero', label: 'Hero' },
-          { id: 'rentalRatesHeader', label: 'Vehicle Rental Rates Header' },
+          { id: 'rentalRatesHeader', label: 'Rental Rates Header' },
+          { id: 'vehicles', label: 'Vehicles (6 Cards)' },
           { id: 'additionalCharges', label: 'Additional Charges & Terms' }
         ].map((tab) => (
           <button 
@@ -177,6 +185,76 @@ export default function AdminTariffPage() {
                 <label className="block text-xs text-slate-500 mb-1">Description</label>
                 <textarea rows={2} value={data.rentalRatesHeader.description} onChange={e => setData({...data, rentalRatesHeader: {...data.rentalRatesHeader, description: e.target.value}})} className="w-full border p-2 rounded text-black text-sm" />
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* VEHICLES TAB */}
+        {activeTab === 'vehicles' && (
+          <div className="space-y-6">
+            <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4">Vehicles (6 Cards)</h2>
+            <div className="space-y-6">
+              {data.vehicles.map((vehicle, idx) => (
+                <div key={idx} className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="font-bold text-lg text-slate-800">Card {idx + 1}: {vehicle.title || 'Untitled'}</h3>
+                    <label className="flex items-center gap-2 text-sm font-medium text-slate-700 bg-white px-3 py-1.5 border rounded-lg cursor-pointer">
+                      <input type="checkbox" checked={vehicle.mostPopular} onChange={e => { const v = [...data.vehicles]; v[idx].mostPopular = e.target.checked; setData({...data, vehicles: v}); }} className="w-4 h-4 text-orange-600 rounded border-gray-300 focus:ring-orange-500" />
+                      Most Popular
+                    </label>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {/* Image Upload */}
+                    <div className="lg:col-span-3 mb-2 flex gap-4 items-center">
+                      <div className="flex-1">
+                        <label className="block text-xs text-slate-500 mb-1">Vehicle Image</label>
+                        <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, `vehicle-${idx}`)} className="w-full border p-1.5 rounded text-black text-sm bg-white file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                      </div>
+                      {vehicle.img && <img src={vehicle.img} alt="" className="h-16 w-32 object-cover rounded-md border" />}
+                    </div>
+                    
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Title</label>
+                      <input type="text" value={vehicle.title} onChange={e => { const v = [...data.vehicles]; v[idx].title = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="Toyota Innova Crysta" />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Badge</label>
+                      <input type="text" value={vehicle.badge} onChange={e => { const v = [...data.vehicles]; v[idx].badge = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="CAPTAIN SEATS" />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Filter Category</label>
+                      <select value={vehicle.category} onChange={e => { const v = [...data.vehicles]; v[idx].category = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm">
+                        <option value="Sedan">Sedan</option>
+                        <option value="SUV / MUV">SUV / MUV</option>
+                        <option value="Luxury Coach">Luxury Coach</option>
+                      </select>
+                    </div>
+
+                    {/* Pricing */}
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Base Price / KM (₹)</label>
+                      <input type="text" value={vehicle.price} onChange={e => { const v = [...data.vehicles]; v[idx].price = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm font-bold text-blue-600" placeholder="18" />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Local Package Price (₹)</label>
+                      <input type="text" value={vehicle.localPackage} onChange={e => { const v = [...data.vehicles]; v[idx].localPackage = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm font-bold text-blue-600" placeholder="3,500" />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Min Daily Run (KM)</label>
+                      <input type="text" value={vehicle.minRun} onChange={e => { const v = [...data.vehicles]; v[idx].minRun = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="250" />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Driver Allowance / Day (₹)</label>
+                      <input type="text" value={vehicle.driverAllowance} onChange={e => { const v = [...data.vehicles]; v[idx].driverAllowance = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="400" />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Night Halt Batta (₹)</label>
+                      <input type="text" value={vehicle.nightBatta} onChange={e => { const v = [...data.vehicles]; v[idx].nightBatta = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="500" />
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}

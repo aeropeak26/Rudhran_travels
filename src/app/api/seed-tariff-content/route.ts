@@ -56,7 +56,87 @@ export async function GET() {
             tag: 'Per District Tariff'
           }
         ]
-      }
+      },
+      vehicles: [
+        {
+          id: '1',
+          category: 'SUV / MUV',
+          img: '/images/dest1.png',
+          badge: 'CAPTAIN SEATS',
+          title: 'Toyota Innova Crysta',
+          mostPopular: true,
+          price: '18',
+          localPackage: '3,500',
+          minRun: '250',
+          driverAllowance: '400',
+          nightBatta: '500'
+        },
+        {
+          id: '2',
+          category: 'Sedan',
+          img: '/images/dest2.png',
+          badge: 'CITY & HIGHWAY',
+          title: 'Sedan',
+          mostPopular: false,
+          price: '13',
+          localPackage: '2,200',
+          minRun: '250',
+          driverAllowance: '400',
+          nightBatta: '500'
+        },
+        {
+          id: '3',
+          category: 'SUV / MUV',
+          img: '/images/hero_car.png',
+          badge: 'GHAT & HILL TERRAIN',
+          title: 'Premium SUV',
+          mostPopular: false,
+          price: '22',
+          localPackage: '4,300',
+          minRun: '300',
+          driverAllowance: '500',
+          nightBatta: '600'
+        },
+        {
+          id: '4',
+          category: 'SUV / MUV',
+          img: '/images/dest1.png',
+          badge: 'TOURING CLASSIC',
+          title: 'Toyota Innova',
+          mostPopular: false,
+          price: '24',
+          localPackage: '4,800',
+          minRun: '250',
+          driverAllowance: '500',
+          nightBatta: '600'
+        },
+        {
+          id: '5',
+          category: 'Luxury Coach',
+          img: '/images/dest2.png',
+          badge: 'EXECUTIVE VIP VAN',
+          title: 'Force Urbania VIP',
+          mostPopular: false,
+          price: '28',
+          localPackage: '6,200',
+          minRun: '250',
+          driverAllowance: '600',
+          nightBatta: '700'
+        },
+        {
+          id: '6',
+          category: 'Luxury Coach',
+          img: '/images/hero_car.png',
+          badge: 'PILGRIMAGE & GROUPS',
+          title: 'Tempo Traveller',
+          mostPopular: false,
+          price: '26',
+          localPackage: '5,500',
+          minRun: '300',
+          driverAllowance: '600',
+          nightBatta: '700'
+        }
+      ]
     };
 
     const newContent = new TariffPageContent(defaultContent);
