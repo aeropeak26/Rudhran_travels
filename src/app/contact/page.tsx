@@ -239,7 +239,7 @@ export default function ContactPage() {
                  <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4 tracking-tight leading-tight">Madurai Operations Hub</h2>
                  <p className="text-[13px] text-slate-500 max-w-xl leading-relaxed">Positioned strategically in Madurai for immediate deployment across the city and Madurai Airport.</p>
               </div>
-              <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-[11px] font-bold px-5 py-3.5 rounded-xl transition-colors flex items-center gap-2 shadow-sm">
+              <a href="https://www.google.com/maps/place/Madurai+Rudhran+Travels/@9.9205879,78.1225256,17z/data=!3m1!4b1!4m6!3m5!1s0x3b00c531325f7d89:0x90b6c198192a651d!8m2!3d9.9205879!4d78.1251005!16s%2Fg%2F11rq1m4yq0?entry=ttu&g_ep=EgoyMDI2MDkyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-[11px] font-bold px-5 py-3.5 rounded-xl transition-colors flex items-center gap-2 shadow-sm">
                  <MapPin className="w-4 h-4" /> Open in Google Maps
               </a>
             </div>
@@ -267,7 +267,7 @@ export default function ContactPage() {
                  <div className="flex items-center gap-1.5 text-[10px] text-slate-800 font-bold mb-3">
                    4.9 <div className="flex gap-0.5"><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/></div> <span className="text-slate-400 font-normal">(500+ reviews)</span>
                  </div>
-                 <a href="#" className="text-[10px] font-bold text-blue-600 hover:text-blue-700 transition-colors inline-flex items-center gap-1">View on Google Maps <ArrowRight className="w-3 h-3" /></a>
+                 <a href="https://www.google.com/maps/place/Madurai+Rudhran+Travels/@9.9205879,78.1225256,17z/data=!3m1!4b1!4m6!3m5!1s0x3b00c531325f7d89:0x90b6c198192a651d!8m2!3d9.9205879!4d78.1251005!16s%2Fg%2F11rq1m4yq0?entry=ttu&g_ep=EgoyMDI2MDkyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" className="text-[10px] font-bold text-blue-600 hover:text-blue-700 transition-colors inline-flex items-center gap-1">View on Google Maps <ArrowRight className="w-3 h-3" /></a>
                </div>
             </div>
 
