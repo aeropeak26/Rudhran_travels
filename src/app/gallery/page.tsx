@@ -189,7 +189,7 @@ export default function GalleryPage() {
                    Experience unmatched outstation journeys seamlessly handled by city-cleared route-trained chauffeurs driven strictly to your schedule.
                  </p>
                  <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6 sm:gap-8 text-[11px] font-medium text-slate-300">
-                   <span className="flex items-center gap-2"><div className="w-2 h-2 bg-emerald-500 rounded-full"></div> 24/7 Operations Desk: +91 98400 12345</span>
+                   <span className="flex items-center gap-2"><div className="w-2 h-2 bg-emerald-500 rounded-full"></div> 24/7 Operations Desk: +91 8760380485</span>
                    <span className="flex items-center gap-2"><div className="w-2 h-2 bg-emerald-500 rounded-full"></div> Fixed Transparent Tariff Guarantees</span>
                  </div>
                </div>

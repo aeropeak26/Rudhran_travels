@@ -380,7 +380,7 @@ export default function TariffPage() {
                 <Navigation className="w-4 h-4 rotate-90" /> Get a Free Quote
               </a>
               <a href="tel:+918760380485" className="px-6 py-3.5 bg-[#1d3b3a] hover:bg-[#234c4a] text-emerald-400 rounded-xl text-[12px] font-bold transition-colors flex items-center gap-2">
-                <Phone className="w-4 h-4" /> +91 98400 12345
+                <Phone className="w-4 h-4" /> +91 8760380485
               </a>
             </div>
           </div>

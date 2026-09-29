@@ -127,8 +127,8 @@ export default function ContactPage() {
                       <div>
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">CALL CENTER</h4>
                         <p className="text-[14px] font-bold text-[#0f172a] tracking-wide">
-                          {contactData?.callCenter?.phone1 || '+91 98400 12345'}<br/>
-                          {contactData?.callCenter?.phone2 || '+91 98765 43210'}
+                          {contactData?.callCenter?.phone1 || '+91 8760380485'}<br/>
+                          {contactData?.callCenter?.phone2 || '+91 8760380485'}
                         </p>
                       </div>
                     </div>
@@ -192,7 +192,7 @@ export default function ContactPage() {
                          </div>
                          <div className="space-y-2">
                            <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">WHATSAPP NUMBER</label>
-                           <input type="tel" required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} placeholder="+91 98400 00000" className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-2.5 md:py-3.5 text-[13px] text-slate-800 placeholder:text-slate-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                           <input type="tel" required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} placeholder="+91 8760380485" className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-2.5 md:py-3.5 text-[13px] text-slate-800 placeholder:text-slate-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
                          </div>
                        </div>
                        

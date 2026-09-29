@@ -4,6 +4,8 @@ import TourPageContent from '@/models/TourPageContent';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 
+import { broadcastLiveUpdate } from '@/lib/liveUpdate';
+
 export async function GET() {
   try {
     await connectToDatabase();
@@ -35,6 +37,7 @@ export async function POST(req: Request) {
       updatedContent = await TourPageContent.create(data);
     }
 
+    broadcastLiveUpdate('tour-content');
     return NextResponse.json(updatedContent);
   } catch (error: any) {
     return NextResponse.json({ error: 'Failed to update tour content', details: error.message }, { status: 500 });

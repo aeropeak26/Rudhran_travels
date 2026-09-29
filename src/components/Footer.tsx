@@ -8,7 +8,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 export default function Footer() {
   const pathname = usePathname();
   const [footerInfo, setFooterInfo] = useState({
-    phone: '+91 98400 12345',
+    phone: '+91 8760380485',
     email: 'madurairudhrantravels@gmail.com',
     address: '216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001'
   });

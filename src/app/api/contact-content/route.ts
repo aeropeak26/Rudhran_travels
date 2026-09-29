@@ -7,9 +7,28 @@ import { authOptions } from '@/lib/auth';
 export async function GET() {
   try {
     await connectMongo();
-    const content = await ContactPageContent.findOne({});
+    let content = await ContactPageContent.findOne({});
     if (!content) {
-      return NextResponse.json({}, { status: 200 });
+      content = await ContactPageContent.create({
+        callCenter: { phone1: '+91 8760380485', phone2: '+91 8760380485' },
+        location: { address: '216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001' },
+        email: { email1: 'madurairudhrantravels@gmail.com', email2: 'madurairudhrantravels@gmail.com' }
+      });
+    } else {
+      let updated = false;
+      if (!content.callCenter?.phone1 || content.callCenter.phone1.includes('98400') || content.callCenter.phone1.includes('98765')) {
+        content.callCenter.phone1 = '+91 8760380485';
+        content.callCenter.phone2 = '+91 8760380485';
+        updated = true;
+      }
+      if (!content.email?.email1 || content.email.email1.includes('example.com') || content.email.email1.includes('info@')) {
+        content.email.email1 = 'madurairudhrantravels@gmail.com';
+        content.email.email2 = 'madurairudhrantravels@gmail.com';
+        updated = true;
+      }
+      if (updated) {
+        await content.save();
+      }
     }
     return NextResponse.json(content, { status: 200 });
   } catch (error: any) {

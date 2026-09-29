@@ -8,6 +8,7 @@ import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
+import { useLiveUpdates } from '@/hooks/useLiveUpdates';
 import { 
   Check, MapPin, Clock, Phone, FileText, Star, 
   Map, Calendar, Plus, Car, User, Navigation, ArrowRight,
@@ -50,25 +51,28 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
     setSubmitting(false);
   };
 
-  useEffect(() => {
-    const fetchPackage = async () => {
-      try {
-        const res = await fetch(`/api/tour-packages/${id}`);
-        if (!res.ok) {
-          router.push('/tour-packages');
-          return;
-        }
-        const data = await res.json();
-        setPkg(data);
-      } catch (err) {
-        console.error(err);
+  const fetchPackage = React.useCallback(async () => {
+    try {
+      const res = await fetch(`/api/tour-packages/${id}`);
+      if (!res.ok) {
         router.push('/tour-packages');
-      } finally {
-        setLoading(false);
+        return;
       }
-    };
-    fetchPackage();
+      const data = await res.json();
+      setPkg(data);
+    } catch (err) {
+      console.error(err);
+      router.push('/tour-packages');
+    } finally {
+      setLoading(false);
+    }
   }, [id, router]);
+
+  useEffect(() => {
+    fetchPackage();
+  }, [fetchPackage]);
+
+  useLiveUpdates(fetchPackage);
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center text-blue-900 font-bold bg-slate-50">Loading Itinerary Details...</div>;
@@ -226,51 +230,61 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
             </div>
 
             <div className="space-y-8">
-              {(pkg.itinerary || []).map((day: any, idx: number) => (
-                <div key={idx} className={`bg-white rounded-2xl p-2 md:p-3 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col md:flex-row gap-6 md:gap-8 items-stretch overflow-hidden ${day.reverse ? 'md:flex-row-reverse' : ''}`}>
-                  <div className="w-full md:w-2/5 min-h-[250px] md:min-h-full relative rounded-xl overflow-hidden shrink-0">
-                     <Image src={day.img} alt={day.title} fill className="object-cover" />
-                     <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[9px] font-bold px-3 py-1.5 rounded-full">
-                       {day.dayLabel}
-                     </div>
-                  </div>
-                  
-                  <div className="w-full md:w-3/5 py-4 md:py-6 pr-4 md:pr-8 pl-4 md:pl-0 flex flex-col">
-                    {day.tag && (
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className={`text-[8px] font-bold px-2 py-1 rounded uppercase tracking-wider ${day.tag === 'RAINFOREST CORRIDOR' ? 'bg-emerald-500 text-white' : day.tag === 'GRAND FINALE' ? 'bg-blue-600 text-white' : 'bg-[#f97316] text-white'}`}>{day.tag}</span>
-                        <span className={`text-[10px] font-bold ${day.tag === 'RAINFOREST CORRIDOR' ? 'text-emerald-600' : 'text-blue-600'}`}>{day.tagDesc}</span>
-                      </div>
-                    )}
-                    <h3 className="text-xl md:text-2xl font-bold text-[#0f172a] mb-3">{day.title}</h3>
-                    <p className="text-[12px] text-slate-500 leading-relaxed mb-6">{day.desc}</p>
+              {(pkg.itinerary || []).map((day: any, idx: number) => {
+                const isReverse = idx % 2 === 1;
+                return (
+                  <div 
+                    key={idx} 
+                    className={`bg-white rounded-[1.8rem] p-4 md:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-100 flex flex-col md:flex-row gap-6 md:gap-10 items-stretch overflow-hidden min-h-[340px] md:min-h-[380px] transition-all hover:shadow-xl ${
+                      isReverse ? 'md:flex-row-reverse' : ''
+                    }`}
+                  >
+                    <div className="w-full md:w-5/12 min-h-[260px] md:min-h-[330px] relative rounded-2xl overflow-hidden shrink-0 shadow-inner">
+                       <Image src={day.img} alt={day.title} fill className="object-cover transition-transform duration-700 hover:scale-105" />
+                       <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md text-white text-[10px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+                         {day.dayLabel}
+                       </div>
+                    </div>
                     
-                    {day.note && (
-                      <div className={`rounded-xl p-4 mb-6 border ${day.note.icon === 'lightbulb' ? 'bg-[#fffbeb] border-[#fde68a]' : day.note.icon === 'leaf' ? 'bg-[#ecfdf5] border-[#a7f3d0]' : 'bg-[#eff6ff] border-[#bfdbfe]'}`}>
-                        <div className="flex gap-3">
-                          <div className={`mt-0.5 shrink-0 ${day.note.icon === 'lightbulb' ? 'text-amber-500' : day.note.icon === 'leaf' ? 'text-emerald-600' : 'text-blue-600'}`}>
-                            {day.note.icon === 'lightbulb' && <Lightbulb className="w-4 h-4" />}
-                            {day.note.icon === 'leaf' && <Leaf className="w-4 h-4" />}
-                            {day.note.icon === 'shield' && <ShieldCheck className="w-4 h-4" />}
+                    <div className="w-full md:w-7/12 py-2 md:py-4 px-1 md:px-2 flex flex-col justify-between">
+                      <div>
+                        {day.tag && (
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className={`text-[9px] font-bold px-2.5 py-1 rounded uppercase tracking-wider ${day.tag === 'RAINFOREST CORRIDOR' ? 'bg-emerald-500 text-white' : day.tag === 'GRAND FINALE' ? 'bg-blue-600 text-white' : 'bg-[#f97316] text-white'}`}>{day.tag}</span>
+                            <span className={`text-[11px] font-bold ${day.tag === 'RAINFOREST CORRIDOR' ? 'text-emerald-600' : 'text-blue-600'}`}>{day.tagDesc}</span>
                           </div>
-                          <p className={`text-[11px] leading-relaxed ${day.note.icon === 'leaf' ? 'text-emerald-800' : day.note.icon === 'shield' ? 'text-blue-800' : 'text-slate-800'}`}>
-                            <strong>{day.note.title}</strong> {day.note.content}
-                          </p>
-                        </div>
+                        )}
+                        <h3 className="text-xl md:text-2xl font-bold text-[#0f172a] mb-3">{day.title}</h3>
+                        <p className="text-[13px] text-slate-500 leading-relaxed mb-6">{day.desc}</p>
+                        
+                        {day.note && (
+                          <div className={`rounded-xl p-4 mb-6 border ${day.note.icon === 'lightbulb' ? 'bg-[#fffbeb] border-[#fde68a]' : day.note.icon === 'leaf' ? 'bg-[#ecfdf5] border-[#a7f3d0]' : 'bg-[#eff6ff] border-[#bfdbfe]'}`}>
+                            <div className="flex gap-3">
+                              <div className={`mt-0.5 shrink-0 ${day.note.icon === 'lightbulb' ? 'text-amber-500' : day.note.icon === 'leaf' ? 'text-emerald-600' : 'text-blue-600'}`}>
+                                {day.note.icon === 'lightbulb' && <Lightbulb className="w-4 h-4" />}
+                                {day.note.icon === 'leaf' && <Leaf className="w-4 h-4" />}
+                                {day.note.icon === 'shield' && <ShieldCheck className="w-4 h-4" />}
+                              </div>
+                              <p className={`text-[11px] leading-relaxed ${day.note.icon === 'leaf' ? 'text-emerald-800' : day.note.icon === 'shield' ? 'text-blue-800' : 'text-slate-800'}`}>
+                                <strong>{day.note.title}</strong> {day.note.content}
+                              </p>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    )}
 
-                    <div className="mt-auto flex items-center justify-between text-[10px] font-bold border-t border-slate-100 pt-4">
-                      <div className="flex items-center gap-1.5 text-blue-600">
-                        {(day.stay || '').includes('Houseboat') ? <MapPin className="w-3.5 h-3.5" /> : <MapPin className="w-3.5 h-3.5" />} Stay / Experience: <span className="text-slate-500">{day.stay}</span>
-                      </div>
-                      <div className="text-[#0f172a]">
-                        Distance: {day.distance}
+                      <div className="mt-auto flex items-center justify-between text-[11px] font-bold border-t border-slate-100 pt-4">
+                        <div className="flex items-center gap-1.5 text-blue-600">
+                          <MapPin className="w-4 h-4" /> Stay / Experience: <span className="text-slate-600">{day.stay}</span>
+                        </div>
+                        <div className="text-[#0f172a]">
+                          Distance: <span className="text-blue-700 font-extrabold">{day.distance}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -387,7 +401,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a href="https://wa.me/918760380485" className="px-6 py-3.5 bg-[#10b981] hover:bg-emerald-500 text-white rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
-                    <Phone className="w-4 h-4 fill-white" /> WHATSAPP DESK (+91 98400 12345)
+                    <Phone className="w-4 h-4 fill-white" /> WHATSAPP DESK (+91 8760380485)
                   </a>
                   <a href="tel:+918760380485" className="px-6 py-3.5 bg-[#1e293b]/50 hover:bg-[#1e293b] text-[#f97316] border border-white/5 rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center gap-2">
                     <Phone className="w-4 h-4 text-[#f97316] fill-[#f97316]" /> CALL HOTLINE

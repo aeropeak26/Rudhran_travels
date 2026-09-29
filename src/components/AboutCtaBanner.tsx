@@ -55,7 +55,7 @@ export default function AboutCtaBanner() {
             className="text-slate-300 hover:text-white font-bold text-[13px] flex items-center gap-2 px-4 py-3.5 transition-colors ml-2"
           >
             <Phone className="w-4 h-4 text-blue-400" />
-            Call: +91 98400 12345
+            Call: +91 8760380485
           </a>
         </div>
 

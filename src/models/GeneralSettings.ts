@@ -23,11 +23,11 @@ const GeneralSettingsSchema: Schema = new Schema(
   {
     topBar: {
       location: { type: String, default: 'Madurai • Tamil Nadu' },
-      callNow: { type: String, default: '+91 98765 43210' },
-      whatsapp: { type: String, default: '+91 98765 43210' },
+      callNow: { type: String, default: '+91 8760380485' },
+      whatsapp: { type: String, default: '+91 8760380485' },
     },
     footer: {
-      phone: { type: String, default: '+91 98400 12345' },
+      phone: { type: String, default: '+91 8760380485' },
       email: { type: String, default: 'madurairudhrantravels@gmail.com' },
       address: { type: String, default: '216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001' },
     },

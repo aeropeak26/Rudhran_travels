@@ -4,6 +4,8 @@ import TourPackage from '@/models/TourPackage';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 
+import { broadcastLiveUpdate } from '@/lib/liveUpdate';
+
 export async function GET() {
   try {
     await connectToDatabase();
@@ -25,6 +27,7 @@ export async function POST(req: Request) {
     const data = await req.json();
 
     const newPackage = await TourPackage.create(data);
+    broadcastLiveUpdate('tour-packages');
     return NextResponse.json(newPackage, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ error: 'Failed to create tour package', details: error.message }, { status: 500 });

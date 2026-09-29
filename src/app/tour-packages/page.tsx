@@ -12,6 +12,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 
+import { useLiveUpdates } from '@/hooks/useLiveUpdates';
+
 export default function TourPackagesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filter, setFilter] = useState('All Packages');
@@ -19,25 +21,28 @@ export default function TourPackagesPage() {
   const [pageContent, setPageContent] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [pkgRes, contentRes] = await Promise.all([
-          fetch('/api/tour-packages'),
-          fetch('/api/tour-content')
-        ]);
-        const pData = await pkgRes.json();
-        const cData = await contentRes.json();
-        setPackagesData(pData);
-        setPageContent(cData);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
+  const fetchData = React.useCallback(async () => {
+    try {
+      const [pkgRes, contentRes] = await Promise.all([
+        fetch('/api/tour-packages'),
+        fetch('/api/tour-content')
+      ]);
+      const pData = await pkgRes.json();
+      const cData = await contentRes.json();
+      setPackagesData(pData);
+      setPageContent(cData);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  useLiveUpdates(fetchData);
 
   const filters = [
     'All Packages', 'Tamil Nadu', 'Kerala', 'Karnataka', 

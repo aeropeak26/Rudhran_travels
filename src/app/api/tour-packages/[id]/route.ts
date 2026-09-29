@@ -4,6 +4,8 @@ import TourPackage from '@/models/TourPackage';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 
+import { broadcastLiveUpdate } from '@/lib/liveUpdate';
+
 export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params;
@@ -33,6 +35,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
       return NextResponse.json({ error: 'Package not found' }, { status: 404 });
     }
 
+    broadcastLiveUpdate('tour-packages');
     return NextResponse.json(updatedPackage);
   } catch (error: any) {
     return NextResponse.json({ error: 'Failed to update package', details: error.message }, { status: 500 });
@@ -55,6 +58,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
       return NextResponse.json({ error: 'Package not found' }, { status: 404 });
     }
 
+    broadcastLiveUpdate('tour-packages');
     return NextResponse.json({ message: 'Package deleted successfully' });
   } catch (error: any) {
     return NextResponse.json({ error: 'Failed to delete package', details: error.message }, { status: 500 });

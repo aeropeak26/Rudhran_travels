@@ -6,8 +6,8 @@ import { Mail, Phone } from 'lucide-react';
 export default function TopBar() {
   const [topBarInfo, setTopBarInfo] = useState({
     location: 'Madurai • Tamil Nadu',
-    callNow: '+91 98765 43210',
-    whatsapp: '+91 98765 43210'
+    callNow: '+91 8760380485',
+    whatsapp: '+91 8760380485'
   });
 
   useEffect(() => {

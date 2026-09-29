@@ -41,7 +41,7 @@ export default function BottomCTA({ onOpenBookingModal }: BottomCTAProps) {
           </button>
           
           <a 
-            href="https://wa.me/919840000000" 
+            href="https://wa.me/918760380485" 
             target="_blank" 
             rel="noreferrer"
             className="w-full sm:w-auto bg-[#10b981] hover:bg-emerald-600 text-white font-bold text-sm px-8 py-3.5 rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-green-500/25"

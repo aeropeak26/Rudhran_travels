@@ -11,8 +11,8 @@ export async function GET() {
 
     const initialContent = {
       callCenter: {
-        phone1: '+91 98400 12345',
-        phone2: '+91 98765 43210'
+        phone1: '+91 8760380485',
+        phone2: '+91 8760380485'
       },
       location: {
         address: '216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001'
