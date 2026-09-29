@@ -118,7 +118,19 @@ export default function AdminContactPage() {
           </div>
           {data.mapEmbedUrl && (
             <div className="mt-4 border border-slate-200 rounded-xl overflow-hidden h-64 bg-slate-100">
-              <iframe src={data.mapEmbedUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+              {(() => {
+                 let mapUrl = data.mapEmbedUrl;
+                 if (mapUrl.includes('<iframe')) {
+                   const match = mapUrl.match(/src="([^"]+)"/);
+                   if (match) mapUrl = match[1];
+                 } else if (!mapUrl.includes('embed') && (mapUrl.includes('goo.gl') || mapUrl.includes('google.com/maps'))) {
+                   const addressQuery = encodeURIComponent(data.location?.address || 'Rudhran Travels, Guindy, Chennai');
+                   mapUrl = `https://maps.google.com/maps?q=${addressQuery}&output=embed`;
+                 }
+                 return (
+                   <iframe src={mapUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                 );
+               })()}
             </div>
           )}
         </div>

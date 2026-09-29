@@ -192,7 +192,19 @@ export default function ContactPage() {
 
             <div className="w-full h-[450px] rounded-[2rem] overflow-hidden relative shadow-lg border border-slate-100 mb-8 bg-[#f8fafc]">
                {/* Map overlay iframe */}
-               <iframe src={contactData?.mapEmbedUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x3a526733230a6c69%3A0xc9c1692ce5868e82!2sGuindy%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683100000000!5m2!1sen!2sin"} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="grayscale opacity-50 mix-blend-multiply"></iframe>
+               {(() => {
+                 let mapUrl = contactData?.mapEmbedUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x3a526733230a6c69%3A0xc9c1692ce5868e82!2sGuindy%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683100000000!5m2!1sen!2sin";
+                 if (mapUrl.includes('<iframe')) {
+                   const match = mapUrl.match(/src="([^"]+)"/);
+                   if (match) mapUrl = match[1];
+                 } else if (!mapUrl.includes('embed') && (mapUrl.includes('goo.gl') || mapUrl.includes('google.com/maps'))) {
+                   const addressQuery = encodeURIComponent(contactData?.location?.address || 'Rudhran Travels, Guindy, Chennai');
+                   mapUrl = `https://maps.google.com/maps?q=${addressQuery}&output=embed`;
+                 }
+                 return (
+                   <iframe src={mapUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="grayscale opacity-50 mix-blend-multiply"></iframe>
+                 );
+               })()}
                
                {/* Center Marker Pin */}
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none z-10">
