@@ -25,7 +25,8 @@ export default function WhyChooseUs({ data }: { data?: any }) {
           <h2 className="text-3xl md:text-5xl font-bold text-[#0f172a] tracking-tight mb-4 leading-tight">
             {data?.title || "Simplifying Travel with Trust"}
           </h2>
-          <p className="text-slate-500 text-[13px] md:text-sm font-medium" dangerouslySetInnerHTML={{ __html: data?.subtitle || "Trusted service, comfortable vehicles, experienced drivers, and customer-<br className=\"hidden md:block\"/>first support." }}>
+          <p className="text-slate-500 text-[13px] md:text-sm font-medium whitespace-pre-line">
+            {data?.subtitle || "Trusted service, comfortable vehicles, experienced drivers, and customer-first support."}
           </p>
         </div>
 

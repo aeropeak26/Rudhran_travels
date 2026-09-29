@@ -107,7 +107,7 @@ export async function GET() {
       ],
       whyTravelWithUs: {
         title: "Simplifying Travel with Trust",
-        subtitle: "Trusted service, comfortable vehicles, experienced drivers, and customer-<br className=\"hidden md:block\"/>first support.",
+        subtitle: "Trusted service, comfortable vehicles, experienced drivers, and customer-first support.",
         bullets: [
           "Enjoy the comfort of flexible doorstep pickup & drop",
           "Access a diverse fleet of economy, SUV, & executive sedans",
