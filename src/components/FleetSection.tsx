@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
@@ -28,6 +28,13 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
     ...car,
     icon: car.icon || defaultCars[idx].icon
   }));
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSelectedCarIndex((prev) => (prev < displayCars.length - 1 ? prev + 1 : 0));
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [displayCars.length]);
 
   return (
     <section id="fleet" className="py-8 md:py-12 bg-[#0a192f] text-white relative poppins-regular overflow-hidden">
