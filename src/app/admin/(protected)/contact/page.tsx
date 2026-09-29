@@ -129,9 +129,9 @@ export default function AdminContactPage() {
                  const isShortLink = mapUrl.includes('maps.app.goo.gl') || mapUrl.includes('goo.gl/maps');
                  if (isShortLink) {
                    return (
-                     <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-red-50 text-red-600">
-                       <span className="font-bold text-lg mb-2">Invalid URL Format</span>
-                       <span className="text-sm">Google blocks short links (goo.gl) from being embedded. Please use the <strong>Embed a map</strong> option on Google Maps and paste the HTML.</span>
+                     <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-blue-50 text-blue-600">
+                       <span className="font-bold text-lg mb-2">Short Link Detected</span>
+                       <span className="text-sm">Click <strong>Save Contact Details</strong> and our server will automatically convert this into a working map!</span>
                      </div>
                    );
                  }
