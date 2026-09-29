@@ -6,11 +6,15 @@ import { ITourPackage } from '@/models/TourPackage';
 import { ITourPageContent } from '@/models/TourPageContent';
 
 export default function AdminTourPackages() {
-  const [activeTab, setActiveTab] = useState<'packages' | 'contents'>('packages');
-  
+  const [activeTab, setActiveTab] = useState<'packages' | 'contents' | 'why_choose_us'>('packages');
+
   // --- CONTENTS TAB STATE ---
   const [pageContent, setPageContent] = useState<any>({
-    heroImage: '', badge: '', title: '', description: '', features: ['']
+    heroImage: '', badge: '', title: '', description: '', features: [''],
+    whyChooseUs: {
+      badge: '', title: '', description: '',
+      cards: [{ icon: 'Car', title: '', description: '' }]
+    }
   });
   const [contentImageFile, setContentImageFile] = useState<File | null>(null);
   const [isSavingContent, setIsSavingContent] = useState(false);
@@ -46,7 +50,11 @@ export default function AdminTourPackages() {
           badge: cData.badge || '',
           title: cData.title || '',
           description: cData.description || '',
-          features: cData.features && cData.features.length > 0 ? cData.features : ['']
+          features: cData.features && cData.features.length > 0 ? cData.features : [''],
+          whyChooseUs: cData.whyChooseUs || {
+            badge: '', title: '', description: '',
+            cards: [{ icon: 'Car', title: '', description: '' }]
+          }
         });
       }
     } catch (e) {
@@ -203,6 +211,12 @@ export default function AdminTourPackages() {
           >
             Page Contents (Hero)
           </button>
+          <button
+            onClick={() => setActiveTab('why_choose_us')}
+            className={`py-3 px-6 text-sm font-medium border-b-2 transition-colors ${activeTab === 'why_choose_us' ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}
+          >
+            Why Choose Us
+          </button>
         </div>
       )}
 
@@ -268,7 +282,53 @@ export default function AdminTourPackages() {
         </div>
       )}
 
-      {/* --- PACKAGES TAB (TABLE) --- */}
+      {/* --- WHY CHOOSE US TAB --- */}
+      {activeTab === 'why_choose_us' && view === 'table' && (
+        <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+          <h2 className="text-xl font-bold mb-6 text-slate-800">Why Travel With Us Section</h2>
+          <form onSubmit={handleSaveContent} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Top Badge</label>
+                <input type="text" value={pageContent.whyChooseUs.badge} onChange={e => setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, badge: e.target.value}})} className="mt-1 block w-full rounded border-gray-300 border p-2 text-black" placeholder="THE RUDHRAN PROMISE" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Main Title</label>
+                <input type="text" value={pageContent.whyChooseUs.title} onChange={e => setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, title: e.target.value}})} className="mt-1 block w-full rounded border-gray-300 border p-2 text-black" placeholder="Why Travel With Us?" />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700">Description</label>
+                <textarea rows={2} value={pageContent.whyChooseUs.description} onChange={e => setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, description: e.target.value}})} className="mt-1 block w-full rounded border-gray-300 border p-2 text-black" />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold text-gray-800 mb-4 flex justify-between items-center">
+                Feature Cards
+                <button type="button" onClick={() => { const cards = [...pageContent.whyChooseUs.cards, {icon: 'Car', title: '', description: ''}]; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded">+ Add Card</button>
+              </h3>
+              <div className="space-y-4">
+                {pageContent.whyChooseUs.cards.map((card: any, i: number) => (
+                  <div key={i} className="bg-gray-50 p-4 rounded border border-gray-200 relative">
+                    <button type="button" onClick={() => { const cards = pageContent.whyChooseUs.cards.filter((_: any, idx: number) => idx !== i); setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="absolute top-4 right-4 text-red-500 hover:text-red-700"><Trash2 className="w-4 h-4"/></button>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2 pr-8">
+                      <input type="text" placeholder="Icon Name (e.g. Car, User, Navigation)" value={card.icon} onChange={e => { const cards = [...pageContent.whyChooseUs.cards]; cards[i].icon = e.target.value; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="border p-2 rounded text-black text-sm" />
+                      <input type="text" placeholder="Title (e.g. Comfortable Vehicles)" value={card.title} onChange={e => { const cards = [...pageContent.whyChooseUs.cards]; cards[i].title = e.target.value; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="border p-2 rounded text-black text-sm" />
+                    </div>
+                    <textarea rows={2} placeholder="Description..." value={card.description} onChange={e => { const cards = [...pageContent.whyChooseUs.cards]; cards[i].description = e.target.value; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="w-full border p-2 rounded text-black text-sm" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-200">
+              <button type="submit" disabled={isSavingContent} className="px-6 py-2 bg-orange-600 text-white font-medium rounded shadow hover:bg-orange-700 disabled:opacity-50">
+                {isSavingContent ? 'Saving...' : 'Save All Page Contents'}
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
       {activeTab === 'packages' && view === 'table' && (
         <div>
           <div className="flex justify-end mb-4">

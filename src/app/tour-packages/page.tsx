@@ -213,53 +213,38 @@ export default function TourPackagesPage() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2">THE RUDHRAN PROMISE</span>
-              <h2 className="text-3xl font-bold text-[#0f172a] mb-4 tracking-tight">Why Travel With Us?</h2>
+              <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2">
+                {pageContent?.whyChooseUs?.badge || 'THE RUDHRAN PROMISE'}
+              </span>
+              <h2 className="text-3xl font-bold text-[#0f172a] mb-4 tracking-tight">
+                {pageContent?.whyChooseUs?.title || 'Why Travel With Us?'}
+              </h2>
               <p className="text-[13px] text-slate-500 max-w-xl mx-auto leading-relaxed">
-                We go above and beyond to ensure your outstation journey is safe, comfortable, and exactly as you imagined.
+                {pageContent?.whyChooseUs?.description || 'We go above and beyond to ensure your outstation journey is safe, comfortable, and exactly as you imagined.'}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-[#f8fafc] p-8 rounded-[1.5rem] border border-slate-100 hover:border-blue-100 transition-colors text-center flex flex-col items-center">
-                <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-5 text-blue-600">
-                  <Car className="w-6 h-6" />
-                </div>
-                <h3 className="text-[15px] font-bold text-[#0f172a] mb-3">Comfortable Vehicles</h3>
-                <p className="text-[12px] text-slate-500 leading-relaxed">
-                  Sanitized, showroom-condition fleet spanning sedans to group coaches, complete with working AC and plush interiors.
-                </p>
-              </div>
-
-              <div className="bg-[#f8fafc] p-8 rounded-[1.5rem] border border-slate-100 hover:border-blue-100 transition-colors text-center flex flex-col items-center">
-                <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-5 text-blue-600">
-                  <User className="w-6 h-6" />
-                </div>
-                <h3 className="text-[15px] font-bold text-[#0f172a] mb-3">Experienced Drivers</h3>
-                <p className="text-[12px] text-slate-500 leading-relaxed">
-                  Professional, background-verified local drivers who double as route guides for Tamil Nadu, Kerala, and Karnataka.
-                </p>
-              </div>
-
-              <div className="bg-[#f8fafc] p-8 rounded-[1.5rem] border border-slate-100 hover:border-blue-100 transition-colors text-center flex flex-col items-center">
-                <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-5 text-blue-600">
-                  <Navigation className="w-6 h-6" />
-                </div>
-                <h3 className="text-[15px] font-bold text-[#0f172a] mb-3">Flexible Itineraries</h3>
-                <p className="text-[12px] text-slate-500 leading-relaxed">
-                  Pause for photos, take detours, or change plans on the go. It's your vacation, control it with absolute freedom.
-                </p>
-              </div>
-
-              <div className="bg-[#f8fafc] p-8 rounded-[1.5rem] border border-slate-100 hover:border-blue-100 transition-colors text-center flex flex-col items-center">
-                <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-5 text-blue-600">
-                  <Zap className="w-6 h-6" />
-                </div>
-                <h3 className="text-[15px] font-bold text-[#0f172a] mb-3">Transparent Pricing</h3>
-                <p className="text-[12px] text-slate-500 leading-relaxed">
-                  Clear breakdowns provided before booking. Zero hidden fees for tolls, state permits, or driver batta upon arrival.
-                </p>
-              </div>
+              {(pageContent?.whyChooseUs?.cards?.length > 0 ? pageContent.whyChooseUs.cards : [
+                { icon: 'Car', title: 'Comfortable Vehicles', description: 'Sanitized, showroom-condition fleet spanning sedans to group coaches, complete with working AC and plush interiors.' },
+                { icon: 'User', title: 'Experienced Drivers', description: 'Professional, background-verified local drivers who double as route guides for Tamil Nadu, Kerala, and Karnataka.' },
+                { icon: 'Navigation', title: 'Flexible Itineraries', description: 'Pause for photos, take detours, or change plans on the go. It\'s your vacation, control it with absolute freedom.' },
+                { icon: 'Zap', title: 'Transparent Pricing', description: 'Clear breakdowns provided before booking. Zero hidden fees for tolls, state permits, or driver batta upon arrival.' }
+              ]).map((card: any, idx: number) => {
+                const IconMap: any = { Car, User, Navigation, Zap, ShieldCheck, MapPin, Clock, Star, Map, Calendar, MessageCircle, Check };
+                const IconComponent = IconMap[card.icon] || Check;
+                return (
+                  <div key={idx} className="bg-[#f8fafc] p-8 rounded-[1.5rem] border border-slate-100 hover:border-blue-100 transition-colors text-center flex flex-col items-center">
+                    <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-5 text-blue-600">
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-[15px] font-bold text-[#0f172a] mb-3">{card.title}</h3>
+                    <p className="text-[12px] text-slate-500 leading-relaxed">
+                      {card.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

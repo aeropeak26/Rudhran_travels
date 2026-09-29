@@ -32,7 +32,18 @@ export async function GET() {
         'Guaranteed Punctual Chauffeurs',
         '100% Tailored Itineraries',
         'Zero Hidden Costs'
-      ]
+      ],
+      whyChooseUs: {
+        badge: 'THE RUDHRAN PROMISE',
+        title: 'Why Travel With Us?',
+        description: 'We go above and beyond to ensure your outstation journey is safe, comfortable, and exactly as you imagined.',
+        cards: [
+          { icon: 'Car', title: 'Comfortable Vehicles', description: 'Sanitized, showroom-condition fleet spanning sedans to group coaches, complete with working AC and plush interiors.' },
+          { icon: 'User', title: 'Experienced Drivers', description: 'Professional, background-verified local drivers who double as route guides for Tamil Nadu, Kerala, and Karnataka.' },
+          { icon: 'Navigation', title: 'Flexible Itineraries', description: 'Pause for photos, take detours, or change plans on the go. It\'s your vacation, control it with absolute freedom.' },
+          { icon: 'Zap', title: 'Transparent Pricing', description: 'Clear breakdowns provided before booking. Zero hidden fees for tolls, state permits, or driver batta upon arrival.' }
+        ]
+      }
     };
 
     await TourPageContent.create(initialContent);
