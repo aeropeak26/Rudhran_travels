@@ -235,7 +235,7 @@ export default function AdminTourPackages() {
           <form onSubmit={handleSaveContent} className="space-y-6">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Hero Image</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Hero Image <span className="text-xs text-gray-400 font-normal ml-1">(Max 4MB)</span></label>
                 <div className="flex items-center space-x-4">
                   <div className="h-20 w-32 bg-gray-100 rounded overflow-hidden border border-gray-200">
                     {contentImageFile ? (
@@ -246,7 +246,17 @@ export default function AdminTourPackages() {
                       <ImageIcon className="h-8 w-8 text-gray-400 m-auto mt-6" />
                     )}
                   </div>
-                  <input type="file" accept="image/*" onChange={e => e.target.files && setContentImageFile(e.target.files[0])} className="text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700" />
+                  <input type="file" accept="image/*" onChange={e => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      if (file.size > 4 * 1024 * 1024) {
+                        toast.error('Image exceeds 4MB limit');
+                        e.target.value = '';
+                        return;
+                      }
+                      setContentImageFile(file);
+                    }
+                  }} className="text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700" />
                 </div>
               </div>
 
@@ -458,7 +468,7 @@ export default function AdminTourPackages() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Main Card Image</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Main Card Image <span className="text-xs text-gray-400 font-normal ml-1">(Max 4MB)</span></label>
                   <div className="flex items-center space-x-4">
                     <div className="h-16 w-24 bg-gray-100 rounded overflow-hidden border border-gray-200">
                       {pkgMainImage ? (
@@ -467,7 +477,17 @@ export default function AdminTourPackages() {
                         <img src={pkgData.img} className="h-full w-full object-cover" />
                       ) : <ImageIcon className="h-6 w-6 text-gray-400 m-auto mt-5" />}
                     </div>
-                    <input type="file" accept="image/*" onChange={e => e.target.files && setPkgMainImage(e.target.files[0])} className="text-xs" />
+                    <input type="file" accept="image/*" onChange={e => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        if (file.size > 4 * 1024 * 1024) {
+                          toast.error('Image exceeds 4MB limit');
+                          e.target.value = '';
+                          return;
+                        }
+                        setPkgMainImage(file);
+                      }
+                    }} className="text-xs" />
                   </div>
                 </div>
 
@@ -527,13 +547,22 @@ export default function AdminTourPackages() {
                             <img src={day.img} className="h-full w-full object-cover" />
                           ) : <ImageIcon className="w-4 h-4 text-gray-400" />}
                         </div>
-                        <input type="file" accept="image/*" onChange={e => {
-                          const n = [...pkgData.itinerary];
-                          if (e.target.files && e.target.files[0]) {
-                            n[i]._file = e.target.files[0];
-                          }
-                          setPkgData({...pkgData, itinerary: n});
-                        }} className="text-xs w-full text-slate-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:bg-blue-50 file:text-blue-700" />
+                        <div className="w-full">
+                          <input type="file" accept="image/*" onChange={e => {
+                            const n = [...pkgData.itinerary];
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              if (file.size > 4 * 1024 * 1024) {
+                                toast.error('Image exceeds 4MB limit');
+                                e.target.value = '';
+                                return;
+                              }
+                              n[i]._file = file;
+                            }
+                            setPkgData({...pkgData, itinerary: n});
+                          }} className="text-xs w-full text-slate-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:bg-blue-50 file:text-blue-700" />
+                          <p className="text-[10px] text-gray-400 mt-1">(Max 4MB)</p>
+                        </div>
                       </div>
                     </div>
                   </div>
