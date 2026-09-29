@@ -204,7 +204,7 @@ export default function AdminTourPackages() {
     if (file.size > 4 * 1024 * 1024) {
       const toastId = toast.loading('Image > 4MB. Compressing automatically...');
       try {
-        const options = { maxSizeMB: 3.5, maxWidthOrHeight: 1920, useWebWorker: true };
+        const options = { maxSizeMB: 1, maxWidthOrHeight: 1280, useWebWorker: true };
         const compressedFile = await imageCompression(file, options);
         const newFile = new File([compressedFile], file.name, { type: compressedFile.type });
         setter(newFile);
