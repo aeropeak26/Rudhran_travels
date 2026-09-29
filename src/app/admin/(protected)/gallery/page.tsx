@@ -121,10 +121,7 @@ export default function AdminGalleryPage() {
           <div className="space-y-6">
             <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4">Hero Section Text</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs text-slate-500 mb-1">Badge Text</label>
-                <input type="text" value={data.hero.badge} onChange={e => setData({...data, hero: {...data.hero, badge: e.target.value}})} className="w-full border p-2 rounded text-black text-sm" placeholder="HOME / VISUAL GALLERY" />
-              </div>
+
               <div>
                 <label className="block text-xs text-slate-500 mb-1">Subtitle</label>
                 <input type="text" value={data.hero.subtitle} onChange={e => setData({...data, hero: {...data.hero, subtitle: e.target.value}})} className="w-full border p-2 rounded text-black text-sm" placeholder="MOMENTS CAPTURED..." />
