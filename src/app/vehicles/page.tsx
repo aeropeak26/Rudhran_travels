@@ -20,18 +20,43 @@ export default function VehiclesPage() {
   const [acFilter, setAcFilter] = useState('AC Only');
   const [sortBy, setSortBy] = useState('Highest Recommended');
   const [quickFilter, setQuickFilter] = useState('All Vehicles');
+  const [pageContent, setPageContent] = useState<any>(null);
 
-  const filteredVehicles = vehiclesData.filter(v => {
-    if (vClassFilter !== 'All Vehicle Classes' && v.vClass !== vClassFilter) return false;
+  React.useEffect(() => {
+    fetch('/api/vehicles-content')
+      .then(res => res.json())
+      .then(data => {
+        if (data && Object.keys(data).length > 0) {
+          setPageContent(data);
+        }
+      })
+      .catch(err => console.error('Error fetching vehicles content:', err));
+  }, []);
+
+  const iconMap: Record<string, any> = { 
+    CheckCircle2, Filter, RotateCcw, ChevronDown, User, Check, Zap, MapPin, Search, Mail, Phone,
+    Car, Shield, Droplets, RefreshCcw, Navigation, Clock, Thermometer, Briefcase, PlaySquare, Home
+  };
+
+  const dynamicVehicles = pageContent?.vehicles || vehiclesData;
+
+  const filteredVehicles = dynamicVehicles.filter((v: any) => {
+    // Map 'category' to 'vClass' if it comes from the DB, otherwise use vClass from hardcoded
+    const vClass = v.category || v.vClass;
+    if (vClassFilter !== 'All Vehicle Classes' && vClass !== vClassFilter) return false;
     if (seatsFilter !== 'Any Capacity' && v.seats !== seatsFilter) return false;
     if (acFilter === 'AC Only' && !v.ac) return false;
     if (acFilter === 'Non-AC' && v.ac) return false;
-    if (quickFilter !== 'All Vehicles' && !v.quickTags.includes(quickFilter)) return false;
+    if (quickFilter !== 'All Vehicles' && !(v.quickTags || []).includes(quickFilter)) return false;
     return true;
-  }).sort((a, b) => {
-    if (sortBy === 'Highest Recommended') return b.rating - a.rating;
-    if (sortBy === 'Price: Low to High') return a.price - b.price;
-    if (sortBy === 'Price: High to Low') return b.price - a.price;
+  }).sort((a: any, b: any) => {
+    const aRating = parseFloat(a.rating);
+    const bRating = parseFloat(b.rating);
+    const aPrice = parseFloat(a.price);
+    const bPrice = parseFloat(b.price);
+    if (sortBy === 'Highest Recommended') return bRating - aRating;
+    if (sortBy === 'Price: Low to High') return aPrice - bPrice;
+    if (sortBy === 'Price: High to Low') return bPrice - aPrice;
     return 0;
   });
 
@@ -63,58 +88,38 @@ export default function VehiclesPage() {
               </div>
 
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100/80 text-blue-700 text-[10px] font-bold uppercase tracking-wider rounded-full mb-6">
-                <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div> OUR FLEET
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div> {pageContent?.hero?.badge || 'OUR FLEET'}
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight text-[#0a192f] mb-6">
-                Our Fleet
+                {pageContent?.hero?.title || 'Our Fleet'}
               </h1>
               
               <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-10 max-w-2xl">
-                Comfortable, reliable vehicles for every type of journey. Executive sedans, spacious touring MUVs, and luxury group coaches maintained to showroom standards.
+                {pageContent?.hero?.description || 'Comfortable, reliable vehicles for every type of journey. Executive sedans, spacious touring MUVs, and luxury group coaches maintained to showroom standards.'}
               </p>
               
               <div className="w-full bg-white px-8 py-6 rounded-[1.5rem] shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 grid grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                    <Droplets className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-[#0a192f]">100% Sanitized</p>
-                    <p className="text-[10px] text-slate-500">Cleaned pre-trip</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                    <Shield className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-[#0a192f]">Verified Chauffeurs</p>
-                    <p className="text-[10px] text-slate-500">Uniformed & trained</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-[#0a192f]">Transparent Per-KM</p>
-                    <p className="text-[10px] text-slate-500">No hidden surges</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-[#0a192f]">24/7 Roadside Care</p>
-                    <p className="text-[10px] text-slate-500">Instant backup team</p>
-                  </div>
-                </div>
+                {(pageContent?.hero?.cards || [
+                  { icon: 'Droplets', title: '100% Sanitized', subtitle: 'Cleaned pre-trip' },
+                  { icon: 'Shield', title: 'Verified Chauffeurs', subtitle: 'Uniformed & trained' },
+                  { icon: 'Zap', title: 'Transparent Per-KM', subtitle: 'No hidden surges' },
+                  { icon: 'Phone', title: '24/7 Roadside Care', subtitle: 'Instant backup team' }
+                ]).map((card: any, idx: number) => {
+                  const IconComp = iconMap[card.icon] || CheckCircle2;
+                  return (
+                    <div key={idx} className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                        <IconComp className="w-5 h-5 text-blue-600" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-[#0a192f]">{card.title}</p>
+                        <p className="text-[10px] text-slate-500">{card.subtitle}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -256,16 +261,19 @@ export default function VehiclesPage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredVehicles.map(vehicle => (
+                {filteredVehicles.map((vehicle: any) => (
                   <div key={vehicle.id} className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all flex flex-col">
                     <div className="relative h-[220px] bg-slate-100">
                       <Image src={vehicle.img} alt={vehicle.name} fill className="object-cover" />
                       
                       {vehicle.tagText && (
                         <div className={`absolute top-4 left-4 ${vehicle.tagColor === 'amber' ? 'bg-amber-400 text-amber-950' : vehicle.tagColor === 'emerald' ? 'bg-emerald-400 text-emerald-950' : vehicle.tagColor === 'cyan' ? 'bg-slate-900/80 backdrop-blur-md text-white' : vehicle.tagColor === 'slate' ? 'bg-slate-100 text-slate-700' : 'bg-blue-600 text-white'} text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5`}>
-                          {vehicle.tagIcon && (
-                            vehicle.tagColor === 'amber' ? <span className="w-1.5 h-1.5 rounded-full bg-amber-950"></span> : <vehicle.tagIcon className={`w-3 h-3 ${vehicle.tagColor === 'cyan' ? 'text-cyan-400' : ''}`} />
-                          )}
+                          {vehicle.tagIcon && (() => {
+                            // Support for dynamic string icon name or hardcoded component
+                            const TagIconComp = typeof vehicle.tagIcon === 'string' ? iconMap[vehicle.tagIcon] : vehicle.tagIcon;
+                            if (!TagIconComp) return null;
+                            return vehicle.tagColor === 'amber' ? <span className="w-1.5 h-1.5 rounded-full bg-amber-950"></span> : <TagIconComp className={`w-3 h-3 ${vehicle.tagColor === 'cyan' ? 'text-cyan-400' : ''}`} />
+                          })()}
                           {vehicle.tagText}
                         </div>
                       )}
@@ -279,7 +287,7 @@ export default function VehiclesPage() {
                     
                     <div className="p-6 flex-grow flex flex-col">
                       <div className="flex justify-between items-start mb-2">
-                        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-0.5 rounded">{vehicle.category}</span>
+                        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-0.5 rounded">{vehicle.category || vehicle.vClass}</span>
                         <div className="flex items-center gap-1 text-xs font-bold text-slate-700">
                           <span className="text-amber-500">★</span> {vehicle.rating}
                         </div>
@@ -288,11 +296,14 @@ export default function VehiclesPage() {
                       <p className="text-xs text-slate-500 mb-6 line-clamp-2">{vehicle.desc}</p>
                       
                       <div className="grid grid-cols-2 gap-3 mb-8">
-                        {vehicle.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
-                            <feature.icon className="w-3.5 h-3.5 text-blue-500" /> <span className="text-[11px] font-medium text-slate-700">{feature.text}</span>
-                          </div>
-                        ))}
+                        {vehicle.features.map((feature: any, idx: number) => {
+                          const FeatureIconComp = typeof feature.icon === 'string' ? iconMap[feature.icon] : feature.icon;
+                          return (
+                            <div key={idx} className="flex items-center gap-2 bg-slate-50 px-3 py-2 rounded-lg border border-slate-100">
+                              {FeatureIconComp && <FeatureIconComp className="w-3.5 h-3.5 text-blue-500" />} <span className="text-[11px] font-medium text-slate-700">{feature.text}</span>
+                            </div>
+                          );
+                        })}
                       </div>
                       
                       <div className="mt-auto border border-slate-100 rounded-2xl p-4 bg-slate-50/50">
@@ -329,59 +340,64 @@ export default function VehiclesPage() {
         <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <span className="text-[9px] uppercase font-bold tracking-widest text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full mb-4 inline-block">THE RUDHRAN STANDARD</span>
-              <h2 className="text-3xl font-bold text-[#0a192f] mb-4">Why Discerning Travelers Choose Our Fleet</h2>
-              <p className="text-slate-500 text-sm max-w-2xl mx-auto leading-relaxed">Every vehicle is backed by strict engineering audits, vetted career chauffeurs, and completely transparent kilometer auditing.</p>
+              <span className="text-[9px] uppercase font-bold tracking-widest text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full mb-4 inline-block">{pageContent?.standards?.badge || 'THE RUDHRAN STANDARD'}</span>
+              <h2 className="text-3xl font-bold text-[#0a192f] mb-4">{pageContent?.standards?.title || 'Why Discerning Travelers Choose Our Fleet'}</h2>
+              <p className="text-slate-500 text-sm max-w-2xl mx-auto leading-relaxed">{pageContent?.standards?.description || 'Every vehicle is backed by strict engineering audits, vetted career chauffeurs, and completely transparent kilometer auditing.'}</p>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Card 1 */}
-              <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-[#0a192f] mb-3">50+ Point Safety Audit</h3>
-                <p className="text-xs text-slate-500 leading-relaxed mb-6">Tires, braking systems, suspension, air conditioning, and emergency tooling are systematically verified before every long-distance assignment.</p>
-                <div className="flex items-center gap-1.5 text-[10px] font-bold text-orange-500 uppercase tracking-wider">
-                  <CheckCircle2 className="w-3 h-3" /> Zero-Breakdown Promise
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-6">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-[#0a192f] mb-3">Ghat & Highway Experts</h3>
-                <p className="text-xs text-slate-500 leading-relaxed mb-6">Chauffeurs have an average of 10+ years driving across South India's hairpin ghat roads (Ooty, Kodaikanal, Munnar) with spotless safety records.</p>
-                <div className="flex items-center gap-1.5 text-[10px] font-bold text-orange-500 uppercase tracking-wider">
-                  <CheckCircle2 className="w-3 h-3" /> Police/Background-Vetted
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-12 h-12 bg-cyan-50 rounded-2xl flex items-center justify-center text-cyan-600 mb-6">
-                  <Droplets className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-[#0a192f] mb-3">100% Pristine Cabins</h3>
-                <p className="text-xs text-slate-500 leading-relaxed mb-6">Deep-sanitized upholstery, fresh cabin fragrances, complimentary mineral water bottles, tissue dispensers, and mobile charging docks.</p>
-                <div className="flex items-center gap-1.5 text-[10px] font-bold text-orange-500 uppercase tracking-wider">
-                  <CheckCircle2 className="w-3 h-3" /> Executive Hospitality
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 mb-6">
-                  <Shield className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-[#0a192f] mb-3">No Driver Batta Surges</h3>
-                <p className="text-xs text-slate-500 leading-relaxed mb-6">Clear timeline pricing upfront. Inter-state tolls, parking allowances, and standardized driver batta without mid-journey surprises or fluctuations.</p>
-                <div className="flex items-center gap-1.5 text-[10px] font-bold text-orange-500 uppercase tracking-wider">
-                  <CheckCircle2 className="w-3 h-3" /> Direct Digital Invoicing
-                </div>
-              </div>
+              {(pageContent?.standards?.cards || [
+                {
+                  icon: 'CheckCircle2',
+                  title: '50+ Point Safety Audit',
+                  description: 'Tires, braking systems, suspension, air conditioning, and emergency tooling are systematically verified before every long-distance assignment.',
+                  tagIcon: 'CheckCircle2',
+                  tagText: 'Zero-Breakdown Promise',
+                  color: 'blue'
+                },
+                {
+                  icon: 'MapPin',
+                  title: 'Ghat & Highway Experts',
+                  description: 'Chauffeurs have an average of 10+ years driving across South India\'s hairpin ghat roads (Ooty, Kodaikanal, Munnar) with spotless safety records.',
+                  tagIcon: 'CheckCircle2',
+                  tagText: 'Police/Background-Vetted',
+                  color: 'emerald'
+                },
+                {
+                  icon: 'Droplets',
+                  title: '100% Pristine Cabins',
+                  description: 'Deep-sanitized upholstery, fresh cabin fragrances, complimentary mineral water bottles, tissue dispensers, and mobile charging docks.',
+                  tagIcon: 'CheckCircle2',
+                  tagText: 'Executive Hospitality',
+                  color: 'cyan'
+                },
+                {
+                  icon: 'Shield',
+                  title: 'No Driver Batta Surges',
+                  description: 'Clear timeline pricing upfront. Inter-state tolls, parking allowances, and standardized driver batta without mid-journey surprises or fluctuations.',
+                  tagIcon: 'CheckCircle2',
+                  tagText: 'Direct Digital Invoicing',
+                  color: 'indigo'
+                }
+              ]).map((card: any, idx: number) => {
+                const colors = ['blue', 'emerald', 'cyan', 'indigo'];
+                const color = card.color || colors[idx % 4];
+                const MainIcon = iconMap[card.icon] || CheckCircle2;
+                const TagIcon = iconMap[card.tagIcon] || CheckCircle2;
+                
+                return (
+                  <div key={idx} className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300">
+                    <div className={`w-12 h-12 bg-${color}-50 rounded-2xl flex items-center justify-center text-${color}-600 mb-6`}>
+                      <MainIcon className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-lg font-bold text-[#0a192f] mb-3">{card.title}</h3>
+                    <p className="text-xs text-slate-500 leading-relaxed mb-6">{card.description}</p>
+                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-orange-500 uppercase tracking-wider">
+                      <TagIcon className="w-3 h-3" /> {card.tagText}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

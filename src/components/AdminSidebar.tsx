@@ -13,6 +13,7 @@ const navigation = [
   { name: 'Tour Packages', href: '/admin/tour-packages', icon: Map },
   { name: 'Gallery', href: '/admin/gallery', icon: ImageIcon },
   { name: 'Pages', href: '/admin/pages', icon: FileText },
+  { name: 'Our Fleet', href: '/admin/vehicles', icon: Car },
   { name: 'About Us', href: '/admin/about', icon: FileText },
   { name: 'Rental Tariff', href: '/admin/tariff', icon: FileText },
   { name: 'Contact Info', href: '/admin/contact', icon: Phone },
