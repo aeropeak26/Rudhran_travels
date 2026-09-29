@@ -217,33 +217,7 @@ export default function ContactPage() {
                </div>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-6">
-               <div className="flex-1 bg-blue-50/50 border border-blue-100 rounded-2xl p-6 md:p-8 flex gap-5 hover:bg-blue-50 transition-colors">
-                  <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center shrink-0 shadow-sm border border-blue-200">
-                    <span className="text-[16px] font-bold font-serif">A</span>
-                  </div>
-                  <div>
-                    <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <h4 className="text-[13px] font-bold text-[#0f172a]">Bay 1: Chennai Airport Staging Bay</h4>
-                      <span className="bg-blue-200/50 border border-blue-300 text-blue-800 text-[8px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Terminal MAA</span>
-                    </div>
-                    <p className="text-[12px] text-slate-500 leading-relaxed max-w-sm">Dedicated active fleet waiting just 12 minutes away from International Terminal to ensure instant pickup on passenger arrival.</p>
-                  </div>
-               </div>
-               
-               <div className="flex-1 bg-emerald-50/50 border border-emerald-100 rounded-2xl p-6 md:p-8 flex gap-5 hover:bg-emerald-50 transition-colors">
-                  <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center shrink-0 shadow-sm border border-emerald-200">
-                    <span className="text-[16px] font-bold font-serif">B</span>
-                  </div>
-                  <div>
-                    <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <h4 className="text-[13px] font-bold text-[#0f172a]">Bay 2: Kanchipuram Highway Garage & Inspection Hub</h4>
-                      <span className="bg-emerald-200/50 border border-emerald-300 text-emerald-800 text-[8px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">MAINTENANCE</span>
-                    </div>
-                    <p className="text-[12px] text-slate-500 leading-relaxed max-w-sm">20,000 sq ft advanced mechanical operations hub where vehicles are scrubbed, serviced, and detailed before each multi-day outstation journey.</p>
-                  </div>
-               </div>
-            </div>
+
           </div>
         </section>
 
