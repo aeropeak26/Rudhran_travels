@@ -30,11 +30,11 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
   }));
 
   return (
-    <section id="fleet" className="py-4 md:py-8 bg-[#0a192f] text-white relative poppins-regular overflow-hidden">
+    <section id="fleet" className="py-8 md:py-12 bg-[#0a192f] text-white relative poppins-regular overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-3 md:mb-5 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-4 md:mb-6 relative z-10">
           <h2 className="text-xl md:text-2xl font-bold tracking-tight text-white mb-0.5 flex items-center justify-center gap-2">
             <span className="text-[#d97706]">✦</span> 
             Rental Tariff / Featured Vehicles 
@@ -46,7 +46,7 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
         </div>
 
         {/* Tab Selector */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-8 mb-2 relative z-10">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-8 mb-4 relative z-10">
           {displayCars.map((car: any, index: number) => (
             <button
               key={index}
@@ -66,7 +66,7 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
         </div>
 
         {/* Compact Carousel Showcase */}
-        <div className="relative h-[120px] sm:h-[150px] md:h-[180px] lg:h-[220px] max-w-4xl mx-auto flex items-center justify-center mt-0">
+        <div className="relative h-[160px] sm:h-[200px] md:h-[240px] lg:h-[280px] max-w-4xl mx-auto flex items-center justify-center mt-0">
           
           {/* Left Arrow */}
           <button
