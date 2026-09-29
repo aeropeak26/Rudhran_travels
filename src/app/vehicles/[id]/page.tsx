@@ -19,15 +19,43 @@ export default function VehicleDetailsPage() {
   const id = params?.id as string;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
+  const [vehicles, setVehicles] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const vehicle = vehiclesData.find(v => v.id === id);
+  React.useEffect(() => {
+    fetch('/api/vehicles-content')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.vehicles) {
+          setVehicles(data.vehicles);
+        } else {
+          setVehicles(vehiclesData);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        setVehicles(vehiclesData);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  const iconMap: Record<string, any> = { 
+    CheckCircle2, ChevronRight, User, Shield, Thermometer, Briefcase, 
+    MapPin, Clock, Phone, Mail, Zap, PlaySquare, FileText, Check, Car, Calendar, Navigation, ShieldCheck, Moon, Armchair, ChevronDown, ChevronRightSquare, MessageCircle, Snowflake
+  };
+
+  const vehicle = vehicles.find((v: any) => v.id === id);
+
+  if (loading) {
+    return <div className="min-h-screen bg-[#f4f7fb] flex items-center justify-center font-bold text-blue-600">Loading Fleet Details...</div>;
+  }
 
   if (!vehicle) {
     notFound();
   }
 
   // Get 3 alternative vehicles
-  const alternatives = vehiclesData.filter(v => v.id !== vehicle.id).slice(0, 3);
+  const alternatives = vehicles.filter((v: any) => v.id !== vehicle.id).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-[#f4f7fb] text-slate-900 flex flex-col poppins selection:bg-blue-600 selection:text-white">
@@ -79,7 +107,7 @@ export default function VehicleDetailsPage() {
               
               {/* Thumbnails */}
               <div className="grid grid-cols-4 gap-4">
-                {vehicle.gallery.map((img, idx) => (
+                {vehicle.gallery?.map((img: string, idx: number) => (
                   <button 
                     key={idx} 
                     onClick={() => setActiveImage(idx)}
@@ -119,13 +147,16 @@ export default function VehicleDetailsPage() {
               
               {/* Features Grid */}
               <div className="grid grid-cols-4 gap-3 mb-8">
-                {vehicle.features.map((feat, idx) => (
-                  <div key={idx} className="flex flex-col items-center justify-center text-center py-5 px-2 rounded-[1.5rem] bg-white shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100/50 hover:border-slate-200 transition-colors">
-                    <feat.icon className="w-5 h-5 text-blue-600 mb-2" />
-                    <span className="text-[11px] font-bold text-[#0f172a] leading-tight mb-1">{feat.text}</span>
-                    <span className="text-[9px] text-slate-500 font-medium">{feat.subtext}</span>
-                  </div>
-                ))}
+                {vehicle.features?.map((feat: any, idx: number) => {
+                  const FeatIcon = typeof feat.icon === 'string' ? iconMap[feat.icon] : feat.icon;
+                  return (
+                    <div key={idx} className="flex flex-col items-center justify-center text-center py-5 px-2 rounded-[1.5rem] bg-white shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100/50 hover:border-slate-200 transition-colors">
+                      {FeatIcon && <FeatIcon className="w-5 h-5 text-blue-600 mb-2" />}
+                      <span className="text-[11px] font-bold text-[#0f172a] leading-tight mb-1">{feat.text}</span>
+                      <span className="text-[9px] text-slate-500 font-medium">{feat.subtext}</span>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Tariff Box */}
@@ -206,7 +237,7 @@ export default function VehicleDetailsPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              {vehicle.overview.map((item, idx) => (
+              {vehicle.overview?.map((item: any, idx: number) => (
                 <div key={idx} className="bg-white p-8 rounded-[1.5rem] shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 flex flex-col">
                   <div className="w-10 h-10 rounded-xl mb-6 flex items-center justify-center bg-slate-100 text-slate-700">
                     {idx === 0 ? <MapPin className="w-5 h-5" /> : idx === 1 ? <Armchair className="w-5 h-5" /> : <Snowflake className="w-5 h-5" />}
@@ -225,7 +256,7 @@ export default function VehicleDetailsPage() {
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div> Best Suited For:
               </div>
               <div className="flex flex-wrap items-center gap-3">
-                {vehicle.bestSuitedFor.map((suit, idx) => (
+                {vehicle.bestSuitedFor?.map((suit: any, idx: number) => (
                   <span key={idx} className="text-[10px] font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md">{suit}</span>
                 ))}
               </div>
@@ -281,7 +312,7 @@ export default function VehicleDetailsPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {alternatives.map(alt => (
+              {alternatives.map((alt: any) => (
                 <div key={alt.id} className="bg-white rounded-[1.5rem] overflow-hidden hover:shadow-xl transition-all shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 flex flex-col">
                   <div className="relative h-[220px] bg-slate-100 overflow-hidden rounded-t-[1.5rem] mb-4">
                     <Image src={alt.img} alt={alt.name} fill className="object-cover transition-transform duration-500 hover:scale-105" />
@@ -300,11 +331,14 @@ export default function VehicleDetailsPage() {
                     
                     {/* Features row */}
                     <div className="flex items-center justify-between border-t border-slate-100 pt-5 mb-5">
-                      {alt.features.slice(0, 3).map((feat, idx) => (
-                        <div key={idx} className="flex items-center gap-1.5 text-[10px] font-medium text-slate-500">
-                          <feat.icon className="w-3.5 h-3.5 text-blue-400" /> {feat.text}
-                        </div>
-                      ))}
+                      {alt.features?.slice(0, 3).map((feat: any, idx: number) => {
+                        const FeatIcon = typeof feat.icon === 'string' ? iconMap[feat.icon] : feat.icon;
+                        return (
+                          <div key={idx} className="flex items-center gap-1.5 text-[10px] font-medium text-slate-500">
+                            {FeatIcon && <FeatIcon className="w-3.5 h-3.5 text-blue-400" />} {feat.text}
+                          </div>
+                        );
+                      })}
                     </div>
                     
                     <Link href={`/vehicles/${alt.id}`} className="w-full py-3.5 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center">

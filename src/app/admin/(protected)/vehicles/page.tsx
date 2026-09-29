@@ -7,6 +7,7 @@ export default function AdminVehiclesPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [activeTab, setActiveTab] = useState<'hero' | 'vehicles' | 'standards'>('hero');
+  const [expandedVehicleIdx, setExpandedVehicleIdx] = useState<number | null>(null);
   
   const [data, setData] = useState({
     hero: {
@@ -91,6 +92,33 @@ export default function AdminVehiclesPage() {
       if (res.ok) {
         const newVehicles = [...data.vehicles];
         newVehicles[idx] = { ...newVehicles[idx], img: result.url };
+        setData({ ...data, vehicles: newVehicles });
+      } else {
+        alert('Upload failed: ' + result.error);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error uploading image');
+    }
+  };
+
+  const handleGalleryUpload = async (e: React.ChangeEvent<HTMLInputElement>, vIdx: number, gIdx: number) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const result = await res.json();
+      if (res.ok) {
+        const newVehicles = [...data.vehicles];
+        if (!newVehicles[vIdx].gallery) newVehicles[vIdx].gallery = ['', '', '', ''];
+        newVehicles[vIdx].gallery[gIdx] = result.url;
         setData({ ...data, vehicles: newVehicles });
       } else {
         alert('Upload failed: ' + result.error);
@@ -193,11 +221,15 @@ export default function AdminVehiclesPage() {
                     {/* Basic Info */}
                     <div>
                       <label className="block text-xs text-slate-500 mb-1">Vehicle Name</label>
-                      <input type="text" value={vehicle.name} onChange={e => { const v = [...data.vehicles]; v[idx].name = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                      <input type="text" value={vehicle.name || ''} onChange={e => { const v = [...data.vehicles]; v[idx].name = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
                     </div>
-                    <div className="lg:col-span-2">
-                      <label className="block text-xs text-slate-500 mb-1">Description (2 lines max)</label>
-                      <input type="text" value={vehicle.desc} onChange={e => { const v = [...data.vehicles]; v[idx].desc = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Subtitle</label>
+                      <input type="text" value={vehicle.subtitle || ''} onChange={e => { const v = [...data.vehicles]; v[idx].subtitle = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                    </div>
+                    <div className="lg:col-span-1">
+                      <label className="block text-xs text-slate-500 mb-1">Grid Description (2 lines)</label>
+                      <input type="text" value={vehicle.desc || ''} onChange={e => { const v = [...data.vehicles]; v[idx].desc = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
                     </div>
 
                     {/* Meta Info */}
@@ -227,22 +259,38 @@ export default function AdminVehiclesPage() {
                       </div>
                       <div className="flex-1">
                         <label className="block text-xs text-slate-500 mb-1">Rating</label>
-                        <input type="text" value={vehicle.rating} onChange={e => { const v = [...data.vehicles]; v[idx].rating = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                        <input type="text" value={vehicle.rating || ''} onChange={e => { const v = [...data.vehicles]; v[idx].rating = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                      </div>
+                      <div className="flex-1">
+                        <label className="block text-xs text-slate-500 mb-1">Reviews Count</label>
+                        <input type="text" value={vehicle.reviewsCount || ''} onChange={e => { const v = [...data.vehicles]; v[idx].reviewsCount = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
                       </div>
                     </div>
 
                     {/* Pricing */}
                     <div>
                       <label className="block text-xs text-slate-500 mb-1">Outstation Rate / km (₹)</label>
-                      <input type="text" value={vehicle.price} onChange={e => { const v = [...data.vehicles]; v[idx].price = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm font-bold text-blue-600" />
+                      <input type="text" value={vehicle.price || ''} onChange={e => { const v = [...data.vehicles]; v[idx].price = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm font-bold text-blue-600" />
                     </div>
                     <div>
                       <label className="block text-xs text-slate-500 mb-1">Local Package (₹)</label>
-                      <input type="text" value={vehicle.localPackage} onChange={e => { const v = [...data.vehicles]; v[idx].localPackage = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                      <input type="text" value={vehicle.localPackage || ''} onChange={e => { const v = [...data.vehicles]; v[idx].localPackage = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Local Hours (e.g. 8 hrs / 80 KM)</label>
+                      <input type="text" value={vehicle.localHours || ''} onChange={e => { const v = [...data.vehicles]; v[idx].localHours = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
                     </div>
                     <div>
                       <label className="block text-xs text-slate-500 mb-1">Minimum Run (km/day)</label>
-                      <input type="text" value={vehicle.minRun} onChange={e => { const v = [...data.vehicles]; v[idx].minRun = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                      <input type="text" value={vehicle.minRun || ''} onChange={e => { const v = [...data.vehicles]; v[idx].minRun = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Driver Allowance / day</label>
+                      <input type="text" value={vehicle.driverAllowance || ''} onChange={e => { const v = [...data.vehicles]; v[idx].driverAllowance = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-slate-500 mb-1">Night Batta</label>
+                      <input type="text" value={vehicle.nightBatta || ''} onChange={e => { const v = [...data.vehicles]; v[idx].nightBatta = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
                     </div>
 
                     {/* Tags */}
@@ -275,16 +323,81 @@ export default function AdminVehiclesPage() {
                     <div className="lg:col-span-3 border-t pt-4 mt-2">
                       <label className="block text-xs font-bold text-slate-700 mb-2">4 Vehicle Features</label>
                       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                        {vehicle.features.map((feat: any, fIdx: number) => (
+                        {(vehicle.features || []).map((feat: any, fIdx: number) => (
                           <div key={fIdx} className="bg-white border rounded p-2 flex flex-col gap-2">
-                            <select value={feat.icon} onChange={e => { const v = [...data.vehicles]; v[idx].features[fIdx].icon = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-1 rounded text-black text-xs">
+                            <select value={feat.icon || ''} onChange={e => { const v = [...data.vehicles]; v[idx].features[fIdx].icon = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-1 rounded text-black text-xs">
                               {iconOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                             </select>
-                            <input type="text" value={feat.text} onChange={e => { const v = [...data.vehicles]; v[idx].features[fIdx].text = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-1 rounded text-black text-xs" />
+                            <input type="text" value={feat.text || ''} onChange={e => { const v = [...data.vehicles]; v[idx].features[fIdx].text = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-1 rounded text-black text-xs" placeholder="Feature Title" />
+                            <input type="text" value={feat.subtext || ''} onChange={e => { const v = [...data.vehicles]; v[idx].features[fIdx].subtext = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-1 rounded text-black text-xs" placeholder="Subtext (e.g. Captain Chairs)" />
                           </div>
                         ))}
                       </div>
                     </div>
+
+                    {/* Advanced Details Button */}
+                    <div className="lg:col-span-3 mt-4">
+                      <button onClick={() => setExpandedVehicleIdx(expandedVehicleIdx === idx ? null : idx)} className="w-full py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-lg text-sm font-bold transition-colors">
+                        {expandedVehicleIdx === idx ? 'Close Details Page CMS' : 'Edit Advanced Details Page CMS'}
+                      </button>
+                    </div>
+
+                    {/* ADVANCED DETAILS SECTION */}
+                    {expandedVehicleIdx === idx && (
+                      <div className="lg:col-span-3 border-t-2 border-slate-300 pt-6 mt-2 space-y-6 bg-slate-100 p-6 rounded-xl">
+                        <h4 className="font-bold text-slate-800 text-lg">Details Page Editor for {vehicle.name}</h4>
+                        
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1">Long Description (Intro Text)</label>
+                          <textarea rows={3} value={vehicle.longDesc || ''} onChange={e => { const v = [...data.vehicles]; v[idx].longDesc = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" />
+                        </div>
+
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-2">Image Gallery (4 Images)</label>
+                          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                            {[0, 1, 2, 3].map((gIdx) => (
+                              <div key={gIdx} className="bg-white p-3 rounded-lg border">
+                                <label className="block text-[10px] text-slate-500 mb-2">Image {gIdx + 1}</label>
+                                {vehicle.gallery?.[gIdx] && <img src={vehicle.gallery[gIdx]} className="h-20 w-full object-cover rounded mb-2 border" />}
+                                <input type="file" accept="image/*" onChange={(e) => handleGalleryUpload(e, idx, gIdx)} className="w-full text-[10px]" />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                          <div>
+                            <label className="block text-xs font-bold text-slate-700 mb-2">Highlights (3 Bullets)</label>
+                            <div className="space-y-2">
+                              {[0, 1, 2].map((hIdx) => (
+                                <input key={hIdx} type="text" value={vehicle.highlights?.[hIdx] || ''} onChange={e => { const v = [...data.vehicles]; if (!v[idx].highlights) v[idx].highlights = ['', '', '']; v[idx].highlights[hIdx] = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" placeholder={`Highlight ${hIdx + 1}`} />
+                              ))}
+                            </div>
+                          </div>
+                          <div>
+                            <label className="block text-xs font-bold text-slate-700 mb-2">Best Suited For (Comma Separated)</label>
+                            <input type="text" value={vehicle.bestSuitedFor?.join(', ') || ''} onChange={e => { const v = [...data.vehicles]; v[idx].bestSuitedFor = e.target.value.split(',').map(s => s.trim()); setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="City Transfers, Solo Business Trips..." />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-2">Vehicle Overview (3 Blocks)</label>
+                          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                            {[0, 1, 2].map((oIdx) => {
+                              const block = vehicle.overview?.[oIdx] || { title: '', desc: '', tag: '' };
+                              return (
+                                <div key={oIdx} className="bg-white p-3 rounded-lg border space-y-2">
+                                  <input type="text" value={block.title} onChange={e => { const v = [...data.vehicles]; if (!v[idx].overview) v[idx].overview = [{title:'',desc:'',tag:''}, {title:'',desc:'',tag:''}, {title:'',desc:'',tag:''}]; v[idx].overview[oIdx].title = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm font-bold" placeholder="Title" />
+                                  <textarea rows={3} value={block.desc} onChange={e => { const v = [...data.vehicles]; if (!v[idx].overview) v[idx].overview = [{title:'',desc:'',tag:''}, {title:'',desc:'',tag:''}, {title:'',desc:'',tag:''}]; v[idx].overview[oIdx].desc = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="Description" />
+                                  <input type="text" value={block.tag} onChange={e => { const v = [...data.vehicles]; if (!v[idx].overview) v[idx].overview = [{title:'',desc:'',tag:''}, {title:'',desc:'',tag:''}, {title:'',desc:'',tag:''}]; v[idx].overview[oIdx].tag = e.target.value; setData({...data, vehicles: v}); }} className="w-full border p-2 rounded text-black text-xs text-blue-600" placeholder="Bottom Tag" />
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                      </div>
+                    )}
 
                   </div>
                 </div>

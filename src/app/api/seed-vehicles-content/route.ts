@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import connectMongo from '@/lib/db';
 import VehiclesPageContent from '@/models/VehiclesPageContent';
+import { vehiclesData } from '@/data/vehicles';
 
 export async function GET() {
   try {
@@ -20,158 +21,16 @@ export async function GET() {
           { icon: 'Phone', title: '24/7 Roadside Care', subtitle: 'Instant backup team' }
         ]
       },
-      vehicles: [
-        {
-          id: '1',
-          category: 'SUV / MUV',
-          seats: '6 - 7 Seats',
-          ac: true,
-          rating: '5',
-          img: '/images/dest1.png',
-          name: 'Toyota Innova Crysta',
-          desc: 'Spacious captain seats, generous boot space, and robust performance engineered for family hill circuits.',
-          price: '18',
-          localPackage: '3,500',
-          minRun: '250',
-          driverAllowance: '400',
-          tagColor: 'amber',
-          tagText: 'PREMIUM MPV / TOURING FLEET',
-          tagBadge: 'TAMIL NADU & KERALA CERTIFIED',
-          tagIcon: 'Shield',
-          features: [
-            { icon: 'User', text: '6+1 Seats' },
-            { icon: 'Thermometer', text: 'Dual AC' },
-            { icon: 'Briefcase', text: 'Luggage' },
-            { icon: 'Navigation', text: 'Chauffeur' }
-          ],
-          quickTags: ['All Vehicles', 'Hill Station Ready', 'Pilgrimage Group']
-        },
-        {
-          id: '4',
-          category: 'SUV / MUV',
-          seats: '6 - 7 Seats',
-          ac: true,
-          rating: '5',
-          img: '/images/hero_car.png',
-          name: 'Toyota Innova Hycross',
-          desc: 'Next-generation hybrid luxury featuring Ottoman captain chairs and whisper-quiet cruising.',
-          price: '24',
-          localPackage: '4,800',
-          minRun: '250',
-          driverAllowance: '500',
-          tagColor: 'blue',
-          tagText: 'HYBRID LUXURY MUV',
-          tagBadge: 'Ultra Luxury',
-          tagIcon: 'Zap',
-          features: [
-            { icon: 'User', text: '6 Seats' },
-            { icon: 'Thermometer', text: 'Multi Zone' },
-            { icon: 'Briefcase', text: 'Luggage' },
-            { icon: 'Zap', text: 'Hybrid EV' }
-          ],
-          quickTags: ['All Vehicles', 'Corporate Executive', 'Hill Station Ready']
-        },
-        {
-          id: '3',
-          category: 'SUV / MUV',
-          seats: '6 - 7 Seats',
-          ac: true,
-          rating: '4.9',
-          img: '/images/hero_car.png',
-          name: 'Mahindra XUV700 AX7',
-          desc: 'Dynamic high-ground-clearance luxury SUV providing commanding comfort and plush ride.',
-          price: '22',
-          localPackage: '4,300',
-          minRun: '300',
-          driverAllowance: '500',
-          tagColor: 'cyan',
-          tagText: 'FULL-SIZE SUV',
-          tagBadge: 'Premium SUV',
-          tagIcon: 'Shield',
-          features: [
-            { icon: 'User', text: '6 / 7 Seats' },
-            { icon: 'Thermometer', text: 'Dual Climate' },
-            { icon: 'Briefcase', text: 'Luggage' },
-            { icon: 'Shield', text: 'ADAS Safety' }
-          ],
-          quickTags: ['All Vehicles', 'Corporate Executive', 'Hill Station Ready']
-        },
-        {
-          id: '5',
-          category: 'Luxury Coach',
-          seats: '12+ Seats',
-          ac: true,
-          rating: '4.9',
-          img: '/images/dest2.png',
-          name: 'Force Urbania VIP Van',
-          desc: 'World-class European styling with individual aircraft-style AC vents, ample headroom, and reclining buckets.',
-          price: '28',
-          localPackage: '6,200',
-          minRun: '250',
-          driverAllowance: '600',
-          tagColor: 'emerald',
-          tagText: 'HIGH-ROOF LUXURY MINIVAN',
-          tagBadge: 'Executive Group',
-          tagIcon: 'Briefcase',
-          features: [
-            { icon: 'User', text: '12 - 17 Seats' },
-            { icon: 'Thermometer', text: 'Individual AC' },
-            { icon: 'Briefcase', text: 'Charging' },
-            { icon: 'Shield', text: 'Safety' }
-          ],
-          quickTags: ['All Vehicles', 'Corporate Executive', 'Airport Transfers']
-        },
-        {
-          id: '2',
-          category: 'Sedan',
-          seats: '4 Seats',
-          ac: true,
-          rating: '4.8',
-          img: '/images/dest2.png',
-          name: 'Swift Dzire Sedan',
-          desc: 'Agile, smooth, and exceptionally economical for city transfers, corporate commutes, and couple trips.',
-          price: '13',
-          localPackage: '2,200',
-          minRun: '250',
-          driverAllowance: '400',
-          tagColor: 'slate',
-          tagText: 'COMPACT EXECUTIVE SEDAN',
-          tagBadge: 'Best Value',
-          tagIcon: 'Check',
-          features: [
-            { icon: 'User', text: '4 Passengers' },
-            { icon: 'Thermometer', text: 'Chilled AC' },
-            { icon: 'Briefcase', text: 'Luggage' },
-            { icon: 'Navigation', text: 'Chauffeur' }
-          ],
-          quickTags: ['All Vehicles', 'Airport Transfers']
-        },
-        {
-          id: '6',
-          category: 'Luxury Coach',
-          seats: '12+ Seats',
-          ac: true,
-          rating: '4.8',
-          img: '/images/hero_car.png',
-          name: 'Tempo Traveller 12 - 18',
-          desc: 'Comfortable pushback seating and dedicated luggage carrier ideal for extended temple circuits.',
-          price: '26',
-          localPackage: '5,500',
-          minRun: '300',
-          driverAllowance: '600',
-          tagColor: 'slate',
-          tagText: 'GROUP TOURING VEHICLE',
-          tagBadge: 'Family & Pilgrimage',
-          tagIcon: 'User',
-          features: [
-            { icon: 'User', text: '12-18 Seats' },
-            { icon: 'Thermometer', text: 'Dual AC' },
-            { icon: 'Briefcase', text: 'Carrier' },
-            { icon: 'PlaySquare', text: 'Entertainment' }
-          ],
-          quickTags: ['All Vehicles', 'Pilgrimage Group']
-        }
-      ],
+      vehicles: vehiclesData.map((v: any) => ({
+        ...v,
+        category: v.category,
+        features: v.features.map((f: any) => ({
+          icon: typeof f.icon === 'string' ? f.icon : (f.icon as any)?.displayName || (f.icon as any)?.name || 'CheckCircle2',
+          text: f.text,
+          subtext: f.subtext || ''
+        })),
+        tagIcon: typeof v.tagIcon === 'string' ? v.tagIcon : (v.tagIcon as any)?.displayName || (v.tagIcon as any)?.name || 'CheckCircle2',
+      })),
       standards: {
         badge: 'THE RUDHRAN STANDARD',
         title: 'Why Discerning Travelers Choose Our Fleet',
