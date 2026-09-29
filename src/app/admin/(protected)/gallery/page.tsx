@@ -67,6 +67,32 @@ export default function AdminGalleryPage() {
     }
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, idx: number) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const result = await res.json();
+      if (res.ok) {
+        const newG = [...data.gallery];
+        newG[idx].img = result.url;
+        setData({...data, gallery: newG});
+      } else {
+        alert('Upload failed: ' + result.error);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error uploading image');
+    }
+  };
+
   if (loading) return <div className="p-6 text-slate-500">Loading...</div>;
 
   return (
@@ -76,16 +102,16 @@ export default function AdminGalleryPage() {
           <h1 className="text-3xl font-bold text-slate-900">Gallery Page CMS</h1>
           <p className="mt-2 text-sm text-slate-600">Update the hero content, photo grid, and guest feedback sections.</p>
         </div>
-        <button onClick={() => handleSave()} disabled={saving} className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors shadow-sm disabled:opacity-50">
+        <button onClick={() => handleSave()} disabled={saving} className="flex items-center gap-2 px-6 py-3 bg-[#ea580c] hover:bg-[#c2410c] text-white rounded-lg font-medium transition-colors shadow-sm disabled:opacity-50">
           <Save className="w-5 h-5" />
           {saving ? 'Saving...' : 'Save All Changes'}
         </button>
       </div>
 
-      <div className="flex space-x-1 bg-slate-200/50 p-1 rounded-xl mb-6 w-max">
-        <button onClick={() => setActiveTab('hero')} className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'hero' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'}`}>Hero & Content</button>
-        <button onClick={() => setActiveTab('gallery')} className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'gallery' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'}`}>Photo Gallery</button>
-        <button onClick={() => setActiveTab('feedback')} className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${activeTab === 'feedback' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'}`}>Feedback (Auto Scroll)</button>
+      <div className="flex space-x-8 border-b border-gray-200 mb-6">
+        <button onClick={() => setActiveTab('hero')} className={`pb-4 text-sm font-medium transition-colors border-b-2 ${activeTab === 'hero' ? 'border-[#ea580c] text-[#ea580c]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'}`}>Hero & Content</button>
+        <button onClick={() => setActiveTab('gallery')} className={`pb-4 text-sm font-medium transition-colors border-b-2 ${activeTab === 'gallery' ? 'border-[#ea580c] text-[#ea580c]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'}`}>Photo Gallery</button>
+        <button onClick={() => setActiveTab('feedback')} className={`pb-4 text-sm font-medium transition-colors border-b-2 ${activeTab === 'feedback' ? 'border-[#ea580c] text-[#ea580c]' : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300'}`}>Feedback (Auto Scroll)</button>
       </div>
 
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
@@ -146,8 +172,8 @@ export default function AdminGalleryPage() {
                 <div key={idx} className="bg-slate-50 p-4 rounded-lg border border-slate-200 flex flex-col md:flex-row gap-4 items-start relative pr-12">
                   <button onClick={() => { const newG = data.gallery.filter((_, i) => i !== idx); setData({...data, gallery: newG}); }} className="absolute top-4 right-4 text-red-500 hover:text-red-700"><Trash2 className="w-5 h-5"/></button>
                   <div className="w-full md:w-1/3">
-                    <label className="block text-xs text-slate-500 mb-1">Image URL</label>
-                    <input type="text" value={img.img} onChange={e => { const newG = [...data.gallery]; newG[idx].img = e.target.value; setData({...data, gallery: newG}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="/images/dest1.png" />
+                    <label className="block text-xs text-slate-500 mb-1">Image Upload</label>
+                    <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, idx)} className="w-full border p-1.5 rounded text-black text-sm bg-white file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
                     {img.img && <img src={img.img} alt="" className="mt-2 w-full h-24 object-cover rounded-md" />}
                   </div>
                   <div className="w-full md:w-2/3 space-y-3">
