@@ -242,7 +242,7 @@ export default function ContactPage() {
                  if (mapUrl.includes('<iframe')) {
                    const match = mapUrl.match(/src="([^"]+)"/);
                    if (match) mapUrl = match[1];
-                 } else if (!mapUrl.includes('embed') && (mapUrl.includes('goo.gl') || mapUrl.includes('google.com/maps'))) {
+                 } else if (!mapUrl.includes('embed') && !mapUrl.includes('google.com/maps')) {
                    const addressQuery = encodeURIComponent(contactData?.location?.address || 'Rudhran Travels, Guindy, Chennai');
                    mapUrl = `https://maps.google.com/maps?q=${addressQuery}&output=embed`;
                  }

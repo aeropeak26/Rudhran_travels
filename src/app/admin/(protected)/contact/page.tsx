@@ -124,10 +124,23 @@ export default function AdminContactPage() {
                  if (mapUrl.includes('<iframe')) {
                    const match = mapUrl.match(/src="([^"]+)"/);
                    if (match) mapUrl = match[1];
-                 } else if (!mapUrl.includes('embed') && (mapUrl.includes('goo.gl') || mapUrl.includes('google.com/maps'))) {
+                 }
+                 
+                 const isShortLink = mapUrl.includes('maps.app.goo.gl') || mapUrl.includes('goo.gl/maps');
+                 if (isShortLink) {
+                   return (
+                     <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-red-50 text-red-600">
+                       <span className="font-bold text-lg mb-2">Invalid URL Format</span>
+                       <span className="text-sm">Google blocks short links (goo.gl) from being embedded. Please use the <strong>Embed a map</strong> option on Google Maps and paste the HTML.</span>
+                     </div>
+                   );
+                 }
+
+                 if (!mapUrl.includes('embed') && !mapUrl.includes('google.com/maps')) {
                    const addressQuery = encodeURIComponent(data.location?.address || 'Rudhran Travels, Guindy, Chennai');
                    mapUrl = `https://maps.google.com/maps?q=${addressQuery}&output=embed`;
                  }
+                 
                  return (
                    <iframe src={mapUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                  );
