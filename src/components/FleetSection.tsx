@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface FleetSectionProps {
   data?: any[];
@@ -10,7 +11,7 @@ interface FleetSectionProps {
 }
 
 export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
-  const [selectedCarIndex, setSelectedCarIndex] = useState<number>(1);
+  const [selectedCarIndex, setSelectedCarIndex] = useState<number>(0);
 
   const defaultCars = [
     { name: 'Sedan', icon: 'M4 14l2-6h12l2 6m-16 0h16v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4z', image: '/images/hero_car.png' },
@@ -32,7 +33,7 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
   useEffect(() => {
     const timer = setInterval(() => {
       setSelectedCarIndex((prev) => (prev < displayCars.length - 1 ? prev + 1 : 0));
-    }, 3000);
+    }, 4000);
     return () => clearInterval(timer);
   }, [displayCars.length]);
 
@@ -83,16 +84,26 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
             <ArrowLeft className="w-3 h-3 md:w-4 md:h-4" />
           </button>
 
-          {/* Car Image */}
-          <div className="relative w-[85%] h-full z-10">
-            <Image
-              key={selectedCarIndex}
-              src={displayCars[selectedCarIndex].image}
-              alt={displayCars[selectedCarIndex].name}
-              fill
-              className="object-contain animate-fadeIn drop-shadow-2xl mix-blend-screen scale-110 md:scale-125 origin-center"
-              unoptimized
-            />
+          {/* Car Image with Framer Motion AnimatePresence */}
+          <div className="relative w-[85%] h-full z-10 flex items-center justify-center overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedCarIndex}
+                initial={{ opacity: 0, scale: 0.95, filter: 'blur(4px)' }}
+                animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, scale: 1.05, filter: 'blur(4px)' }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="absolute inset-0 w-full h-full"
+              >
+                <Image
+                  src={displayCars[selectedCarIndex].image}
+                  alt={displayCars[selectedCarIndex].name}
+                  fill
+                  className="object-contain drop-shadow-2xl mix-blend-screen scale-110 md:scale-125 origin-center"
+                  unoptimized
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           {/* Right Arrow */}
