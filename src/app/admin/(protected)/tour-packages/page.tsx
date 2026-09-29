@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, X, Image as ImageIcon, Save, ArrowLeft } from 'lucide-react';
 import { toast } from 'react-hot-toast';
+import imageCompression from 'browser-image-compression';
 import { ITourPackage } from '@/models/TourPackage';
 import { ITourPageContent } from '@/models/TourPageContent';
 
@@ -197,6 +198,28 @@ export default function AdminTourPackages() {
     }
   };
 
+  const handleImageSelect = async (file: File | undefined, setter: (f: File) => void, resetInput: () => void) => {
+    if (!file) return;
+    
+    if (file.size > 4 * 1024 * 1024) {
+      const toastId = toast.loading('Image > 4MB. Compressing automatically...');
+      try {
+        const options = { maxSizeMB: 3.5, maxWidthOrHeight: 1920, useWebWorker: true };
+        const compressedFile = await imageCompression(file, options);
+        // Sometimes browser-image-compression returns a Blob, we convert it back to File
+        const newFile = new File([compressedFile], file.name, { type: compressedFile.type });
+        setter(newFile);
+        toast.success('Compression complete!', { id: toastId });
+      } catch (err) {
+        console.error(err);
+        toast.error('Failed to compress. Try a smaller file.', { id: toastId });
+        resetInput();
+      }
+    } else {
+      setter(file);
+    }
+  };
+
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <div className="mb-8">
@@ -247,15 +270,7 @@ export default function AdminTourPackages() {
                     )}
                   </div>
                   <input type="file" accept="image/*" onChange={e => {
-                    const file = e.target.files?.[0];
-                    if (file) {
-                      if (file.size > 4 * 1024 * 1024) {
-                        toast.error('Image exceeds 4MB limit');
-                        e.target.value = '';
-                        return;
-                      }
-                      setContentImageFile(file);
-                    }
+                    handleImageSelect(e.target.files?.[0], setContentImageFile, () => { e.target.value = ''; });
                   }} className="text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700" />
                 </div>
               </div>
@@ -478,15 +493,7 @@ export default function AdminTourPackages() {
                       ) : <ImageIcon className="h-6 w-6 text-gray-400 m-auto mt-5" />}
                     </div>
                     <input type="file" accept="image/*" onChange={e => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        if (file.size > 4 * 1024 * 1024) {
-                          toast.error('Image exceeds 4MB limit');
-                          e.target.value = '';
-                          return;
-                        }
-                        setPkgMainImage(file);
-                      }
+                      handleImageSelect(e.target.files?.[0], setPkgMainImage, () => { e.target.value = ''; });
                     }} className="text-xs" />
                   </div>
                 </div>
@@ -550,18 +557,12 @@ export default function AdminTourPackages() {
                         <div className="w-full">
                           <input type="file" accept="image/*" onChange={e => {
                             const n = [...pkgData.itinerary];
-                            const file = e.target.files?.[0];
-                            if (file) {
-                              if (file.size > 4 * 1024 * 1024) {
-                                toast.error('Image exceeds 4MB limit');
-                                e.target.value = '';
-                                return;
-                              }
-                              n[i]._file = file;
-                            }
-                            setPkgData({...pkgData, itinerary: n});
+                            handleImageSelect(e.target.files?.[0], (f) => {
+                              n[i]._file = f;
+                              setPkgData({...pkgData, itinerary: n});
+                            }, () => { e.target.value = ''; });
                           }} className="text-xs w-full text-slate-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:bg-blue-50 file:text-blue-700" />
-                          <p className="text-[10px] text-gray-400 mt-1">(Max 4MB)</p>
+                          <p className="text-[10px] text-gray-400 mt-1">(Max 4MB - Auto Compresses if larger)</p>
                         </div>
                       </div>
                     </div>
