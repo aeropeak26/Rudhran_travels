@@ -28,7 +28,7 @@ export default function AdminLogin() {
       setError(res.error);
       setLoading(false);
     } else {
-      router.push('/admin/dashboard');
+      router.push('/admin/general');
       router.refresh();
     }
   };

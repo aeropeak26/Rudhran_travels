@@ -7,12 +7,11 @@ import { signOut } from 'next-auth/react';
 import { LayoutDashboard, MessageSquare, Car, Image as ImageIcon, Map, FileText, LogOut, Phone } from 'lucide-react';
 
 const navigation = [
-  { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
+  { name: 'General', href: '/admin/general', icon: LayoutDashboard },
   { name: 'Testimonials', href: '/admin/testimonials', icon: MessageSquare },
 
   { name: 'Tour Packages', href: '/admin/tour-packages', icon: Map },
   { name: 'Gallery', href: '/admin/gallery', icon: ImageIcon },
-  { name: 'Pages', href: '/admin/pages', icon: FileText },
   { name: 'Our Fleet', href: '/admin/vehicles', icon: Car },
   { name: 'About Us', href: '/admin/about', icon: FileText },
   { name: 'Rental Tariff', href: '/admin/tariff', icon: FileText },
@@ -25,7 +24,7 @@ export default function AdminSidebar() {
   return (
     <div className="flex h-full flex-col bg-white border-r border-slate-200 w-64 text-slate-800">
       <div className="flex h-16 shrink-0 items-center px-6 border-b border-slate-200 bg-slate-50 justify-center">
-        <Link href="/admin/dashboard" className="flex items-center">
+        <Link href="/admin/general" className="flex items-center">
           <img src="/images/logo.png" alt="Rudhran Travels" className="h-10 w-auto" />
         </Link>
       </div>
