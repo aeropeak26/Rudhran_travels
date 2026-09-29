@@ -105,7 +105,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
 
       <main>
         {/* 1. Hero Section */}
-        <section className="relative w-full h-[600px] bg-[#071324] overflow-hidden">
+        <section className="py-12 md:py-16 md: relative w-full h-[600px] bg-[#071324] overflow-hidden">
           {/* Background Image with Gradient Overlay */}
           <div className="absolute inset-0 z-0">
             <Image src={pkg.img} alt={pkg.title} fill className="object-cover opacity-60" priority />
@@ -195,7 +195,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
         </section>
 
         {/* 2. Route Waypoints */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+        <section className="py-12 md:py-16 md: max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 - relative z-20">
           <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 p-6 md:p-8">
             <span className="text-[9px] font-bold text-blue-600 uppercase tracking-widest block mb-6">GRAND TOURER ROUTE WAYPOINTS</span>
             <div className="flex flex-wrap gap-4">
@@ -215,7 +215,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
         </section>
 
         {/* 3. Itinerary */}
-        <section className="py-12 md:py-16 bg-slate-50">
+        <section className="py-12 md:py-16 md: md: bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2">CHRONICLE & ITINERARY</span>
@@ -276,7 +276,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
         </section>
 
         {/* 4. Vehicles Section */}
-        <section className="py-12 md:py-16 bg-[#f4f7f9]">
+        <section className="py-12 md:py-16 md: md: bg-[#f4f7f9]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <span className="text-[9px] font-bold text-blue-600 uppercase tracking-widest block mb-2">EXECUTIVE CARRIAGE FLEET</span>
@@ -331,7 +331,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
         </section>
 
         {/* 5. Inclusions / Exclusions */}
-        <section className="py-12 md:py-16 bg-white">
+        <section className="py-12 md:py-16 md: md: bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-[#f0fdf4] border border-emerald-200 rounded-2xl p-8 shadow-sm">
@@ -368,7 +368,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
         </section>
 
         {/* 6. Booking Form */}
-        <section className="bg-[#111c30] py-12 md:py-16 relative overflow-hidden">
+        <section className="py-12 md:py-16 md: bg-[#111c30] md: relative overflow-hidden">
           {/* Background Maps/Graphics */}
           <div className="absolute inset-0 z-0">
              <div className="absolute inset-0 bg-[#0c1524]/60 mix-blend-multiply z-10"></div>

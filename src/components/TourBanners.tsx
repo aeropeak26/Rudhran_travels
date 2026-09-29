@@ -90,7 +90,7 @@ export default function TourBanners({ data, onOpenBookingModal }: TourBannersPro
   const packages = data?.length === 6 ? data : defaultPackages;
 
   return (
-    <section className="pb-24 pt-0 bg-slate-50 text-slate-900 poppins-regular">
+    <section className="py-12 md:py-16 md: pt-0 bg-slate-50 text-slate-900 poppins-regular">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

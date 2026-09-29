@@ -9,7 +9,7 @@ export default function AboutSection({ data }: { data?: any }) {
   const features = data?.features?.length === 4 ? data.features : defaultFeatures;
 
   return (
-    <section id="about" className="pt-32 pb-20 bg-white text-slate-900 relative border-b border-slate-100 overflow-hidden poppins-regular">
+    <section id="about" className="py-12 md:py-16 bg-white text-slate-900 relative border-b border-slate-100 overflow-hidden poppins-regular">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-12 items-center">
           

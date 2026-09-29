@@ -10,7 +10,7 @@ interface InnovaTariffProps {
 
 export default function InnovaTariff({ data, onBookCar }: InnovaTariffProps) {
   return (
-    <section id="innova-tariff" className="pt-24 pb-12 bg-slate-50 relative poppins-regular z-10">
+    <section id="innova-tariff" className="py-12 md:py-16 bg-slate-50 relative poppins-regular z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Card Container */}

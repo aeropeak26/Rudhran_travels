@@ -30,7 +30,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="py-12 md:py-16 bg-gradient-to-b from-blue-900/30 via-slate-900 to-slate-950 text-white relative border-y border-slate-800">
+    <section id="how-it-works" className="py-12 md:py-16 md: bg-gradient-to-b from-blue-900/30 via-slate-900 to-slate-950 text-white relative border-y border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

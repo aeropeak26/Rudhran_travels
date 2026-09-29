@@ -12,7 +12,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ data, onSearchCars, onOpenBookingModal }: HeroSectionProps) {
   return (
-    <section className="relative bg-cover bg-center bg-no-repeat pt-10 pb-4 text-white overflow-hidden poppins-regular min-h-[520px]" style={{ backgroundImage: `url(${data?.backgroundImage || '/images/Home/bg.png'})` }}>
+    <section className="py-12 md:py-16 md: relative bg-cover bg-center bg-no-repeat pb-4 text-white overflow-hidden poppins-regular min-h-[520px]" style={{ backgroundImage: `url(${data?.backgroundImage || '/images/Home/bg.png'})` }}>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         

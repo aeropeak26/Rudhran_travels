@@ -76,7 +76,7 @@ export default function VehiclesPage() {
       <main className="flex-grow">
         
         {/* 1. Hero Section */}
-        <section className="relative w-full pt-16 pb-20 bg-gradient-to-b from-[#eef2fb] to-slate-50 overflow-hidden">
+        <section className="py-12 md:py-16 md: relative w-full bg-gradient-to-b from-[#eef2fb] to-slate-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col items-start max-w-4xl">
               <div className="flex items-center space-x-2 text-[10px] md:text-xs font-semibold tracking-widest text-slate-500 mb-8">
@@ -126,7 +126,7 @@ export default function VehiclesPage() {
         </section>
 
         {/* 2. Filter Bar */}
-        <section className="bg-white border-y border-slate-200 py-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative z-20">
+        <section className="py-12 md:py-16 md: bg-white border-y border-slate-200 py-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative z-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-5 gap-4">
               <div className="flex items-center gap-3">
@@ -248,7 +248,7 @@ export default function VehiclesPage() {
         </section>
 
         {/* 3. Vehicle Cards Grid */}
-        <section className="py-12 md:py-16 bg-slate-50 min-h-[400px]">
+        <section className="py-12 md:py-16 md: md: bg-slate-50 min-h-[400px]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {filteredVehicles.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-12 md:py-16 text-center">
@@ -337,7 +337,7 @@ export default function VehiclesPage() {
         </section>
 
         {/* 4. Why Discerning Travelers Choose Our Fleet (Stats) */}
-        <section className="py-12 md:py-16 bg-gradient-to-b from-slate-50 to-white">
+        <section className="py-12 md:py-16 md: md: bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <span className="text-[9px] uppercase font-bold tracking-widest text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full mb-4 inline-block">{pageContent?.standards?.badge || 'THE RUDHRAN STANDARD'}</span>
@@ -403,7 +403,7 @@ export default function VehiclesPage() {
         </section>
 
         {/* 5. Contact Form Section */}
-        <section className="bg-[#0b1120] text-white py-12 md:py-16 relative overflow-hidden">
+        <section className="py-12 md:py-16 md: bg-[#0b1120] text-white md: relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/5 blur-[120px] pointer-events-none"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

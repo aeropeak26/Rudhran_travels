@@ -134,7 +134,7 @@ export default function TariffPage() {
       <main className="flex-grow">
         
         {/* 1. Hero Section */}
-        <section className="relative pt-24 pb-32 overflow-hidden bg-[#0A162C]">
+        <section className="py-12 md:py-16 md: relative overflow-hidden bg-[#0A162C]">
           {pageContent?.hero?.heroImage && (
             <div className="absolute inset-0 z-0">
               <Image src={pageContent.hero.heroImage} alt="Hero Background" fill className="object-cover opacity-30" priority />
@@ -173,7 +173,7 @@ export default function TariffPage() {
         </section>
 
         {/* 2. Rates Grid */}
-        <section className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <section className="py-12 md:py-16 md: md: max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           
           <div className="flex flex-col lg:flex-row justify-between items-end mb-10 gap-6">
             <div>
@@ -311,7 +311,7 @@ export default function TariffPage() {
         </section>
 
         {/* 3. Additional Charges */}
-        <section className="py-12 md:py-16 bg-[#f8fafc]">
+        <section className="py-12 md:py-16 md: md: bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center">
               <div className="inline-flex items-center gap-2 bg-[#ffedd5] text-yellow-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">
@@ -349,7 +349,7 @@ export default function TariffPage() {
 
 
         {/* 5. Custom Itinerary CTA */}
-        <section className="bg-[#f8fafc] pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 md:py-16 md: bg-[#f8fafc] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#0B172A] text-white rounded-[1.5rem] p-10 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
             
             {/* Background Glowing Spheres */}

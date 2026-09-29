@@ -76,7 +76,7 @@ export default function ContactPage() {
 
       <main className="flex-grow">
         {/* 1. Hero Section */}
-        <section className="relative w-full h-[500px] bg-[#0c1222] overflow-hidden flex flex-col justify-center items-center text-center">
+        <section className="py-12 md:py-16 md: relative w-full h-[500px] bg-[#0c1222] overflow-hidden flex flex-col justify-center items-center text-center">
           {/* Background Gradients & Patterns */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#1e1438] via-[#0c1222] to-[#0c1222] z-0"></div>
           <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_30%,#4c1d95_0%,transparent_50%),radial-gradient(circle_at_80%_70%,#1e3a8a_0%,transparent_50%)] z-0"></div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
         </section>
 
         {/* 2. Main Split Section */}
-        <section className="py-12 md:py-16 bg-slate-50">
+        <section className="py-12 md:py-16 md: md: bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row gap-16">
               
@@ -219,7 +219,7 @@ export default function ContactPage() {
         </section>
 
         {/* 3. Operations Hub Map Section */}
-        <section className="py-12 md:py-16 bg-white border-t border-slate-100">
+        <section className="py-12 md:py-16 md: md: bg-white border-t border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
               <div>
@@ -279,7 +279,7 @@ export default function ContactPage() {
         </section>
 
         {/* 4. Bottom CTA Section */}
-        <section className="py-12 md:py-16 bg-slate-50 border-t border-slate-100">
+        <section className="py-12 md:py-16 md: md: bg-slate-50 border-t border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-[#0f172a] rounded-[2rem] p-10 md:p-14 relative overflow-hidden shadow-2xl flex flex-col md:flex-row justify-between items-center gap-10">
                {/* Decorative Gradient */}

@@ -65,7 +65,7 @@ export default function VehicleDetailsPage() {
       <main className="flex-grow pb-24">
         
         {/* 1. Breadcrumb & Top Bar */}
-        <section className="bg-[#f4f7fb]">
+        <section className="py-12 md:py-16 md: bg-[#f4f7fb]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center space-x-2 text-[12px] font-medium text-slate-600">
               <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
@@ -85,7 +85,7 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 2. Hero Section */}
-        <section className="pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 md:py-16 md: max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             
             {/* Left Side: Gallery & Highlights */}
@@ -229,7 +229,7 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 3. Overview & Touring Experience */}
-        <section className="py-12 md:py-16">
+        <section className="py-12 md:py-16 md: md:">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-12">
               <div className="inline-flex items-center gap-2 bg-[#ffedd5] text-orange-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
@@ -270,7 +270,7 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 4. Elite Chauffeurs Banner */}
-        <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 md:py-16 md: max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-[1.5rem] p-8 shadow-[0_2px_15px_rgb(0,0,0,0.03)] border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="w-[72px] h-[72px] rounded-2xl bg-blue-50 flex items-center justify-center shrink-0">
@@ -302,7 +302,7 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 5. Alternative Vehicles */}
-        <section className="pt-16 pb-24">
+        <section className="py-12 md:py-16 md:">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-end mb-10">
               <div>
@@ -357,7 +357,7 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 6. Custom Itinerary CTA */}
-        <section className="bg-[#0A1529] text-white py-12 md:py-16 relative overflow-hidden -mb-24">
+        <section className="py-12 md:py-16 md: bg-[#0A1529] text-white md: relative overflow-hidden -">
           {/* Background Glowing Spheres */}
           <div className="absolute top-1/2 -translate-y-1/2 -left-10 w-64 h-64 bg-blue-600/30 rounded-full blur-[80px] pointer-events-none z-0"></div>
           <div className="absolute top-1/2 -translate-y-1/2 -right-10 w-72 h-72 bg-emerald-500/20 rounded-full blur-[90px] pointer-events-none z-0"></div>

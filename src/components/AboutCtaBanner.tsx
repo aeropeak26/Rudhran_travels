@@ -6,7 +6,7 @@ import { MessageCircle, Phone } from 'lucide-react';
 
 export default function AboutCtaBanner() {
   return (
-    <section className="relative bg-[#0a1526] py-12 md:py-16 poppins-regular overflow-hidden flex items-center justify-center">
+    <section className="py-12 md:py-16 md: relative bg-[#0a1526] md: poppins-regular overflow-hidden flex items-center justify-center">
       
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[500px] bg-blue-900/20 blur-[120px] rounded-full pointer-events-none"></div>

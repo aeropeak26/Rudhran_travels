@@ -61,7 +61,7 @@ export default function TourPackagesPage() {
       <main className="flex-grow">
         
         {/* 1. Hero Section */}
-        <section className="relative pt-24 pb-32 overflow-hidden">
+        <section className="py-12 md:py-16 md: relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             <Image 
               src={pageContent?.heroImage || "/images/hill_station.png"} 
@@ -110,7 +110,7 @@ export default function TourPackagesPage() {
         </section>
 
         {/* 2. Packages Grid */}
-        <section id="packages" className="pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+        <section id="packages" className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 - relative z-20">
           
           {/* Filter Bar */}
           <div className="bg-white rounded-full p-2 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex justify-between items-center mb-12 gap-4 border border-slate-100 max-w-6xl mx-auto overflow-hidden">
@@ -210,7 +210,7 @@ export default function TourPackagesPage() {
         </section>
 
         {/* 3. Why Travel With Us */}
-        <section className="py-12 md:py-16 bg-white">
+        <section className="py-12 md:py-16 md: md: bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2">
@@ -250,7 +250,7 @@ export default function TourPackagesPage() {
         </section>
 
         {/* 4. CTA Block */}
-        <section className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 md:py-16 md: md: max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#0B1527] text-white rounded-[1.5rem] p-10 md:p-14 relative overflow-hidden shadow-2xl">
             
             {/* Background Glowing Spheres */}

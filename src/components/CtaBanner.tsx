@@ -9,7 +9,7 @@ interface CtaBannerProps {
 
 export default function CtaBanner({ onOpenBookingModal }: CtaBannerProps) {
   return (
-    <section className="bg-[#0b162c] py-12 md:py-16 poppins-regular border-b border-slate-800">
+    <section className="py-12 md:py-16 md: bg-[#0b162c] md: poppins-regular border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
           

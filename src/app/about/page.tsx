@@ -41,7 +41,7 @@ export default function AboutUs() {
 
       <main className="flex-grow">
         {/* 1. Hero Banner */}
-        <section className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden">
+        <section className="py-12 md:py-16 md: relative w-full h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden">
           <Image 
             src={pageContent?.hero?.heroImage || "/images/dest2.png"} 
             alt="Scenic road" 
@@ -85,7 +85,7 @@ export default function AboutUs() {
         </section>
 
         {/* 2. Your Trusted Travel Partner */}
-        <section className="py-12 md:py-16 bg-white">
+        <section className="py-12 md:py-16 md: md: bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               
@@ -153,7 +153,7 @@ export default function AboutUs() {
         </section>
 
         {/* 3. Stats Section */}
-        <section className="py-12 md:py-16 bg-white">
+        <section className="py-12 md:py-16 md: md: bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
@@ -192,7 +192,7 @@ export default function AboutUs() {
         </section>
 
         {/* 4. Making Every Journey Better */}
-        <section className="py-12 md:py-16 bg-[#fafbfc]">
+        <section className="py-12 md:py-16 md: md: bg-[#fafbfc]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div className="text-center mb-16 space-y-4">
@@ -258,7 +258,7 @@ export default function AboutUs() {
         </section>
 
         {/* 5. Everything We Offer */}
-        <section className="py-12 md:py-16 bg-[#f8f9fa]">
+        <section className="py-12 md:py-16 md: md: bg-[#f8f9fa]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Header */}

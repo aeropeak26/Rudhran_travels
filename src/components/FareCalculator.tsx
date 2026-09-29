@@ -44,7 +44,7 @@ export default function FareCalculator({ onBookEstimatedFare }: FareCalculatorPr
   };
 
   return (
-    <section id="fare-calculator" className="py-12 md:py-16 bg-slate-50 text-slate-900 relative border-b border-slate-200 poppins-regular">
+    <section id="fare-calculator" className="py-12 md:py-16 md: bg-slate-50 text-slate-900 relative border-b border-slate-200 poppins-regular">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

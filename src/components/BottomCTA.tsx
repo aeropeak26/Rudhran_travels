@@ -9,7 +9,7 @@ interface BottomCTAProps {
 
 export default function BottomCTA({ onOpenBookingModal }: BottomCTAProps) {
   return (
-    <section className="relative py-12 md:py-16 bg-[#0a1128] overflow-hidden border-t border-slate-800">
+    <section className="py-12 md:py-16 md: relative md: bg-[#0a1128] overflow-hidden border-t border-slate-800">
       {/* Background glowing gradients */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-900/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
