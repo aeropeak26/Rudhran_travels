@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-export default function AboutWhyChooseUs() {
-  const features = [
+export default function AboutWhyChooseUs({ data }: { data?: any }) {
+  const features = data?.features || [
     {
       id: '01',
       badge: 'PUNCTUALITY GUARANTEE',
@@ -49,24 +49,24 @@ export default function AboutWhyChooseUs() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block bg-blue-50 text-blue-600 font-bold text-[9px] tracking-widest px-3 py-1.5 rounded-md mb-6 uppercase">
-            BUILT ON TRUST
+            {data?.badge || 'BUILT ON TRUST'}
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Why Customers Choose Us
+            {data?.title || 'Why Customers Choose Us'}
           </h2>
           <p className="text-slate-500 text-[13px] md:text-sm font-medium leading-relaxed max-w-2xl mx-auto">
-            Every booking comes backed with our unyielding commitment to safety, hygiene, and journey comfort.
+            {data?.description || 'Every booking comes backed with our unyielding commitment to safety, hygiene, and journey comfort.'}
           </p>
         </div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, idx) => (
+          {features.map((feature: any, idx: number) => (
             <div key={idx} className="bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all relative overflow-hidden group">
               
               {/* Background Number Watermark */}
               <div className="absolute top-4 right-6 text-6xl font-black text-slate-50 transition-colors group-hover:text-blue-50/50 pointer-events-none select-none z-0 tracking-tighter">
-                {feature.id}
+                {String(idx + 1).padStart(2, '0')}
               </div>
 
               <div className="relative z-10">
