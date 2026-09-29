@@ -304,13 +304,17 @@ export default function AdminTourPackages() {
 
             <div>
               <h3 className="text-lg font-bold text-gray-800 mb-4 flex justify-between items-center">
-                Feature Cards
-                <button type="button" onClick={() => { const cards = [...pageContent.whyChooseUs.cards, {icon: 'Car', title: '', description: ''}]; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded">+ Add Card</button>
+                <span>Feature Cards <span className="text-sm font-normal text-gray-500 ml-2">(Exactly 4 required)</span></span>
+                {pageContent.whyChooseUs.cards.length < 4 && (
+                  <button type="button" onClick={() => { const cards = [...pageContent.whyChooseUs.cards, {icon: 'Car', title: '', description: ''}]; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded">+ Add Card</button>
+                )}
               </h3>
               <div className="space-y-4">
                 {pageContent.whyChooseUs.cards.map((card: any, i: number) => (
                   <div key={i} className="bg-gray-50 p-4 rounded border border-gray-200 relative">
-                    <button type="button" onClick={() => { const cards = pageContent.whyChooseUs.cards.filter((_: any, idx: number) => idx !== i); setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="absolute top-4 right-4 text-red-500 hover:text-red-700"><Trash2 className="w-4 h-4"/></button>
+                    {pageContent.whyChooseUs.cards.length > 4 && (
+                      <button type="button" onClick={() => { const cards = pageContent.whyChooseUs.cards.filter((_: any, idx: number) => idx !== i); setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="absolute top-4 right-4 text-red-500 hover:text-red-700"><Trash2 className="w-4 h-4"/></button>
+                    )}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2 pr-8">
                       <select value={card.icon} onChange={e => { const cards = [...pageContent.whyChooseUs.cards]; cards[i].icon = e.target.value; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="border p-2 rounded text-black text-sm">
                         <option value="Car">Car</option>
