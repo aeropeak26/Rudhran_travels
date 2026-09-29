@@ -58,7 +58,7 @@ export default function BookingModal({ isOpen, onClose, selectedItem }: BookingM
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-white border border-slate-200 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative text-slate-900 overflow-y-auto max-h-[90vh]">
+      <div className="bg-white border border-slate-200 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative text-slate-900 overflow-y-auto max-h-[90vh] scrollbar-hide">
         
         {/* Close Button */}
         <button
