@@ -124,7 +124,7 @@ export default function PopularDestinations({ data, onSelectDestination }: Popul
   })) : defaultDestinations;
 
   return (
-    <section className="py-24 bg-white text-slate-900 poppins-regular">
+    <section className="py-12 md:py-16 bg-white text-slate-900 poppins-regular">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

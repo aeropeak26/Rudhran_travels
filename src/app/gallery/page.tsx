@@ -45,7 +45,7 @@ export default function GalleryPage() {
 
       <main className="flex-grow">
         {/* 1. Hero Section */}
-        <section className="bg-[#f8fafc] py-24 overflow-hidden relative">
+        <section className="bg-[#f8fafc] py-12 md:py-16 overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-b from-[#f1f5f9] to-[#f8fafc] z-0 pointer-events-none"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col lg:flex-row justify-between items-center gap-16 lg:gap-12">
@@ -127,7 +127,7 @@ export default function GalleryPage() {
         </section>
 
         {/* 4. Testimonials Section (Auto Scroll) */}
-        <section className="bg-[#f0f4f8] py-24 overflow-hidden">
+        <section className="bg-[#f0f4f8] py-12 md:py-16 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
             <div className="flex flex-col md:flex-row justify-between items-end gap-6">
               <div>
@@ -175,7 +175,7 @@ export default function GalleryPage() {
         </section>
 
         {/* 5. Bottom CTA Section */}
-        <section className="bg-white py-24">
+        <section className="bg-white py-12 md:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-[#0f172a] rounded-[2rem] p-10 md:p-14 lg:p-16 relative overflow-hidden shadow-2xl flex flex-col md:flex-row justify-between items-center gap-12">
                {/* Decorative Background */}

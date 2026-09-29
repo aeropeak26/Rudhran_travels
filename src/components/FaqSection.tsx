@@ -12,7 +12,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faqs" className="py-20 bg-slate-50 text-slate-900 relative border-b border-slate-200">
+    <section id="faqs" className="py-12 md:py-16 bg-slate-50 text-slate-900 relative border-b border-slate-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

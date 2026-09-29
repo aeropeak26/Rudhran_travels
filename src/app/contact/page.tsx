@@ -96,7 +96,7 @@ export default function ContactPage() {
         </section>
 
         {/* 2. Main Split Section */}
-        <section className="py-20 bg-slate-50">
+        <section className="py-12 md:py-16 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row gap-16">
               
@@ -219,7 +219,7 @@ export default function ContactPage() {
         </section>
 
         {/* 3. Operations Hub Map Section */}
-        <section className="py-20 bg-white border-t border-slate-100">
+        <section className="py-12 md:py-16 bg-white border-t border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
               <div>
@@ -279,7 +279,7 @@ export default function ContactPage() {
         </section>
 
         {/* 4. Bottom CTA Section */}
-        <section className="py-20 bg-slate-50 border-t border-slate-100">
+        <section className="py-12 md:py-16 bg-slate-50 border-t border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-[#0f172a] rounded-[2rem] p-10 md:p-14 relative overflow-hidden shadow-2xl flex flex-col md:flex-row justify-between items-center gap-10">
                {/* Decorative Gradient */}

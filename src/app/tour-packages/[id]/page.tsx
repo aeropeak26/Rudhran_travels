@@ -215,7 +215,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
         </section>
 
         {/* 3. Itinerary */}
-        <section className="py-20 bg-slate-50">
+        <section className="py-12 md:py-16 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2">CHRONICLE & ITINERARY</span>
@@ -276,7 +276,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
         </section>
 
         {/* 4. Vehicles Section */}
-        <section className="py-20 bg-[#f4f7f9]">
+        <section className="py-12 md:py-16 bg-[#f4f7f9]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <span className="text-[9px] font-bold text-blue-600 uppercase tracking-widest block mb-2">EXECUTIVE CARRIAGE FLEET</span>
@@ -288,7 +288,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
               {(pkg.vehicles || []).map((veh: any, idx: number) => (
-                <div key={idx} className={`rounded-2xl p-8 relative overflow-hidden transition-transform hover:-translate-y-2 ${veh.recommended ? 'bg-[#0B1527] text-white shadow-2xl scale-105 z-10 py-10 border border-blue-500/20' : 'bg-white shadow-lg border border-slate-100'}`}>
+                <div key={idx} className={`rounded-2xl p-8 relative overflow-hidden transition-transform hover:-translate-y-2 ${veh.recommended ? 'bg-[#0B1527] text-white shadow-2xl scale-105 z-10 py-12 md:py-16 border border-blue-500/20' : 'bg-white shadow-lg border border-slate-100'}`}>
                   {veh.recommended && (
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#0052cc] text-white text-[9px] font-bold uppercase px-6 py-1.5 rounded-b-xl">
                       MOST POPULAR FOR GHATS
@@ -331,7 +331,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
         </section>
 
         {/* 5. Inclusions / Exclusions */}
-        <section className="py-16 bg-white">
+        <section className="py-12 md:py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-[#f0fdf4] border border-emerald-200 rounded-2xl p-8 shadow-sm">
@@ -368,7 +368,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
         </section>
 
         {/* 6. Booking Form */}
-        <section className="bg-[#111c30] py-20 relative overflow-hidden">
+        <section className="bg-[#111c30] py-12 md:py-16 relative overflow-hidden">
           {/* Background Maps/Graphics */}
           <div className="absolute inset-0 z-0">
              <div className="absolute inset-0 bg-[#0c1524]/60 mix-blend-multiply z-10"></div>

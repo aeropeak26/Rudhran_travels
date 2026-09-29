@@ -43,7 +43,7 @@ export default function AboutWhyChooseUs({ data }: { data?: any }) {
   ];
 
   return (
-    <section className="py-24 bg-white text-[#0f172a] poppins-regular border-t border-slate-100">
+    <section className="py-12 md:py-16 bg-white text-[#0f172a] poppins-regular border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

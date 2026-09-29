@@ -397,9 +397,9 @@ export default function AdminTourPackages() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {loading ? (
-                  <tr><td colSpan={4} className="px-6 py-10 text-center text-gray-500">Loading...</td></tr>
+                  <tr><td colSpan={4} className="px-6 py-12 md:py-16 text-center text-gray-500">Loading...</td></tr>
                 ) : packages.length === 0 ? (
-                  <tr><td colSpan={4} className="px-6 py-10 text-center text-gray-500">No packages found. Add one!</td></tr>
+                  <tr><td colSpan={4} className="px-6 py-12 md:py-16 text-center text-gray-500">No packages found. Add one!</td></tr>
                 ) : (
                   packages.map(p => (
                     <tr key={p._id}>

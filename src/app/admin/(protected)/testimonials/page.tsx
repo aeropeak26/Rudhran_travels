@@ -257,11 +257,11 @@ export default function AdminTestimonials() {
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {loading ? (
                     <tr>
-                      <td colSpan={4} className="py-10 text-center text-sm text-gray-500">Loading...</td>
+                      <td colSpan={4} className="py-12 md:py-16 text-center text-sm text-gray-500">Loading...</td>
                     </tr>
                   ) : testimonials.length === 0 ? (
                     <tr>
-                      <td colSpan={4} className="py-10 text-center text-sm text-gray-500">No testimonials found. Add one!</td>
+                      <td colSpan={4} className="py-12 md:py-16 text-center text-sm text-gray-500">No testimonials found. Add one!</td>
                     </tr>
                   ) : (
                     testimonials.map((t) => (

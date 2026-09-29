@@ -87,10 +87,10 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-white text-slate-900 relative poppins-regular overflow-hidden">
+    <section className="py-12 md:py-16 sm:py-12 md:py-16 bg-white text-slate-900 relative poppins-regular overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Dark Navy Card — taller with generous padding */}
-        <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white px-5 sm:px-12 lg:px-16 py-16 sm:py-20 lg:py-28 overflow-hidden shadow-2xl min-h-[400px] lg:min-h-[500px] flex items-center">
+        <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white px-5 sm:px-12 lg:px-16 py-12 md:py-16 sm:py-12 md:py-16 lg:py-12 md:py-16 overflow-hidden shadow-2xl min-h-[400px] lg:min-h-[500px] flex items-center">
           {/* Faint "Happy Customers" Watermark */}
           <div className="absolute top-8 left-16 sm:left-32 pointer-events-none select-none z-0">
             <span className="text-[80px] sm:text-[120px] lg:text-[150px] font-bold text-white/[0.04] tracking-tight whitespace-nowrap">

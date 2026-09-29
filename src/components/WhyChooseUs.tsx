@@ -13,7 +13,7 @@ export default function WhyChooseUs({ data }: { data?: any }) {
   const bullets = data?.bullets?.length === 4 ? data.bullets : defaultBullets;
 
   return (
-    <section className="py-24 bg-[#f8fafc] text-slate-900 poppins-regular">
+    <section className="py-12 md:py-16 bg-[#f8fafc] text-slate-900 poppins-regular">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

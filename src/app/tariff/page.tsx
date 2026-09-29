@@ -173,7 +173,7 @@ export default function TariffPage() {
         </section>
 
         {/* 2. Rates Grid */}
-        <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <section className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           
           <div className="flex flex-col lg:flex-row justify-between items-end mb-10 gap-6">
             <div>
@@ -311,7 +311,7 @@ export default function TariffPage() {
         </section>
 
         {/* 3. Additional Charges */}
-        <section className="py-16 bg-[#f8fafc]">
+        <section className="py-12 md:py-16 bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center">
               <div className="inline-flex items-center gap-2 bg-[#ffedd5] text-yellow-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-3">

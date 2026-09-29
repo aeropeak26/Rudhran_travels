@@ -34,7 +34,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 poppins-regular">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 md:py-16 sm:px-6 lg:px-8 poppins-regular">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <img src="/images/logo.png" alt="Rudhran Travels Logo" className="h-20 w-auto" />

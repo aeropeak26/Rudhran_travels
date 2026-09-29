@@ -248,10 +248,10 @@ export default function VehiclesPage() {
         </section>
 
         {/* 3. Vehicle Cards Grid */}
-        <section className="py-16 bg-slate-50 min-h-[400px]">
+        <section className="py-12 md:py-16 bg-slate-50 min-h-[400px]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {filteredVehicles.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-20 text-center">
+              <div className="flex flex-col items-center justify-center py-12 md:py-16 text-center">
                 <Car className="w-16 h-16 text-slate-300 mb-4" />
                 <h3 className="text-xl font-bold text-[#0a192f] mb-2">No vehicles found</h3>
                 <p className="text-sm text-slate-500 mb-6">We couldn't find any vehicles matching your current filter criteria.</p>
@@ -337,7 +337,7 @@ export default function VehiclesPage() {
         </section>
 
         {/* 4. Why Discerning Travelers Choose Our Fleet (Stats) */}
-        <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+        <section className="py-12 md:py-16 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <span className="text-[9px] uppercase font-bold tracking-widest text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full mb-4 inline-block">{pageContent?.standards?.badge || 'THE RUDHRAN STANDARD'}</span>
@@ -403,7 +403,7 @@ export default function VehiclesPage() {
         </section>
 
         {/* 5. Contact Form Section */}
-        <section className="bg-[#0b1120] text-white py-24 relative overflow-hidden">
+        <section className="bg-[#0b1120] text-white py-12 md:py-16 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600/5 blur-[120px] pointer-events-none"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

@@ -9,7 +9,7 @@ interface OfferBannersProps {
 
 export default function OfferBanners({ onOpenBookingModal }: OfferBannersProps) {
   return (
-    <section className="py-12 bg-slate-900 text-white relative">
+    <section className="py-12 md:py-16 bg-slate-900 text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

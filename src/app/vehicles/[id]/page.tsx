@@ -229,7 +229,7 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 3. Overview & Touring Experience */}
-        <section className="py-16">
+        <section className="py-12 md:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-12">
               <div className="inline-flex items-center gap-2 bg-[#ffedd5] text-orange-700 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
@@ -357,7 +357,7 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 6. Custom Itinerary CTA */}
-        <section className="bg-[#0A1529] text-white py-16 relative overflow-hidden -mb-24">
+        <section className="bg-[#0A1529] text-white py-12 md:py-16 relative overflow-hidden -mb-24">
           {/* Background Glowing Spheres */}
           <div className="absolute top-1/2 -translate-y-1/2 -left-10 w-64 h-64 bg-blue-600/30 rounded-full blur-[80px] pointer-events-none z-0"></div>
           <div className="absolute top-1/2 -translate-y-1/2 -right-10 w-72 h-72 bg-emerald-500/20 rounded-full blur-[90px] pointer-events-none z-0"></div>

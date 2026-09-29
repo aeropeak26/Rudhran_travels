@@ -210,7 +210,7 @@ export default function TourPackagesPage() {
         </section>
 
         {/* 3. Why Travel With Us */}
-        <section className="py-20 bg-white">
+        <section className="py-12 md:py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest block mb-2">
@@ -250,7 +250,7 @@ export default function TourPackagesPage() {
         </section>
 
         {/* 4. CTA Block */}
-        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#0B1527] text-white rounded-[1.5rem] p-10 md:p-14 relative overflow-hidden shadow-2xl">
             
             {/* Background Glowing Spheres */}
