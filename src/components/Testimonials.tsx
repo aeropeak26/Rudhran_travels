@@ -18,6 +18,20 @@ export default function Testimonials() {
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [cardWidth, setCardWidth] = useState(340);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setCardWidth(280);
+      } else {
+        setCardWidth(340);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -76,7 +90,7 @@ export default function Testimonials() {
     <section className="py-16 sm:py-24 bg-white text-slate-900 relative poppins-regular overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Dark Navy Card — taller with generous padding */}
-        <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white px-8 sm:px-12 lg:px-16 py-16 sm:py-20 lg:py-28 overflow-hidden shadow-2xl min-h-[400px] lg:min-h-[500px] flex items-center">
+        <div className="relative rounded-[28px] sm:rounded-[36px] bg-[#0b1b42] text-white px-5 sm:px-12 lg:px-16 py-16 sm:py-20 lg:py-28 overflow-hidden shadow-2xl min-h-[400px] lg:min-h-[500px] flex items-center">
           {/* Faint "Happy Customers" Watermark */}
           <div className="absolute top-8 left-16 sm:left-32 pointer-events-none select-none z-0">
             <span className="text-[80px] sm:text-[120px] lg:text-[150px] font-bold text-white/[0.04] tracking-tight whitespace-nowrap">
@@ -111,7 +125,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Navigation Arrows */}
-                <div className="flex items-center space-x-4 pt-12 sm:pt-20 ml-12 sm:ml-20">
+                <div className="flex items-center space-x-4 pt-8 sm:pt-20">
                   <button
                     onClick={handlePrev}
                     className="w-10 h-10 rounded-full bg-[#9ba3b5] hover:bg-[#858da0] text-[#0b1b42] flex items-center justify-center transition-all duration-200 shadow-lg active:scale-90"
@@ -144,7 +158,7 @@ export default function Testimonials() {
                   <div
                     className={`flex gap-6 ${isTransitioning ? "transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]" : ""}`}
                     style={{
-                      transform: `translateX(-${currentIndex * (340 + 24)}px)`,
+                      transform: `translateX(-${currentIndex * (cardWidth + 24)}px)`,
                     }}
                     onTransitionEnd={handleTransitionEnd}
                   >
@@ -154,7 +168,7 @@ export default function Testimonials() {
                       return (
                         <div
                           key={`${item._id}-${idx}`}
-                          className="w-[300px] sm:w-[340px] flex-shrink-0 bg-[#faf8f4] text-slate-900 rounded-[20px] p-8 shadow-xl flex flex-col justify-between min-h-[400px] sm:min-h-[320px] transition-opacity duration-500"
+                          className="w-[280px] sm:w-[340px] flex-shrink-0 bg-[#faf8f4] text-slate-900 rounded-[20px] p-6 sm:p-8 shadow-xl flex flex-col justify-between min-h-[400px] sm:min-h-[320px] transition-opacity duration-500"
                         style={{ opacity: isVisuallyActive ? 1 : 0.4 }}
                       >
                         {/* Top: Stars + Quote */}
