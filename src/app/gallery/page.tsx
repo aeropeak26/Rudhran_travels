@@ -1,15 +1,31 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
-import { Clock, ShieldCheck, Star, Zap } from 'lucide-react';
+import { Clock, ShieldCheck, Star, Zap, Check } from 'lucide-react';
+
+const iconMap: Record<string, any> = {
+  Clock, ShieldCheck, Star, Zap, Check
+};
 
 export default function GalleryPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [pageContent, setPageContent] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/api/gallery-content')
+      .then(res => res.json())
+      .then(data => {
+        if (data && Object.keys(data).length > 0) {
+          setPageContent(data);
+        }
+      })
+      .catch(err => console.error('Error fetching gallery content:', err));
+  }, []);
 
   const filterTabs = ['All', 'Fleet & Cabin', 'Chauffeur Service', 'Hill Stations & Ghats', 'Heritage Circuits', 'Guest Experiences'];
 
@@ -40,13 +56,13 @@ export default function GalleryPage() {
                    <span className="text-slate-400">HOME <span className="mx-2 text-slate-300">/</span></span> VISUAL GALLERY
                  </div>
                  <div className="bg-blue-50 text-blue-700 text-[9px] font-bold uppercase px-3 py-1.5 rounded-full inline-flex mb-8 tracking-widest border border-blue-100 shadow-sm">
-                   <span className="mr-2 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]"></span> MOMENTS CAPTURED ACROSS SOUTH INDIA
+                   <span className="mr-2 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]"></span> {pageContent?.hero?.subtitle || 'MOMENTS CAPTURED ACROSS SOUTH INDIA'}
                  </div>
                  <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-[#0f172a] mb-6 tracking-tight leading-[1.1]">
-                   Visual Chronicle: Journeys Crafted With Care
+                   {pageContent?.hero?.title || 'Visual Chronicle: Journeys Crafted With Care'}
                  </h1>
                  <p className="text-[14px] text-slate-600 leading-relaxed max-w-xl mb-10">
-                   Explore authentic moments captured across 50,000+ happy journeys through misty tea hills, royal heritage corridors, coastal bridges, and our curated chauffeur arrivals across Tamil Nadu, Kerala, and Karnataka.
+                   {pageContent?.hero?.description || 'Explore authentic moments captured across 50,000+ happy journeys through misty tea hills, royal heritage corridors, coastal bridges, and our curated chauffeur arrivals across Tamil Nadu, Kerala, and Karnataka.'}
                  </p>
                  <div className="flex flex-col sm:flex-row gap-4">
                    <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 bg-[#d97706] hover:bg-orange-600 text-white font-bold text-[11px] uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-orange-500/20">
@@ -60,27 +76,25 @@ export default function GalleryPage() {
               <div className="lg:w-[45%] w-full">
                  <div className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-wrap justify-between gap-y-10 relative">
                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-0 opacity-50"></div>
-                   
-                   <div className="w-[45%] relative z-10">
-                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-4 text-blue-600"><Clock className="w-5 h-5"/></div>
-                     <h3 className="text-2xl font-bold text-[#0f172a] mb-1">14+ Years</h3>
-                     <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight">Trust & Legacy</p>
-                   </div>
-                   <div className="w-[45%] relative z-10">
-                     <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center mb-4 text-emerald-600"><ShieldCheck className="w-5 h-5"/></div>
-                     <h3 className="text-2xl font-bold text-[#0f172a] mb-1">100% Verified</h3>
-                     <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight">Commercial Fleet</p>
-                   </div>
-                   <div className="w-[45%] relative z-10">
-                     <div className="w-10 h-10 bg-amber-50 rounded-lg flex items-center justify-center mb-4 text-amber-500"><Star className="w-5 h-5 fill-amber-500"/></div>
-                     <h3 className="text-2xl font-bold text-[#0f172a] mb-1">4.9/5 Rating</h3>
-                     <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight">500+ Reviews</p>
-                   </div>
-                   <div className="w-[45%] relative z-10">
-                     <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-4 text-blue-600"><Zap className="w-5 h-5"/></div>
-                     <h3 className="text-2xl font-bold text-[#0f172a] mb-1">Sanitized Fleet</h3>
-                     <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight">Pre-trip clean</p>
-                   </div>
+                   {(pageContent?.hero?.stats || [
+                     { icon: 'Clock', title: '14+ Years', subtitle: 'Trust & Legacy' },
+                     { icon: 'ShieldCheck', title: '100% Verified', subtitle: 'Commercial Fleet' },
+                     { icon: 'Star', title: '4.9/5 Rating', subtitle: '500+ Reviews' },
+                     { icon: 'Zap', title: 'Sanitized Fleet', subtitle: 'Pre-trip clean' }
+                   ]).map((stat: any, idx: number) => {
+                     const Icon = iconMap[stat.icon] || Check;
+                     const bgColors = ['bg-blue-50', 'bg-emerald-50', 'bg-amber-50', 'bg-blue-50'];
+                     const textColors = ['text-blue-600', 'text-emerald-600', 'text-amber-500', 'text-blue-600'];
+                     return (
+                       <div key={idx} className="w-[45%] relative z-10">
+                         <div className={`w-10 h-10 ${bgColors[idx % 4]} rounded-lg flex items-center justify-center mb-4 ${textColors[idx % 4]}`}>
+                           <Icon className="w-5 h-5"/>
+                         </div>
+                         <h3 className="text-2xl font-bold text-[#0f172a] mb-1">{stat.title}</h3>
+                         <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-tight">{stat.subtitle}</p>
+                       </div>
+                     );
+                   })}
                  </div>
               </div>
             </div>
@@ -103,9 +117,9 @@ export default function GalleryPage() {
         {/* 3. Photo Grid */}
         <section className="bg-[#f8fafc] pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-              {images.map((item, i) => (
-                <div key={i} className={`group relative rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 h-[260px] md:h-[300px] border border-black/5 ${i === 0 ? 'md:col-span-2' : ''}`}>
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-4 lg:gap-6">
+              {(pageContent?.gallery?.length > 0 ? pageContent.gallery : images).map((item: any, i: number) => (
+                <div key={i} className={`group relative rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 h-[260px] md:h-[300px] border border-black/5 ${i < 2 ? 'md:col-span-3' : 'md:col-span-2'}`}>
                    <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#0f172a]/30 to-transparent opacity-90 transition-opacity duration-300"></div>
                    
@@ -125,10 +139,10 @@ export default function GalleryPage() {
           </div>
         </section>
 
-        {/* 4. Testimonials Section */}
-        <section className="bg-[#f0f4f8] py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        {/* 4. Testimonials Section (Auto Scroll) */}
+        <section className="bg-[#f0f4f8] py-24 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <div className="flex flex-col md:flex-row justify-between items-end gap-6">
               <div>
                  <span className="text-[9px] font-bold text-blue-600 uppercase tracking-widest block mb-3">VERIFIED PAN-INDIA REVIEWS</span>
                  <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] tracking-tight">Guest Chronicles & Verified Feedback</h2>
@@ -137,14 +151,21 @@ export default function GalleryPage() {
                 Hear directly from families, corporate executives, and international tourists who have experienced our signature outstation travel platforms.
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
+          </div>
+          
+          <div className="relative w-full flex overflow-x-hidden">
+            <div className="flex gap-6 px-4 animate-marquee whitespace-nowrap min-w-full shrink-0">
+              {/* Double the list for infinite scroll illusion */}
+              {[...(pageContent?.feedback || [
                 { name: 'Suresh Raghavan', title: 'Family Vacation to Ooty', initials: 'SR', quote: 'We booked the 5-day Munnar - Ooty circuit. Our driver Murugan was exceptional - very safe, highly professional. The Innova Crysta was spotless every single morning.' },
                 { name: 'Ananya Kapoor', title: 'Corporate Delegate, Chennai', initials: 'AK', quote: 'Flawless execution for our board members from Chennai airport down to Pondicherry and Thanjavur. Punctuality was absolute. Cannot recommend the premium safety protocol and fleet standards enough.' },
                 { name: 'Dr. M. Natarajan', title: 'Heritage Temple Tour', initials: 'MN', quote: 'We utilized their XL carrier Traveler for our family temple trip to Kumbakonam. These routes require skill, and our captain handled the 1,200 km circuit beautifully. Very responsive dispatch team.' },
-              ].map((review, i) => (
-                <div key={i} className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-xl transition-shadow relative">
+              ]), ...(pageContent?.feedback || [
+                { name: 'Suresh Raghavan', title: 'Family Vacation to Ooty', initials: 'SR', quote: 'We booked the 5-day Munnar - Ooty circuit. Our driver Murugan was exceptional - very safe, highly professional. The Innova Crysta was spotless every single morning.' },
+                { name: 'Ananya Kapoor', title: 'Corporate Delegate, Chennai', initials: 'AK', quote: 'Flawless execution for our board members from Chennai airport down to Pondicherry and Thanjavur. Punctuality was absolute. Cannot recommend the premium safety protocol and fleet standards enough.' },
+                { name: 'Dr. M. Natarajan', title: 'Heritage Temple Tour', initials: 'MN', quote: 'We utilized their XL carrier Traveler for our family temple trip to Kumbakonam. These routes require skill, and our captain handled the 1,200 km circuit beautifully. Very responsive dispatch team.' },
+              ])].map((review: any, i: number) => (
+                <div key={i} className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 hover:shadow-xl transition-shadow relative w-[350px] md:w-[400px] shrink-0 whitespace-normal">
                    <div className="text-blue-200 mb-6">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
                    </div>
