@@ -40,7 +40,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top 4 Columns Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-300">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-12 border-b border-slate-300">
           
           {/* Column 1: Brand Info */}
           <div className="space-y-5">
@@ -77,19 +77,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: OUR SERVICES */}
-          <div className="space-y-4">
-            <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-wider">OUR SERVICES</h4>
-            <ul className="space-y-3 font-medium text-slate-600">
-              {['Car Rental', 'Outstation Travel', 'Tour Packages', 'Airport Transfers', 'Tempo Traveller'].map((service) => (
-                <li key={service}>
-                  <a href="#" className="hover:text-orange-500 transition-colors">
-                    {service}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           {/* Column 4: CONTACT INFO */}
           <div className="space-y-4">

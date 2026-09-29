@@ -22,6 +22,33 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pkg, setPkg] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    date: '',
+    guests: '4 Adults (Family)',
+    vehicle: 'Toyota Innova Crysta'
+  });
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    
+    // Send WhatsApp quote
+    const text = `Hello Rudhran Travels! I would like to book the ${pkg?.category} Grand Tourer (${pkg?.title}).\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Departure Date:* ${formData.date}\n*Guests:* ${formData.guests}\n*Vehicle:* ${formData.vehicle}\n\nPlease confirm availability and lock my rate.`;
+    window.open(`https://wa.me/919840012345?text=${encodeURIComponent(text)}`, '_blank');
+    
+    // Clear form
+    setFormData({
+      name: '',
+      phone: '',
+      date: '',
+      guests: '4 Adults (Family)',
+      vehicle: 'Toyota Innova Crysta'
+    });
+    setSubmitting(false);
+  };
 
   useEffect(() => {
     const fetchPackage = async () => {
@@ -377,29 +404,29 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                     <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div> Live Desk: 2 Ahead • 4m Response
                   </div>
 
-                  <form className="space-y-5">
+                  <form onSubmit={handleFormSubmit} className="space-y-5">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="space-y-2">
                         <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">GUEST NAME</label>
-                        <input type="text" placeholder="e.g. Ramesh Sundaram" className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-all" />
+                        <input type="text" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="e.g. Ramesh Sundaram" className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-all" />
                       </div>
                       <div className="space-y-2">
                          <div className="flex justify-between items-center">
                            <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">WHATSAPP NUMBER</label>
                            <span className="text-[8px] font-bold text-emerald-500 uppercase tracking-wider">VERIFIED DISPATCH</span>
                          </div>
-                        <input type="tel" placeholder="+91 98400 00000" className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-all" />
+                        <input type="tel" required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} placeholder="+91 98400 00000" className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] placeholder:text-slate-600 focus:outline-none focus:border-blue-500 transition-all" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
                       <div className="space-y-2">
                         <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">DEPARTURE DATE</label>
-                        <input type="date" className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] focus:outline-none focus:border-blue-500 transition-all [color-scheme:dark]" />
+                        <input type="date" required value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] focus:outline-none focus:border-blue-500 transition-all [color-scheme:dark]" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">GUESTS MANIFEST</label>
-                        <select className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] focus:outline-none focus:border-blue-500 transition-all appearance-none">
+                        <select value={formData.guests} onChange={e => setFormData({...formData, guests: e.target.value})} className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] focus:outline-none focus:border-blue-500 transition-all appearance-none">
                           <option className="bg-[#152033]">4 Adults (Family)</option>
                           <option className="bg-[#152033]">2 Adults (Couple)</option>
                           <option className="bg-[#152033]">6 Adults (Group)</option>
@@ -407,7 +434,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                       </div>
                       <div className="space-y-2">
                         <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">CARRIAGE SELECTION</label>
-                        <select className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] focus:outline-none focus:border-blue-500 transition-all appearance-none">
+                        <select value={formData.vehicle} onChange={e => setFormData({...formData, vehicle: e.target.value})} className="w-full bg-transparent border-b border-white/10 hover:border-white/20 px-1 py-2 text-white text-[13px] focus:outline-none focus:border-blue-500 transition-all appearance-none">
                           <option className="bg-[#152033]">Toyota Innova Crysta</option>
                           <option className="bg-[#152033]">Executive Sedan</option>
                           <option className="bg-[#152033]">Force Urbania</option>
@@ -426,10 +453,10 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                      <button type="button" className="flex-1 py-4 bg-gradient-to-r from-[#2563eb] to-[#3b82f6] hover:from-[#1d4ed8] hover:to-[#2563eb] text-white rounded-lg text-[12px] font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-                        <ArrowRight className="w-4 h-4" /> REQUEST BOOKING
+                      <button type="submit" disabled={submitting} className="flex-1 py-4 bg-gradient-to-r from-[#2563eb] to-[#3b82f6] hover:from-[#1d4ed8] hover:to-[#2563eb] text-white rounded-lg text-[12px] font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.4)] disabled:opacity-50">
+                        <ArrowRight className="w-4 h-4" /> {submitting ? 'PROCESSING...' : 'REQUEST BOOKING'}
                       </button>
-                      <button type="button" className="px-8 py-4 bg-[#1e293b]/60 hover:bg-[#1e293b] text-slate-300 border border-white/5 rounded-lg text-[11px] font-medium transition-all">
+                      <button type="button" onClick={() => window.open('tel:+919840012345')} className="px-8 py-4 bg-[#1e293b]/60 hover:bg-[#1e293b] text-slate-300 border border-white/5 rounded-lg text-[11px] font-medium transition-all">
                         Call now for enquiry
                       </button>
                     </div>

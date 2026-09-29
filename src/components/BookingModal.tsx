@@ -268,6 +268,16 @@ export default function BookingModal({ isOpen, onClose, selectedItem }: BookingM
 
             <button
               onClick={() => {
+                setFormData({
+                  name: '',
+                  phone: '',
+                  email: '',
+                  pickupLocation: 'Chennai',
+                  dropLocation: selectedItem?.location || 'Rameshwaram',
+                  pickupDate: '2026-10-01',
+                  pickupTime: '07:00',
+                  message: '',
+                });
                 setStep(1);
                 onClose();
               }}
