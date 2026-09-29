@@ -27,8 +27,6 @@ export default function GalleryPage() {
       .catch(err => console.error('Error fetching gallery content:', err));
   }, []);
 
-  const filterTabs = ['All', 'Fleet & Cabin', 'Chauffeur Service', 'Hill Stations & Ghats', 'Heritage Circuits', 'Guest Experiences'];
-
   const images = [
     { title: 'Misty Mountain Expedition', desc: 'Pristine Innova Crysta & Force Urbania luxury fleet navigating misty hill ghats.', badge: 'CONVOY • MUNNAR HILLS', img: '/images/dest1.png' },
     { title: 'Heritage Hotel Welcome', desc: 'Uniformed chauffeur door-side service at luxury heritage', badge: '5-STAR HOSPITALITY', img: '/images/dest2.png' },
@@ -101,18 +99,7 @@ export default function GalleryPage() {
           </div>
         </section>
 
-        {/* 2. Filter Tabs */}
-        <section className="bg-[#f8fafc] pt-10 pb-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap justify-center gap-3">
-              {filterTabs.map((tab, i) => (
-                 <button key={i} className={`px-5 py-2.5 rounded-full text-[11px] font-bold transition-all ${i===0 ? 'bg-[#0f172a] text-white shadow-lg' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 shadow-sm hover:shadow'}`}>
-                   {tab}
-                 </button>
-              ))}
-            </div>
-          </div>
-        </section>
+
 
         {/* 3. Photo Grid */}
         <section className="bg-[#f8fafc] pb-24">
