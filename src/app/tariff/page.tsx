@@ -135,7 +135,12 @@ export default function TariffPage() {
         
         {/* 1. Hero Section */}
         <section className="py-12 md:py-16 md: relative overflow-hidden bg-[#0A162C]">
-          {pageContent?.hero?.heroImage && (
+          {pageContent?.backgroundImage ? (
+            <div className="absolute inset-0 z-0">
+              <Image src={pageContent.backgroundImage} alt="Hero Background" fill className="object-cover opacity-30" priority />
+              <div className="absolute inset-0 bg-[#0A162C]/70 mix-blend-multiply"></div>
+            </div>
+          ) : pageContent?.hero?.heroImage && (
             <div className="absolute inset-0 z-0">
               <Image src={pageContent.hero.heroImage} alt="Hero Background" fill className="object-cover opacity-30" priority />
               <div className="absolute inset-0 bg-[#0A162C]/70 mix-blend-multiply"></div>

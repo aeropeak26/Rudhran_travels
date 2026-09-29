@@ -61,18 +61,36 @@ export default function TourPackagesPage() {
       <main className="flex-grow">
         
         {/* 1. Hero Section */}
-        <section className="py-12 md:py-16 md: relative overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src={pageContent?.heroImage || "/images/hill_station.png"} 
-              alt="South India Destinations" 
-              fill 
-              className="object-cover object-center"
-              priority
-            />
-            <div className="absolute inset-0 bg-[#0f172a]/70 backdrop-blur-[2px]"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-transparent"></div>
-          </div>
+        <section className="py-12 md:py-16 md: relative overflow-hidden bg-[#0c1222]">
+          {pageContent?.backgroundImage ? (
+            <div className="absolute inset-0 z-0">
+              <Image 
+                src={pageContent.backgroundImage} 
+                alt="Background" 
+                fill 
+                className="object-cover object-center"
+                priority
+              />
+              <div className="absolute inset-0 bg-[#0f172a]/70 backdrop-blur-[2px]"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-transparent"></div>
+            </div>
+          ) : pageContent?.heroImage ? (
+            <div className="absolute inset-0 z-0">
+              <Image 
+                src={pageContent.heroImage} 
+                alt="South India Destinations" 
+                fill 
+                className="object-cover object-center"
+                priority
+              />
+              <div className="absolute inset-0 bg-[#0f172a]/70 backdrop-blur-[2px]"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-transparent"></div>
+            </div>
+          ) : (
+            <div className="absolute inset-0 z-0">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#1e1438] via-[#0c1222] to-[#0c1222]"></div>
+            </div>
+          )}
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
             <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest mb-4">

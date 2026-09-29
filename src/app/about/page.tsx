@@ -41,14 +41,18 @@ export default function AboutUs() {
 
       <main className="flex-grow">
         {/* 1. Hero Banner */}
-        <section className="py-12 md:py-16 md: relative w-full h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden">
-          <Image 
-            src={pageContent?.hero?.heroImage || "/images/dest2.png"} 
-            alt="Scenic road" 
-            fill 
-            className="object-cover" 
-            priority 
-          />
+        <section className="py-12 md:py-16 md: relative w-full h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden bg-[#0c1222]">
+          {pageContent?.backgroundImage ? (
+            <Image 
+              src={pageContent.backgroundImage} 
+              alt="Scenic road" 
+              fill 
+              className="object-cover" 
+              priority 
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1e1438] via-[#0c1222] to-[#0c1222] z-0"></div>
+          )}
           <div className="absolute inset-0 bg-slate-900/80"></div>
           
           <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto mt-10">

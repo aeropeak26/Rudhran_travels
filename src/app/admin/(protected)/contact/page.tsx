@@ -12,8 +12,29 @@ export default function AdminContactPage() {
     callCenter: { phone1: '', phone2: '' },
     location: { address: '' },
     email: { email1: '', email2: '' },
-    mapEmbedUrl: ''
+    backgroundImage: ''
   });
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      setSaving(true);
+      const res = await fetch('/api/upload', { method: 'POST', body: formData });
+      const json = await res.json();
+      if (json.url) {
+        setData(prev => ({ ...prev, backgroundImage: json.url }));
+        toast.success('Image uploaded successfully');
+      }
+    } catch (err) {
+      toast.error('Image upload failed');
+    } finally {
+      setSaving(false);
+    }
+  };
 
   useEffect(() => {
     fetchData();
@@ -29,7 +50,7 @@ export default function AdminContactPage() {
           callCenter: json.callCenter || { phone1: '', phone2: '' },
           location: json.location || { address: '' },
           email: json.email || { email1: '', email2: '' },
-          mapEmbedUrl: json.mapEmbedUrl || ''
+          backgroundImage: json.backgroundImage || ''
         });
       }
     } catch (e) {
@@ -111,42 +132,21 @@ export default function AdminContactPage() {
         </div>
 
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-          <h2 className="text-xl font-bold mb-4 text-slate-800">Google Maps Integration</h2>
-          <div>
-            <label className="block text-sm text-slate-700 mb-2">Google Maps Embed iframe URL (src only)</label>
-            <p className="text-xs text-slate-500 mb-3">Go to Google Maps &gt; Share &gt; Embed a map &gt; Copy HTML &gt; Extract the URL inside the src="..." attribute and paste it here.</p>
-            <input type="text" value={data.mapEmbedUrl} onChange={e => setData({...data, mapEmbedUrl: e.target.value})} className="w-full border p-2 rounded text-black text-sm" placeholder="https://www.google.com/maps/embed?pb=..." />
-          </div>
-          {data.mapEmbedUrl && (
-            <div className="mt-4 border border-slate-200 rounded-xl overflow-hidden h-64 bg-slate-100">
-              {(() => {
-                 let mapUrl = data.mapEmbedUrl;
-                 if (mapUrl.includes('<iframe')) {
-                   const match = mapUrl.match(/src="([^"]+)"/);
-                   if (match) mapUrl = match[1];
-                 }
-                 
-                 const isShortLink = mapUrl.includes('maps.app.goo.gl') || mapUrl.includes('goo.gl/maps');
-                 if (isShortLink) {
-                   return (
-                     <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-blue-50 text-blue-600">
-                       <span className="font-bold text-lg mb-2">Short Link Detected</span>
-                       <span className="text-sm">Click <strong>Save Contact Details</strong> and our server will automatically convert this into a working map!</span>
-                     </div>
-                   );
-                 }
-
-                 if (!mapUrl.includes('embed') && !mapUrl.includes('google.com/maps')) {
-                   const addressQuery = encodeURIComponent(data.location?.address || 'Madurai Rudhran Travels, Madurai');
-                   mapUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${addressQuery}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
-                 }
-                 
-                 return (
-                   <iframe src={mapUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-                 );
-               })()}
+          <h2 className="text-xl font-bold mb-4 text-slate-800">Page Background Image</h2>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">Upload New Background</label>
+              <input type="file" accept="image/*" onChange={handleImageUpload} className="w-full border p-1.5 rounded text-black text-sm bg-white file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
             </div>
-          )}
+            {data.backgroundImage && (
+              <div className="mt-4 p-4 border border-slate-200 rounded-lg bg-slate-50 relative">
+                <img src={data.backgroundImage} alt="Background Preview" className="w-full h-32 object-cover rounded shadow-sm mb-3" />
+                <button type="button" onClick={() => setData(prev => ({ ...prev, backgroundImage: '' }))} className="px-3 py-1.5 bg-red-100 text-red-600 rounded text-xs font-bold hover:bg-red-200 transition-colors">
+                  Remove Background Image
+                </button>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="flex justify-end">

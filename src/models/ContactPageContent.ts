@@ -30,7 +30,6 @@ const ContactPageContentSchema: Schema = new Schema(
       email1: { type: String, default: '' },
       email2: { type: String, default: '' },
     },
-    mapEmbedUrl: { type: String, default: '' },
   },
   { timestamps: true }
 );

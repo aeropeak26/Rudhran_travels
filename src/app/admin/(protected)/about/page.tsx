@@ -9,7 +9,7 @@ export default function AdminAboutPage() {
   const [saving, setSaving] = useState(false);
   const [activeTab, setActiveTab] = useState<'hero' | 'general' | 'whoWeAre' | 'ourPurpose' | 'tailoredMobility' | 'whyChooseUs'>('hero');
   
-  const [data, setData] = useState({
+  const [data, setData] = useState<any>({
     hero: { title: '', description: '', heroImage: '', points: ['', '', '', ''] },
     whoWeAre: {
       badge: '', title: '', description1: '', description2: '', image: '',
@@ -70,7 +70,8 @@ export default function AdminAboutPage() {
           ourPurpose: json.ourPurpose || data.ourPurpose,
           tailoredMobility: json.tailoredMobility || data.tailoredMobility,
           whyChooseUs: json.whyChooseUs || data.whyChooseUs
-        });
+       ,
+          backgroundImage: json?.backgroundImage || '' });
       }
     } catch (e) {
       console.error(e);
@@ -187,7 +188,7 @@ export default function AdminAboutPage() {
               <div>
                 <label className="block text-xs text-slate-500 mb-2">4 Bullet Points</label>
                 <div className="grid grid-cols-2 gap-4">
-                  {data.hero.points.map((point, idx) => (
+                  {data.hero.points.map((point: any, idx: number) => (
                     <input key={idx} type="text" value={point} onChange={e => { const newP = [...data.hero.points]; newP[idx] = e.target.value; setData({...data, hero: {...data.hero, points: newP}}); }} className="w-full border p-2 rounded text-black text-sm" placeholder={`Point ${idx + 1}`} />
                   ))}
                 </div>
@@ -201,7 +202,7 @@ export default function AdminAboutPage() {
           <div className="space-y-6">
             <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4">Stats Section</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {data.whoWeAre.stats.map((stat, idx) => (
+              {data.whoWeAre.stats.map((stat: any, idx: number) => (
                 <div key={idx} className="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-2">
                   <select value={stat.icon} onChange={e => { const newStats = [...data.whoWeAre.stats]; newStats[idx].icon = e.target.value; setData({...data, whoWeAre: {...data.whoWeAre, stats: newStats}}); }} className="w-full border p-2 rounded text-black text-sm">
                     <option value="Calendar">Calendar</option>
@@ -244,7 +245,7 @@ export default function AdminAboutPage() {
                 <div>
                   <label className="block text-xs text-slate-500 mb-2">3 Checkmark Points</label>
                   <div className="space-y-2">
-                    {data.whoWeAre.points.map((point, idx) => (
+                    {data.whoWeAre.points.map((point: any, idx: number) => (
                       <input key={idx} type="text" value={point} onChange={e => { const newP = [...data.whoWeAre.points]; newP[idx] = e.target.value; setData({...data, whoWeAre: {...data.whoWeAre, points: newP}}); }} className="w-full border p-2 rounded text-black text-sm" />
                     ))}
                   </div>
@@ -293,7 +294,7 @@ export default function AdminAboutPage() {
 
             <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mt-8 mb-4">Feature Cards (3)</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {data.ourPurpose.cards.map((card, idx) => (
+              {data.ourPurpose.cards.map((card: any, idx: number) => (
                 <div key={idx} className="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-3">
                   <h3 className="font-bold text-sm">Card {idx + 1}</h3>
                   <input type="text" value={card.title} onChange={e => { const newC = [...data.ourPurpose.cards]; newC[idx].title = e.target.value; setData({...data, ourPurpose: {...data.ourPurpose, cards: newC}}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="Title" />
@@ -373,7 +374,7 @@ export default function AdminAboutPage() {
 
             <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mt-8 mb-4">Features (6 Cards)</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {data.whyChooseUs.features.map((feature, idx) => (
+              {data.whyChooseUs.features.map((feature: any, idx: number) => (
                 <div key={idx} className="bg-slate-50 p-4 rounded-lg border border-slate-100 space-y-2">
                   <h3 className="font-bold text-sm">Feature {idx + 1}</h3>
                   <input type="text" value={feature.title} onChange={e => { const newF = [...data.whyChooseUs.features]; newF[idx].title = e.target.value; setData({...data, whyChooseUs: {...data.whyChooseUs, features: newF}}); }} className="w-full border p-2 rounded text-black text-sm" placeholder="Title" />

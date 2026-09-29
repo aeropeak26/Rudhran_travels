@@ -21,7 +21,8 @@ export default function AdminTariffPage() {
       ]
     },
     vehicles: [] as any[]
-  });
+ ,
+    backgroundImage: '' });
 
   useEffect(() => {
     fetchData();
@@ -38,7 +39,8 @@ export default function AdminTariffPage() {
           rentalRatesHeader: json.rentalRatesHeader || data.rentalRatesHeader,
           additionalCharges: json.additionalCharges || data.additionalCharges,
           vehicles: json.vehicles || []
-        });
+       ,
+          backgroundImage: json?.backgroundImage || '' });
       }
     } catch (e) {
       console.error(e);

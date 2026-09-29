@@ -77,11 +77,20 @@ export default function ContactPage() {
       <main className="flex-grow">
         {/* 1. Hero Section */}
         <section className="py-12 md:py-16 md: relative w-full h-[500px] bg-[#0c1222] overflow-hidden flex flex-col justify-center items-center text-center">
-          {/* Background Gradients & Patterns */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1e1438] via-[#0c1222] to-[#0c1222] z-0"></div>
-          <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_30%,#4c1d95_0%,transparent_50%),radial-gradient(circle_at_80%_70%,#1e3a8a_0%,transparent_50%)] z-0"></div>
-          {/* Network-like subtle texture using SVG or CSS - using a simple dotted grid as fallback */}
-          <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #ffffff 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+          {contactData?.backgroundImage ? (
+            <>
+              <img src={contactData.backgroundImage} alt="Contact background" className="absolute inset-0 w-full h-full object-cover z-0" />
+              <div className="absolute inset-0 bg-slate-900/70 z-0"></div>
+            </>
+          ) : (
+            <>
+              {/* Background Gradients & Patterns */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#1e1438] via-[#0c1222] to-[#0c1222] z-0"></div>
+              <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_30%,#4c1d95_0%,transparent_50%),radial-gradient(circle_at_80%_70%,#1e3a8a_0%,transparent_50%)] z-0"></div>
+              {/* Network-like subtle texture using SVG or CSS - using a simple dotted grid as fallback */}
+              <div className="absolute inset-0 z-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #ffffff 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+            </>
+          )}
           
           <div className="relative z-10 max-w-3xl px-4 mt-10">
             <div className="text-[10px] font-bold text-[#f97316] uppercase tracking-widest mb-6">HOME <span className="text-slate-500 mx-2">/</span> CONTACT US</div>
@@ -237,19 +246,7 @@ export default function ContactPage() {
 
             <div className="w-full h-[450px] rounded-[2rem] overflow-hidden relative shadow-lg border border-slate-100 mb-8 bg-[#f8fafc]">
                {/* Map overlay iframe */}
-               {(() => {
-                 let mapUrl = contactData?.mapEmbedUrl || "https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Madurai%20Rudhran%20Travels,%20216,%20E%20Veli%20St,%20Kamarajar%20Salai,%20Madurai%20Main,%20Madurai,%20Tamil%20Nadu%20625001&t=&z=14&ie=UTF8&iwloc=B&output=embed";
-                 if (mapUrl.includes('<iframe')) {
-                   const match = mapUrl.match(/src="([^"]+)"/);
-                   if (match) mapUrl = match[1];
-                 } else if (!mapUrl.includes('embed') && !mapUrl.includes('google.com/maps')) {
-                   const addressQuery = encodeURIComponent(contactData?.location?.address || 'Madurai Rudhran Travels, Madurai');
-                   mapUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${addressQuery}&t=&z=14&ie=UTF8&iwloc=B&output=embed`;
-                 }
-                 return (
-                   <iframe src={mapUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="grayscale opacity-50 mix-blend-multiply"></iframe>
-                 );
-               })()}
+               <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=216,%20E%20Veli%20St,%20Kamarajar%20Salai,%20Madurai%20Main,%20Madurai,%20Tamil%20Nadu%20625001&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="grayscale opacity-50 mix-blend-multiply"></iframe>
                
                {/* Center Marker Pin */}
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none z-10">

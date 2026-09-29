@@ -66,6 +66,27 @@ export default function AdminTourPackages() {
     }
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, field: string = 'backgroundImage') => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      setIsSavingContent(true);
+      const res = await fetch('/api/upload', { method: 'POST', body: formData });
+      const json = await res.json();
+      if (json.url) {
+        setPageContent((prev: any) => ({ ...prev, [field]: json.url }));
+        toast.success('Image uploaded successfully');
+      }
+    } catch (err) {
+      toast.error('Image upload failed');
+    } finally {
+      setIsSavingContent(false);
+    }
+  };
+
+
   // --- IMAGE UPLOAD HELPER ---
   const uploadImage = async (file: File): Promise<string> => {
     const fd = new FormData();
@@ -303,6 +324,19 @@ export default function AdminTourPackages() {
                 </div>
               ))}
               <button type="button" onClick={() => setPageContent({...pageContent, features: [...pageContent.features, '']})} className="text-sm text-blue-600 font-medium mt-2">+ Add Feature</button>
+            </div>
+
+            <div className="pt-4 border-t border-gray-200 mb-6 mt-6">
+              <h3 className="block text-sm font-medium text-gray-700 mb-2">Page Background Image</h3>
+              <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, 'backgroundImage')} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+              {pageContent.backgroundImage && (
+                <div className="mt-4 p-4 border border-slate-200 rounded-lg bg-slate-50 relative">
+                  <img src={pageContent.backgroundImage} alt="Background Preview" className="w-full h-32 object-cover rounded shadow-sm mb-3" />
+                  <button type="button" onClick={() => setPageContent({...pageContent, backgroundImage: ''})} className="px-3 py-1.5 bg-red-100 text-red-600 rounded text-xs font-bold hover:bg-red-200 transition-colors">
+                    Remove Background Image
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="pt-4 border-t border-gray-200">
