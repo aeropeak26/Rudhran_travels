@@ -50,18 +50,18 @@ export default function WhyChooseUs({ data }: { data?: any }) {
               <div className="bg-white p-3.5 rounded-2xl shadow-sm shrink-0">
                 <Settings2 className="w-6 h-6 text-[#d97706] rotate-90" />
               </div>
-              <h3 className="text-2xl font-bold leading-tight pt-1 relative z-10">
+              <h3 className="text-xl md:text-2xl font-bold leading-tight pt-1 relative z-10">
                 Flexible Travel & Tour <br /> Solutions
               </h3>
             </div>
 
-            <p className="text-[15px] font-medium text-[#334155] mb-8 leading-relaxed relative z-10">
+            <p className="text-sm md:text-[15px] font-medium text-[#334155] mb-8 leading-relaxed relative z-10">
               From short-term city transfers and temple circuits to multi-day hill station packages, we offer personalized options for every schedule.
             </p>
 
             <div className="w-full h-px bg-black/80 mb-8 relative z-10"></div>
 
-            <ul className="space-y-5 text-[15px] font-medium text-[#334155] flex-grow relative z-10">
+            <ul className="space-y-4 text-sm font-medium text-[#334155] flex-grow relative z-10">
               <li className="flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center mt-0.5 shrink-0">
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
