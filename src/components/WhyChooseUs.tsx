@@ -97,13 +97,13 @@ export default function WhyChooseUs({ data }: { data?: any }) {
               
               {/* Card 1 */}
               <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
-                <h4 className="text-[#0f172a] text-xl font-bold mb-3">Best Driver Services</h4>
-                <p className="text-slate-500 text-xs font-medium leading-relaxed mb-6">
-                  Travel with skilled drivers committed to your safety and comfort.
+                <h4 className="text-[#0f172a] text-2xl font-bold mb-4">Best Driver Services</h4>
+                <p className="text-slate-500 text-[15px] font-medium leading-relaxed mb-6">
+                  Travel with skilled drivers committed to your safety and comfort on every journey.
                 </p>
                 <div className="mt-auto">
-                  <div className="inline-flex items-center gap-2 text-[10px] font-bold text-slate-700">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]"></span>
+                  <div className="inline-flex items-center gap-2 text-xs font-bold text-slate-700">
+                    <span className="w-2 h-2 rounded-full bg-[#f59e0b]"></span>
                     Best
                   </div>
                 </div>
@@ -112,30 +112,30 @@ export default function WhyChooseUs({ data }: { data?: any }) {
               {/* Card 2 */}
               <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col justify-between">
                 <div>
-                  <h4 className="text-[#0f172a] text-xl font-bold mb-3">Well-Maintained Fleet</h4>
-                  <p className="text-slate-500 text-[11px] font-medium leading-relaxed mb-6">
+                  <h4 className="text-[#0f172a] text-2xl font-bold mb-4">Well-Maintained Fleet</h4>
+                  <p className="text-slate-500 text-[15px] font-medium leading-relaxed mb-6">
                     Pristine interiors, high-performance AC units, daily sanitization, and clean upholstery in every vehicle category.
                   </p>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-[#0f172a] mb-1">120+ <span className="text-xl">Cities Served</span></div>
-                  <p className="text-blue-500 text-[10px] font-medium">Connecting key metros, coastal belts, and tourist hubs.</p>
+                  <div className="text-4xl font-bold text-[#0f172a] mb-2">120+ <span className="text-2xl">Cities Served</span></div>
+                  <p className="text-blue-500 text-xs font-medium">Connecting key metros, coastal belts, and tourist hubs.</p>
                 </div>
               </div>
 
               {/* Card 3 */}
               <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
-                <h4 className="text-[#0f172a] text-xl font-bold mb-3">Tour Packages</h4>
-                <p className="text-slate-500 text-xs font-medium leading-relaxed">
-                  Plan journey your way with flexible travel options tailored to your needs.
+                <h4 className="text-[#0f172a] text-2xl font-bold mb-4">Tour Packages</h4>
+                <p className="text-slate-500 text-[15px] font-medium leading-relaxed">
+                  Plan your journey your way with flexible travel options and bespoke itineraries tailored to your needs.
                 </p>
               </div>
 
               {/* Card 4 */}
               <div className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
-                <h4 className="text-[#0f172a] text-xl font-bold mb-3">24/7 Travel Desk</h4>
-                <p className="text-slate-500 text-xs font-medium leading-relaxed">
-                  Direct human assistance on phone and WhatsApp for flight delays, route changes, or emergency assistance.
+                <h4 className="text-[#0f172a] text-2xl font-bold mb-4">24/7 Travel Desk</h4>
+                <p className="text-slate-500 text-[15px] font-medium leading-relaxed">
+                  Direct human assistance on phone and WhatsApp for flight delays, route changes, or emergency assistance round the clock.
                 </p>
               </div>
               
