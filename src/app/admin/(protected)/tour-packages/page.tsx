@@ -312,7 +312,20 @@ export default function AdminTourPackages() {
                   <div key={i} className="bg-gray-50 p-4 rounded border border-gray-200 relative">
                     <button type="button" onClick={() => { const cards = pageContent.whyChooseUs.cards.filter((_: any, idx: number) => idx !== i); setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="absolute top-4 right-4 text-red-500 hover:text-red-700"><Trash2 className="w-4 h-4"/></button>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2 pr-8">
-                      <input type="text" placeholder="Icon Name (e.g. Car, User, Navigation)" value={card.icon} onChange={e => { const cards = [...pageContent.whyChooseUs.cards]; cards[i].icon = e.target.value; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="border p-2 rounded text-black text-sm" />
+                      <select value={card.icon} onChange={e => { const cards = [...pageContent.whyChooseUs.cards]; cards[i].icon = e.target.value; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="border p-2 rounded text-black text-sm">
+                        <option value="Car">Car</option>
+                        <option value="User">User</option>
+                        <option value="Navigation">Navigation</option>
+                        <option value="Zap">Zap (Lightning)</option>
+                        <option value="ShieldCheck">Shield Check</option>
+                        <option value="MapPin">Map Pin</option>
+                        <option value="Clock">Clock</option>
+                        <option value="Star">Star</option>
+                        <option value="Map">Map</option>
+                        <option value="Calendar">Calendar</option>
+                        <option value="MessageCircle">Message Circle</option>
+                        <option value="Check">Check</option>
+                      </select>
                       <input type="text" placeholder="Title (e.g. Comfortable Vehicles)" value={card.title} onChange={e => { const cards = [...pageContent.whyChooseUs.cards]; cards[i].title = e.target.value; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="border p-2 rounded text-black text-sm" />
                     </div>
                     <textarea rows={2} placeholder="Description..." value={card.description} onChange={e => { const cards = [...pageContent.whyChooseUs.cards]; cards[i].description = e.target.value; setPageContent({...pageContent, whyChooseUs: {...pageContent.whyChooseUs, cards}}); }} className="w-full border p-2 rounded text-black text-sm" />
