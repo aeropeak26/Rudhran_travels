@@ -85,7 +85,7 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
           </button>
 
           {/* Car Image with Framer Motion AnimatePresence */}
-          <div className="relative w-[85%] h-full z-10 flex items-center justify-center overflow-hidden">
+          <div className="relative w-[85%] h-full z-10 flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedCarIndex}
@@ -99,7 +99,7 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
                   src={displayCars[selectedCarIndex].image}
                   alt={displayCars[selectedCarIndex].name}
                   fill
-                  className="object-contain drop-shadow-2xl mix-blend-screen scale-110 md:scale-125 origin-center"
+                  className="object-contain drop-shadow-2xl mix-blend-screen"
                   unoptimized
                 />
               </motion.div>
