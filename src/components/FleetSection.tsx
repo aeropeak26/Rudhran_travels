@@ -5,13 +5,14 @@ import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface FleetSectionProps {
+  data?: any[];
   onBookCar: (car: any) => void;
 }
 
-export default function FleetSection({ onBookCar }: FleetSectionProps) {
+export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
   const [selectedCarIndex, setSelectedCarIndex] = useState<number>(1);
 
-  const cars = [
+  const defaultCars = [
     { name: 'Sedan', icon: 'M4 14l2-6h12l2 6m-16 0h16v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4z', image: '/images/hero_car.png' },
     { name: 'SUV', icon: 'M4 12l2-6h12l2 6m-16 0h16v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6zm3-4h10', image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80' },
     { name: 'Innova', icon: 'M3 13l2-6h14l2 6m-18 0h18v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5zm3-4h12', image: '/images/hero_car.png' },
@@ -19,6 +20,14 @@ export default function FleetSection({ onBookCar }: FleetSectionProps) {
     { name: 'Tempo Traveller', icon: 'M3 8h18M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8M3 8l2-4h14l2 4', image: '/images/hero_car.png' },
     { name: 'Chevrolet', icon: 'M4 14l2-6h12l2 6m-16 0h16v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4z', image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80' },
   ];
+
+  const cars = data?.length === 6 ? data : defaultCars;
+
+  // Use icon from default array if data array lacks it
+  const displayCars = cars.map((car: any, idx: number) => ({
+    ...car,
+    icon: car.icon || defaultCars[idx].icon
+  }));
 
   return (
     <section id="fleet" className="py-24 bg-[#0a192f] text-white relative poppins-regular overflow-hidden">
@@ -38,7 +47,7 @@ export default function FleetSection({ onBookCar }: FleetSectionProps) {
 
         {/* Tab Selector */}
         <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-20 relative z-10">
-          {cars.map((car, index) => (
+          {displayCars.map((car: any, index: number) => (
             <button
               key={index}
               onClick={() => setSelectedCarIndex(index)}
@@ -61,7 +70,7 @@ export default function FleetSection({ onBookCar }: FleetSectionProps) {
           
           {/* Left Arrow */}
           <button
-            onClick={() => setSelectedCarIndex((prev) => (prev > 0 ? prev - 1 : cars.length - 1))}
+            onClick={() => setSelectedCarIndex((prev) => (prev > 0 ? prev - 1 : displayCars.length - 1))}
             className="absolute left-0 z-20 w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#0a192f] hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -71,8 +80,8 @@ export default function FleetSection({ onBookCar }: FleetSectionProps) {
           <div className="relative w-[90%] h-full z-10">
             <Image
               key={selectedCarIndex}
-              src={cars[selectedCarIndex].image}
-              alt={cars[selectedCarIndex].name}
+              src={displayCars[selectedCarIndex].image}
+              alt={displayCars[selectedCarIndex].name}
               fill
               className="object-contain animate-fadeIn drop-shadow-2xl mix-blend-screen"
               unoptimized
@@ -81,7 +90,7 @@ export default function FleetSection({ onBookCar }: FleetSectionProps) {
 
           {/* Right Arrow */}
           <button
-            onClick={() => setSelectedCarIndex((prev) => (prev < cars.length - 1 ? prev + 1 : 0))}
+            onClick={() => setSelectedCarIndex((prev) => (prev < displayCars.length - 1 ? prev + 1 : 0))}
             className="absolute right-0 z-20 w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#0a192f] hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]"
           >
             <ArrowRight className="w-5 h-5" />

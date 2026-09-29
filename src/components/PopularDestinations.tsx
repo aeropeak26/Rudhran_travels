@@ -5,11 +5,12 @@ import Image from 'next/image';
 import { Heart, MapPin, Clock, Coffee, Car, Home, Leaf, Ship, Utensils, Sun, Train, Flower, Castle, Landmark, Waves, Star } from 'lucide-react';
 
 interface PopularDestinationsProps {
+  data?: any[];
   onSelectDestination: (dest: any) => void;
 }
 
-export default function PopularDestinations({ onSelectDestination }: PopularDestinationsProps) {
-  const destinations = [
+export default function PopularDestinations({ data, onSelectDestination }: PopularDestinationsProps) {
+  const defaultDestinations = [
     {
       state: 'Tamil Nadu',
       status: 'Available Now',
@@ -114,6 +115,14 @@ export default function PopularDestinations({ onSelectDestination }: PopularDest
     }
   ];
 
+  const destinations = data?.length === 6 ? data.map((d: any, i: number) => ({
+    ...d,
+    features: defaultDestinations[i].features.map((df, j) => ({
+      ...df,
+      text: d.features?.[j] || df.text
+    }))
+  })) : defaultDestinations;
+
   return (
     <section className="py-24 bg-white text-slate-900 poppins-regular">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -212,7 +221,7 @@ export default function PopularDestinations({ onSelectDestination }: PopularDest
 
                 {/* Features Row */}
                 <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
-                  {item.features.map((feat, i) => (
+                  {item.features.map((feat: any, i: number) => (
                     <div key={i} className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-slate-500">
                       <feat.icon className={`w-3.5 h-3.5 ${feat.color}`} />
                       <span>{feat.text}</span>

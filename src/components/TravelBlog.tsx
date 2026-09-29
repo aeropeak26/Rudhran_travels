@@ -4,8 +4,8 @@ import React from 'react';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
-export default function TravelBlog() {
-  const experiences = [
+export default function TravelBlog({ data }: { data?: any[] }) {
+  const defaultExperiences = [
     {
       id: 'exp-1',
       title: 'Alpine Scenic Ride',
@@ -31,6 +31,8 @@ export default function TravelBlog() {
       image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80',
     },
   ];
+
+  const experiences = data?.length === 4 ? data : defaultExperiences;
 
   return (
     <section className="py-24 bg-white text-slate-900 poppins-regular">

@@ -4,10 +4,11 @@ import React from 'react';
 import { Users, Wind, UserCheck, Briefcase, Tag, AlertTriangle, ArrowRight } from 'lucide-react';
 
 interface InnovaTariffProps {
+  data?: any;
   onBookCar: (car: any) => void;
 }
 
-export default function InnovaTariff({ onBookCar }: InnovaTariffProps) {
+export default function InnovaTariff({ data, onBookCar }: InnovaTariffProps) {
   return (
     <section id="innova-tariff" className="pt-24 pb-12 bg-slate-50 relative poppins-regular z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,17 +24,17 @@ export default function InnovaTariff({ onBookCar }: InnovaTariffProps) {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h2 className="text-3xl font-bold text-[#0f172a] tracking-tight mb-2">
-                    Toyota Innova Crysta
+                    {data?.title || "Toyota Innova Crysta"}
                   </h2>
                   <p className="text-slate-400 text-sm font-medium leading-relaxed max-w-lg">
-                    South India's most trusted executive long-distance cruiser, known for legendary ride comfort and safety.
+                    {data?.subtitle || "South India's most trusted executive long-distance cruiser, known for legendary ride comfort and safety."}
                   </p>
                 </div>
                 
                 {/* Rating Badge */}
                 <div className="hidden sm:flex items-center gap-1.5 bg-[#fef3c7] text-[#d97706] px-3 py-1.5 rounded-md shadow-sm border border-amber-100/50">
                   <span className="text-xs">★</span>
-                  <span className="text-[10px] font-bold tracking-wide">4.9 (420+ trips)</span>
+                  <span className="text-[10px] font-bold tracking-wide">{data?.ratingText || "4.9 (420+ trips)"}</span>
                 </div>
               </div>
 
@@ -69,7 +70,7 @@ export default function InnovaTariff({ onBookCar }: InnovaTariffProps) {
                 <div className="w-1/2 md:w-auto">
                   <div className="text-[10px] text-slate-400 font-bold tracking-wider mb-1">Outstation Rate</div>
                   <div className="flex items-baseline gap-1 text-blue-600">
-                    <span className="text-2xl font-bold tracking-tight">₹18</span>
+                    <span className="text-2xl font-bold tracking-tight">{data?.outstationRate || "₹18"}</span>
                     <span className="text-[10px] font-bold text-slate-400">/km</span>
                   </div>
                 </div>
@@ -77,14 +78,14 @@ export default function InnovaTariff({ onBookCar }: InnovaTariffProps) {
                 <div className="w-1/2 md:w-auto md:border-l border-slate-200 md:pl-6">
                   <div className="text-[10px] text-slate-400 font-bold tracking-wider mb-1">Local 8hr/80km</div>
                   <div className="text-2xl font-bold text-[#0f172a] tracking-tight">
-                    ₹3,800
+                    {data?.localRate || "₹3,800"}
                   </div>
                 </div>
 
                 <div className="w-1/2 md:w-auto md:border-l border-slate-200 md:pl-6">
                   <div className="text-[10px] text-slate-400 font-bold tracking-wider mb-1">Min. Outstation</div>
                   <div className="flex items-baseline gap-1 text-[#0f172a]">
-                    <span className="text-xl font-bold tracking-tight">300 km</span>
+                    <span className="text-xl font-bold tracking-tight">{data?.minOutstation || "300 km"}</span>
                     <span className="text-[10px] font-bold text-slate-400">/day</span>
                   </div>
                 </div>
@@ -92,7 +93,7 @@ export default function InnovaTariff({ onBookCar }: InnovaTariffProps) {
                 <div className="w-1/2 md:w-auto md:border-l border-slate-200 md:pl-6">
                   <div className="text-[10px] text-slate-400 font-bold tracking-wider mb-1">Driver Batta</div>
                   <div className="text-lg font-bold text-blue-600">
-                    Included
+                    {data?.driverBatta || "Included"}
                   </div>
                 </div>
 
@@ -126,7 +127,7 @@ export default function InnovaTariff({ onBookCar }: InnovaTariffProps) {
               {/* Rent Per Day */}
               <div>
                 <div className="text-blue-200/80 text-[9px] font-bold uppercase tracking-widest mb-1.5">RENT / DAY</div>
-                <div className="text-white text-4xl font-bold tracking-tight mb-6">Rs. 2200</div>
+                <div className="text-white text-4xl font-bold tracking-tight mb-6">{data?.rentPerDay || "Rs. 2200"}</div>
                 
                 <button 
                   onClick={() => onBookCar({ title: 'Toyota Innova Crysta', startingPrice: 2200 })}

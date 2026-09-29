@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
@@ -19,6 +19,16 @@ import BookingModal from '@/components/BookingModal';
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [homeData, setHomeData] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/api/home-content')
+      .then(res => res.json())
+      .then(data => {
+        if (!data.error) setHomeData(data);
+      })
+      .catch(console.error);
+  }, []);
 
   const handleOpenBookingModal = (item?: any) => {
     setSelectedItem(item || null);
@@ -50,35 +60,40 @@ export default function Home() {
         
         {/* 1. Hero Section with Floating Search Bar */}
         <HeroSection
+          data={homeData?.hero}
           onSearchCars={handleSearchCars}
           onOpenBookingModal={() => handleOpenBookingModal()}
         />
 
         {/* 2. About Company Spotlight */}
-        <AboutSection />
+        <AboutSection data={homeData?.about} />
 
         {/* 3. Popular Outstation Tour Destinations */}
         <PopularDestinations
+          data={homeData?.popularDestinations}
           onSelectDestination={(dest) => handleOpenBookingModal(dest)}
         />
 
         {/* 4. Rental Tariff / Featured Vehicles (3-Car Showcase) */}
         <FleetSection
+          data={homeData?.featureVehicles}
           onBookCar={(car) => handleOpenBookingModal(car)}
         />
 
         {/* 4.5. Toyota Innova Tariff Card */}
         <InnovaTariff
+          data={homeData?.generalToyota}
           onBookCar={(car) => handleOpenBookingModal(car)}
         />
 
         {/* 5. Frosted Glass Tour Package Banners Grid */}
         <TourBanners
+          data={homeData?.tourPackages}
           onOpenBookingModal={(item) => handleOpenBookingModal(item)}
         />
 
         {/* 6. Why Travel With Us? (Alternating Black & Blue Cards) */}
-        <WhyChooseUs />
+        <WhyChooseUs data={homeData?.whyTravelWithUs} />
 
         {/* 7. Client Testimonials & Reviews */}
         <Testimonials />
@@ -89,7 +104,7 @@ export default function Home() {
         />
 
         {/* 9. Ride Experiences / Real Journeys Gallery Grid */}
-        <TravelBlog />
+        <TravelBlog data={homeData?.rideExperiences} />
 
       </main>
 

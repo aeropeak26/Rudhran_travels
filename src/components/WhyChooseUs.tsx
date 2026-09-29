@@ -3,7 +3,15 @@
 import React from 'react';
 import { Settings2 } from 'lucide-react';
 
-export default function WhyChooseUs() {
+export default function WhyChooseUs({ data }: { data?: any }) {
+  const defaultBullets = [
+    "Enjoy the comfort of flexible doorstep pickup & drop",
+    "Access a diverse fleet of economy, SUV, & executive sedans",
+    "Choose from daily, weekly, or custom monthly tour packages",
+    "Zero hidden fees with clear, all-inclusive kilometer billing"
+  ];
+  const bullets = data?.bullets?.length === 4 ? data.bullets : defaultBullets;
+
   return (
     <section className="py-24 bg-[#f8fafc] text-slate-900 poppins-regular">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,10 +23,9 @@ export default function WhyChooseUs() {
             WHY TRAVEL WITH US?
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-[#0f172a] tracking-tight mb-4 leading-tight">
-            Simplifying Travel with Trust
+            {data?.title || "Simplifying Travel with Trust"}
           </h2>
-          <p className="text-slate-500 text-[13px] md:text-sm font-medium">
-            Trusted service, comfortable vehicles, experienced drivers, and customer-<br className="hidden md:block"/>first support.
+          <p className="text-slate-500 text-[13px] md:text-sm font-medium" dangerouslySetInnerHTML={{ __html: data?.subtitle || "Trusted service, comfortable vehicles, experienced drivers, and customer-<br className=\"hidden md:block\"/>first support." }}>
           </p>
         </div>
 
@@ -58,25 +65,25 @@ export default function WhyChooseUs() {
                 <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center mt-0.5 shrink-0">
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
                 </div>
-                <span className="leading-snug">Enjoy the comfort of flexible doorstep pickup & drop</span>
+                <span className="leading-snug">{bullets[0]}</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center mt-0.5 shrink-0">
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
                 </div>
-                <span className="leading-snug">Access a diverse fleet of economy, SUV, & executive sedans</span>
+                <span className="leading-snug">{bullets[1]}</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center mt-0.5 shrink-0">
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
                 </div>
-                <span className="leading-snug">Choose from daily, weekly, or custom monthly tour packages</span>
+                <span className="leading-snug">{bullets[2]}</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full bg-white/60 flex items-center justify-center mt-0.5 shrink-0">
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
                 </div>
-                <span className="leading-snug">Zero hidden fees with clear, all-inclusive kilometer billing</span>
+                <span className="leading-snug">{bullets[3]}</span>
               </li>
             </ul>
           </div>

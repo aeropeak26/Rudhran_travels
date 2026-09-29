@@ -5,13 +5,14 @@ import { ArrowRight, ShieldCheck, Phone, MessageCircle, Clock } from 'lucide-rea
 import BookingWidget from './BookingWidget';
 
 interface HeroSectionProps {
+  data?: any;
   onSearchCars: (searchData: any) => void;
   onOpenBookingModal: () => void;
 }
 
-export default function HeroSection({ onSearchCars, onOpenBookingModal }: HeroSectionProps) {
+export default function HeroSection({ data, onSearchCars, onOpenBookingModal }: HeroSectionProps) {
   return (
-    <section className="relative bg-[url('/images/Home/bg.png')] bg-cover bg-center bg-no-repeat pt-10 pb-4 text-white overflow-hidden poppins-regular min-h-[520px]">
+    <section className="relative bg-cover bg-center bg-no-repeat pt-10 pb-4 text-white overflow-hidden poppins-regular min-h-[520px]" style={{ backgroundImage: `url(${data?.backgroundImage || '/images/Home/bg.png'})` }}>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         
@@ -21,18 +22,17 @@ export default function HeroSection({ onSearchCars, onOpenBookingModal }: HeroSe
           {/* Badge */}
           <div className="inline-flex items-center space-x-2 bg-black/40 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-[10px] font-bold text-white uppercase tracking-widest shadow-lg">
             <ShieldCheck className="w-3.5 h-3.5 text-orange-500" />
-            <span>MADURAI'S TRUSTED TRAVEL PARTNER</span>
+            <span>{data?.badgeText || "MADURAI'S TRUSTED TRAVEL PARTNER"}</span>
           </div>
 
           {/* Title */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white">
-            Your Journey, <br />
-            Our Responsibility.
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-white whitespace-pre-line">
+            {data?.title || "Your Journey, \nOur Responsibility."}
           </h1>
 
           {/* Subtitle */}
           <p className="text-slate-200 text-sm sm:text-base max-w-xl font-medium leading-relaxed drop-shadow-md">
-            Safe, comfortable, and transparent cab rentals, temple circuits, and hill holiday packages originating from Madurai across Tamil Nadu and South India.
+            {data?.subtitle || "Safe, comfortable, and transparent cab rentals, temple circuits, and hill holiday packages originating from Madurai across Tamil Nadu and South India."}
           </p>
 
           {/* Buttons */}

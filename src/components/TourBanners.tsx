@@ -5,11 +5,12 @@ import Image from 'next/image';
 import { ArrowUpRight, Star } from 'lucide-react';
 
 interface TourBannersProps {
+  data?: any[];
   onOpenBookingModal: (item?: any) => void;
 }
 
-export default function TourBanners({ onOpenBookingModal }: TourBannersProps) {
-  const packages = [
+export default function TourBanners({ data, onOpenBookingModal }: TourBannersProps) {
+  const defaultPackages = [
     {
       badge: 'BESTSELLER',
       badgeColor: 'bg-[#fbbf24] text-amber-900',
@@ -85,6 +86,8 @@ export default function TourBanners({ onOpenBookingModal }: TourBannersProps) {
       image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f7415e?auto=format&fit=crop&w=800&q=80'
     }
   ];
+
+  const packages = data?.length === 6 ? data : defaultPackages;
 
   return (
     <section className="pb-24 pt-0 bg-slate-50 text-slate-900 poppins-regular">
