@@ -295,7 +295,7 @@ export default function TariffPage() {
                       Book This Vehicle Now <ChevronRight className="w-4 h-4" />
                     </button>
                     <div className="flex items-center gap-2">
-                      <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="flex-1 py-2.5 bg-white border border-blue-200 hover:bg-blue-50 rounded-lg text-[10px] font-bold text-blue-600 transition-colors flex items-center justify-center gap-1.5 shadow-sm shadow-blue-900/5">
+                      <a href="https://wa.me/918760380485" target="_blank" rel="noopener noreferrer" className="flex-1 py-2.5 bg-white border border-blue-200 hover:bg-blue-50 rounded-lg text-[10px] font-bold text-blue-600 transition-colors flex items-center justify-center gap-1.5 shadow-sm shadow-blue-900/5">
                         <MessageCircle className="w-3.5 h-3.5 text-emerald-500" /> WhatsApp Quote
                       </a>
                       <button onClick={() => setIsModalOpen(true)} className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-[10px] font-bold text-slate-700 transition-colors flex items-center justify-center gap-1.5">
@@ -376,10 +376,10 @@ export default function TariffPage() {
             </div>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 mt-6 md:mt-0 relative z-10">
-              <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 bg-[#E87B1E] hover:bg-orange-600 text-white rounded-xl text-[12px] font-bold transition-colors flex items-center gap-2 shadow-lg shadow-orange-900/20">
+              <a href="https://wa.me/918760380485" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 bg-[#E87B1E] hover:bg-orange-600 text-white rounded-xl text-[12px] font-bold transition-colors flex items-center gap-2 shadow-lg shadow-orange-900/20">
                 <Navigation className="w-4 h-4 rotate-90" /> Get a Free Quote
               </a>
-              <a href="tel:+919840012345" className="px-6 py-3.5 bg-[#1d3b3a] hover:bg-[#234c4a] text-emerald-400 rounded-xl text-[12px] font-bold transition-colors flex items-center gap-2">
+              <a href="tel:+918760380485" className="px-6 py-3.5 bg-[#1d3b3a] hover:bg-[#234c4a] text-emerald-400 rounded-xl text-[12px] font-bold transition-colors flex items-center gap-2">
                 <Phone className="w-4 h-4" /> +91 98400 12345
               </a>
             </div>

@@ -45,7 +45,7 @@ export default function BookingModal({ isOpen, onClose, selectedItem }: BookingM
       const text = `Hello Rudhran Travels! I would like to book ${itemName}.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email}\n*Route:* ${formData.pickupLocation} to ${formData.dropLocation}\n*Date & Time:* ${formData.pickupDate} at ${formData.pickupTime}\n*Message:* ${formData.message || 'None'}\n\nPlease confirm availability and fare.`;
       
       // 3. Open WhatsApp in new tab
-      window.open(`https://wa.me/919840012345?text=${encodeURIComponent(text)}`, '_blank');
+      window.open(`https://wa.me/918760380485?text=${encodeURIComponent(text)}`, '_blank');
       
       toast.success('Booking request initiated! Confirming via WhatsApp.');
 

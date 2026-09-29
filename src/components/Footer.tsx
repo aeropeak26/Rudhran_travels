@@ -9,7 +9,7 @@ export default function Footer() {
   const pathname = usePathname();
   const [footerInfo, setFooterInfo] = useState({
     phone: '+91 98400 12345',
-    email: 'info@rudhrantravels.com',
+    email: 'madurairudhrantravels@gmail.com',
     address: '216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001'
   });
   const [socialInfo, setSocialInfo] = useState({

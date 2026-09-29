@@ -170,7 +170,7 @@ export default function GeneralSettingsPage() {
                 value={formData.footer.email}
                 onChange={(e) => handleChange('footer', 'email', e.target.value)}
                 className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
-                placeholder="e.g. info@rudhrantravels.com"
+                placeholder="e.g. madurairudhrantravels@gmail.com"
               />
             </div>
             <div className="md:col-span-2">

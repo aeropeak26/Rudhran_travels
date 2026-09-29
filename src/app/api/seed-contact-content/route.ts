@@ -18,8 +18,8 @@ export async function GET() {
         address: '216, E Veli St, Kamarajar Salai, Madurai Main, Madurai, Tamil Nadu 625001'
       },
       email: {
-        email1: 'booking@rudhrantravels.com',
-        email2: 'support@rudhrantravels.com'
+        email1: 'madurairudhrantravels@gmail.com',
+        email2: 'madurairudhrantravels@gmail.com'
       },
       mapEmbedUrl: 'https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Madurai%20Rudhran%20Travels,%20216,%20E%20Veli%20St,%20Kamarajar%20Salai,%20Madurai%20Main,%20Madurai,%20Tamil%20Nadu%20625001&t=&z=14&ie=UTF8&iwloc=B&output=embed'
     };

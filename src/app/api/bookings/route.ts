@@ -21,14 +21,14 @@ export async function POST(request: Request) {
     const transporter = nodemailer.createTransport({
       service: 'gmail', // You can change this if using another SMTP service
       auth: {
-        user: process.env.SMTP_EMAIL || 'madurairudhrantravela@gmail.com',
+        user: process.env.SMTP_EMAIL || 'madurairudhrantravels@gmail.com',
         pass: process.env.SMTP_PASSWORD || '',
       }
     });
 
     const mailOptions = {
-      from: process.env.SMTP_EMAIL || 'madurairudhrantravela@gmail.com',
-      to: 'madurairudhrantravela@gmail.com',
+      from: process.env.SMTP_EMAIL || 'madurairudhrantravels@gmail.com',
+      to: 'madurairudhrantravels@gmail.com',
       subject: \`New Booking Request from \${body.name}\`,
       html: \`...\` // HTML content omitted for brevity
     };

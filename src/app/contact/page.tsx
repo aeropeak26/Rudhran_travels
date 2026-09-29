@@ -148,8 +148,8 @@ export default function ContactPage() {
                       <div>
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">EMAIL</h4>
                         <p className="text-[13px] font-medium text-slate-700 leading-relaxed">
-                          {contactData?.email?.email1 || 'booking@rudhrantravels.com'}<br/>
-                          {contactData?.email?.email2 || 'support@rudhrantravels.com'}
+                          {contactData?.email?.email1 || 'madurairudhrantravels@gmail.com'}<br/>
+                          {contactData?.email?.email2 || 'madurairudhrantravels@gmail.com'}
                         </p>
                       </div>
                     </div>
@@ -292,10 +292,10 @@ export default function ContactPage() {
                </div>
                
                <div className="relative z-10 flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
-                 <a href={`tel:${contactData?.callCenter?.phone1?.replace(/[^0-9+]/g, '') || '+919840012345'}`} className="px-8 py-4.5 bg-[#2563eb] hover:bg-blue-600 text-white rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.3)]">
+                 <a href={`tel:${contactData?.callCenter?.phone1?.replace(/[^0-9+]/g, '') || '+918760380485'}`} className="px-8 py-4.5 bg-[#2563eb] hover:bg-blue-600 text-white rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.3)]">
                    <Phone className="w-4 h-4 fill-white" /> CALL FAST DESK
                  </a>
-                 <a href={`https://wa.me/${contactData?.callCenter?.phone1?.replace(/[^0-9]/g, '') || '919840012345'}`} className="px-8 py-4.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                 <a href={`https://wa.me/${contactData?.callCenter?.phone1?.replace(/[^0-9]/g, '') || '918760380485'}`} className="px-8 py-4.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2">
                    <MessageCircle className="w-4 h-4" /> WHATSAPP TOLL-FREE
                  </a>
                </div>

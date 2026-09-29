@@ -288,7 +288,7 @@ export default function TourPackagesPage() {
                 <button onClick={() => setIsModalOpen(true)} className="px-6 py-3 bg-[#0066ff] hover:bg-blue-600 text-white rounded-lg text-[12px] font-bold transition-colors shadow-lg shadow-blue-900/20">
                   Plan My Trip
                 </button>
-                <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-[#1e293b] hover:bg-slate-700 text-white rounded-lg text-[12px] font-bold transition-colors flex items-center gap-2">
+                <a href="https://wa.me/918760380485" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-[#1e293b] hover:bg-slate-700 text-white rounded-lg text-[12px] font-bold transition-colors flex items-center gap-2">
                   <div className="w-3.5 h-3.5 rounded-full bg-emerald-500 flex items-center justify-center">
                     <Phone className="w-2 h-2 text-white fill-white" />
                   </div> 

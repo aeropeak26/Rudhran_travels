@@ -66,7 +66,7 @@ export default function GalleryPage() {
                    <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 bg-[#d97706] hover:bg-orange-600 text-white font-bold text-[11px] uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-orange-500/20">
                      BOOK YOUR RIDE
                    </button>
-                   <a href="https://wa.me/919840012345" className="px-8 py-4 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 font-bold text-[11px] uppercase tracking-wider rounded-xl transition-colors text-center inline-block">
+                   <a href="https://wa.me/918760380485" className="px-8 py-4 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 font-bold text-[11px] uppercase tracking-wider rounded-xl transition-colors text-center inline-block">
                      WHATSAPP DESK
                    </a>
                  </div>
@@ -198,7 +198,7 @@ export default function GalleryPage() {
                  <button onClick={() => setIsModalOpen(true)} className="w-full py-4.5 bg-[#d97706] hover:bg-orange-600 text-white rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(217,119,6,0.3)] text-center h-[52px]">
                    Book Your Journey Now
                  </button>
-                 <a href="https://wa.me/919840012345" className="w-full flex items-center justify-center bg-[#1e293b]/80 hover:bg-[#1e293b] text-white border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all h-[52px]">
+                 <a href="https://wa.me/918760380485" className="w-full flex items-center justify-center bg-[#1e293b]/80 hover:bg-[#1e293b] text-white border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all h-[52px]">
                    WhatsApp Dispatch Desk
                  </a>
                  <p className="text-[9px] text-slate-500 text-center mt-2 font-medium">Active now • Usually replies within 15 mins</p>

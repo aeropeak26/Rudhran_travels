@@ -37,7 +37,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
     
     // Send WhatsApp quote
     const text = `Hello Rudhran Travels! I would like to book the ${pkg?.category} Grand Tourer (${pkg?.title}).\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Departure Date:* ${formData.date}\n*Guests:* ${formData.guests}\n*Vehicle:* ${formData.vehicle}\n\nPlease confirm availability and lock my rate.`;
-    window.open(`https://wa.me/919840012345?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/918760380485?text=${encodeURIComponent(text)}`, '_blank');
     
     // Clear form
     setFormData({
@@ -386,10 +386,10 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                   Receive your tailored PDF dossier and driver credentials via WhatsApp within 15 minutes. ₹2,000 refundable advance locks in your reservation.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="https://wa.me/919840012345" className="px-6 py-3.5 bg-[#10b981] hover:bg-emerald-500 text-white rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
+                  <a href="https://wa.me/918760380485" className="px-6 py-3.5 bg-[#10b981] hover:bg-emerald-500 text-white rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
                     <Phone className="w-4 h-4 fill-white" /> WHATSAPP DESK (+91 98400 12345)
                   </a>
-                  <a href="tel:+919840012345" className="px-6 py-3.5 bg-[#1e293b]/50 hover:bg-[#1e293b] text-[#f97316] border border-white/5 rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center gap-2">
+                  <a href="tel:+918760380485" className="px-6 py-3.5 bg-[#1e293b]/50 hover:bg-[#1e293b] text-[#f97316] border border-white/5 rounded-lg text-[11px] font-bold transition-colors flex items-center justify-center gap-2">
                     <Phone className="w-4 h-4 text-[#f97316] fill-[#f97316]" /> CALL HOTLINE
                   </a>
                 </div>
@@ -456,7 +456,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                       <button type="submit" disabled={submitting} className="flex-1 py-4 bg-gradient-to-r from-[#2563eb] to-[#3b82f6] hover:from-[#1d4ed8] hover:to-[#2563eb] text-white rounded-lg text-[12px] font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.4)] disabled:opacity-50">
                         <ArrowRight className="w-4 h-4" /> {submitting ? 'PROCESSING...' : 'REQUEST BOOKING'}
                       </button>
-                      <button type="button" onClick={() => window.open('tel:+919840012345')} className="px-8 py-4 bg-[#1e293b]/60 hover:bg-[#1e293b] text-slate-300 border border-white/5 rounded-lg text-[11px] font-medium transition-all">
+                      <button type="button" onClick={() => window.open('tel:+918760380485')} className="px-8 py-4 bg-[#1e293b]/60 hover:bg-[#1e293b] text-slate-300 border border-white/5 rounded-lg text-[11px] font-medium transition-all">
                         Call now for enquiry
                       </button>
                     </div>

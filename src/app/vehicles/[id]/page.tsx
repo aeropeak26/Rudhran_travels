@@ -376,7 +376,7 @@ export default function VehicleDetailsPage() {
               <button onClick={() => setIsModalOpen(true)} className="px-6 py-3.5 bg-[#f97316] hover:bg-orange-600 text-white rounded-[10px] text-[13px] font-bold transition-colors flex items-center gap-2 shadow-sm">
                 Get Quote <ChevronRight className="w-4 h-4" />
               </button>
-              <a href="https://wa.me/919840012345" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-[10px] text-[13px] font-bold transition-colors flex items-center gap-2 shadow-sm border border-blue-500">
+              <a href="https://wa.me/918760380485" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-[10px] text-[13px] font-bold transition-colors flex items-center gap-2 shadow-sm border border-blue-500">
                 <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
               </a>
             </div>

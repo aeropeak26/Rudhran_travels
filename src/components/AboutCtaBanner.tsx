@@ -41,7 +41,7 @@ export default function AboutCtaBanner() {
           </Link>
 
           <a 
-            href="https://wa.me/919840012345" 
+            href="https://wa.me/918760380485" 
             target="_blank" 
             rel="noopener noreferrer"
             className="bg-[#022c22] border border-emerald-900/50 hover:bg-[#064e3b] text-emerald-400 font-bold text-[13px] px-6 py-3.5 rounded-lg flex items-center gap-2 transition-all shadow-md"
@@ -51,7 +51,7 @@ export default function AboutCtaBanner() {
           </a>
 
           <a 
-            href="tel:+919840012345"
+            href="tel:+918760380485"
             className="text-slate-300 hover:text-white font-bold text-[13px] flex items-center gap-2 px-4 py-3.5 transition-colors ml-2"
           >
             <Phone className="w-4 h-4 text-blue-400" />

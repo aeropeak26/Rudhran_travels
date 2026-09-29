@@ -112,11 +112,11 @@ export default function AdminContactPage() {
               <h3 className="font-bold text-slate-700">Email Address</h3>
               <div>
                 <label className="block text-xs text-slate-500 mb-1">Email 1</label>
-                <input type="email" value={data.email.email1} onChange={e => setData({...data, email: {...data.email, email1: e.target.value}})} className="w-full border p-2 rounded text-black text-sm" placeholder="booking@rudhrantravels.com" />
+                <input type="email" value={data.email.email1} onChange={e => setData({...data, email: {...data.email, email1: e.target.value}})} className="w-full border p-2 rounded text-black text-sm" placeholder="madurairudhrantravels@gmail.com" />
               </div>
               <div>
                 <label className="block text-xs text-slate-500 mb-1">Email 2</label>
-                <input type="email" value={data.email.email2} onChange={e => setData({...data, email: {...data.email, email2: e.target.value}})} className="w-full border p-2 rounded text-black text-sm" placeholder="support@rudhrantravels.com" />
+                <input type="email" value={data.email.email2} onChange={e => setData({...data, email: {...data.email, email2: e.target.value}})} className="w-full border p-2 rounded text-black text-sm" placeholder="madurairudhrantravels@gmail.com" />
               </div>
             </div>
 
