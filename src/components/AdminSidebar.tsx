@@ -4,9 +4,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { LayoutDashboard, MessageSquare, Car, Image as ImageIcon, Map, FileText, LogOut, Phone, Home, ChevronDown, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, Car, Image as ImageIcon, Map, FileText, LogOut, Phone, Home, ChevronDown, ChevronRight, Bell } from 'lucide-react';
 
 const navigation = [
+  { name: 'Booking Requests', href: '/admin/requests', icon: Bell },
   { name: 'General', href: '/admin/general', icon: LayoutDashboard },
   { 
     name: 'Home Page', 
