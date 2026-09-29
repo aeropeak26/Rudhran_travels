@@ -27,7 +27,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
     <div className="relative w-full max-w-6xl mx-auto poppins-regular">
       
       {/* Main Container Card */}
-      <div className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-100 overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-2xl shadow-slate-300/60 border border-slate-100 overflow-hidden">
         
         <form onSubmit={handleSubmit} className="p-6 md:p-8">
           
@@ -65,7 +65,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
                   placeholder="e.g. Madurai Airport / Junction"
                   value={pickup}
                   onChange={(e) => setPickup(e.target.value)}
-                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 py-4 focus:ring-2 focus:ring-blue-600 focus:outline-none placeholder:text-slate-400"
+                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 h-[52px] focus:ring-2 focus:ring-blue-600 focus:outline-none placeholder:text-slate-400"
                   required
                 />
               </div>
@@ -85,7 +85,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
                   placeholder="Kodaikanal / Rameshwaram"
                   value={destination}
                   onChange={(e) => setDestination(e.target.value)}
-                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 py-4 focus:ring-2 focus:ring-blue-600 focus:outline-none placeholder:text-slate-400"
+                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 h-[52px] focus:ring-2 focus:ring-blue-600 focus:outline-none placeholder:text-slate-400"
                   required
                 />
               </div>
@@ -104,7 +104,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 py-4 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 h-[52px] focus:ring-2 focus:ring-blue-600 focus:outline-none"
                   required
                 />
               </div>
@@ -122,7 +122,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
                 <select
                   value={vehicle}
                   onChange={(e) => setVehicle(e.target.value)}
-                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 py-4 focus:ring-2 focus:ring-blue-600 focus:outline-none appearance-none"
+                  className="w-full bg-[#f4f7fb] border-none text-slate-800 text-xs font-medium rounded-xl pl-11 pr-4 h-[52px] focus:ring-2 focus:ring-blue-600 focus:outline-none appearance-none"
                 >
                   <option value="">Innova Crysta Luxury</option>
                   <option value="Sedan">Sedan (Etios/Dzire)</option>
@@ -136,7 +136,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
             <div className="lg:col-span-1">
               <button
                 type="submit"
-                className="w-full py-4 px-6 rounded-xl bg-[#d97706] hover:bg-orange-600 text-white font-bold text-[11px] uppercase tracking-wider shadow-[0_0_20px_rgba(217,119,6,0.3)] flex items-center justify-center gap-2 transition-all hover:scale-[1.02]"
+                className="w-full h-[52px] rounded-xl bg-[#d97706] hover:bg-orange-600 text-white font-bold text-[11px] uppercase tracking-wider shadow-[0_0_20px_rgba(217,119,6,0.3)] flex items-center justify-center gap-2 transition-all hover:scale-[1.02]"
               >
                 <span>GET QUOTE</span>
                 <ArrowRight className="w-4 h-4" />
