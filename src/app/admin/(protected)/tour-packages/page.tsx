@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, X, Image as ImageIcon, Save, ArrowLeft } from 'lucide-react';
+import { toast } from 'react-hot-toast';
 import { ITourPackage } from '@/models/TourPackage';
 import { ITourPageContent } from '@/models/TourPageContent';
 
@@ -90,13 +91,16 @@ export default function AdminTourPackages() {
         body: JSON.stringify(payload)
       });
       if (res.ok) {
-        alert('Page Content saved!');
+        toast.success('Page Content saved!');
         setContentImageFile(null);
         fetchData();
+      } else {
+        const errData = await res.json().catch(() => null);
+        throw new Error(errData?.details || errData?.error || 'Failed to save content');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert('Error saving content');
+      toast.error(error.message || 'Error saving content');
     } finally {
       setIsSavingContent(false);
     }
@@ -166,14 +170,16 @@ export default function AdminTourPackages() {
       });
 
       if (res.ok) {
+        toast.success('Package saved successfully!');
         setView('table');
         fetchData();
       } else {
-        alert('Failed to save package');
+        const errData = await res.json().catch(() => null);
+        throw new Error(errData?.details || errData?.error || 'Failed to save package');
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert('Error saving package');
+      toast.error(err.message || 'Error saving package');
     } finally {
       setIsSubmittingPkg(false);
     }
@@ -183,9 +189,11 @@ export default function AdminTourPackages() {
     if (!confirm('Are you sure you want to delete this package?')) return;
     try {
       await fetch(`/api/tour-packages/${id}`, { method: 'DELETE' });
+      toast.success('Package deleted');
       fetchData();
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
+      toast.error('Failed to delete package');
     }
   };
 
