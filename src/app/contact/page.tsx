@@ -246,7 +246,7 @@ export default function ContactPage() {
 
             <div className="w-full h-[450px] rounded-[2rem] overflow-hidden relative shadow-lg border border-slate-100 mb-8 bg-[#f8fafc]">
                {/* Map overlay iframe */}
-               <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=216,%20E%20Veli%20St,%20Kamarajar%20Salai,%20Madurai%20Main,%20Madurai,%20Tamil%20Nadu%20625001&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="grayscale opacity-50 mix-blend-multiply"></iframe>
+               <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Madurai%20Rudhran%20Travels&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="grayscale opacity-50 mix-blend-multiply"></iframe>
                
                {/* Center Marker Pin */}
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none z-10">
