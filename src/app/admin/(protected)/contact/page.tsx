@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 import { Save } from 'lucide-react';
 
 export default function AdminContactPage() {
@@ -48,13 +49,13 @@ export default function AdminContactPage() {
         body: JSON.stringify(data)
       });
       if (res.ok) {
-        alert('Contact page content saved successfully!');
+        toast.success('Contact page content saved successfully!');
       } else {
-        alert('Failed to save content.');
+        toast.error('Failed to save content.');
       }
     } catch (e) {
       console.error(e);
-      alert('Error saving content.');
+      toast.error('Error saving content.');
     } finally {
       setSaving(false);
     }

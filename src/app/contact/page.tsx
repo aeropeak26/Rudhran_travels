@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -40,7 +41,7 @@ export default function ContactPage() {
       });
       if (!res.ok) throw new Error('Failed to submit request');
       
-      alert('Your message has been sent successfully! Our travel planner will contact you shortly.');
+      toast.success('Your message has been sent successfully! Our travel planner will contact you shortly.');
       
       setFormData({
         name: '',
@@ -51,7 +52,7 @@ export default function ContactPage() {
       });
     } catch (error) {
       console.error(error);
-      alert('There was an issue submitting your request. Please try contacting us directly on WhatsApp.');
+      toast.error('There was an issue submitting your request. Please try contacting us directly on WhatsApp.');
     } finally {
       setSubmitting(false);
     }

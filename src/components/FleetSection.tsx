@@ -30,60 +30,60 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
   }));
 
   return (
-    <section id="fleet" className="py-24 bg-[#0a192f] text-white relative poppins-regular overflow-hidden">
+    <section id="fleet" className="py-4 md:py-8 bg-[#0a192f] text-white relative poppins-regular overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 flex items-center justify-center gap-3">
+        <div className="text-center max-w-3xl mx-auto mb-3 md:mb-5 relative z-10">
+          <h2 className="text-xl md:text-2xl font-bold tracking-tight text-white mb-0.5 flex items-center justify-center gap-2">
             <span className="text-[#d97706]">✦</span> 
             Rental Tariff / Featured Vehicles 
             <span className="text-[#d97706]">✦</span>
           </h2>
-          <p className="text-slate-300 text-sm font-medium">
+          <p className="text-slate-300 text-[10px] md:text-xs font-medium">
             Well-maintained vehicles for every journey.
           </p>
         </div>
 
         {/* Tab Selector */}
-        <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-20 relative z-10">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-8 mb-2 relative z-10">
           {displayCars.map((car: any, index: number) => (
             <button
               key={index}
               onClick={() => setSelectedCarIndex(index)}
-              className={`flex flex-col items-center gap-4 transition-all duration-300 ${selectedCarIndex === index ? 'opacity-100' : 'opacity-50 hover:opacity-80'}`}
+              className={`flex flex-col items-center gap-1 transition-all duration-300 ${selectedCarIndex === index ? 'opacity-100 scale-105' : 'opacity-50 hover:opacity-80'}`}
             >
-              <div className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-colors ${selectedCarIndex === index ? 'border-white bg-white/10' : 'border-transparent'}`}>
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border transition-colors ${selectedCarIndex === index ? 'border-white bg-white/10' : 'border-transparent'}`}>
+                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d={car.icon} />
                 </svg>
               </div>
-              <span className={`text-[10px] uppercase font-bold tracking-widest ${selectedCarIndex === index ? 'text-white' : 'text-slate-400'}`}>
+              <span className={`text-[8px] md:text-[9px] uppercase font-bold tracking-widest ${selectedCarIndex === index ? 'text-white' : 'text-slate-400'}`}>
                 {car.name}
               </span>
             </button>
           ))}
         </div>
 
-        {/* Large Carousel Showcase */}
-        <div className="relative h-[250px] md:h-[400px] max-w-5xl mx-auto flex items-center justify-center">
+        {/* Compact Carousel Showcase */}
+        <div className="relative h-[120px] sm:h-[150px] md:h-[180px] lg:h-[220px] max-w-4xl mx-auto flex items-center justify-center mt-0">
           
           {/* Left Arrow */}
           <button
             onClick={() => setSelectedCarIndex((prev) => (prev > 0 ? prev - 1 : displayCars.length - 1))}
-            className="absolute left-0 z-20 w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#0a192f] hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            className="absolute left-0 z-20 w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center text-[#0a192f] hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-3 h-3 md:w-4 md:h-4" />
           </button>
 
           {/* Car Image */}
-          <div className="relative w-[90%] h-full z-10">
+          <div className="relative w-[85%] h-full z-10">
             <Image
               key={selectedCarIndex}
               src={displayCars[selectedCarIndex].image}
               alt={displayCars[selectedCarIndex].name}
               fill
-              className="object-contain animate-fadeIn drop-shadow-2xl mix-blend-screen"
+              className="object-contain animate-fadeIn drop-shadow-2xl mix-blend-screen scale-110 md:scale-125 origin-center"
               unoptimized
             />
           </div>
@@ -91,9 +91,9 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
           {/* Right Arrow */}
           <button
             onClick={() => setSelectedCarIndex((prev) => (prev < displayCars.length - 1 ? prev + 1 : 0))}
-            className="absolute right-0 z-20 w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#0a192f] hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            className="absolute right-0 z-20 w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center text-[#0a192f] hover:scale-110 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]"
           >
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
           </button>
           
         </div>

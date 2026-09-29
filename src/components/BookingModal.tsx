@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { X, CheckCircle2, Car, Calendar, MapPin, Phone, User, ShieldCheck, Mail, MessageSquare } from 'lucide-react';
 
 interface BookingModalProps {
@@ -46,11 +47,13 @@ export default function BookingModal({ isOpen, onClose, selectedItem }: BookingM
       // 3. Open WhatsApp in new tab
       window.open(`https://wa.me/919840012345?text=${encodeURIComponent(text)}`, '_blank');
       
+      toast.success('Booking request initiated! Confirming via WhatsApp.');
+
       // 4. Move to success step
       setStep(2);
     } catch (error) {
       console.error(error);
-      alert('There was an issue submitting your request. Please try contacting us directly on WhatsApp.');
+      toast.error('There was an issue submitting your request. Please try contacting us directly on WhatsApp.');
     } finally {
       setLoading(false);
     }
