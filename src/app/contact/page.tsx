@@ -12,6 +12,50 @@ import {
 export default function ContactPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [contactData, setContactData] = useState<any>(null);
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    enquiryType: 'South India Tour Package (Ooty / Munnar / Kodaikanal)',
+    message: ''
+  });
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    
+    try {
+      const res = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          pickupLocation: 'Contact Form',
+          dropLocation: formData.enquiryType,
+          pickupDate: 'N/A',
+          pickupTime: 'N/A'
+        })
+      });
+      if (!res.ok) throw new Error('Failed to submit request');
+      
+      alert('Your message has been sent successfully! Our travel planner will contact you shortly.');
+      
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        enquiryType: 'South India Tour Package (Ooty / Munnar / Kodaikanal)',
+        message: ''
+      });
+    } catch (error) {
+      console.error(error);
+      alert('There was an issue submitting your request. Please try contacting us directly on WhatsApp.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   React.useEffect(() => {
     fetch('/api/contact-content')
@@ -125,27 +169,27 @@ export default function ContactPage() {
                      <h3 className="text-2xl font-bold text-[#0f172a] mb-3">Get In Touch</h3>
                      <p className="text-[12px] text-slate-500 leading-relaxed mb-8 max-w-md">Submit your travel details, vehicle requirements, or South India itinerary ideas, and a travel planner will call within 15 minutes.</p>
                      
-                     <form className="space-y-6">
+                     <form onSubmit={handleContactSubmit} className="space-y-6">
                        <div className="space-y-2">
                          <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">FULL NAME</label>
-                         <input type="text" placeholder="e.g. Ramesh Sundaram" className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-3.5 text-[13px] text-slate-800 placeholder:text-slate-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                         <input type="text" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="e.g. Ramesh Sundaram" className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-3.5 text-[13px] text-slate-800 placeholder:text-slate-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
                        </div>
                        
                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                          <div className="space-y-2">
                            <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">EMAIL ADDRESS</label>
-                           <input type="email" placeholder="booking@example.com" className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-3.5 text-[13px] text-slate-800 placeholder:text-slate-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                           <input type="email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} placeholder="booking@example.com" className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-3.5 text-[13px] text-slate-800 placeholder:text-slate-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
                          </div>
                          <div className="space-y-2">
                            <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">WHATSAPP NUMBER</label>
-                           <input type="tel" placeholder="+91 98400 00000" className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-3.5 text-[13px] text-slate-800 placeholder:text-slate-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                           <input type="tel" required value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} placeholder="+91 98400 00000" className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-3.5 text-[13px] text-slate-800 placeholder:text-slate-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
                          </div>
                        </div>
                        
                        <div className="space-y-2">
                          <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">ENQUIRY TYPE / SERVICE</label>
                          <div className="relative">
-                           <select className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-3.5 text-[13px] text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all appearance-none shadow-sm cursor-pointer">
+                           <select value={formData.enquiryType} onChange={e => setFormData({...formData, enquiryType: e.target.value})} className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-3.5 text-[13px] text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all appearance-none shadow-sm cursor-pointer">
                              <option>South India Tour Package (Ooty / Munnar / Kodaikanal)</option>
                              <option>Outstation Journey (One-way / Round-trip)</option>
                              <option>Airport Transfer & Dispatch</option>
@@ -159,11 +203,11 @@ export default function ContactPage() {
                        
                        <div className="space-y-2">
                          <label className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">MESSAGE / ITINERARY REQUIREMENTS</label>
-                         <textarea rows={4} placeholder="Tell us about your travel dates, vehicle preference, or custom itinerary..." className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-3.5 text-[13px] text-slate-800 placeholder:text-slate-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none shadow-sm"></textarea>
+                         <textarea rows={4} required value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} placeholder="Tell us about your travel dates, vehicle preference, or custom itinerary..." className="w-full bg-white border border-slate-200 hover:border-slate-300 rounded-xl px-4 py-3.5 text-[13px] text-slate-800 placeholder:text-slate-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none shadow-sm"></textarea>
                        </div>
                        
-                       <button type="button" className="py-4 px-8 bg-[#0f172a] hover:bg-blue-900 text-white rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-3 shadow-lg w-auto min-w-[200px]">
-                         SEND A MESSAGE <ArrowRight className="w-4 h-4" />
+                       <button type="submit" disabled={submitting} className="py-4 px-8 bg-[#0f172a] hover:bg-blue-900 text-white rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-3 shadow-lg w-auto min-w-[200px] disabled:opacity-50">
+                         {submitting ? 'SENDING...' : 'SEND A MESSAGE'} <ArrowRight className="w-4 h-4" />
                        </button>
                      </form>
                   </div>
