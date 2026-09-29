@@ -11,6 +11,18 @@ import {
 
 export default function ContactPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [contactData, setContactData] = useState<any>(null);
+
+  React.useEffect(() => {
+    fetch('/api/contact-content')
+      .then(res => res.json())
+      .then(data => {
+        if (data && Object.keys(data).length > 0) {
+          setContactData(data);
+        }
+      })
+      .catch(err => console.error('Error fetching contact content:', err));
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans selection:bg-blue-600 selection:text-white flex flex-col">
@@ -60,7 +72,10 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">CALL CENTER</h4>
-                        <p className="text-[14px] font-bold text-[#0f172a] tracking-wide">+91 98400 12345<br/>+91 98765 43210</p>
+                        <p className="text-[14px] font-bold text-[#0f172a] tracking-wide">
+                          {contactData?.callCenter?.phone1 || '+91 98400 12345'}<br/>
+                          {contactData?.callCenter?.phone2 || '+91 98765 43210'}
+                        </p>
                       </div>
                     </div>
                     <div className="bg-white border border-slate-100 rounded-2xl p-6 flex items-center gap-6 shadow-sm hover:shadow-md transition-shadow group">
@@ -69,7 +84,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">OUR LOCATION</h4>
-                        <p className="text-[13px] font-medium text-slate-700 leading-relaxed">No. 42, GST Road, Guindy,<br/>Chennai, Tamil Nadu 600032</p>
+                        <p className="text-[13px] font-medium text-slate-700 leading-relaxed whitespace-pre-wrap">{contactData?.location?.address || 'No. 42, GST Road, Guindy,\nChennai, Tamil Nadu 600032'}</p>
                       </div>
                     </div>
                     <div className="bg-white border border-slate-100 rounded-2xl p-6 flex items-center gap-6 shadow-sm hover:shadow-md transition-shadow group">
@@ -78,7 +93,10 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">EMAIL</h4>
-                        <p className="text-[13px] font-medium text-slate-700 leading-relaxed">booking@rudhrantravels.com<br/>support@rudhrantravels.com</p>
+                        <p className="text-[13px] font-medium text-slate-700 leading-relaxed">
+                          {contactData?.email?.email1 || 'booking@rudhrantravels.com'}<br/>
+                          {contactData?.email?.email2 || 'support@rudhrantravels.com'}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -174,7 +192,7 @@ export default function ContactPage() {
 
             <div className="w-full h-[450px] rounded-[2rem] overflow-hidden relative shadow-lg border border-slate-100 mb-8 bg-[#f8fafc]">
                {/* Map overlay iframe */}
-               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x3a526733230a6c69%3A0xc9c1692ce5868e82!2sGuindy%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683100000000!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="grayscale opacity-50 mix-blend-multiply"></iframe>
+               <iframe src={contactData?.mapEmbedUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x3a526733230a6c69%3A0xc9c1692ce5868e82!2sGuindy%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683100000000!5m2!1sen!2sin"} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="grayscale opacity-50 mix-blend-multiply"></iframe>
                
                {/* Center Marker Pin */}
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none z-10">
@@ -191,7 +209,7 @@ export default function ContactPage() {
                    <h4 className="text-[10px] font-bold text-[#0f172a] uppercase tracking-wider leading-tight">RUDHRAN TRAVELS HEAD OFFICE</h4>
                    <div className="bg-blue-50 p-1 rounded-full"><ArrowRight className="w-3 h-3 text-blue-600 -rotate-45" /></div>
                  </div>
-                 <p className="text-[10px] text-slate-500 mb-3 leading-relaxed">No. 42, GST Road, Guindy, Chennai, Tamil Nadu 600032</p>
+                 <p className="text-[10px] text-slate-500 mb-3 leading-relaxed">{contactData?.location?.address || 'No. 42, GST Road, Guindy, Chennai, Tamil Nadu 600032'}</p>
                  <div className="flex items-center gap-1.5 text-[10px] text-slate-800 font-bold mb-3">
                    4.9 <div className="flex gap-0.5"><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/><Star className="w-3 h-3 fill-amber-400 text-amber-400"/></div> <span className="text-slate-400 font-normal">(500+ reviews)</span>
                  </div>
@@ -246,10 +264,10 @@ export default function ContactPage() {
                </div>
                
                <div className="relative z-10 flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
-                 <a href="tel:+919840012345" className="px-8 py-4.5 bg-[#2563eb] hover:bg-blue-600 text-white rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.3)]">
+                 <a href={`tel:${contactData?.callCenter?.phone1?.replace(/[^0-9+]/g, '') || '+919840012345'}`} className="px-8 py-4.5 bg-[#2563eb] hover:bg-blue-600 text-white rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.3)]">
                    <Phone className="w-4 h-4 fill-white" /> CALL FAST DESK
                  </a>
-                 <a href="https://wa.me/919840012345" className="px-8 py-4.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                 <a href={`https://wa.me/${contactData?.callCenter?.phone1?.replace(/[^0-9]/g, '') || '919840012345'}`} className="px-8 py-4.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2">
                    <MessageCircle className="w-4 h-4" /> WHATSAPP TOLL-FREE
                  </a>
                </div>

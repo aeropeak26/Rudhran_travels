@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { LayoutDashboard, MessageSquare, Car, Image as ImageIcon, Map, FileText, LogOut } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, Car, Image as ImageIcon, Map, FileText, LogOut, Phone } from 'lucide-react';
 
 const navigation = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
@@ -13,6 +13,7 @@ const navigation = [
   { name: 'Tour Packages', href: '/admin/tour-packages', icon: Map },
   { name: 'Gallery', href: '/admin/gallery', icon: ImageIcon },
   { name: 'Pages', href: '/admin/pages', icon: FileText },
+  { name: 'Contact Info', href: '/admin/contact', icon: Phone },
 ];
 
 export default function AdminSidebar() {
