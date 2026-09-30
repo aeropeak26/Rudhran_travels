@@ -29,7 +29,7 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
       {/* Main Container Card */}
       <div className="bg-white rounded-3xl shadow-2xl shadow-slate-300/60 border border-slate-100 overflow-hidden">
         
-        <form onSubmit={handleSubmit} className="p-6 md:p-8">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 md:p-8">
           
           {/* Header Row */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">

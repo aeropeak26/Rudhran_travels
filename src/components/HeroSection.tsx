@@ -76,7 +76,7 @@ export default function HeroSection({ data, onSearchCars, onOpenBookingModal }: 
         </div>
 
         {/* Floating Search Bar Box */}
-        <div id="booking-widget" className="relative z-30 -mb-24 md:-mb-28 mt-8">
+        <div id="booking-widget" className="relative z-30 mb-8 md:-mb-28 mt-8">
           <BookingWidget onSearchCars={onSearchCars} />
         </div>
 
