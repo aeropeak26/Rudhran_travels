@@ -69,11 +69,11 @@ export default function FaqSection() {
           </div>
 
           <a
-            href="tel:+919876543210"
+            href="tel:+918760380485"
             className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-xs flex items-center space-x-2 shadow-md transition-all hover:scale-105 whitespace-nowrap"
           >
             <PhoneCall className="w-4 h-4 text-amber-300" />
-            <span>Call +91 98765 43210</span>
+            <span>Call +91 87603 80485</span>
           </a>
         </div>
 

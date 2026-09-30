@@ -13,7 +13,7 @@ export default function FloatingContact() {
   return (
     <div className="fixed right-4 bottom-6 md:right-6 md:bottom-8 flex flex-col gap-4 z-50">
       <a
-        href="https://wa.me/919876543210"
+        href="https://wa.me/918760380485"
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#25D366] hover:bg-[#1ebe57] text-white flex items-center justify-center shadow-2xl hover:shadow-green-500/30 transition-transform duration-300 hover:scale-110 group relative"
@@ -23,7 +23,7 @@ export default function FloatingContact() {
         <FaWhatsapp className="w-8 h-8 md:w-9 md:h-9 relative z-10" />
       </a>
       <a
-        href="tel:+919876543210"
+        href="tel:+918760380485"
         className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#0066ff] hover:bg-[#0052cc] text-white flex items-center justify-center shadow-lg hover:shadow-blue-500/30 transition-transform duration-300 hover:scale-110 ml-1 md:ml-1"
         title="Call Support"
       >

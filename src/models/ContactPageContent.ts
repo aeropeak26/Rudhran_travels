@@ -13,12 +13,14 @@ export interface IContactPageContent extends Document {
     email2: string;
   };
   mapEmbedUrl: string;
+  backgroundImage: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
 const ContactPageContentSchema: Schema = new Schema(
   {
+    backgroundImage: { type: String, default: '' },
     callCenter: {
       phone1: { type: String, default: '' },
       phone2: { type: String, default: '' },
