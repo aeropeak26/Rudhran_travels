@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 // Must match the .env.local string
-const MONGODB_URI = 'mongodb+srv://madurairudhrantravels_db_user:PBMJ7XERFxhbEdo9@mrt.um8ih4n.mongodb.net/?appName=mrt';
+const MONGODB_URI = 'mongodb://madurairudhrantravels_db_user:PBMJ7XERFxhbEdo9@ac-s98m27a-shard-00-00.um8ih4n.mongodb.net:27017,ac-s98m27a-shard-00-01.um8ih4n.mongodb.net:27017,ac-s98m27a-shard-00-02.um8ih4n.mongodb.net:27017/test?ssl=true&authSource=admin&replicaSet=atlas-131nll-shard-0&appName=mrt';
 
 const AdminUserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },

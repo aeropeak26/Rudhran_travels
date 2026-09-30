@@ -414,7 +414,24 @@ export default function AdminTourPackages() {
       )}
       {activeTab === 'packages' && view === 'table' && (
         <div>
-          <div className="flex justify-end mb-4">
+          <div className="flex justify-end mb-4 space-x-4">
+            <button onClick={async () => {
+              if (confirm('This will overwrite hero, itinerary, vehicles, inclusions, exclusions, and waypoints of all packages with the Mysore package content. Are you sure?')) {
+                try {
+                  const res = await fetch('/api/fix-mysore');
+                  if (res.ok) {
+                    toast.success('All packages synced with Mysore content!');
+                    fetchData();
+                  } else {
+                    toast.error('Failed to sync packages');
+                  }
+                } catch (e) {
+                  toast.error('Error syncing packages');
+                }
+              }
+            }} className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+              Sync All Packages with Mysore
+            </button>
             <button onClick={() => handleOpenForm()} className="flex items-center px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700">
               <Plus className="w-4 h-4 mr-2" /> Add Package
             </button>
@@ -588,6 +605,34 @@ export default function AdminTourPackages() {
                     <div className="mb-4">
                       <input type="text" placeholder="Day Title (e.g. Valara Cascades)" value={day.title} onChange={e => { const n = [...pkgData.itinerary]; n[i].title = e.target.value; setPkgData({...pkgData, itinerary: n}); }} className="w-full border p-2 rounded text-black mb-2" />
                       <textarea placeholder="Day Description..." rows={3} value={day.desc} onChange={e => { const n = [...pkgData.itinerary]; n[i].desc = e.target.value; setPkgData({...pkgData, itinerary: n}); }} className="w-full border p-2 rounded text-black" />
+                    </div>
+                    <div className="mb-4 border border-blue-100 py-3 bg-blue-50/30 rounded-lg px-4">
+                      <label className="block text-xs font-bold text-gray-500 uppercase mb-3">Optional Highlight Box (Note)</label>
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <select value={day.note?.icon || ''} onChange={e => { 
+                          const n = [...pkgData.itinerary]; 
+                          if(!n[i].note) n[i].note = { icon: '', title: '', content: '' };
+                          n[i].note.icon = e.target.value; 
+                          setPkgData({...pkgData, itinerary: n}); 
+                        }} className="border p-2 rounded text-black text-sm">
+                          <option value="">No Highlight Box</option>
+                          <option value="lightbulb">Yellow (Lightbulb)</option>
+                          <option value="leaf">Green (Leaf)</option>
+                          <option value="shield">Blue (Shield)</option>
+                        </select>
+                        <input type="text" placeholder="Note Title (e.g. Driver's Tip:)" value={day.note?.title || ''} onChange={e => { 
+                          const n = [...pkgData.itinerary]; 
+                          if(!n[i].note) n[i].note = { icon: 'lightbulb', title: '', content: '' };
+                          n[i].note.title = e.target.value; 
+                          setPkgData({...pkgData, itinerary: n}); 
+                        }} className="border p-2 rounded text-black text-sm" />
+                        <input type="text" placeholder="Note Content" value={day.note?.content || ''} onChange={e => { 
+                          const n = [...pkgData.itinerary]; 
+                          if(!n[i].note) n[i].note = { icon: 'lightbulb', title: '', content: '' };
+                          n[i].note.content = e.target.value; 
+                          setPkgData({...pkgData, itinerary: n}); 
+                        }} className="border p-2 rounded text-black text-sm md:col-span-2" />
+                      </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <input type="text" placeholder="Stay (e.g. Tall Trees)" value={day.stay} onChange={e => { const n = [...pkgData.itinerary]; n[i].stay = e.target.value; setPkgData({...pkgData, itinerary: n}); }} className="border p-2 rounded text-black" />

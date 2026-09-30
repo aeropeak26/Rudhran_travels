@@ -265,8 +265,8 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                                 {day.note.icon === 'leaf' && <Leaf className="w-4 h-4" />}
                                 {day.note.icon === 'shield' && <ShieldCheck className="w-4 h-4" />}
                               </div>
-                              <p className={`text-[11px] leading-relaxed ${day.note.icon === 'leaf' ? 'text-emerald-800' : day.note.icon === 'shield' ? 'text-blue-800' : 'text-slate-800'}`}>
-                                <strong>{day.note.title}</strong> {day.note.content}
+                              <p className="text-[11px] leading-relaxed text-slate-800">
+                                <strong className={day.note.icon === 'lightbulb' ? 'text-amber-700' : day.note.icon === 'leaf' ? 'text-emerald-700' : 'text-blue-700'}>{day.note.title}</strong> {day.note.content}
                               </p>
                             </div>
                           </div>
