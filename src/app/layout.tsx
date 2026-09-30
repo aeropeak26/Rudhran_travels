@@ -9,13 +9,30 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://madurai-rudhran-travels.vercel.app'),
   title: "Rudhran Car Travels | Premium Outstation Taxi & Tour Packages Madurai",
   description: "Explore South India with Rudhran Car Travels. Reliable outstation cabs, tour packages for Madurai, Rameshwaram, Kodaikanal, and Ooty with transparent pricing.",
   keywords: ["rudhran car travels", "madurai cab rental", "madurai to rameshwaram taxi", "madurai to kodaikanal car package", "outstation taxi madurai"],
   openGraph: {
     title: "Rudhran Car Travels - Drive Your Dreams",
     description: "Premium car rental, outstation journeys, and curated tour packages across South India.",
+    url: 'https://madurai-rudhran-travels.vercel.app',
+    siteName: 'Rudhran Car Travels',
+    images: [
+      {
+        url: '/images/logo.png', // This uses the logo in public folder
+        width: 800,
+        height: 600,
+        alt: 'Rudhran Travels Logo',
+      },
+    ],
     type: "website",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rudhran Car Travels',
+    description: 'Premium car rental and curated tour packages across South India.',
+    images: ['/images/logo.png'],
   },
 };
 
