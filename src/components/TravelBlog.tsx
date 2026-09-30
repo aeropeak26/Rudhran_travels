@@ -69,8 +69,11 @@ export default function TravelBlog({ data }: { data?: any[] }) {
                 unoptimized
               />
               
+              {/* Black Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-transparent pointer-events-none z-10"></div>
+              
               {/* Dark Overlay Box for Text */}
-              <div className="absolute top-6 left-6 right-6 bg-[#0f172a]/60 backdrop-blur-md rounded-2xl p-4 text-white shadow-lg border border-white/10 transition-transform duration-300 group-hover:-translate-y-1">
+              <div className="absolute top-6 left-6 right-6 bg-[#0f172a]/40 backdrop-blur-md rounded-2xl p-4 text-white shadow-lg border border-white/10 transition-transform duration-300 group-hover:-translate-y-1 z-20">
                 <h3 className="text-[17px] font-bold leading-tight mb-1 font-serif">{item.title}</h3>
                 <p className="text-[11px] text-slate-300 font-medium">{item.sub}</p>
               </div>
