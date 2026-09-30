@@ -482,7 +482,11 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
         </section>
       </main>
       <Footer />
-      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <BookingModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        selectedItem={pkg ? { ...pkg, type: 'Tour Package' } : undefined}
+      />
     </div>
   );
 }

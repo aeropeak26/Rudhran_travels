@@ -49,13 +49,9 @@ export default function BookingModal({ isOpen, onClose, selectedItem }: BookingM
       
       if (!res.ok) throw new Error('Failed to submit request');
 
-      // 2. Build WhatsApp Message
-      const text = `Hello Rudhran Travels! I would like to book a ${serviceType} (${serviceName}).\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email}\n*Route:* ${formData.pickupLocation} to ${formData.dropLocation}\n*Date & Time:* ${formData.pickupDate} at ${formData.pickupTime}\n*Message:* ${formData.message || 'None'}\n\nPlease confirm availability and fare.`;
+      // Removed WhatsApp redirect as per request
       
-      // 3. Open WhatsApp in new tab
-      window.open(`https://wa.me/918760380485?text=${encodeURIComponent(text)}`, '_blank');
-      
-      toast.success('Booking request initiated! Confirming via WhatsApp.');
+      toast.success('Booking request initiated! Our team will contact you shortly.');
 
       // 4. Move to success step
       setStep(2);
@@ -73,7 +69,20 @@ export default function BookingModal({ isOpen, onClose, selectedItem }: BookingM
         
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={() => {
+            setFormData({
+              name: '',
+              phone: '',
+              email: '',
+              pickupLocation: 'Chennai',
+              dropLocation: selectedItem?.location || 'Rameshwaram',
+              pickupDate: '2026-10-01',
+              pickupTime: '07:00',
+              message: '',
+            });
+            setStep(1);
+            onClose();
+          }}
           className="absolute top-5 right-5 p-2 rounded-xl bg-slate-100 text-slate-400 hover:text-slate-900 hover:bg-slate-200 transition-colors"
         >
           <X className="w-5 h-5" />
@@ -258,7 +267,7 @@ export default function BookingModal({ isOpen, onClose, selectedItem }: BookingM
             <div className="space-y-2">
               <h3 className="text-2xl font-black text-slate-900">Booking Request Received!</h3>
               <p className="text-xs text-slate-500 max-w-md mx-auto">
-                Thank you <strong className="text-blue-600">{formData.name}</strong>! We've sent a WhatsApp confirmation to <strong className="text-slate-700">{formData.phone}</strong> and an email receipt.
+                Thank you <strong className="text-blue-600">{formData.name}</strong>! We've received your booking request and our team will contact you shortly at <strong className="text-slate-700">{formData.phone}</strong>.
               </p>
             </div>
 
