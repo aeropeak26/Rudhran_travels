@@ -411,23 +411,7 @@ export default function AdminTourPackages() {
       {activeTab === 'packages' && view === 'table' && (
         <div>
           <div className="flex justify-end mb-4 space-x-4">
-            <button onClick={async () => {
-              if (confirm('This will overwrite hero, itinerary, vehicles, inclusions, exclusions, and waypoints of all packages with the Mysore package content. Are you sure?')) {
-                try {
-                  const res = await fetch('/api/fix-mysore');
-                  if (res.ok) {
-                    toast.success('All packages synced with Mysore content!');
-                    fetchData();
-                  } else {
-                    toast.error('Failed to sync packages');
-                  }
-                } catch (e) {
-                  toast.error('Error syncing packages');
-                }
-              }
-            }} className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
-              Sync All Packages with Mysore
-            </button>
+
             <button onClick={() => handleOpenForm()} className="flex items-center px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700">
               <Plus className="w-4 h-4 mr-2" /> Add Package
             </button>
