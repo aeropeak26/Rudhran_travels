@@ -48,36 +48,37 @@ export default function SplashScreen() {
   if (!loading) return null;
 
   return (
-    <div className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#0a1526] transition-opacity duration-1000 ${progress === 100 ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+    <div className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-slate-50 transition-opacity duration-1000 ${progress === 100 ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
       
       {/* Background decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-900/20 blur-[100px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-blue-400/10 blur-[80px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-1/3 right-1/4 w-[200px] h-[200px] bg-orange-400/10 blur-[60px] rounded-full pointer-events-none"></div>
 
-      <div className="relative z-10 flex flex-col items-center">
+      <div className="relative z-10 flex flex-col items-center w-full px-8">
         {/* Logo */}
-        <div className="mb-12 relative">
-          <div className="absolute inset-0 bg-white/10 blur-xl rounded-full"></div>
+        <div className="mb-10 relative">
           <img 
             src="/images/logo.png" 
             alt="Rudhran Travels Logo" 
-            className="w-48 md:w-64 relative z-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+            className="w-56 md:w-72 relative z-10 drop-shadow-xl"
           />
         </div>
 
         {/* Progress Bar Container */}
-        <div className="w-64 h-1.5 bg-slate-800 rounded-full overflow-hidden mb-4 relative">
+        <div className="w-full max-w-[280px] md:max-w-xs h-1.5 bg-slate-200 rounded-full overflow-hidden mb-5 relative shadow-inner">
           {/* Animated fill */}
           <div 
-            className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-600 via-orange-500 to-emerald-500 rounded-full transition-all duration-75 ease-linear"
+            className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-600 to-orange-500 rounded-full transition-all duration-75 ease-linear"
             style={{ width: `${progress}%` }}
           />
         </div>
 
         {/* Percentage text */}
-        <div className="text-white/80 font-medium tracking-widest text-sm tabular-nums flex items-center gap-2">
-          <span>{progress}%</span>
-          {progress === 100 && (
-            <span className="text-emerald-400 text-xs uppercase animate-pulse">Ready</span>
+        <div className="text-slate-600 font-bold tracking-widest text-[11px] md:text-xs tabular-nums flex items-center justify-center min-w-[80px]">
+          {progress === 100 ? (
+            <span className="text-emerald-600 uppercase animate-pulse">Ready</span>
+          ) : (
+            <span>LOADING {progress}%</span>
           )}
         </div>
       </div>
