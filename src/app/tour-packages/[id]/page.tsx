@@ -235,18 +235,18 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                 return (
                   <div 
                     key={idx} 
-                    className={`bg-white rounded-[1.8rem] p-4 md:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-100 flex flex-col md:flex-row gap-6 md:gap-10 items-stretch overflow-hidden min-h-[340px] md:min-h-[380px] transition-all hover:shadow-xl ${
+                    className={`bg-white rounded-[1.5rem] shadow-sm border border-slate-100 flex flex-col md:flex-row items-stretch overflow-hidden min-h-[340px] md:min-h-[380px] transition-all hover:shadow-md ${
                       isReverse ? 'md:flex-row-reverse' : ''
                     }`}
                   >
-                    <div className="w-full md:w-5/12 min-h-[260px] md:min-h-[330px] relative rounded-2xl overflow-hidden shrink-0 shadow-inner">
+                    <div className="w-full md:w-5/12 min-h-[260px] md:min-h-[380px] relative overflow-hidden shrink-0">
                        <Image src={day.img} alt={day.title} fill className="object-cover transition-transform duration-700 hover:scale-105" />
-                       <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md text-white text-[10px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+                       <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
                          {day.dayLabel}
                        </div>
                     </div>
                     
-                    <div className="w-full md:w-7/12 py-2 md:py-4 px-1 md:px-2 flex flex-col justify-between">
+                    <div className="w-full md:w-7/12 p-6 md:p-8 flex flex-col justify-between">
                       <div>
                         {day.tag && (
                           <div className="flex items-center gap-2 mb-3">
