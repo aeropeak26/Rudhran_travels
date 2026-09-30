@@ -15,6 +15,9 @@ export default function HeroSection({ data, onSearchCars, onOpenBookingModal }: 
   return (
     <section className="py-12 md:py-16 md: relative bg-cover bg-center bg-no-repeat pb-4 text-white poppins-regular min-h-[520px]" style={{ backgroundImage: `url(${data?.backgroundImage || '/images/Home/bg.png'})` }}>
       
+      {/* Mobile Gradient Overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent md:hidden z-10"></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         
         {/* Top Hero Content */}
