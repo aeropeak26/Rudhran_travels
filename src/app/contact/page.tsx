@@ -127,8 +127,21 @@ export default function ContactPage() {
                       <div>
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">CALL CENTER</h4>
                         <p className="text-[14px] font-bold text-[#0f172a] tracking-wide">
-                          {contactData?.callCenter?.phone1 || '+91 8760380485'}<br/>
-                          {contactData?.callCenter?.phone2 || '+91 8760380485'}
+                          {(() => {
+                            const p1 = contactData?.callCenter?.phone1 || '+91 8760380485';
+                            const p2 = contactData?.callCenter?.phone2 || '';
+                            return (
+                              <>
+                                {p1}
+                                {p2 && p2 !== p1 && (
+                                  <>
+                                    <br />
+                                    {p2}
+                                  </>
+                                )}
+                              </>
+                            );
+                          })()}
                         </p>
                       </div>
                     </div>
@@ -148,8 +161,21 @@ export default function ContactPage() {
                       <div>
                         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">EMAIL</h4>
                         <p className="text-[13px] font-medium text-slate-700 leading-relaxed">
-                          {contactData?.email?.email1 || 'madurairudhrantravels@gmail.com'}<br/>
-                          {contactData?.email?.email2 || 'madurairudhrantravels@gmail.com'}
+                          {(() => {
+                            const e1 = contactData?.email?.email1 || 'madurairudhrantravels@gmail.com';
+                            const e2 = contactData?.email?.email2 || '';
+                            return (
+                              <>
+                                {e1}
+                                {e2 && e2 !== e1 && (
+                                  <>
+                                    <br />
+                                    {e2}
+                                  </>
+                                )}
+                              </>
+                            );
+                          })()}
                         </p>
                       </div>
                     </div>
