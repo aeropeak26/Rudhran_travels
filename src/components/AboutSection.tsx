@@ -73,7 +73,7 @@ export default function AboutSection({ data }: { data?: any }) {
 
             <div className="pt-6">
               <a
-                href="#contact"
+                href="tel:+918760380485"
                 className="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-[#0b162c] hover:bg-slate-900 text-white font-bold text-[11px] uppercase tracking-wider shadow-xl transition-transform hover:scale-[1.02]"
               >
                 <span>Speak with Operations Team</span>
