@@ -12,6 +12,7 @@ export interface IBookingRequest extends Document {
   serviceType: string;
   serviceName: string;
   status: 'Pending' | 'Contacted' | 'Confirmed' | 'Cancelled';
+  sourceUrl?: string;
   createdAt: Date;
 }
 
@@ -27,6 +28,7 @@ const BookingRequestSchema: Schema = new Schema({
   serviceType: { type: String, default: 'General Enquiry' },
   serviceName: { type: String, default: 'None' },
   status: { type: String, default: 'Pending', enum: ['Pending', 'Contacted', 'Confirmed', 'Cancelled'] },
+  sourceUrl: { type: String, default: '' },
   createdAt: { type: Date, default: Date.now },
 });
 

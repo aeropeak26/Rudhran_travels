@@ -116,6 +116,11 @@ export default function RequestsPage() {
                         <div>
                           <div className="text-sm font-bold text-slate-700">{req.serviceName || 'N/A'}</div>
                           <div className="text-xs text-slate-500">Customer was viewing</div>
+                          {req.sourceUrl && (
+                            <a href={req.sourceUrl} target="_blank" rel="noreferrer" className="text-[10px] text-blue-500 hover:underline mt-1 block truncate max-w-xs">
+                              {req.sourceUrl}
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>

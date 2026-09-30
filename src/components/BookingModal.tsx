@@ -38,7 +38,8 @@ export default function BookingModal({ isOpen, onClose, selectedItem }: BookingM
       const payload = {
         ...formData,
         serviceType,
-        serviceName
+        serviceName,
+        sourceUrl: typeof window !== 'undefined' ? window.location.href : ''
       };
 
       const res = await fetch('/api/bookings', {
