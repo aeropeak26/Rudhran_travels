@@ -65,7 +65,7 @@ export default function VehicleDetailsPage() {
       <main className="flex-grow pb-24">
         
         {/* 1. Breadcrumb & Top Bar */}
-        <section className="py-12 md:py-16 md: bg-[#f4f7fb]">
+        <section className="pt-6 pb-2 md:pt-8 md:pb-4 bg-[#f4f7fb]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center space-x-2 text-[12px] font-medium text-slate-600">
               <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
@@ -85,7 +85,7 @@ export default function VehicleDetailsPage() {
         </section>
 
         {/* 2. Hero Section */}
-        <section className="py-12 md:py-16 md: max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-4 md:py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             
             {/* Left Side: Gallery & Highlights */}

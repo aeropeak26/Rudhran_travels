@@ -6,6 +6,7 @@ import { Calendar, MapPin, Phone, User, Mail, Clock, MessageSquare, ExternalLink
 export default function RequestsPage() {
   const [requests, setRequests] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/bookings')
@@ -65,6 +66,12 @@ export default function RequestsPage() {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-2">
+                  <button 
+                    onClick={() => setExpandedId(expandedId === req._id ? null : req._id)}
+                    className="bg-white hover:bg-slate-50 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border border-slate-200 inline-flex items-center gap-1"
+                  >
+                    {expandedId === req._id ? 'Hide Details' : 'View Details'}
+                  </button>
                   <a href={`https://wa.me/${req.phone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors inline-flex items-center gap-1 border border-emerald-200">
                     <Phone className="w-3 h-3" /> WhatsApp
                   </a>
@@ -73,67 +80,78 @@ export default function RequestsPage() {
                   </a>
                 </div>
               </div>
-              <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Trip Details</h4>
-                    
-                    <div className="flex items-start gap-3">
-                      <MapPin className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-sm font-bold text-slate-700">{req.pickupLocation}</div>
-                        <div className="text-xs text-slate-500">Pickup City</div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-3">
-                      <MapPin className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-sm font-bold text-slate-700">{req.dropLocation}</div>
-                        <div className="text-xs text-slate-500">Destination City</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <Calendar className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-sm font-bold text-slate-700">{req.pickupDate} at {req.pickupTime}</div>
-                        <div className="text-xs text-slate-500">Scheduled For</div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Contact & Message</h4>
-                    
-                    <div className="flex items-start gap-3">
-                      <Phone className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-sm font-bold text-slate-700">{req.phone}</div>
-                        <div className="text-xs text-slate-500">Phone Number</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <Mail className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-sm font-bold text-slate-700">{req.email}</div>
-                        <div className="text-xs text-slate-500">Email Address</div>
-                      </div>
-                    </div>
-
-                    {req.message && (
-                      <div className="flex items-start gap-3 mt-4 pt-4 border-t border-slate-100">
-                        <MessageSquare className="w-5 h-5 text-orange-500 mt-0.5 shrink-0" />
+              
+              {expandedId === req._id && (
+                <div className="p-6 bg-white animate-fadeIn">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Trip Details</h4>
+                      
+                      <div className="flex items-start gap-3">
+                        <MapPin className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
                         <div>
-                          <div className="text-sm text-slate-700 italic">"{req.message}"</div>
-                          <div className="text-xs text-slate-500 mt-1">Special Request</div>
+                          <div className="text-sm font-bold text-slate-700">{req.pickupLocation}</div>
+                          <div className="text-xs text-slate-500">Pickup City</div>
                         </div>
                       </div>
-                    )}
+                      
+                      <div className="flex items-start gap-3">
+                        <MapPin className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" />
+                        <div>
+                          <div className="text-sm font-bold text-slate-700">{req.dropLocation}</div>
+                          <div className="text-xs text-slate-500">Destination City</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        <Calendar className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
+                        <div>
+                          <div className="text-sm font-bold text-slate-700">{req.pickupDate} at {req.pickupTime}</div>
+                          <div className="text-xs text-slate-500">Scheduled For</div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start gap-3 mt-4 pt-4 border-t border-slate-100">
+                        <ExternalLink className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
+                        <div>
+                          <div className="text-sm font-bold text-slate-700">{req.serviceName || 'N/A'}</div>
+                          <div className="text-xs text-slate-500">Customer was viewing</div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Contact & Message</h4>
+                      
+                      <div className="flex items-start gap-3">
+                        <Phone className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
+                        <div>
+                          <div className="text-sm font-bold text-slate-700">{req.phone}</div>
+                          <div className="text-xs text-slate-500">Phone Number</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        <Mail className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
+                        <div>
+                          <div className="text-sm font-bold text-slate-700">{req.email}</div>
+                          <div className="text-xs text-slate-500">Email Address</div>
+                        </div>
+                      </div>
+
+                      {req.message && (
+                        <div className="flex items-start gap-3 mt-4 pt-4 border-t border-slate-100">
+                          <MessageSquare className="w-5 h-5 text-orange-500 mt-0.5 shrink-0" />
+                          <div>
+                            <div className="text-sm text-slate-700 italic">"{req.message}"</div>
+                            <div className="text-xs text-slate-500 mt-1">Special Request</div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </div>
