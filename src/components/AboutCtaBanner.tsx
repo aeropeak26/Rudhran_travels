@@ -27,7 +27,7 @@ export default function AboutCtaBanner() {
 
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link 
-            href="/#vehicles"
+            href="/tariff"
             className="bg-blue-600 hover:bg-blue-500 text-white font-bold text-[13px] px-8 py-3.5 rounded-lg shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all"
           >
             Explore Vehicles

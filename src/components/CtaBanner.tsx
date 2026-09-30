@@ -1,13 +1,22 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { LayoutGrid } from 'lucide-react';
 
 interface CtaBannerProps {
-  onOpenBookingModal: () => void;
+  onOpenBookingModal?: () => void;
 }
 
 export default function CtaBanner({ onOpenBookingModal }: CtaBannerProps) {
+  const [date, setDate] = useState('');
+  const [travelers, setTravelers] = useState('');
+  const [destination, setDestination] = useState('');
+
+  const handleGetQuote = () => {
+    const text = `Hello Rudhran Travels, I'm planning a Custom Vacation and need a quote.\n\n*Approx Travel Date:* ${date || 'Not specified'}\n*No. of Travelers:* ${travelers || 'Not specified'}\n*Desired Destination:* ${destination || 'Not specified'}\n\nPlease help me plan this trip.`;
+    window.open(`https://wa.me/918760380485?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
   return (
     <section className="py-12 md:py-16 md: bg-[#0b162c] md: poppins-regular border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,6 +46,8 @@ export default function CtaBanner({ onOpenBookingModal }: CtaBannerProps) {
                 </label>
                 <input
                   type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                   className="w-full bg-[#1e293b] text-white border-none rounded-lg px-4 py-3 text-xs focus:ring-1 focus:ring-orange-500 focus:outline-none"
                 />
               </div>
@@ -48,6 +59,8 @@ export default function CtaBanner({ onOpenBookingModal }: CtaBannerProps) {
                 </label>
                 <input
                   type="text"
+                  value={travelers}
+                  onChange={(e) => setTravelers(e.target.value)}
                   placeholder="5 to 7 Persons"
                   className="w-full bg-[#1e293b] text-white placeholder-slate-400 border-none rounded-lg px-4 py-3 text-xs focus:ring-1 focus:ring-orange-500 focus:outline-none"
                 />
@@ -60,6 +73,8 @@ export default function CtaBanner({ onOpenBookingModal }: CtaBannerProps) {
                 </label>
                 <input
                   type="text"
+                  value={destination}
+                  onChange={(e) => setDestination(e.target.value)}
                   placeholder="e.g. Rameshwaram + Kanyakumari"
                   className="w-full bg-[#1e293b] text-white placeholder-slate-400 border-none rounded-lg px-4 py-3 text-xs focus:ring-1 focus:ring-orange-500 focus:outline-none"
                 />
@@ -68,7 +83,7 @@ export default function CtaBanner({ onOpenBookingModal }: CtaBannerProps) {
 
             <div className="flex justify-end mt-4">
               <button
-                onClick={onOpenBookingModal}
+                onClick={handleGetQuote}
                 className="bg-[#f97316] hover:bg-orange-500 text-white font-bold text-[11px] uppercase tracking-wider px-6 py-3 rounded-lg flex items-center gap-2 transition-all hover:scale-[1.02] shadow-lg"
               >
                 <span>GET QUOTE NOW</span>
