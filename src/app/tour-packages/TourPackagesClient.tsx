@@ -17,9 +17,8 @@ import { useLiveUpdates } from '@/hooks/useLiveUpdates';
 export default function TourPackagesClient({ initialData }: { initialData: any }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filter, setFilter] = useState('All Packages');
-  const [packagesData, setPackagesData] = useState<any[]>([]);
+  const [packagesData, setPackagesData] = useState<any[]>(initialData.packages || []);
   const [pageContent, setPageContent] = useState<any>(initialData.pageContent || null);
-  const [loading, setLoading] = useState(true);
 
   const fetchData = React.useCallback(async () => {
     try {
@@ -33,14 +32,8 @@ export default function TourPackagesClient({ initialData }: { initialData: any }
       setPageContent(cData);
     } catch (err) {
       console.error(err);
-    } finally {
-      setLoading(false);
     }
   }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
 
   useLiveUpdates(fetchData);
 
@@ -54,9 +47,6 @@ export default function TourPackagesClient({ initialData }: { initialData: any }
     return p.category === filter;
   });
 
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center text-blue-900 font-bold bg-[#f8fafc]">Loading Curated Journeys...</div>;
-  }
 
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col poppins selection:bg-blue-600 selection:text-white">
