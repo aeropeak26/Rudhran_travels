@@ -142,14 +142,23 @@ export default function AdminTariffPage() {
             <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4">Hero Section</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-2">
-                <label className="block text-xs text-slate-500 mb-1">Hero Background Image</label>
-                <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, 'hero')} className="w-full border p-1.5 rounded text-black text-sm bg-white file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
-                {data.hero.heroImage && (
-                  <div className="mt-2 flex flex-col items-start gap-2">
-                    <img src={data.hero.heroImage} alt="" className="h-32 object-cover rounded-md border" />
-                    <button type="button" onClick={() => setData({...data, hero: {...data.hero, heroImage: ''}})} className="text-xs text-red-600 bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-full font-semibold">Remove Image</button>
-                  </div>
-                )}
+                <label className="block text-xs text-slate-500 mb-2">Hero Background Image</label>
+                <div className="flex flex-col gap-3">
+                  <input id="tariff-hero-image" type="file" accept="image/*" onChange={(e) => {
+                    handleImageUpload(e, 'hero');
+                    e.target.value = '';
+                  }} className="text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                  {data.hero.heroImage && (
+                    <div className="flex flex-col items-start gap-2 border p-2 rounded-lg bg-slate-50 w-max">
+                      <img src={data.hero.heroImage} alt="" className="h-32 object-cover rounded-md border shadow-sm" />
+                      <button type="button" onClick={() => {
+                        setData({...data, hero: {...data.hero, heroImage: ''}});
+                      }} className="text-xs text-red-600 bg-red-100 hover:bg-red-200 px-3 py-1.5 rounded-md font-bold transition-colors">
+                        Remove Image
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
               <div>
                 <label className="block text-xs text-slate-500 mb-1">Badge</label>
