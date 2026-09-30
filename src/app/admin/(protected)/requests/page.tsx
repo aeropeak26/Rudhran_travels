@@ -53,7 +53,15 @@ export default function RequestsPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-800">{req.name}</h3>
-                    <p className="text-xs text-slate-500">Submitted on {new Date(req.createdAt).toLocaleString()}</p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border border-blue-200">
+                        {req.serviceType || 'General Enquiry'}
+                      </span>
+                      <span className="text-xs font-medium text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                        {req.serviceName || 'None'}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-1.5">Submitted on {new Date(req.createdAt).toLocaleString()}</p>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-2">

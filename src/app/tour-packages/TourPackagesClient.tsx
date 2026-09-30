@@ -16,6 +16,7 @@ import { useLiveUpdates } from '@/hooks/useLiveUpdates';
 
 export default function TourPackagesClient({ initialData }: { initialData: any }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<any>(null);
   const [filter, setFilter] = useState('All Packages');
   const [packagesData, setPackagesData] = useState<any[]>(initialData.packages || []);
   const [pageContent, setPageContent] = useState<any>(initialData.pageContent || null);
@@ -51,7 +52,7 @@ export default function TourPackagesClient({ initialData }: { initialData: any }
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col poppins selection:bg-blue-600 selection:text-white">
       <TopBar />
-      <Header onOpenBookingModal={() => setIsModalOpen(true)} />
+      <Header onOpenBookingModal={() => { setSelectedItem(null); setIsModalOpen(true); }} />
 
       <main className="flex-grow">
         
@@ -206,7 +207,7 @@ export default function TourPackagesClient({ initialData }: { initialData: any }
                       </div>
                       
                       <div className="flex items-center gap-2">
-                        <button onClick={() => setIsModalOpen(true)} className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 text-slate-300 rounded-lg transition-colors shadow-sm">
+                        <button onClick={() => { setSelectedItem({ ...pkg, type: 'Tour Package' }); setIsModalOpen(true); }} className="w-8 h-8 flex items-center justify-center bg-white/5 border border-white/10 hover:bg-white/10 text-slate-300 rounded-lg transition-colors shadow-sm">
                           <MessageCircle className="w-3.5 h-3.5" />
                         </button>
                         <Link href={`/tour-packages/${pkg._id}`} className="px-5 py-2 bg-[#f97316] hover:bg-orange-600 text-white rounded-lg text-[10px] font-bold transition-colors shadow-sm">
@@ -280,7 +281,7 @@ export default function TourPackagesClient({ initialData }: { initialData: any }
               </p>
               
               <div className="flex flex-wrap items-center gap-4">
-                <button onClick={() => setIsModalOpen(true)} className="px-6 py-3 bg-[#0066ff] hover:bg-blue-600 text-white rounded-lg text-[12px] font-bold transition-colors shadow-lg shadow-blue-900/20">
+                <button onClick={() => { setSelectedItem(null); setIsModalOpen(true); }} className="px-6 py-3 bg-[#0066ff] hover:bg-blue-600 text-white rounded-lg text-[12px] font-bold transition-colors shadow-lg shadow-blue-900/20">
                   Plan My Trip
                 </button>
                 <a href="https://wa.me/918760380485" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-[#1e293b] hover:bg-slate-700 text-white rounded-lg text-[12px] font-bold transition-colors flex items-center gap-2">
@@ -298,7 +299,7 @@ export default function TourPackagesClient({ initialData }: { initialData: any }
       </main>
 
       <Footer />
-      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} selectedItem={selectedItem} />
     </div>
   );
 }

@@ -32,17 +32,25 @@ export default function BookingModal({ isOpen, onClose, selectedItem }: BookingM
 
     try {
       // 1. Submit to API (saves to DB and sends email)
+      const serviceType = selectedItem?.type || 'Outstation Ride';
+      const serviceName = selectedItem?.name || selectedItem?.title || 'General Booking';
+      
+      const payload = {
+        ...formData,
+        serviceType,
+        serviceName
+      };
+
       const res = await fetch('/api/bookings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(payload)
       });
       
       if (!res.ok) throw new Error('Failed to submit request');
 
       // 2. Build WhatsApp Message
-      const itemName = selectedItem?.name || selectedItem?.title || 'an Outstation Ride';
-      const text = `Hello Rudhran Travels! I would like to book ${itemName}.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email}\n*Route:* ${formData.pickupLocation} to ${formData.dropLocation}\n*Date & Time:* ${formData.pickupDate} at ${formData.pickupTime}\n*Message:* ${formData.message || 'None'}\n\nPlease confirm availability and fare.`;
+      const text = `Hello Rudhran Travels! I would like to book a ${serviceType} (${serviceName}).\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email}\n*Route:* ${formData.pickupLocation} to ${formData.dropLocation}\n*Date & Time:* ${formData.pickupDate} at ${formData.pickupTime}\n*Message:* ${formData.message || 'None'}\n\nPlease confirm availability and fare.`;
       
       // 3. Open WhatsApp in new tab
       window.open(`https://wa.me/918760380485?text=${encodeURIComponent(text)}`, '_blank');

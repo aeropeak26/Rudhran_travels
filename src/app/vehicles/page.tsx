@@ -15,6 +15,7 @@ import { vehiclesData } from '@/data/vehicles';
 
 export default function VehiclesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<any>(null);
   const [vClassFilter, setVClassFilter] = useState('All Vehicle Classes');
   const [seatsFilter, setSeatsFilter] = useState('Any Capacity');
   const [acFilter, setAcFilter] = useState('AC Only');
@@ -71,7 +72,7 @@ export default function VehiclesPage() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col poppins selection:bg-blue-600 selection:text-white">
       <TopBar />
-      <Header onOpenBookingModal={() => setIsModalOpen(true)} />
+      <Header onOpenBookingModal={() => { setSelectedItem(null); setIsModalOpen(true); }} />
 
       <main className="flex-grow">
         
@@ -326,7 +327,7 @@ export default function VehiclesPage() {
                       
                       <div className="grid grid-cols-2 gap-3 mt-4">
                         <Link href={`/vehicles/${vehicle.id}`} className="py-3 bg-white border border-slate-200 hover:bg-slate-50 text-[#0a192f] text-xs font-bold rounded-xl transition-colors flex items-center justify-center">View Details</Link>
-                        <button onClick={() => setIsModalOpen(true)} className="py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1">Enquire Now &rarr;</button>
+                        <button onClick={() => { setSelectedItem({ ...vehicle, type: 'Fleet Enquiry', name: vehicle.name }); setIsModalOpen(true); }} className="py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-1">Enquire Now &rarr;</button>
                       </div>
                     </div>
                   </div>
@@ -463,7 +464,7 @@ export default function VehiclesPage() {
       </main>
 
       <Footer />
-      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} selectedItem={selectedItem} />
     </div>
   );
 }

@@ -81,6 +81,7 @@ const tariffCardOverrides: Record<string, any> = {
 
 export default function TariffClient({ initialData }: { initialData: any }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<any>(null);
   const [filter, setFilter] = useState('All Vehicles');
   const [pageContent, setPageContent] = useState<any>(initialData);
 
@@ -120,7 +121,7 @@ export default function TariffClient({ initialData }: { initialData: any }) {
   return (
     <div className="min-h-screen bg-[#f4f7fb] text-slate-900 flex flex-col poppins selection:bg-blue-600 selection:text-white">
       <TopBar />
-      <Header onOpenBookingModal={() => setIsModalOpen(true)} />
+      <Header onOpenBookingModal={() => { setSelectedItem(null); setIsModalOpen(true); }} />
 
       <main className="flex-grow">
         
@@ -280,17 +281,16 @@ export default function TariffClient({ initialData }: { initialData: any }) {
                     </div>
                   </div>
 
-                  {/* Action Buttons */}
                   <div className="mt-auto space-y-2">
-                    <button onClick={() => setIsModalOpen(true)} className="w-full py-3 bg-[#f97316] hover:bg-orange-600 text-white rounded-lg text-[12px] font-bold transition-colors flex items-center justify-center gap-2 shadow-sm">
+                    <button onClick={() => { setSelectedItem({ ...v, type: 'Rental Tariff', name: v.title }); setIsModalOpen(true); }} className="w-full py-3 bg-[#f97316] hover:bg-orange-600 text-white rounded-lg text-[12px] font-bold transition-colors flex items-center justify-center gap-2 shadow-sm">
                       Book This Vehicle Now <ChevronRight className="w-4 h-4" />
                     </button>
                     <div className="flex items-center gap-2">
-                      <a href="https://wa.me/918760380485" target="_blank" rel="noopener noreferrer" className="flex-1 py-2.5 bg-white border border-blue-200 hover:bg-blue-50 rounded-lg text-[10px] font-bold text-blue-600 transition-colors flex items-center justify-center gap-1.5 shadow-sm shadow-blue-900/5">
+                      <a href={`https://wa.me/918760380485?text=${encodeURIComponent(`Hello Rudhran Travels, I am interested in renting the ${v.title}. Please provide a quote for my trip.`)}`} target="_blank" rel="noopener noreferrer" className="flex-1 py-2.5 bg-white border border-blue-200 hover:bg-blue-50 rounded-lg text-[10px] font-bold text-blue-600 transition-colors flex items-center justify-center gap-1.5 shadow-sm shadow-blue-900/5">
                         <MessageCircle className="w-3.5 h-3.5 text-emerald-500" /> WhatsApp Quote
                       </a>
-                      <button onClick={() => setIsModalOpen(true)} className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-[10px] font-bold text-slate-700 transition-colors flex items-center justify-center gap-1.5">
-                        <span>🧮</span> Fare Calculator
+                      <button onClick={() => { setSelectedItem({ ...v, type: 'Rental Tariff', name: v.title }); setIsModalOpen(true); }} className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-lg text-[10px] font-bold text-slate-700 transition-colors flex items-center justify-center gap-1.5">
+                        <span>🧮</span> Estimate Fare
                       </button>
                     </div>
                   </div>
@@ -380,7 +380,7 @@ export default function TariffClient({ initialData }: { initialData: any }) {
       </main>
 
       <Footer />
-      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} selectedItem={selectedItem} />
     </div>
   );
 }
