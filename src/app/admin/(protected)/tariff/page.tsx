@@ -144,7 +144,12 @@ export default function AdminTariffPage() {
               <div className="md:col-span-2">
                 <label className="block text-xs text-slate-500 mb-1">Hero Background Image</label>
                 <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, 'hero')} className="w-full border p-1.5 rounded text-black text-sm bg-white file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
-                {data.hero.heroImage && <img src={data.hero.heroImage} alt="" className="mt-2 h-32 object-cover rounded-md" />}
+                {data.hero.heroImage && (
+                  <div className="mt-2 flex flex-col items-start gap-2">
+                    <img src={data.hero.heroImage} alt="" className="h-32 object-cover rounded-md border" />
+                    <button type="button" onClick={() => setData({...data, hero: {...data.hero, heroImage: ''}})} className="text-xs text-red-600 bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-full font-semibold">Remove Image</button>
+                  </div>
+                )}
               </div>
               <div>
                 <label className="block text-xs text-slate-500 mb-1">Badge</label>

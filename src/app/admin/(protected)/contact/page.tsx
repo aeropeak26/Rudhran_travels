@@ -132,7 +132,7 @@ export default function AdminContactPage() {
         </div>
 
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-          <h2 className="text-xl font-bold mb-4 text-slate-800">Page Background Image</h2>
+          <h2 className="text-xl font-bold mb-4 text-slate-800">Hero Background Image</h2>
           <div className="space-y-4">
             <div>
               <label className="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">Upload New Background</label>
