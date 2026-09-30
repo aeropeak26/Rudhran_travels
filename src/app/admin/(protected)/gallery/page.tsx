@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Save, Plus, Trash2 } from 'lucide-react';
+import { toast } from 'react-hot-toast';
 
 export default function AdminGalleryPage() {
   const [loading, setLoading] = useState(true);
@@ -55,13 +56,13 @@ export default function AdminGalleryPage() {
         body: JSON.stringify(data)
       });
       if (res.ok) {
-        alert('Gallery page content saved successfully!');
+        toast.success('Gallery page content saved successfully!');
       } else {
-        alert('Failed to save content.');
+        toast.error('Failed to save content.');
       }
     } catch (e) {
       console.error(e);
-      alert('Error saving content.');
+      toast.error('Error saving content.');
     } finally {
       setSaving(false);
     }
@@ -85,11 +86,11 @@ export default function AdminGalleryPage() {
         newG[idx].img = result.url;
         setData({...data, gallery: newG});
       } else {
-        alert('Upload failed: ' + result.error);
+        toast.error('Upload failed: ' + result.error);
       }
     } catch (err) {
       console.error(err);
-      alert('Error uploading image');
+      toast.error('Error uploading image');
     }
   };
 

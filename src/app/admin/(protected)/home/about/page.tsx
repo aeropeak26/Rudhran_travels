@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Save, Loader2, Image as ImageIcon } from 'lucide-react';
+import { toast } from 'react-hot-toast';
 
 export default function HomeAboutCMS() {
   const [loading, setLoading] = useState(true);
@@ -68,11 +69,11 @@ export default function HomeAboutCMS() {
       if (res.ok) {
         handleChange('image', data.url);
       } else {
-        alert('Upload failed: ' + data.error);
+        toast.error('Upload failed: ' + data.error);
       }
     } catch (err) {
       console.error(err);
-      alert('Upload failed');
+      toast.error('Upload failed');
     } finally {
       setUploadingImage(false);
     }

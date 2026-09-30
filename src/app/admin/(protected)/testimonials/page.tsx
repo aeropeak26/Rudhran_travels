@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, X, Image as ImageIcon } from 'lucide-react';
+import { toast } from 'react-hot-toast';
 
 interface Testimonial {
   _id: string;
@@ -114,11 +115,11 @@ export default function AdminTestimonials() {
         handleCloseForm();
         fetchTestimonials();
       } else {
-        alert('Failed to save testimonial');
+        toast.error('Failed to save testimonial');
       }
     } catch (error) {
       console.error(error);
-      alert('An error occurred during save.');
+      toast.error('An error occurred during save.');
     } finally {
       setIsSubmitting(false);
     }
@@ -134,7 +135,7 @@ export default function AdminTestimonials() {
       }
     } catch (error) {
       console.error(error);
-      alert('Failed to delete');
+      toast.error('Failed to delete');
     }
   };
 

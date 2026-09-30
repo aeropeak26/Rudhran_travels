@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Save } from 'lucide-react';
 import Link from 'next/link';
+import { toast } from 'react-hot-toast';
 
 export default function AdminVehiclesPage() {
   const [loading, setLoading] = useState(true);
@@ -64,13 +65,13 @@ export default function AdminVehiclesPage() {
         body: JSON.stringify(data)
       });
       if (res.ok) {
-        alert('Vehicles page content saved successfully!');
+        toast.success('Vehicles page content saved successfully!');
       } else {
-        alert('Failed to save content.');
+        toast.error('Failed to save content.');
       }
     } catch (e) {
       console.error(e);
-      alert('Error saving content.');
+      toast.error('Error saving content.');
     } finally {
       setSaving(false);
     }
@@ -94,11 +95,11 @@ export default function AdminVehiclesPage() {
         newVehicles[idx] = { ...newVehicles[idx], img: result.url };
         setData({ ...data, vehicles: newVehicles });
       } else {
-        alert('Upload failed: ' + result.error);
+        toast.error('Upload failed: ' + result.error);
       }
     } catch (err) {
       console.error(err);
-      alert('Error uploading image');
+      toast.error('Error uploading image');
     }
   };
 
@@ -121,11 +122,11 @@ export default function AdminVehiclesPage() {
         newVehicles[vIdx].gallery[gIdx] = result.url;
         setData({ ...data, vehicles: newVehicles });
       } else {
-        alert('Upload failed: ' + result.error);
+        toast.error('Upload failed: ' + result.error);
       }
     } catch (err) {
       console.error(err);
-      alert('Error uploading image');
+      toast.error('Error uploading image');
     }
   };
 

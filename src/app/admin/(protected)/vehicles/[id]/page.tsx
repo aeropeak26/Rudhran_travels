@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Save, ArrowLeft, Image as ImageIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
+import { toast } from 'react-hot-toast';
 
 export default function VehicleDetailsAdminPage() {
   const params = useParams();
@@ -35,11 +36,11 @@ export default function VehicleDetailsAdminPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (res.ok) alert('Saved successfully!');
-      else alert('Failed to save');
+      if (res.ok) toast.success('Saved successfully!');
+      else toast.error('Failed to save');
     } catch (err) {
       console.error(err);
-      alert('Error saving data');
+      toast.error('Error saving data');
     }
     setSaving(false);
   };
@@ -63,11 +64,11 @@ export default function VehicleDetailsAdminPage() {
         newVehicles[vIdx].gallery[gIdx] = result.url;
         setData({ ...data, vehicles: newVehicles });
       } else {
-        alert('Upload failed: ' + result.error);
+        toast.error('Upload failed: ' + result.error);
       }
     } catch (err) {
       console.error(err);
-      alert('Error uploading image');
+      toast.error('Error uploading image');
     }
   };
 

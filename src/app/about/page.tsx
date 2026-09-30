@@ -42,9 +42,9 @@ export default function AboutUs() {
       <main className="flex-grow">
         {/* 1. Hero Banner */}
         <section className="py-12 md:py-16 md: relative w-full h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden bg-[#0c1222]">
-          {pageContent?.backgroundImage ? (
+          {pageContent?.hero?.heroImage ? (
             <Image 
-              src={pageContent.backgroundImage} 
+              src={pageContent.hero.heroImage} 
               alt="Scenic road" 
               fill 
               className="object-cover" 
