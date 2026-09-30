@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 import FloatingContact from "@/components/FloatingContact";
+import SplashScreen from "@/components/SplashScreen";
 import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable} scroll-smooth`}>
       <body className="font-sans bg-slate-50 text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
         <Toaster position="top-center" toastOptions={{ duration: 4000 }} />
+        <SplashScreen />
         {children}
         <FloatingContact />
       </body>
