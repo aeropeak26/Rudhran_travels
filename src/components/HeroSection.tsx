@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight, ShieldCheck, Phone, MessageCircle, Clock } from 'lucide-react';
 import BookingWidget from './BookingWidget';
 
@@ -44,24 +45,25 @@ export default function HeroSection({ data, onSearchCars, onOpenBookingModal }: 
               <span>Book Now</span>
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button
+            <Link
+              href="/tour-packages"
               className="px-8 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-bold text-[13px] flex items-center space-x-2 transition-all hover:scale-105"
             >
               <span>Explore Packages</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
 
           {/* Quick Info Badges */}
           <div className="flex flex-wrap items-center gap-6 pt-4 text-[11px] font-medium text-white/90 drop-shadow-md">
-            <div className="flex items-center space-x-1.5 bg-black/30 px-3 py-1.5 rounded-lg border border-white/10">
+            <a href="tel:+918760380485" className="flex items-center space-x-1.5 bg-black/30 px-3 py-1.5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
               <Phone className="w-3.5 h-3.5 text-orange-400" />
-              <span>Call: +91 98765 43210</span>
-            </div>
-            <div className="flex items-center space-x-1.5 bg-black/30 px-3 py-1.5 rounded-lg border border-white/10">
+              <span>Call: +91 87603 80485</span>
+            </a>
+            <a href="https://wa.me/918760380485" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1.5 bg-black/30 px-3 py-1.5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors">
               <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
               <span>Direct WhatsApp</span>
-            </div>
+            </a>
             <div className="flex items-center space-x-1.5 bg-black/30 px-3 py-1.5 rounded-lg border border-white/10">
               <Clock className="w-3.5 h-3.5 text-blue-400" />
               <span>Instant 15-Min Confirmation</span>
