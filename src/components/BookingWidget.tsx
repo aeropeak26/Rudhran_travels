@@ -15,12 +15,12 @@ export default function BookingWidget({ onSearchCars }: BookingWidgetProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSearchCars({
-      pickup,
-      destination,
-      date,
-      vehicle: vehicle || 'Innova Crysta Luxury',
-    });
+    
+    const selVehicle = vehicle || 'Innova Crysta Luxury';
+    const message = `Hello Rudhran Travels, I would like to get a quote for my journey:\n\n*Pickup:* ${pickup}\n*Destination:* ${destination}\n*Date:* ${date}\n*Vehicle:* ${selVehicle}\n\nPlease provide me with a customized quote.`;
+    
+    const whatsappUrl = `https://wa.me/918760380485?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
