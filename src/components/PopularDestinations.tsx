@@ -195,17 +195,17 @@ export default function PopularDestinations({ data, onSelectDestination }: Popul
               <div className="p-5 flex flex-col flex-grow bg-white">
                 
                 {/* Title & Price */}
-                <div className="flex justify-between items-start gap-4 mb-1">
-                  <h3 className="font-bold text-[#0f172a] text-lg leading-tight group-hover:text-blue-600 transition-colors line-clamp-1">
+                <div className="flex justify-between items-start gap-3 mb-2">
+                  <h3 className="font-bold text-[#0f172a] text-base md:text-lg leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
                     {item.title}
                   </h3>
-                  <div className="font-bold text-lg text-[#0f172a]">
+                  <div className="font-bold text-sm md:text-base text-[#0f172a] text-right shrink-0 whitespace-nowrap">
                     {item.price}
                   </div>
                 </div>
 
                 {/* Rating */}
-                <div className="flex items-center gap-1 mb-5">
+                <div className="flex items-center gap-1 mb-4">
                   <div className="flex text-[#fbbf24] text-[10px]">
                     <Star className="w-3 h-3 fill-current" />
                     <Star className="w-3 h-3 fill-current" />
@@ -217,14 +217,14 @@ export default function PopularDestinations({ data, onSelectDestination }: Popul
                   <span className="text-[11px] text-slate-400 font-medium">{item.reviews} Reviews</span>
                 </div>
 
-                <div className="h-px w-full bg-slate-100 mb-4 mt-auto"></div>
+                <div className="h-px w-full bg-slate-100 mb-4"></div>
 
                 {/* Features Row */}
-                <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
-                  {item.features.map((feat: any, i: number) => (
-                    <div key={i} className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-slate-500">
-                      <feat.icon className={`w-3.5 h-3.5 ${feat.color}`} />
-                      <span>{feat.text}</span>
+                <div className="grid grid-cols-2 gap-y-2 gap-x-2">
+                  {item.features.slice(0, 4).map((feat: any, i: number) => (
+                    <div key={i} className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-slate-500 overflow-hidden">
+                      <feat.icon className={`w-3.5 h-3.5 flex-shrink-0 ${feat.color}`} />
+                      <span className="truncate" title={feat.text}>{feat.text}</span>
                     </div>
                   ))}
                 </div>
