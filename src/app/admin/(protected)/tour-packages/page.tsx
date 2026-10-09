@@ -446,14 +446,15 @@ export default function AdminTourPackages() {
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Package</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price / Duration</th>
+                  <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Home Page</th>
                   <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {loading ? (
-                  <tr><td colSpan={4} className="px-6 py-12 md:py-16 text-center text-gray-500">Loading...</td></tr>
+                  <tr><td colSpan={5} className="px-6 py-12 md:py-16 text-center text-gray-500">Loading...</td></tr>
                 ) : packages.length === 0 ? (
-                  <tr><td colSpan={4} className="px-6 py-12 md:py-16 text-center text-gray-500">No packages found. Add one!</td></tr>
+                  <tr><td colSpan={5} className="px-6 py-12 md:py-16 text-center text-gray-500">No packages found. Add one!</td></tr>
                 ) : (
                   packages.map(p => (
                     <tr key={p._id}>
@@ -470,14 +471,16 @@ export default function AdminTourPackages() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{p.category}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">₹{p.price}<br/><span className="text-xs text-gray-400">{p.duration}</span></td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <button 
-                          onClick={() => handleToggleHome(p)} 
-                          className={`mr-4 ${p.showOnHome ? 'text-orange-600 hover:text-orange-900' : 'text-slate-300 hover:text-orange-500'}`}
+                      <td className="px-6 py-4 whitespace-nowrap text-center">
+                        <button
+                          onClick={() => handleToggleHome(p)}
+                          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${p.showOnHome ? 'bg-emerald-500' : 'bg-gray-200'}`}
                           title={p.showOnHome ? 'Remove from Home' : 'Show on Home'}
                         >
-                          <Home className="w-4 h-4 inline"/>
+                          <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${p.showOnHome ? 'translate-x-6' : 'translate-x-1'}`} />
                         </button>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <button onClick={() => handleOpenForm(p)} className="text-indigo-600 hover:text-indigo-900 mr-4"><Edit2 className="w-4 h-4 inline"/></button>
                         <button onClick={() => handleDeletePkg(p._id)} className="text-red-600 hover:text-red-900"><Trash2 className="w-4 h-4 inline"/></button>
                       </td>
