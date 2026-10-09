@@ -87,9 +87,15 @@ export default function AdminTourPackages() {
   };
 
   const handleToggleHome = async (pkg: any) => {
-    if (!pkg.showOnHome && packages.filter(p => p.showOnHome).length >= 6) {
+    const activeCount = packages.filter(p => p.showOnHome).length;
+    
+    if (!pkg.showOnHome && activeCount >= 6) {
       toast.error('Maximum 6 packages can be shown on the home page.');
       return;
+    }
+    
+    if (pkg.showOnHome && activeCount <= 6) {
+      toast.error('Warning: Please ensure exactly 6 packages are active for the best layout on the home page.');
     }
     const toastId = toast.loading(pkg.showOnHome ? 'Removing from home...' : 'Adding to home...');
     try {
@@ -474,7 +480,7 @@ export default function AdminTourPackages() {
                       <td className="px-6 py-4 whitespace-nowrap text-center">
                         <button
                           onClick={() => handleToggleHome(p)}
-                          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${p.showOnHome ? 'bg-emerald-500' : 'bg-gray-200'}`}
+                          className={`cursor-pointer relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none ${p.showOnHome ? 'bg-emerald-500' : 'bg-gray-200'}`}
                           title={p.showOnHome ? 'Remove from Home' : 'Show on Home'}
                         >
                           <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${p.showOnHome ? 'translate-x-6' : 'translate-x-1'}`} />
