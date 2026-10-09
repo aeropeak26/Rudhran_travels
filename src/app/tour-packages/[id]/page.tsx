@@ -109,7 +109,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
 
       <main>
         {/* 1. Hero Section */}
-        <section className="py-12 md:py-16 md: relative w-full h-[600px] bg-[#071324] overflow-hidden">
+        <section className="pt-28 pb-16 md:pt-32 md:pb-20 relative w-full min-h-[600px] h-auto bg-[#071324] overflow-hidden">
           {/* Background Image with Gradient Overlay */}
           <div className="absolute inset-0 z-0">
             <Image src={pkg.img} alt={pkg.title} fill className="object-cover opacity-60" priority />
@@ -117,8 +117,8 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#071324]/20 to-[#071324]"></div>
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center pt-20">
-            <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+            <div className="flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-16">
               
               {/* Left Content */}
               <div className="max-w-xl">
