@@ -10,6 +10,7 @@ export interface ITourPackage extends Document {
   img: string;
   desc: string;
   featured: boolean;
+  showOnHome: boolean;
   
   hero: {
     badge: string;
@@ -75,6 +76,7 @@ const TourPackageSchema: Schema = new Schema(
     img: { type: String, required: true },
     desc: { type: String, required: true },
     featured: { type: Boolean, default: false },
+    showOnHome: { type: Boolean, default: false },
 
     hero: {
       badge: { type: String },

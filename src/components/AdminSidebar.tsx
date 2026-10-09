@@ -18,7 +18,6 @@ const navigation = [
       { name: 'Popular Destinations', href: '/admin/home/destinations' },
       { name: 'Featured Vehicles', href: '/admin/home/vehicles' },
       { name: 'General (Toyota)', href: '/admin/home/toyota' },
-      { name: 'Tour Packages', href: '/admin/home/tours' },
       { name: 'Why Travel With Us', href: '/admin/home/why-us' },
       { name: 'Ride Experiences', href: '/admin/home/experiences' },
     ]

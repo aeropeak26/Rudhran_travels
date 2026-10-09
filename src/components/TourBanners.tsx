@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowUpRight, Star } from 'lucide-react';
 
 interface TourBannersProps {
@@ -110,14 +111,14 @@ export default function TourBanners({ data, onOpenBookingModal }: TourBannersPro
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {packages.map((pkg, index) => (
-            <div 
-              key={index}
-              onClick={() => onOpenBookingModal(pkg)}
-              className="group relative h-[420px] rounded-[2rem] overflow-hidden cursor-pointer flex flex-col justify-between p-6 shadow-lg border border-slate-100/10"
+            <Link 
+              key={pkg._id || index}
+              href={pkg._id ? `/tour-packages/${pkg._id}` : '#'}
+              className="group relative h-[420px] rounded-[2rem] overflow-hidden cursor-pointer flex flex-col justify-between p-6 shadow-lg border border-slate-100/10 block"
             >
               {/* Background Image */}
               <Image 
-                src={pkg.image} 
+                src={pkg.img || pkg.image || '/images/dest1.png'} 
                 alt={pkg.title} 
                 fill 
                 className="object-cover transition-transform duration-700 group-hover:scale-110 z-0"
@@ -130,8 +131,8 @@ export default function TourBanners({ data, onOpenBookingModal }: TourBannersPro
               {/* Top Badges */}
               <div className="relative z-20 flex justify-between items-start">
                 <div className="flex gap-2">
-                  <div className={`text-[10px] font-bold px-3 py-1.5 rounded-full ${pkg.badgeColor} uppercase tracking-wider shadow-md`}>
-                    {pkg.badge}
+                  <div className={`text-[10px] font-bold px-3 py-1.5 rounded-full ${pkg.badgeColor || 'bg-[#fbbf24] text-amber-900'} uppercase tracking-wider shadow-md`}>
+                    {pkg.badge || 'POPULAR'}
                   </div>
                   <div className="bg-black/30 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-md uppercase">
                     {pkg.duration}
@@ -145,12 +146,12 @@ export default function TourBanners({ data, onOpenBookingModal }: TourBannersPro
               {/* Bottom Content */}
               <div className="relative z-20 mt-auto pt-4">
                 <div className="text-[10px] font-bold text-[#fbbf24] tracking-widest uppercase mb-1">
-                  {pkg.region}
+                  {pkg.category || pkg.region}
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">
                   {pkg.title}
                 </h3>
-                <p className="text-xs text-slate-300 font-medium leading-relaxed mb-5 max-w-sm">
+                <p className="text-xs text-slate-300 font-medium leading-relaxed mb-5 max-w-sm line-clamp-2">
                   {pkg.desc}
                 </p>
                 
@@ -158,15 +159,15 @@ export default function TourBanners({ data, onOpenBookingModal }: TourBannersPro
                 
                 <div className="flex justify-between items-center">
                   <div className="text-white font-medium text-xs">
-                    From <span className="font-bold text-sm">{pkg.price}</span> <span className="text-slate-400 text-[10px]">{pkg.priceUnit}</span>
+                    From <span className="font-bold text-sm">₹{pkg.price?.replace('₹', '')}</span> <span className="text-slate-400 text-[10px]">{pkg.priceUnit || '/ person'}</span>
                   </div>
                   <div className="flex items-center gap-1 text-[#10b981] text-[10px] font-bold">
                     <Star className="w-3 h-3 fill-current" />
-                    {pkg.rating}
+                    {pkg.rating || '4.9 (100+ reviews)'}
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

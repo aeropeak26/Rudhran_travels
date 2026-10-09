@@ -131,7 +131,7 @@ export default function AdminTourPackages() {
   // --- PACKAGE FORM LOGIC ---
   function getEmptyPackage() {
     return {
-      title: '', subtitle: '', duration: '', price: '', category: 'Kerala', badge: '', img: '', desc: '', featured: false,
+      title: '', subtitle: '', duration: '', price: '', category: 'Kerala', badge: '', img: '', desc: '', featured: false, showOnHome: false,
       hero: { badge: '', title: '', desc: '', pacing: '', stayTier: '', carriage: '', escort: '', pricingTitle: '', pricingType: '', pricingAdvance: '' },
       waypoints: [],
       itinerary: [],
@@ -441,7 +441,7 @@ export default function AdminTourPackages() {
                           </div>
                           <div className="ml-4">
                             <div className="text-sm font-medium text-gray-900">{p.title}</div>
-                            <div className="text-sm text-gray-500">{p.badge || 'No Badge'} {p.featured && '(Featured)'}</div>
+                            <div className="text-sm text-gray-500">{p.badge || 'No Badge'} {p.featured && '(Featured)'} {p.showOnHome && <span className="ml-1 text-xs bg-orange-100 text-orange-800 px-1.5 py-0.5 rounded">Home</span>}</div>
                           </div>
                         </div>
                       </td>
@@ -529,8 +529,15 @@ export default function AdminTourPackages() {
                 </div>
 
                 <div className="flex items-center mt-6">
-                  <input type="checkbox" checked={pkgData.featured} onChange={e => setPkgData({...pkgData, featured: e.target.checked})} className="h-4 w-4 text-orange-600 rounded" />
-                  <label className="ml-2 block text-sm font-medium text-gray-900">Featured (Big Gold Badge)</label>
+                  <div className="flex items-center">
+                    <input type="checkbox" checked={pkgData.featured} onChange={e => setPkgData({...pkgData, featured: e.target.checked})} className="h-4 w-4 text-orange-600 rounded" />
+                    <label className="ml-2 block text-sm font-medium text-gray-900">Featured (Big Gold Badge)</label>
+                  </div>
+                  <div className="flex items-center mt-3">
+                    <input type="checkbox" checked={pkgData.showOnHome} onChange={e => setPkgData({...pkgData, showOnHome: e.target.checked})} className="h-4 w-4 text-emerald-600 rounded" />
+                    <label className="ml-2 block text-sm font-medium text-emerald-900">Show on Home Page (Max 6)</label>
+                  </div>
+
                 </div>
               </div>
             </section>

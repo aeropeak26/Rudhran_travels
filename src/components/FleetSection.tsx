@@ -33,7 +33,7 @@ export default function FleetSection({ data, onBookCar }: FleetSectionProps) {
   useEffect(() => {
     const timer = setInterval(() => {
       setSelectedCarIndex((prev) => (prev < displayCars.length - 1 ? prev + 1 : 0));
-    }, 4000);
+    }, 10000);
     return () => clearInterval(timer);
   }, [displayCars.length]);
 
