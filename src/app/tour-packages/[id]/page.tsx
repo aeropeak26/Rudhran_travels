@@ -75,7 +75,7 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
   useLiveUpdates(fetchPackage);
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center text-blue-900 font-bold bg-slate-50">Loading Itinerary Details...</div>;
+    return <div className="min-h-screen bg-[#071324]"></div>;
   }
 
   if (!pkg) {
