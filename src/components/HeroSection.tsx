@@ -13,7 +13,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ data, onSearchCars, onOpenBookingModal }: HeroSectionProps) {
   return (
-    <section className="py-12 md:py-16 md: relative bg-cover bg-center bg-no-repeat pb-4 text-white poppins-regular min-h-[520px]" style={{ backgroundImage: `url(${data?.backgroundImage || '/images/Home/bg.png'})` }}>
+    <section className="py-12 md:py-16 md: relative bg-cover bg-center bg-no-repeat pb-4 text-white poppins-regular min-h-[460px]" style={{ backgroundImage: `url(${data?.backgroundImage || '/images/Home/bg.png'})` }}>
       
       {/* Mobile Gradient Overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent md:hidden z-10"></div>
