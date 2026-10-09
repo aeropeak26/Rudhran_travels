@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://madurai-rudhran-travels.vercel.app'),
   title: "Rudhran Car Travels | Premium Outstation Taxi & Tour Packages Madurai",
   description: "Explore South India with Rudhran Car Travels. Reliable outstation cabs, tour packages for Madurai, Rameshwaram, Kodaikanal, and Ooty with transparent pricing.",
+  icons: {
+    icon: '/images/logo.png',
+  },
   keywords: ["rudhran car travels", "madurai cab rental", "madurai to rameshwaram taxi", "madurai to kodaikanal car package", "outstation taxi madurai"],
   openGraph: {
     title: "Rudhran Car Travels - Drive Your Dreams",

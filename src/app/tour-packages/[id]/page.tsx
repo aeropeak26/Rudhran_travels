@@ -135,26 +135,26 @@ export default function TourPackageDetails({ params }: { params: Promise<{ id: s
                 </p>
 
                 {/* 4 Info Pills */}
-                <div className="flex flex-wrap gap-3">
-                  <div className="bg-[#0f172a]/80 border border-white/10 rounded-xl px-4 py-3 backdrop-blur-md">
+                <div className="grid grid-cols-2 lg:flex lg:flex-wrap gap-2 lg:gap-3">
+                  <div className="bg-[#0f172a]/80 border border-white/10 rounded-xl p-3 md:px-4 md:py-3 backdrop-blur-md">
                     <span className="text-[8px] font-bold text-slate-400 uppercase tracking-widest block mb-1">PACING</span>
                     <div className="flex items-center gap-1.5 text-[11px] font-bold text-white">
                       <Clock className="w-3.5 h-3.5 text-blue-400" /> {heroData.pacing}
                     </div>
                   </div>
-                  <div className="bg-[#0f172a]/80 border border-white/10 rounded-xl px-4 py-3 backdrop-blur-md">
+                  <div className="bg-[#0f172a]/80 border border-white/10 rounded-xl p-3 md:px-4 md:py-3 backdrop-blur-md">
                     <span className="text-[8px] font-bold text-slate-400 uppercase tracking-widest block mb-1">STAY TIER</span>
                     <div className="flex items-center gap-1.5 text-[11px] font-bold text-white">
                       <MapPin className="w-3.5 h-3.5 text-emerald-400" /> {heroData.stayTier}
                     </div>
                   </div>
-                  <div className="bg-[#0f172a]/80 border border-white/10 rounded-xl px-4 py-3 backdrop-blur-md">
+                  <div className="bg-[#0f172a]/80 border border-white/10 rounded-xl p-3 md:px-4 md:py-3 backdrop-blur-md">
                     <span className="text-[8px] font-bold text-slate-400 uppercase tracking-widest block mb-1">CARRIAGE</span>
                     <div className="flex items-center gap-1.5 text-[11px] font-bold text-white">
                       <Car className="w-3.5 h-3.5 text-purple-400" /> {heroData.carriage}
                     </div>
                   </div>
-                  <div className="bg-[#0f172a]/80 border border-white/10 rounded-xl px-4 py-3 backdrop-blur-md">
+                  <div className="bg-[#0f172a]/80 border border-white/10 rounded-xl p-3 md:px-4 md:py-3 backdrop-blur-md">
                     <span className="text-[8px] font-bold text-slate-400 uppercase tracking-widest block mb-1">ESCORT</span>
                     <div className="flex items-center gap-1.5 text-[11px] font-bold text-white">
                       <User className="w-3.5 h-3.5 text-blue-400" /> {heroData.escort}
