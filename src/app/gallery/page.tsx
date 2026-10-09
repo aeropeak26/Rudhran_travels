@@ -6,7 +6,7 @@ import TopBar from '@/components/TopBar';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
-import { Clock, ShieldCheck, Star, Zap, Check } from 'lucide-react';
+import { Clock, ShieldCheck, Star, Zap, Check, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
   Clock, ShieldCheck, Star, Zap, Check
@@ -15,6 +15,7 @@ const iconMap: Record<string, any> = {
 export default function GalleryPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pageContent, setPageContent] = useState<any>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     fetch('/api/gallery-content')
@@ -37,6 +38,30 @@ export default function GalleryPage() {
     { title: '3-Generation Smiles', desc: 'Comfortable stops across tea estates', badge: 'FAMILY HOLIDAY', img: '/images/dest2.png' },
     { title: 'Pamban Sea Bridge Crossing', desc: 'Ocean breeze drive connecting mainland to holy Rameshwaram.', badge: 'COASTAL LANDMARK', img: '/images/dest1.png' }
   ];
+
+  const galleryItems = pageContent?.gallery?.length > 0 ? pageContent.gallery : images;
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxIndex(null);
+      if (e.key === 'ArrowRight') setLightboxIndex((prev) => prev !== null ? (prev + 1) % galleryItems.length : null);
+      if (e.key === 'ArrowLeft') setLightboxIndex((prev) => prev !== null ? (prev - 1 + galleryItems.length) % galleryItems.length : null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxIndex, galleryItems.length]);
+
+  const getColSpan = (i: number) => {
+    const mod = i % 4; // grid is 4 columns. 1-1-2 means 1, 1, 2 = 4. Wait, the user wants 1 1 2.
+    // If it's a 4-col grid: Row 1: index 0 (col-span-1), index 1 (col-span-1), index 2 (col-span-2).
+    // Let's use a 4 col grid.
+    if (mod === 0) return 'md:col-span-1';
+    if (mod === 1) return 'md:col-span-1';
+    if (mod === 2) return 'md:col-span-2';
+    if (mod === 3) return 'md:col-span-2';
+    return 'md:col-span-1';
+  };
 
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-blue-600 selection:text-white flex flex-col">
@@ -104,9 +129,9 @@ export default function GalleryPage() {
         {/* 3. Photo Grid */}
         <section className="py-12 md:py-16 md: bg-[#f8fafc]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-6 gap-4 lg:gap-6">
-              {(pageContent?.gallery?.length > 0 ? pageContent.gallery : images).map((item: any, i: number) => (
-                <div key={i} className={`group relative rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 h-[260px] md:h-[300px] border border-black/5 ${i < 2 ? 'md:col-span-3' : 'md:col-span-2'}`}>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6">
+              {galleryItems.map((item: any, i: number) => (
+                <div key={i} onClick={() => setLightboxIndex(i)} className={`group relative rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 h-[260px] md:h-[300px] border border-black/5 ${getColSpan(i)}`}>
                    <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-[#0f172a]/30 to-transparent opacity-90 transition-opacity duration-300"></div>
                    
@@ -210,6 +235,63 @@ export default function GalleryPage() {
       </main>
       <Footer />
       <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm p-4">
+          <button 
+            onClick={() => setLightboxIndex(null)}
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[110] bg-black/20 hover:bg-black/40 p-2 rounded-full backdrop-blur-md"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) => prev !== null ? (prev - 1 + galleryItems.length) % galleryItems.length : null);
+            }}
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors z-[110] bg-black/20 hover:bg-black/40 p-3 rounded-full backdrop-blur-md"
+          >
+            <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
+          </button>
+
+          <div className="relative w-full max-w-5xl aspect-[4/3] md:aspect-video rounded-xl overflow-hidden shadow-2xl bg-black" onClick={(e) => e.stopPropagation()}>
+            <Image 
+              src={galleryItems[lightboxIndex].img} 
+              alt={galleryItems[lightboxIndex].title || 'Gallery image'}
+              fill
+              className="object-contain"
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              priority
+            />
+            
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 md:p-8">
+               {galleryItems[lightboxIndex].badge && (
+                 <span className="inline-block bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-3">
+                   {galleryItems[lightboxIndex].badge}
+                 </span>
+               )}
+               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{galleryItems[lightboxIndex].title}</h3>
+               <p className="text-sm md:text-base text-slate-300 max-w-2xl">{galleryItems[lightboxIndex].desc}</p>
+            </div>
+          </div>
+
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) => prev !== null ? (prev + 1) % galleryItems.length : null);
+            }}
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors z-[110] bg-black/20 hover:bg-black/40 p-3 rounded-full backdrop-blur-md"
+          >
+            <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
+          </button>
+          
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium tracking-widest">
+            {lightboxIndex + 1} / {galleryItems.length}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
