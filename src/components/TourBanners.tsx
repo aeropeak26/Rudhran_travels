@@ -88,7 +88,7 @@ export default function TourBanners({ data, onOpenBookingModal }: TourBannersPro
     }
   ];
 
-  const packages = data?.length === 6 ? data : defaultPackages;
+  const packages = data?.length && data.length > 0 ? data : defaultPackages;
 
   return (
     <section className="py-12 md:py-16 md: pt-0 bg-slate-50 text-slate-900 poppins-regular">

@@ -37,7 +37,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 poppins-regular ${
-      isScrolled ? 'bg-white shadow-md py-1' : 'bg-white shadow-sm py-1 border-b border-slate-100'
+      isScrolled ? 'bg-white shadow-md py-2' : 'bg-white shadow-sm py-3 border-b border-slate-100'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
@@ -46,7 +46,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
           <img 
             src="/images/logo.png" 
             alt="Rudhran Travels Logo" 
-            className="h-8 md:h-10 w-auto object-contain"
+            className="h-10 md:h-12 w-auto object-contain"
           />
         </Link>
 

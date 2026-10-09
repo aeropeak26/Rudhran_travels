@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit2, Trash2, X, Image as ImageIcon, Save, ArrowLeft } from 'lucide-react';
+import { Plus, Edit2, Trash2, X, Image as ImageIcon, Save, ArrowLeft, Home } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import imageCompression from 'browser-image-compression';
 import { ITourPackage } from '@/models/TourPackage';
@@ -83,6 +83,29 @@ export default function AdminTourPackages() {
       toast.error('Image upload failed');
     } finally {
       setIsSavingContent(false);
+    }
+  };
+
+  const handleToggleHome = async (pkg: any) => {
+    if (!pkg.showOnHome && packages.filter(p => p.showOnHome).length >= 6) {
+      toast.error('Maximum 6 packages can be shown on the home page.');
+      return;
+    }
+    const toastId = toast.loading(pkg.showOnHome ? 'Removing from home...' : 'Adding to home...');
+    try {
+      const res = await fetch(`/api/tour-packages/${pkg._id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ showOnHome: !pkg.showOnHome })
+      });
+      if (res.ok) {
+        toast.success(pkg.showOnHome ? 'Removed from home' : 'Added to home', { id: toastId });
+        fetchData();
+      } else {
+        throw new Error('Failed to update package');
+      }
+    } catch (err) {
+      toast.error('Failed to update', { id: toastId });
     }
   };
 
@@ -448,6 +471,13 @@ export default function AdminTourPackages() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{p.category}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">₹{p.price}<br/><span className="text-xs text-gray-400">{p.duration}</span></td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button 
+                          onClick={() => handleToggleHome(p)} 
+                          className={`mr-4 ${p.showOnHome ? 'text-orange-600 hover:text-orange-900' : 'text-slate-300 hover:text-orange-500'}`}
+                          title={p.showOnHome ? 'Remove from Home' : 'Show on Home'}
+                        >
+                          <Home className="w-4 h-4 inline"/>
+                        </button>
                         <button onClick={() => handleOpenForm(p)} className="text-indigo-600 hover:text-indigo-900 mr-4"><Edit2 className="w-4 h-4 inline"/></button>
                         <button onClick={() => handleDeletePkg(p._id)} className="text-red-600 hover:text-red-900"><Trash2 className="w-4 h-4 inline"/></button>
                       </td>
